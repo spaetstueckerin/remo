@@ -25,7 +25,7 @@
 
 <% @compressed_air_distributions.each do |compressed_air_distribution| %>
   <tr>
-    <% compressor = CompressedAirProductionBasic.find_by_id(compressed_air_distribution.compressor_id)%>
+    <% compressor = CompressedAirProduction.find_by_id(compressed_air_distribution.compressor_id)%>
     <td><%= compressor.manufacturer %></td>
     <td><%= compressed_air_distribution.manufacturer %></td>
     <td><%= compressed_air_distribution.yearOfManufacturing %></td>

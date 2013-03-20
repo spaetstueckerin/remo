@@ -1,21 +1,21 @@
 <h1>Druckluftverbraucher - jährliche Erhebung</h1>
 
-<table>
+<table  class="zentriert">
   <tr>
     <th>Verbrauch</th>
-    <th>Year</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Jahr</th>
+    <th>Aktion</th>
   </tr>
 
 <% @compressed_air_consumption_years.each do |compressed_air_consumption_year| %>
   <tr>
     <td><%= compressed_air_consumption_year.verbrauch %></td>
     <td><%= compressed_air_consumption_year.year_id %></td>
-    <td><%= link_to 'Show', compressed_air_consumption_year %></td>
-    <td><%= link_to 'Edit', edit_compressed_air_consumption_year_path(compressed_air_consumption_year) %></td>
-    <td><%= link_to 'Destroy', compressed_air_consumption_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_consumption_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_consumption_year_path(compressed_air_consumption_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_consumption_year, method: :delete, data: { confirm: 'Are you sure?' }  %>
+
   </tr>
 <% end %>
 </table>

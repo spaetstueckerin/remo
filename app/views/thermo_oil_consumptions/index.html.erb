@@ -1,31 +1,32 @@
-<h1>Listing thermo_oil_consumptions</h1>
+<h1>Thermoölverbraucher</h1>
 
 <table>
   <tr>
-    <th>Thermooilproduction</th>
-    <th>Machinery</th>
-    <th>Profitcapacity</th>
-    <th>Requirementtype</th>
-    <th>Thermooildistribution</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Thermoölproduktion</th>
+    <th>Thermoölverteilung</th>
+    <th>Verbraucher</th>
+    <th>Nutzenleistung</th>
+    <th>Bedarfsart</th>
+
+    <th>Aktion</th>
   </tr>
 
 <% @thermo_oil_consumptions.each do |thermo_oil_consumption| %>
   <tr>
     <td><%= thermo_oil_consumption.thermoOilProduction_id %></td>
+    <td><%= thermo_oil_consumption.thermoOilDistribution_id %></td>
     <td><%= thermo_oil_consumption.machinery_id %></td>
     <td><%= thermo_oil_consumption.profitCapacity %></td>
     <td><%= thermo_oil_consumption.requirementType %></td>
-    <td><%= thermo_oil_consumption.thermoOilDistribution_id %></td>
-    <td><%= link_to 'Show', thermo_oil_consumption %></td>
-    <td><%= link_to 'Edit', edit_thermo_oil_consumption_path(thermo_oil_consumption) %></td>
-    <td><%= link_to 'Destroy', thermo_oil_consumption, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_consumption %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_consumption_path(thermo_oil_consumption) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_consumption, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Thermo oil consumption', new_thermo_oil_consumption_path %>
+<%= link_to 'Neuen Thermoölverbraucher anlegen', new_thermo_oil_consumption_path %>

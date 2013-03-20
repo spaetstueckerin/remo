@@ -1,35 +1,37 @@
-<h1>Listing thermo_oil_consumption_years</h1>
+<h1>Thermoölverbrauch - jährliche Erhebung</h1>
 
 <table>
   <tr>
-    <th>Volumestream</th>
-    <th>Flowtemperature</th>
+    <th>Thermoölproduktion</th>
+    <th>Verbraucher</th>
+    <th>Thermoölverbrauch</th>
+    <th>Volumenstrom</th>
+    <!--<th>Flowtemperature</th>
     <th>Returntemperature</th>
-    <th>Processtemperature</th>
-    <th>Thermooilproduction</th>
-    <th>Machinery</th>
-    <th>Thermooilconsumption</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Processtemperature</th>-->
+
+    <th>Aktion</th>
+
   </tr>
 
 <% @thermo_oil_consumption_years.each do |thermo_oil_consumption_year| %>
   <tr>
-    <td><%= thermo_oil_consumption_year.volumeStream %></td>
-    <td><%= thermo_oil_consumption_year.flowTemperature %></td>
-    <td><%= thermo_oil_consumption_year.returnTemperature %></td>
-    <td><%= thermo_oil_consumption_year.processTemperature %></td>
     <td><%= thermo_oil_consumption_year.thermoOilProduction_id %></td>
     <td><%= thermo_oil_consumption_year.machinery_id %></td>
     <td><%= thermo_oil_consumption_year.thermoOilConsumption_id %></td>
-    <td><%= link_to 'Show', thermo_oil_consumption_year %></td>
-    <td><%= link_to 'Edit', edit_thermo_oil_consumption_year_path(thermo_oil_consumption_year) %></td>
-    <td><%= link_to 'Destroy', thermo_oil_consumption_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= thermo_oil_consumption_year.volumeStream %></td>
+    <!--<td><%= thermo_oil_consumption_year.flowTemperature %></td>
+    <td><%= thermo_oil_consumption_year.returnTemperature %></td>
+    <td><%= thermo_oil_consumption_year.processTemperature %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_consumption_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_consumption_year_path(thermo_oil_consumption_year)%>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_consumption_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Thermo oil consumption year', new_thermo_oil_consumption_year_path %>
+<%= link_to 'neue jährliche Erhebung Thermoölverbrauch', new_thermo_oil_consumption_year_path %>

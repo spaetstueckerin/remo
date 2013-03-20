@@ -10,48 +10,44 @@
       </ul>
     </div>
   <% end %>
+  
+<table>
+  <tr>
+    <td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
+    <td colspan="3"><%= f.number_field :coldProduction_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :operatingHours, "Betriebsstunden" %></td>
+    <td><%= f.number_field :operatingHours %> h</td>
+    <td><%= f.label :energyConsumption, "Strombezug" %></td>
+    <td><%= f.number_field :energyConsumption %> kWh/a</td>
+  </tr>
+  <tr>
+    <td><%= f.label :coldAmount, "Kältemenge" %></td>
+    <td><%= f.number_field :coldAmount %> kWh/a</td>
+    <td><%= f.label :massFlow, "Massenstrom" %></td>
+    <td><%= f.number_field :massFlow %> kg/s</td>
+  </tr>
+  <tr>
+    <td><%= f.label :flowTemperature, "Vorlauftemperatur" %></td>
+    <td><%= f.number_field :flowTemperature %> °C</td>
+    <td><%= f.label :returnTemperature, "Rücklauftemperatur" %></td>
+    <td><%= f.number_field :returnTemperature %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :temperatureIn, "Temperatur ein" %></td>
+    <td><%= f.number_field :temperatureIn %> °C</td>
+    <td><%= f.label :temperatureOut, "Temperatur aus" %></td>
+    <td><%= f.number_field :temperatureOut %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :waterRequirement, "Wasserbedarf" %></td>
+    <td colspan="3"><%= f.number_field :waterRequirement %> m&sup3;/a</td>
+  </tr>
+</table>
 
-  <div class="field">
-    <%= f.label :operatingHours %><br />
-    <%= f.number_field :operatingHours %>
-  </div>
-  <div class="field">
-    <%= f.label :energyConsumption %><br />
-    <%= f.text_field :energyConsumption %>
-  </div>
-  <div class="field">
-    <%= f.label :coldAmount %><br />
-    <%= f.text_field :coldAmount %>
-  </div>
-  <div class="field">
-    <%= f.label :massFlow %><br />
-    <%= f.text_field :massFlow %>
-  </div>
-  <div class="field">
-    <%= f.label :flowTemperature %><br />
-    <%= f.text_field :flowTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :returnTemperature %><br />
-    <%= f.text_field :returnTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :temperatureIn %><br />
-    <%= f.text_field :temperatureIn %>
-  </div>
-  <div class="field">
-    <%= f.label :temperatureOut %><br />
-    <%= f.text_field :temperatureOut %>
-  </div>
-  <div class="field">
-    <%= f.label :waterRequirement %><br />
-    <%= f.text_field :waterRequirement %>
-  </div>
-  <div class="field">
-    <%= f.label :coldProduction_id %><br />
-    <%= f.number_field :coldProduction_id %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

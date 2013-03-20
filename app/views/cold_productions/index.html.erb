@@ -1,19 +1,17 @@
-<h1>Listing cold_productions</h1>
+<h1>Kälteproduktion</h1>
 
 <table>
   <tr>
-    <th>Manufacturer</th>
-    <th>Buildtype</th>
-    <th>Yearofmanufacturing</th>
-    <th>Capacity</th>
-    <th>Coolingcapacity</th>
-    <th>Coolingmedium</th>
-    <th>Rkwayofcooling</th>
+    <th>Hersteller</th>
+    <th>Bauart</th>
+    <th>Baujahr</th>
+    <th>Elektrische Leistung</th>
+    <th>Kühlleistung</th>
+    <th>Kühlmedium</th>
+    <!--<th>Rkwayofcooling</th>
     <th>Rkcoolingmedium</th>
-    <th>Rkcapacity</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Rkcapacity</th>-->
+    <th>Aktion</th>
   </tr>
 
 <% @cold_productions.each do |cold_production| %>
@@ -24,16 +22,18 @@
     <td><%= cold_production.capacity %></td>
     <td><%= cold_production.coolingCapacity %></td>
     <td><%= cold_production.coolingMedium %></td>
-    <td><%= cold_production.rkWayOfCooling %></td>
+    <!--<td><%= cold_production.rkWayOfCooling %></td>
     <td><%= cold_production.rkCoolingMedium %></td>
-    <td><%= cold_production.rkCapacity %></td>
-    <td><%= link_to 'Show', cold_production %></td>
-    <td><%= link_to 'Edit', edit_cold_production_path(cold_production) %></td>
-    <td><%= link_to 'Destroy', cold_production, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= cold_production.rkCapacity %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_production_path(cold_production)  %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_production, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Cold production', new_cold_production_path %>
+<%= link_to 'Neue Kälteproduktion', new_cold_production_path %>

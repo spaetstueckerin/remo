@@ -10,28 +10,29 @@
       </ul>
     </div>
   <% end %>
+  
+<table>
+  <tr>
+    <td><%= f.label :coldConsumption_id, "Kälteverbrauch" %></td>
+    <td colspan="3"><%= f.number_field :coldConsumption_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :volumeStream, "Volumenstrom" %></td>
+    <td colspan="3"><%= f.number_field :volumeStream %> m&sup3;/h</td>
+  </tr>
+  <tr>
+    <td><%= f.label :flowTemperature, "Vorlauftemperatur" %></td>
+    <td><%= f.number_field :flowTemperature %> °C</td>
+    <td><%= f.label :returnTemperature, "Rücklauftemperatur" %></td>
+    <td><%= f.number_field :returnTemperature %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :processTemperature, "Prozesstemperatur" %></td>
+    <td colspan="3"><%= f.number_field :processTemperature %> °C</td>
+  </tr>
+</table>
 
-  <div class="field">
-    <%= f.label :volumeStream %><br />
-    <%= f.text_field :volumeStream %>
-  </div>
-  <div class="field">
-    <%= f.label :flowTemperature %><br />
-    <%= f.text_field :flowTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :returnTemperature %><br />
-    <%= f.text_field :returnTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :processTemperature %><br />
-    <%= f.text_field :processTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :coldConsumption_id %><br />
-    <%= f.number_field :coldConsumption_id %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden"%>
   </div>
 <% end %>

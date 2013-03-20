@@ -1,16 +1,14 @@
 <h1>Energielieferverträge</h1>
 <p><%= link_to 'Neuen Vertrag erstellen', new_contract_path %></p>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Energieträger</th>
     <th>Anbieter</th>
     <!--<th>Beschreibung</th>-->
     <th>Konditionen</th>
     <th>Vertragsdauer</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Aktion</th>
   </tr>
 
 <% @contracts.each do |contract| %>
@@ -18,11 +16,13 @@
     <td><%= contract.energy_type %></td>
     <td><%= contract.supplier %></td>
     <!--<td><%= contract.description %></td>-->
-    <td><%= contract.condition %></td>
-    <td><%= contract.duration_from %> - <%= contract.duration_to %></td>
-    <td><%= link_to 'Show', contract %></td>
-    <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
-    <td><%= link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= contract.condition %> Euro</td>
+    <td><%= contract.duration_from.strftime('%d.%m.%Y') %> - <%= contract.duration_to.strftime('%d.%m.%Y') %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), contract %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_contract_path(contract) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), contract, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
   </tr>
 <% end %>
 </table>

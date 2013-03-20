@@ -1,18 +1,16 @@
-<h1>Listing cold_distributions</h1>
+<h1>Kälteverteilung</h1>
 
 <table>
   <tr>
-    <th>Coldproduction</th>
-    <th>Coldconsumer</th>
-    <th>Aperture</th>
+    <th>Kälteproduktion</th>
+    <th>Kälteverbrauch</th>
+    <th>Durchmesser</th>
     <th>Isolation</th>
-    <th>Length</th>
-    <th>Volumestreamnenn</th>
+    <th>Länge</th>
+    <!--<th>Volumestreamnenn</th>
     <th>Volumestreammin</th>
-    <th>Volumestreammax</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Volumestreammax</th>-->
+    <th>Aktion</th>
   </tr>
 
 <% @cold_distributions.each do |cold_distribution| %>
@@ -22,16 +20,18 @@
     <td><%= cold_distribution.aperture %></td>
     <td><%= cold_distribution.isolation %></td>
     <td><%= cold_distribution.length %></td>
-    <td><%= cold_distribution.volumeStreamNenn %></td>
+    <!--<td><%= cold_distribution.volumeStreamNenn %></td>
     <td><%= cold_distribution.volumeStreamMin %></td>
-    <td><%= cold_distribution.volumeStreamMax %></td>
-    <td><%= link_to 'Show', cold_distribution %></td>
-    <td><%= link_to 'Edit', edit_cold_distribution_path(cold_distribution) %></td>
-    <td><%= link_to 'Destroy', cold_distribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= cold_distribution.volumeStreamMax %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_distribution_path(cold_distribution)  %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Cold distribution', new_cold_distribution_path %>
+<%= link_to 'Neue Kälteverteilung', new_cold_distribution_path %>

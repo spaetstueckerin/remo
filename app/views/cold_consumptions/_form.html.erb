@@ -10,28 +10,27 @@
       </ul>
     </div>
   <% end %>
+<table>
+  <tr>
+    <td><%= f.label :coldDistribution_id, "Kälteverteilung" %></td>
+    <td><%= f.number_field :coldDistribution_id %></td>
+    <td><%= f.label :machinery_id, "Kälteverbraucher" %></td>
+    <td><%= f.number_field :machinery_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
+    <td colspan="3"><%= f.number_field :coldProduction_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :profitCapacity, "Nutzenleistung" %></td>
+    <td><%= f.number_field :profitCapacity %> kW</td>
+    <td><%= f.label :requirementType %></td>
+    <td><%= f.select :requirementType, ["konstant", "taktgebunden", "manuell"] %></td>
+  </tr>
+</table>
 
-  <div class="field">
-    <%= f.label :machinery_id %><br />
-    <%= f.number_field :machinery_id %>
-  </div>
-  <div class="field">
-    <%= f.label :coldProduction_id %><br />
-    <%= f.number_field :coldProduction_id %>
-  </div>
-  <div class="field">
-    <%= f.label :profitCapacity %><br />
-    <%= f.text_field :profitCapacity %>
-  </div>
-  <div class="field">
-    <%= f.label :requirementType %><br />
-    <%= f.text_field :requirementType %>
-  </div>
-  <div class="field">
-    <%= f.label :coldDistribution_id %><br />
-    <%= f.number_field :coldDistribution_id %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

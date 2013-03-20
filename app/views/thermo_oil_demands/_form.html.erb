@@ -11,31 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :timeFrom %><br />
-    <%= f.time_select :timeFrom %>
-  </div>
-  <div class="field">
-    <%= f.label :timeTo %><br />
-    <%= f.time_select :timeTo %>
-  </div>
-  <div class="field">
-    <%= f.label :machinery_id %><br />
-    <%= f.number_field :machinery_id %>
-  </div>
-  <div class="field">
-    <%= f.label :demandDate %><br />
-    <%= f.date_select :demandDate %>
-  </div>
-  <div class="field">
-    <%= f.label :year_id %><br />
-    <%= f.number_field :year_id %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilConsumptionYear_id %><br />
-    <%= f.number_field :thermoOilConsumptionYear_id %>
-  </div>
+<table>
+  <tr>
+    <td><%= f.label :thermoOilConsumptionYear_id, "Thermoölverbrauch" %></td>
+    <td><%= f.number_field :thermoOilConsumptionYear_id %></td>
+    <td><%= f.label :machinery_id, "Thermoölverbraucher" %></td>
+    <td><%= f.number_field :machinery_id %></td>
+</tr>
+<tr>
+    <td><%= f.label :demandDate, "Datum" %></td>
+    <td colspan="3"><%= f.date_select :demandDate %></td>
+</tr>
+<tr>
+    <td><%= f.label :timeFrom, "Von" %></td>
+    <td><%= f.time_select :timeFrom %></td>
+    <td><%= f.label :timeTo, "Bis" %></td>
+    <td><%= f.time_select :timeTo %></td>
+  </tr>
+</table>
+
+
+    <%# f.label :year_id %>
+    <%# f.number_field :year_id %>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden"%>
   </div>
 <% end %>

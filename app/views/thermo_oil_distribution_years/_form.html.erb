@@ -11,31 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :compression %><br />
-    <%= f.text_field :compression %>
-  </div>
-  <div class="field">
-    <%= f.label :flowTemperature %><br />
-    <%= f.text_field :flowTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :returnTemperature %><br />
-    <%= f.text_field :returnTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilProduction_id %><br />
-    <%= f.number_field :thermoOilProduction_id %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilConsumption_id %><br />
-    <%= f.number_field :thermoOilConsumption_id %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilDistribution_id %><br />
-    <%= f.number_field :thermoOilDistribution_id %>
-  </div>
+<table>
+  <tr>
+    <td><%= f.label :thermoOilConsumption_id, "Thermoölverbraucher" %></td>
+    <td><%= f.number_field :thermoOilConsumption_id %></td>
+    <td><%= f.label :thermoOilDistribution_id, "Thermoölverteilung" %></td>
+    <td><%= f.number_field :thermoOilDistribution_id %></td>
+  </tr> 
+  <tr>
+    <td><%= f.label :thermoOilProduction_id, "Thermoölproduktion" %></td>
+    <td colspan="3"><%= f.number_field :thermoOilProduction_id %></td>
+  </tr> 
+  <tr>  
+    <td><%= f.label :compression, "Druck" %></td>
+    <td colspan="3"><%= f.number_field :compression %> bar Ü</td>
+  </tr> 
+  <tr>
+    <td><%= f.label :flowTemperature, "Vorlauftemperatur" %></td>
+    <td><%= f.number_field :flowTemperature %> °C</td>
+    <td><%= f.label :returnTemperature, "Rücklauftemperatur" %></td>
+    <td><%= f.number_field :returnTemperature %> °C</td>
+  </tr>
+</table>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

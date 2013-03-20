@@ -1,41 +1,40 @@
-<h1>Listing enterprises</h1>
+<h1>Unternehmen</h1>
 
-<table>
+<table  class="zentriert">
   <tr>
     <th>Name</th>
-    <!--<th>Address</th>
-    <th>Number</th>
+    <th>Adresse</th>
+    <!--<th>Number</th>
     <th>Zip</th>
     <th>City</th>
     <th>Phone</th>
     <th>Fax</th>-->
     <th>Website</th>
-    <th>Country</th>
+    <!--<th>Country</th>-->
     <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Aktion</th>
   </tr>
 
 <% @enterprises.each do |enterprise| %>
   <tr>
     <td><%= enterprise.name %></td>
-    <td><%= enterprise.address %></td>
-    <!--<td><%= enterprise.number %></td>
-    <td><%= enterprise.zip %></td>
+    <td><%= enterprise.address %> <%= enterprise.number %></td>
+    <!--<td><%= enterprise.zip %></td>
     <td><%= enterprise.city %></td>
     <td><%= enterprise.phone %></td>
     <td><%= enterprise.fax %></td>-->
     <td><%= enterprise.website %></td>
-    <td><%= enterprise.country %></td>
+    <!--<td><%= enterprise.country %></td>-->
     <td><%= enterprise.email %></td>
-    <td><%= link_to 'Show', enterprise %></td>
-    <td><%= link_to 'Edit', edit_enterprise_path(enterprise) %></td>
-    <td><%= link_to 'Destroy', enterprise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), enterprise %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_enterprise_path(enterprise) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), enterprise, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Enterprise', new_enterprise_path %>
+<%= link_to 'Neues Unternehmen anlegen', new_enterprise_path %>

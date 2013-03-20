@@ -1,6 +1,6 @@
 <h1>Benutzerliste</h1>
 
-<table>
+<table  class="zentriert">
   <tr>
     <th>Nr.</th>
     <th>Name</th>
@@ -9,8 +9,8 @@
     <!--<th>Password</th>-->
     <th>Email</th>
     <th>Position</th>
-    <!--<th>Bemerkung</th>-->
-    <!--<th>Aktionen</th>-->
+
+    <th>Aktion</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -24,8 +24,8 @@
     <td><%= user.position %></td>
     <!--<td><%= user.annotation %></td>-->
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), user %>
-    <!--<%# link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_user_path(user) %>
-    <%# link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_user_path(user) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

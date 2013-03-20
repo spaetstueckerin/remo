@@ -28,7 +28,7 @@
     <td><%= f.label :manufacturer, "Hersteller" %></td>
     <td><%= f.text_field :manufacturer %></td>
     <td><%= f.label :compressor_id, "Kompressor" %></td>
-    <td><%= f.select :compressor_id, CompressedAirProductionBasic.all.map{|c| [c.manufacturer, c.id]}%></td>
+    <td><%= f.select :compressor_id, CompressedAirProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
   </tr>
   <tr>   
     <td><%= f.label :yearOfManufacturing, "Baujahr" %></td>

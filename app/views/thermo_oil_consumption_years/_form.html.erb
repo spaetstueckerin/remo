@@ -10,36 +10,35 @@
       </ul>
     </div>
   <% end %>
+<table>
+  <tr>
+    <td><%= f.label :thermoOilProduction_id, "Thermoölproduktion" %></td>
+    <td><%= f.number_field :thermoOilProduction_id %></td>
+    <td><%= f.label :thermoOilConsumption_id, "Thermoölverbrauch" %></td>
+    <td><%= f.text_field :thermoOilConsumption_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :machinery_id, "Verbaucher" %></td>
+    <td colspan="3"><%= f.number_field :machinery_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :volumeStream, "Volumenstrom" %></td>
+    <td colspan="3"><%= f.number_field :volumeStream %> m³/h</td>
+  </tr>
+  <tr>
+    <td><%= f.label :flowTemperature, "Vorlauftemperatur" %></td>
+    <td><%= f.number_field :flowTemperature %> °C</td>
+    <td><%= f.label :returnTemperature, "Rücklauftemperatur" %></td>
+    <td><%= f.number_field :returnTemperature %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :processTemperature, "Prozesstemperatur" %></td>
+    <td colspan="3"><%= f.number_field :processTemperature %> °C</td>
+  </tr>
+</table>
 
-  <div class="field">
-    <%= f.label :volumeStream %><br />
-    <%= f.text_field :volumeStream %>
-  </div>
-  <div class="field">
-    <%= f.label :flowTemperature %><br />
-    <%= f.text_field :flowTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :returnTemperature %><br />
-    <%= f.text_field :returnTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :processTemperature %><br />
-    <%= f.text_field :processTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilProduction_id %><br />
-    <%= f.number_field :thermoOilProduction_id %>
-  </div>
-  <div class="field">
-    <%= f.label :machinery_id %><br />
-    <%= f.number_field :machinery_id %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilConsumption_id %><br />
-    <%= f.text_field :thermoOilConsumption_id %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

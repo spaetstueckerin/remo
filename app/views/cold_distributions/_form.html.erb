@@ -11,39 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :coldProduction_id %><br />
-    <%= f.number_field :coldProduction_id %>
-  </div>
-  <div class="field">
-    <%= f.label :coldConsumer_id %><br />
-    <%= f.number_field :coldConsumer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :aperture %><br />
-    <%= f.text_field :aperture %>
-  </div>
-  <div class="field">
-    <%= f.label :isolation %><br />
-    <%= f.text_field :isolation %>
-  </div>
-  <div class="field">
-    <%= f.label :length %><br />
-    <%= f.text_field :length %>
-  </div>
-  <div class="field">
-    <%= f.label :volumeStreamNenn %><br />
-    <%= f.text_field :volumeStreamNenn %>
-  </div>
-  <div class="field">
-    <%= f.label :volumeStreamMin %><br />
-    <%= f.text_field :volumeStreamMin %>
-  </div>
-  <div class="field">
-    <%= f.label :volumeStreamMax %><br />
-    <%= f.text_field :volumeStreamMax %>
-  </div>
+<table>
+  <tr>
+    <td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
+    <td><%= f.number_field :coldProduction_id %></td>
+    <td><%= f.label :coldConsumer_id, "Kälteverbrauch" %></td>
+    <td><%= f.number_field :coldConsumer_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :aperture, "Durchmesser" %></td>
+    <td><%= f.number_field :aperture %> mm</td>
+    <td><%= f.label :isolation, "Isolation" %></td>
+    <td><%= f.number_field :isolation %> mm</td>
+  </tr>
+  <tr>
+    <td><%= f.label :length, "Länge" %></td>
+    <td colspan="3"><%= f.number_field :length %> m</td>
+  </tr>
+  <tr>
+    <td><%= f.label :volumeStreamNenn, "Volumenstrom Nenn" %></td>
+    <td><%= f.number_field :volumeStreamNenn %> m&sup3;/h</td>
+    <td><%= f.label :volumeStreamMin, "Volumenstrom Min" %></td>
+    <td><%= f.number_field :volumeStreamMin %> m&sup3;/h</td>
+  </tr>
+  <tr>
+    <td><%= f.label :volumeStreamMax, "Volumenstrom Max" %></td>
+    <td colspan="3"><%= f.number_field :volumeStreamMax %> m&sup3;/h</td>
+  </tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

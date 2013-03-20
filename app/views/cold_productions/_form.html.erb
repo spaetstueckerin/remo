@@ -10,44 +10,37 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :manufacturer %><br />
-    <%= f.text_field :manufacturer %>
-  </div>
-  <div class="field">
-    <%= f.label :buildType %><br />
-    <%= f.text_field :buildType %>
-  </div>
-  <div class="field">
-    <%= f.label :yearOfManufacturing %><br />
-    <%= f.number_field :yearOfManufacturing %>
-  </div>
-  <div class="field">
-    <%= f.label :capacity %><br />
-    <%= f.text_field :capacity %>
-  </div>
-  <div class="field">
-    <%= f.label :coolingCapacity %><br />
-    <%= f.text_field :coolingCapacity %>
-  </div>
-  <div class="field">
-    <%= f.label :coolingMedium %><br />
-    <%= f.text_field :coolingMedium %>
-  </div>
-  <div class="field">
-    <%= f.label :rkWayOfCooling %><br />
-    <%= f.text_field :rkWayOfCooling %>
-  </div>
-  <div class="field">
-    <%= f.label :rkCoolingMedium %><br />
-    <%= f.text_field :rkCoolingMedium %>
-  </div>
-  <div class="field">
-    <%= f.label :rkCapacity %><br />
-    <%= f.text_field :rkCapacity %>
-  </div>
+<table>
+  <tr>
+    <td><%= f.label :manufacturer, "Hersteller" %></td>
+    <td><%= f.text_field :manufacturer %></td>
+    <td><%= f.label :buildType, "Bauart" %></td>
+    <td><%= f.text_field :buildType %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :yearOfManufacturing, "Baujahr" %></td>
+    <td><%= f.number_field :yearOfManufacturing %></td>
+    <td><%= f.label :capacity, "Elektrische Leistung" %></td>
+    <td><%= f.number_field :capacity %> kW</td>
+  </tr>
+  <tr>
+    <td><%= f.label :coolingCapacity, "Kälteleistung" %></td>
+    <td><%= f.number_field :coolingCapacity %> kW</td>
+    <td><%= f.label :coolingMedium, "Kühlmittel Medium" %></td>
+    <td><%= f.text_field :coolingMedium %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :rkWayOfCooling, "Art der Rückühlung" %></td>
+    <td><%= f.text_field :rkWayOfCooling %></td>
+    <td><%= f.label :rkCoolingMedium, "Rückkühlung Medium" %></td>
+    <td><%= f.text_field :rkCoolingMedium %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :rkCapacity, "Rückkühlung Elektrische Leistung" %></td>
+    <td colspan="3"><%= f.number_field :rkCapacity %> kW</td>
+  </tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

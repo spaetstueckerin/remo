@@ -10,28 +10,26 @@
       </ul>
     </div>
   <% end %>
+<table>
+  <tr>
+    <td><%= f.label :thermoOilProduction_id, "Thermoölproduktion" %></td>
+    <td><%= f.number_field :thermoOilProduction_id %></td>
+    <td><%= f.label :thermoOilDistribution_id, "Thermoölverteilung" %></td>
+    <td><%= f.number_field :thermoOilDistribution_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :machinery_id, "Thermoölverbraucher" %></td>
+    <td colspan="3"><%= f.number_field :machinery_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :profitCapacity, "Nutzenleistung" %></td>
+    <td><%= f.number_field :profitCapacity %></td>
+    <td><%= f.label :requirementType, "Bedarfsart" %></td>
+    <td><%= f.select :requirementType, ["konstant", "taktgebunden", "manuell"] %></td>
+  </tr>
+</table>
 
-  <div class="field">
-    <%= f.label :thermoOilProduction_id %><br />
-    <%= f.number_field :thermoOilProduction_id %>
-  </div>
-  <div class="field">
-    <%= f.label :machinery_id %><br />
-    <%= f.text_field :machinery_id %>
-  </div>
-  <div class="field">
-    <%= f.label :profitCapacity %><br />
-    <%= f.text_field :profitCapacity %>
-  </div>
-  <div class="field">
-    <%= f.label :requirementType %><br />
-    <%= f.text_field :requirementType %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilDistribution_id %><br />
-    <%= f.number_field :thermoOilDistribution_id %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden"%>
   </div>
 <% end %>

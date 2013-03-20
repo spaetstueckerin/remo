@@ -10,56 +10,43 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :thermoOilProduction_id %><br />
-    <%= f.number_field :thermoOilProduction_id %>
-  </div>
-  <div class="field">
-    <%= f.label :fuelConsumption %><br />
-    <%= f.text_field :fuelConsumption %>
-  </div>
-  <div class="field">
-    <%= f.label :kettleEnergyConsumption %><br />
-    <%= f.text_field :kettleEnergyConsumption %>
-  </div>
-  <div class="field">
-    <%= f.label :operatingHours %><br />
-    <%= f.number_field :operatingHours %>
-  </div>
-  <div class="field">
-    <%= f.label :kettleExitCompression %><br />
-    <%= f.text_field :kettleExitCompression %>
-  </div>
-  <div class="field">
-    <%= f.label :kettleExitTemperature %><br />
-    <%= f.text_field :kettleExitTemperature %>
-  </div>
-  <div class="field">
-    <%= f.label :thermoOilAmount %><br />
-    <%= f.text_field :thermoOilAmount %>
-  </div>
-  <div class="field">
-    <%= f.label :tempAdditionalWater %><br />
-    <%= f.text_field :tempAdditionalWater %>
-  </div>
-  <div class="field">
-    <%= f.label :tempCombustionAir %><br />
-    <%= f.text_field :tempCombustionAir %>
-  </div>
-  <div class="field">
-    <%= f.label :tempExhaustBeforeWRG %><br />
-    <%= f.text_field :tempExhaustBeforeWRG %>
-  </div>
-  <div class="field">
-    <%= f.label :tempExhaustAfterWRG %><br />
-    <%= f.text_field :tempExhaustAfterWRG %>
-  </div>
-  <div class="field">
-    <%= f.label :carbonDioxideExhaust %><br />
-    <%= f.number_field :carbonDioxideExhaust %>
-  </div>
+<table>
+  <tr>
+    <td width="90"><%= f.label :thermoOilProduction_id, "Thermoölproduktion" %></td>
+    <td><%= f.number_field :thermoOilProduction_id %></td>
+    <td width="100"><%= f.label :fuelConsumption, "Brennstoffverbrauch" %></td><!--Hier die Unit noch nachtragen-->
+    <td><%= f.number_field :fuelConsumption %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :kettleEnergyConsumption, "Jahresverbrauch" %></td>
+    <td><%= f.number_field :kettleEnergyConsumption %> kWh Hs/a</td>
+    <td><%= f.label :operatingHour, "Betriebsstunden" %></td>
+    <td><%= f.number_field :operatingHours %> h</td>
+  </tr>
+  <tr>
+    <td><%= f.label :kettleExitCompression, "Thermoölparameter Kesselaustritt" %></td>
+    <td><%= f.number_field :kettleExitCompression %> bar Ü</td>
+    <td><%= f.label :kettleExitTemperature, "Thermoölparameter Kesselaustritt" %></td>
+    <td><%= f.number_field :kettleExitTemperature %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :thermoOilAmount, "Jahresthermoölmenge" %></td>
+    <td><%= f.number_field :thermoOilAmount %> m³/a</td>
+    <td><%= f.label :tempCombustionAir, "Verbrennungsluft" %></td>
+    <td><%= f.number_field :tempCombustionAir %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :tempExhaustBeforeWRG, "Abgas vor WRG" %></td>
+    <td><%= f.number_field :tempExhaustBeforeWRG %> °C</td>
+    <td><%= f.label :tempExhaustAfterWRG, "Abgas nach WRG" %></td>
+    <td colspan="3"><%= f.number_field :tempExhaustAfterWRG %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :carbonDioxideExhaust, "CO2 Gehalt Abgas" %></td>
+    <td colspan="3"><%= f.number_field :carbonDioxideExhaust %> Vol-%</td>
+  </tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

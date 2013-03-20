@@ -1,22 +1,20 @@
-<h1>Listing thermo_oil_production_years</h1>
+<h1>Thermoölproduktion - jährliche Erhebung</h1>
 
 <table>
   <tr>
-    <th>Thermooilproduction</th>
-    <th>Fuelconsumption</th>
-    <th>Kettleenergyconsumption</th>
-    <th>Operatinghours</th>
-    <th>Kettleexitcompression</th>
+    <th>Thermoölproduktion</th>
+    <th>Brennstoff- verbrauch</th>
+    <th>Jahresverbrauch</th>
+    <th>Betriebsstunden</th>
+    <!--<th>Kettleexitcompression</th>
     <th>Kettleexittemperature</th>
     <th>Thermooilamount</th>
     <th>Tempadditionalwater</th>
     <th>Tempcombustionair</th>
     <th>Tempexhaustbeforewrg</th>
-    <th>Tempexhaustafterwrg</th>
-    <th>Carbondioxideexhaust</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Tempexhaustafterwrg</th>-->
+    <th>Co2-Gehalt Abgas</th>
+    <th>Aktion</th>
   </tr>
 
 <% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
@@ -25,21 +23,22 @@
     <td><%= thermo_oil_production_year.fuelConsumption %></td>
     <td><%= thermo_oil_production_year.kettleEnergyConsumption %></td>
     <td><%= thermo_oil_production_year.operatingHours %></td>
-    <td><%= thermo_oil_production_year.kettleExitCompression %></td>
+    <!--<td><%= thermo_oil_production_year.kettleExitCompression %></td>
     <td><%= thermo_oil_production_year.kettleExitTemperature %></td>
     <td><%= thermo_oil_production_year.thermoOilAmount %></td>
     <td><%= thermo_oil_production_year.tempAdditionalWater %></td>
     <td><%= thermo_oil_production_year.tempCombustionAir %></td>
     <td><%= thermo_oil_production_year.tempExhaustBeforeWRG %></td>
-    <td><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>
+    <td><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>-->
     <td><%= thermo_oil_production_year.carbonDioxideExhaust %></td>
-    <td><%= link_to 'Show', thermo_oil_production_year %></td>
-    <td><%= link_to 'Edit', edit_thermo_oil_production_year_path(thermo_oil_production_year) %></td>
-    <td><%= link_to 'Destroy', thermo_oil_production_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_production_year_path(thermo_oil_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_production_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Thermo oil production year', new_thermo_oil_production_year_path %>
+<%= link_to 'Neue jährliche Erhebung Thermoölproduktion', new_thermo_oil_production_year_path %>

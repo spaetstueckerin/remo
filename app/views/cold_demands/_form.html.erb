@@ -10,28 +10,29 @@
       </ul>
     </div>
   <% end %>
+  
+<table>
+  <tr>
+    <td><%= f.label :coldConsumptionYear_id, "Kälteverbrauch" %></td>
+    <td><%= f.number_field :coldConsumptionYear_id %></td>
+    <td><%= f.label :machinery_id, "Kälteverbraucher" %></td>
+    <td><%= f.number_field :machinery_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :demandDate, "Datum" %></td>
+    <td colspan="3"><%= f.date_select :demandDate %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :timeFrom, "Von" %></td>
+    <td><%= f.time_select :timeFrom %></td>
+    <td><%= f.label :timeTo, "Bis" %></td>
+    <td><%= f.time_select :timeTo %></td>
+  </tr>
+</table>
 
-  <div class="field">
-    <%= f.label :timeFrom %><br />
-    <%= f.time_select :timeFrom %>
-  </div>
-  <div class="field">
-    <%= f.label :timeTo %><br />
-    <%= f.time_select :timeTo %>
-  </div>
-  <div class="field">
-    <%= f.label :demandDate %><br />
-    <%= f.date_select :demandDate %>
-  </div>
-  <div class="field">
-    <%= f.label :coldConsumptionYear_id %><br />
-    <%= f.number_field :coldConsumptionYear_id %>
-  </div>
-  <div class="field">
-    <%= f.label :machinery_id %><br />
-    <%= f.number_field :machinery_id %>
-  </div>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden"%>
   </div>
 <% end %>

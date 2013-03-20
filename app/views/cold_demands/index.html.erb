@@ -1,31 +1,32 @@
-<h1>Listing cold_demands</h1>
+<h1>Bedarfszeiträum Kälteverbrauch</h1>
 
 <table>
   <tr>
-    <th>Timefrom</th>
-    <th>Timeto</th>
-    <th>Demanddate</th>
-    <th>Coldconsumptionyear</th>
-    <th>Machinery</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Kälteverbrauch</th>
+    <th>Kälteverbraucher</th>
+    <th>Datum</th>
+    <th>Von</th>
+    <th>Bis</th>
+    <th>Aktion</th>
   </tr>
 
 <% @cold_demands.each do |cold_demand| %>
   <tr>
-    <td><%= cold_demand.timeFrom %></td>
-    <td><%= cold_demand.timeTo %></td>
-    <td><%= cold_demand.demandDate %></td>
     <td><%= cold_demand.coldConsumptionYear_id %></td>
     <td><%= cold_demand.machinery_id %></td>
-    <td><%= link_to 'Show', cold_demand %></td>
-    <td><%= link_to 'Edit', edit_cold_demand_path(cold_demand) %></td>
-    <td><%= link_to 'Destroy', cold_demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= cold_demand.demandDate.strftime('%d.%m.%Y') %></td>
+    <td><%= cold_demand.timeFrom.strftime('%H:%M') %></td>
+    <td><%= cold_demand.timeTo.strftime('%H:%M') %></td>
+
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_demand %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_demand_path(cold_demand)  %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_demand, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Cold demand', new_cold_demand_path %>
+<%= link_to 'Neuen Bedarfszeitraum Kälteverbrauch anlegen', new_cold_demand_path %>
