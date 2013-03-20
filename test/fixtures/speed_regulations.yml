@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  deliveryRate10: 9.99
+  deliveryRate20: 9.99
+  deliveryRate30: 9.99
+  deliveryRate40: 9.99
+  deliveryRate50: 9.99
+  deliveryRate60: 9.99
+  deliveryRate70: 9.99
+  deliveryRate80: 9.99
+  deliveryRate90: 9.99
+  year_id: 1
+
+two:
+  deliveryRate10: 9.99
+  deliveryRate20: 9.99
+  deliveryRate30: 9.99
+  deliveryRate40: 9.99
+  deliveryRate50: 9.99
+  deliveryRate60: 9.99
+  deliveryRate70: 9.99
+  deliveryRate80: 9.99
+  deliveryRate90: 9.99
+  year_id: 1

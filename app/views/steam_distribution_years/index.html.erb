@@ -1,0 +1,35 @@
+<h1>Dampfverteilung - jährliche Erhebung</h1>
+<h2>DP = Dampfparameter, KP = Kondensatparameter</h2>
+<table>
+  <tr>
+    <th>Dampferzeuger</th>
+    <th>Dampfverbraucher</th>
+    <th>DP Druck</th>
+    <th>DP Temperatur</th>
+    <th>KP Druck</th>
+    <th>KP Temperatur</th>
+    <!--<th>Kpreflux</th>-->
+    <th>Aktion</th>
+  </tr>
+
+<% @steam_distribution_years.each do |steam_distribution_year| %>
+  <tr>
+    <td><%= SteamProduction.find_by_id(steam_distribution_year.steamProduction_id).kettleName %></td>
+    <td><%= steam_distribution_year.steamConsumer_id %></td>
+    <td><%= steam_distribution_year.dpCompression %></td>
+    <td><%= steam_distribution_year.dpTemperature %></td>
+    <td><%= steam_distribution_year.kpCompression %></td>
+    <td><%= steam_distribution_year.kpTemperature %></td>
+    <!--<td><%= steam_distribution_year.kpReflux %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_distribution_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_distribution_year_path(steam_distribution_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_distribution_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Dampfverteilung jährliche Erhebung', new_steam_distribution_year_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: 9.99
+  year: 1
+  enterprise_id: 1
+
+two:
+  value: 9.99
+  year: 1
+  enterprise_id: 1

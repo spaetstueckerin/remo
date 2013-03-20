@@ -1,0 +1,45 @@
+<h1>Heißwasserproduktion - jährliche Erhebung</h1>
+
+<table>
+  <tr>
+    <th>Jahr</th>
+    <th>Kessel</th>
+    <th>Brennstoffverbrauch</th>
+    <th>Jahresverbrauch</th>
+    <th>Betriebsstunden</th>
+    <!--<th>Druck Kesselaustritt</th>
+    <th>Kesselaustritt</th>
+    <th>Zusätzliches Wasser</th>
+    <th>Verbrennungsluft</th>
+    <th>Abgas vor WRG</th>
+    <th>Abgas nach WRG</th>-->
+    <th>O2-Regelung</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @hot_water_production_years.each do |hot_water_production_year| %>
+  <tr>
+    <td><%= hot_water_production_year.year_id %></td>
+    <td><%= hot_water_production_year.hotWaterProduction_id %></td>
+    <td><%= hot_water_production_year.fuelConsumption %></td>
+    <td><%= hot_water_production_year.kettleEnergyConsumption %></td>
+    <td><%= hot_water_production_year.operationHours %></td>
+    <!--<td><%= hot_water_production_year.kettleExitCompression %></td>
+    <td><%= hot_water_production_year.kettleExitTemperature %></td>
+    <td><%= hot_water_production_year.tempAdditionalWater %></td>
+    <td><%= hot_water_production_year.tempCombustionAir %></td>
+    <td><%= hot_water_production_year.tempExhaustBeforeWRG %></td>
+    <td><%= hot_water_production_year.tempExhaustAfterWRG %></td>-->
+    <td><%= hot_water_production_year.carbonDioxideExhaust %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_production_year_path(hot_water_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Heißwasserproduktion - jährliche Abrechnung', new_hot_water_production_year_path %>

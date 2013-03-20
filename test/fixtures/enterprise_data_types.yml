@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  end_type: MyString
+  description_text: MyString
+  unit: MyString
+  enterprise_data_id: 1
+
+two:
+  end_type: MyString
+  description_text: MyString
+  unit: MyString
+  enterprise_data_id: 1

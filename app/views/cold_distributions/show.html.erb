@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Coldproduction:</b>
+  <%= @cold_distribution.coldProduction_id %>
+</p>
+
+<p>
+  <b>Coldconsumer:</b>
+  <%= @cold_distribution.coldConsumer_id %>
+</p>
+
+<p>
+  <b>Aperture:</b>
+  <%= @cold_distribution.aperture %>
+</p>
+
+<p>
+  <b>Isolation:</b>
+  <%= @cold_distribution.isolation %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%= @cold_distribution.length %>
+</p>
+
+<p>
+  <b>Volumestreamnenn:</b>
+  <%= @cold_distribution.volumeStreamNenn %>
+</p>
+
+<p>
+  <b>Volumestreammin:</b>
+  <%= @cold_distribution.volumeStreamMin %>
+</p>
+
+<p>
+  <b>Volumestreammax:</b>
+  <%= @cold_distribution.volumeStreamMax %>
+</p>
+
+
+<%= link_to 'Edit', edit_cold_distribution_path(@cold_distribution) %> |
+<%= link_to 'Back', cold_distributions_path %>

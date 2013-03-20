@@ -1,0 +1,51 @@
+<h1>Liste der Beleuchtungsanlagen</h1>
+
+<table>
+  <tr>
+    <th>Ort/Raum</th>
+    <th>Lampentyp</th>
+    <th>Baujahr</th>
+    <th>Anzahl der Leuchten</th>
+    <th>Numberofbulbsinlamp</th>
+    <th>Powerperlamp</th>
+    <th>Installedpower</th>
+    <th>Controlgear</th>
+    <th>Lampconfiguration</th>
+    <th>String</th>
+    <th>Hoursofoperation</th>
+    <th>Illuminationtechnique</th>
+    <th>Lightcontrol</th>
+    <th>Groupswitchable</th>
+    <th>Windowshadowing</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lightings.each do |lighting| %>
+  <tr>
+    <td><%= lighting.location_id %></td>
+    <td><%= lighting.bulbs %></td>
+    <td><%= lighting.yearOfManufacturing %></td>
+    <td><%= lighting.numberOfBulbs %></td>
+    <td><%= lighting.numberOfBulbsInLamp %></td>
+    <td><%= lighting.powerPerLamp %></td>
+    <td><%= lighting.installedPower %></td>
+    <td><%= lighting.controlGear %></td>
+    <td><%= lighting.lampConfiguration %></td>
+    <td><%= lighting.string %></td>
+    <td><%= lighting.hoursOfOperation %></td>
+    <td><%= lighting.illuminationTechnique %></td>
+    <td><%= lighting.lightControl %></td>
+    <td><%= lighting.groupSwitchable %></td>
+    <td><%= lighting.windowShadowing %></td>
+    <td><%= link_to 'Show', lighting %></td>
+    <td><%= link_to 'Edit', edit_lighting_path(lighting) %></td>
+    <td><%= link_to 'Destroy', lighting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Beleuchtung anlegen', new_lighting_path %>

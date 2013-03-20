@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @energy_datum.value %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @energy_datum.year %>
+</p>
+
+<p>
+  <b>Enterprise:</b>
+  <%= @energy_datum.enterprise_id %>
+</p>
+
+<p>
+  <b>Edt:</b>
+  <%= @energy_datum.edt_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_energy_datum_path(@energy_datum) %> |
+<%= link_to 'Back', energy_data_path %>

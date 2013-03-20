@@ -1,0 +1,57 @@
+<%= form_for(@steam_production_year) do |f| %>
+  <% if @steam_production_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@steam_production_year.errors.count, "error") %> prohibited this steam_production_year from being saved:</h2>
+
+      <ul>
+      <% @steam_production_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<tr>
+    <td width="150"><%= f.label :year_id, "Jahr" %></td>
+    <td><%= f.select :year_id, ["2010", "2011", "2012", "2013", "2014"]%></td>
+    <td width="130"><%= f.label :fuelConsumption, "Brennstoffverbrauch" %></td>
+    <td><%= f.number_field :fuelConsumption, size: 10 %> <%= f.select :fuelConsumptionUnit, ["kg", "m³", "l", "Nm³"]%></td>
+</tr>
+<tr>
+    <td><%= f.label :kettleEnergyConsumption, "Energieverbrauch Kessel" %></td>
+    <td width="250"><%= f.number_field :kettleEnergyConsumption %> kWh(Hs)/a</td>
+    <td><%= f.label :operationHours, "Betriebsstunden" %></td>
+    <td colspan="3"><%= f.number_field :operationHours %> h</td>
+</tr>
+<tr>
+    <td><%= f.label :kettleSteamParameterBar, "Dampfparameter Kesselaustritt" %></td>
+    <td><%= f.number_field :kettleSteamParameterBar %> bar Ü</td>
+    <td><%= f.label :kettleSteamParameterCel, "Dampfparameter Kesselaustritt" %></td>
+    <td><%= f.number_field :kettleSteamParameterCel %> °C</td>
+</tr>
+<tr>
+    <td><%= f.label :steamAmount, "Dampfmenge" %></td>
+    <td colspan="3"><%= f.number_field :steamAmount %> t/a</td>
+</tr>
+<tr>
+    <td><%= f.label :tempAdditionalWater, "Temperatur Zusatzwasser" %></td>
+    <td><%= f.number_field :tempAdditionalWater %> °C</td>
+    <td><%= f.label :tempCombustionAir, "Temperatur Verbrennungsluft" %></td>
+    <td><%= f.number_field :tempCombustionAir %> °C</td>
+</tr>
+<tr>
+    <td><%= f.label :tempExhaustBeforeWRG, "Temperatur Abgas vor WRG" %></td>
+    <td><%= f.number_field :tempExhaustBeforeWRG %> °C</td>
+    <td><%= f.label :tempExhaustAfterWRG, "Temperatur Abgas nach WRG" %></td>
+    <td><%= f.number_field :tempExhaustAfterWRG %> °C</td>
+</tr>
+<tr>
+    <td><%= f.label :carbonDioxideExhaust, "CO2-Gehalt Abgas" %></td>
+    <td colspan="3"><%= f.number_field :carbonDioxideExhaust %> Vol-%</td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

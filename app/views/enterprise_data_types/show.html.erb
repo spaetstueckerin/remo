@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>End type:</b>
+  <%= @enterprise_data_type.end_type %>
+</p>
+
+<p>
+  <b>Description text:</b>
+  <%= @enterprise_data_type.description_text %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%= @enterprise_data_type.unit %>
+</p>
+
+<p>
+  <b>Enterprise data:</b>
+  <%= @enterprise_data_type.enterprise_data_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_enterprise_data_type_path(@enterprise_data_type) %> |
+<%= link_to 'Back', enterprise_data_types_path %>

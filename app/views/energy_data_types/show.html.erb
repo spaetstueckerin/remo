@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ed type:</b>
+  <%= @energy_data_type.ed_type %>
+</p>
+
+<p>
+  <b>Description text:</b>
+  <%= @energy_data_type.description_text %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%= @energy_data_type.unit %>
+</p>
+
+<p>
+  <b>Energy data:</b>
+  <%= @energy_data_type.energy_data_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_energy_data_type_path(@energy_data_type) %> |
+<%= link_to 'Back', energy_data_types_path %>

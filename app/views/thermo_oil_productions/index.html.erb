@@ -1,0 +1,53 @@
+<h1>Thermoölproduktion</h1>
+
+<table>
+  <tr>
+    <th>Kesselname</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Leistung</th>
+    <th>Brennertyp</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <!--<th>Districtheatmin</th>
+    <th>Districtheatmax</th>
+    <th>Fueltype</th>
+    <th>Fueldenseness</th>
+    <th>Fuelvalue</th>
+    <th>Thermooilname</th>
+    <th>Exhaustheatrecovery</th>
+    <th>O2control</th>
+    <th>Chimney</th>-->
+    <th>Aktion</th>
+  </tr>
+
+<% @thermo_oil_productions.each do |thermo_oil_production| %>
+  <tr>
+    <td><%= thermo_oil_production.kettleName %></td>
+    <td><%= thermo_oil_production.kettleManufacturer %></td>
+    <td><%= thermo_oil_production.kettleManuYear %></td>
+    <td><%= thermo_oil_production.kettleCapacity %></td>
+    <td><%= thermo_oil_production.burnerType %></td>
+    <td><%= thermo_oil_production.burnerManufacturer %></td>
+    <td><%= thermo_oil_production.burnerManuYear %></td>
+    <!--<td><%= thermo_oil_production.districtHeatMin %></td>
+    <td><%= thermo_oil_production.districtHeatMax %></td>
+    <td><%= thermo_oil_production.fuelType %></td>
+    <td><%= thermo_oil_production.fuelDenseness %></td>
+    <td><%= thermo_oil_production.fuelValue %></td>
+    <td><%= thermo_oil_production.thermoOilName %></td>
+    <td><%= thermo_oil_production.exhaustHeatRecovery %></td>
+    <td><%= thermo_oil_production.o2control %></td>
+    <td><%= thermo_oil_production.chimney %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_production_path(thermo_oil_production) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_production, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Thermoölproduktion', new_thermo_oil_production_path %>

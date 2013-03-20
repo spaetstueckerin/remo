@@ -1,0 +1,48 @@
+<%= form_for(@steam_consumption) do |f| %>
+  <% if @steam_consumption.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@steam_consumption.errors.count, "error") %> prohibited this steam_consumption from being saved:</h2>
+
+      <ul>
+      <% @steam_consumption.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+<tr>
+  <td><%= f.label :consumer_id, "Verbraucher" %></td>
+    <td><%= f.number_field :consumer_id %></td>
+    <td><%= f.label :steamProduction_id, "Dampferzeuger" %></td>
+    <td><%= f.select :steamProduction_id, SteamProduction.all.map{|s| [s.kettleName, s.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :system %></td>
+    <td colspan="3"><%= f.select :system, ["offen", "geschlossen"] %></td>
+</tr>
+<tr>
+    <td><%= f.label :dpCompressionNeeded, "Benötigter Druck" %></td>
+    <td><%= f.number_field :dpCompressionNeeded %> bar Ü</td>
+    <td><%= f.label :dpTemperatureNeeded, "Benötigte Temperatur"%></td>
+    <td><%= f.number_field :dpTemperatureNeeded %> °C</td>
+</tr>
+<tr>
+    <td><%= f.label :massFlowNennNeeded, "Massenstrom Nenn" %></td>
+    <td><%= f.number_field :massFlowNennNeeded %> t/h</td>
+    <td><%= f.label :massFlowMinNeeded, "Massenstrom Min" %></td>
+    <td><%= f.number_field :massFlowMinNeeded %> t/h</td>
+</tr>
+<tr>
+    <td><%= f.label :massFlowMaxNeeded, "Massenstrom Max" %></td>
+    <td colspan="3"><%= f.number_field :massFlowMaxNeeded %> t/h</td>
+</tr>
+<tr>
+    <td><%= f.label :requirementType, "Bedarfsart" %></td>
+    <td colspan="3"><%= f.select :requirementType, ["konstant", "taktgebunden", "manuell"] %></td>
+</tr>
+  </table>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

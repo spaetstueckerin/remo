@@ -1,0 +1,45 @@
+<h1>Drucklufterzeugung - jährliche Erhebung</h1>
+
+<table>
+  <tr>
+    <th>Jahr</th>
+    <th>Brennstoffverbrauch</th>
+    <th>Energieverbrauch Kessel</th>
+    <th>Betriebsstunden</th>
+    <!--<th>Dampfparameter Kesselaustritt (bar)</th>
+    <th>Dampfparameter Kesselaustritt (°C)</th>-->
+    <th>Dampfmenge</th>
+    <!--<th>Temperatur Zusatzwasser</th>
+    <th>Temperatur Verbrennungsluft</th>
+    <th>Temperatur Abgas von WRG</th>
+    <th>Temperatur Abgas nach WRG</th>-->
+    <th>CO2-Gehalt Abgas</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @steam_production_years.each do |steam_production_year| %>
+  <tr>
+    <td><%= steam_production_year.yearId_integer %></td>
+    <td><%= steam_production_year.fuelConsumption %></td>
+    <td><%= steam_production_year.kettleEnergyConsumption %></td>
+    <td><%= steam_production_year.operationHours %></td>
+    <!--<td><%= steam_production_year.kettleSteamParameterBar %></td>
+    <td><%= steam_production_year.kettleSteamParameterCel %></td>-->
+    <td><%= steam_production_year.steamAmount %></td>
+    <!--<td><%= steam_production_year.tempAdditionalWater %></td>
+    <td><%= steam_production_year.tempCombustionAir %></td>
+    <td><%= steam_production_year.tempExhaustBeforeWRG %></td>
+    <td><%= steam_production_year.tempExhaustAfterWRG %></td>-->
+    <td><%= steam_production_year.carbonDioxideExhaust %></td>
+
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_production_year_path(steam_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue jährliche Erhebung', new_steam_production_year_path %>

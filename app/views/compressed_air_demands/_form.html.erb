@@ -1,0 +1,33 @@
+<%= form_for(@compressed_air_demand) do |f| %>
+  <% if @compressed_air_demand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compressed_air_demand.errors.count, "error") %> prohibited this compressed_air_demand from being saved:</h2>
+
+      <ul>
+      <% @compressed_air_demand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      
+      <td><%=f.label :compressed_air_consumer_id, "Verbraucher" %></td>
+      <td colspan="5"><%= f.select :compressed_air_consumer_id, CompressedAirProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
+    </tr>
+    <tr>
+      <td><%= f.label :demandDate, "Am:" %></td>
+      <td><%= f.date_select :demandDate %></td>
+
+      <td><%= f.label :timeFrom, "Von:" %></td>
+      <td><%= f.time_select :timeFrom %></td>
+      <td><%= f.label :timeTo, "Bis:" %></td>
+      <td><%= f.time_select :timeTo %></td>
+    </tr>
+  </table>
+    <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

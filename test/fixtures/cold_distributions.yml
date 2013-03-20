@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coldProduction_id: 1
+  coldConsumer_id: 1
+  aperture: 9.99
+  isolation: 9.99
+  length: 9.99
+  volumeStreamNenn: 9.99
+  volumeStreamMin: 9.99
+  volumeStreamMax: 9.99
+
+two:
+  coldProduction_id: 1
+  coldConsumer_id: 1
+  aperture: 9.99
+  isolation: 9.99
+  length: 9.99
+  volumeStreamNenn: 9.99
+  volumeStreamMin: 9.99
+  volumeStreamMax: 9.99

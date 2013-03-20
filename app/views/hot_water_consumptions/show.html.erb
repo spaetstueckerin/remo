@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hotwaterproduction:</b>
+  <%= @hot_water_consumption.hotWaterProduction_id %>
+</p>
+
+<p>
+  <b>Machinery:</b>
+  <%= @hot_water_consumption.machinery_id %>
+</p>
+
+<p>
+  <b>Usecapacity:</b>
+  <%= @hot_water_consumption.useCapacity %>
+</p>
+
+<p>
+  <b>Requirementtype:</b>
+  <%= @hot_water_consumption.requirementType %>
+</p>
+
+
+<%= link_to 'Edit', edit_hot_water_consumption_path(@hot_water_consumption) %> |
+<%= link_to 'Back', hot_water_consumptions_path %>

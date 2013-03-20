@@ -1,0 +1,40 @@
+<%= form_for(@hot_water_distribution_year) do |f| %>
+  <% if @hot_water_distribution_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hot_water_distribution_year.errors.count, "error") %> prohibited this hot_water_distribution_year from being saved:</h2>
+
+      <ul>
+      <% @hot_water_distribution_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <tr>
+    <td><%= f.label :hotWaterDistribution_id, "Heißwasserverteilung" %></td>
+    <td colspan="3"><%= f.number_field :hotWaterDistribution_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :hotWaterProduction_id, "Heißwasserproduktion" %></td>
+    <td><%= f.number_field :hotWaterProduction_id %></td>
+    <td><%= f.label :hotWaterConsumption_id, "Heißwasserverbraucher" %></td>
+    <td><%= f.number_field :hotWaterConsumption_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :compression, "Druck" %></td>
+    <td colspan="3"><%= f.number_field :compression %> bar Ü</td>
+  </tr>
+  <tr>
+    <td><%= f.label :flowTemperature, "Vorlauftemperatur" %></td>
+    <td><%= f.number_field :flowTemperature %> °C</td>
+    <td><%= f.label :returnTemperature, "Rücklauftemperatur" %></td>
+    <td><%= f.number_field :returnTemperature %> °C</td>
+  </tr>
+</table>
+
+  <div class="actions">
+    <%= f.submit "Absenden"%>
+  </div>
+<% end %>

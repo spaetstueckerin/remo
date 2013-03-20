@@ -1,0 +1,41 @@
+<%= form_for(@cold_distribution_year) do |f| %>
+  <% if @cold_distribution_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cold_distribution_year.errors.count, "error") %> prohibited this cold_distribution_year from being saved:</h2>
+
+      <ul>
+      <% @cold_distribution_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :compression %><br />
+    <%= f.text_field :compression %>
+  </div>
+  <div class="field">
+    <%= f.label :flowTemperature %><br />
+    <%= f.text_field :flowTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :returnTemperature %><br />
+    <%= f.text_field :returnTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :coldConsumption_id %><br />
+    <%= f.number_field :coldConsumption_id %>
+  </div>
+  <div class="field">
+    <%= f.label :coldProduction_id %><br />
+    <%= f.number_field :coldProduction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :coldDistribution_id %><br />
+    <%= f.number_field :coldDistribution_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

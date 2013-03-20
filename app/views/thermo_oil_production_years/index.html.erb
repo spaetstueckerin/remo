@@ -1,0 +1,45 @@
+<h1>Listing thermo_oil_production_years</h1>
+
+<table>
+  <tr>
+    <th>Thermooilproduction</th>
+    <th>Fuelconsumption</th>
+    <th>Kettleenergyconsumption</th>
+    <th>Operatinghours</th>
+    <th>Kettleexitcompression</th>
+    <th>Kettleexittemperature</th>
+    <th>Thermooilamount</th>
+    <th>Tempadditionalwater</th>
+    <th>Tempcombustionair</th>
+    <th>Tempexhaustbeforewrg</th>
+    <th>Tempexhaustafterwrg</th>
+    <th>Carbondioxideexhaust</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+  <tr>
+    <td><%= thermo_oil_production_year.thermoOilProduction_id %></td>
+    <td><%= thermo_oil_production_year.fuelConsumption %></td>
+    <td><%= thermo_oil_production_year.kettleEnergyConsumption %></td>
+    <td><%= thermo_oil_production_year.operatingHours %></td>
+    <td><%= thermo_oil_production_year.kettleExitCompression %></td>
+    <td><%= thermo_oil_production_year.kettleExitTemperature %></td>
+    <td><%= thermo_oil_production_year.thermoOilAmount %></td>
+    <td><%= thermo_oil_production_year.tempAdditionalWater %></td>
+    <td><%= thermo_oil_production_year.tempCombustionAir %></td>
+    <td><%= thermo_oil_production_year.tempExhaustBeforeWRG %></td>
+    <td><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>
+    <td><%= thermo_oil_production_year.carbonDioxideExhaust %></td>
+    <td><%= link_to 'Show', thermo_oil_production_year %></td>
+    <td><%= link_to 'Edit', edit_thermo_oil_production_year_path(thermo_oil_production_year) %></td>
+    <td><%= link_to 'Destroy', thermo_oil_production_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Thermo oil production year', new_thermo_oil_production_year_path %>

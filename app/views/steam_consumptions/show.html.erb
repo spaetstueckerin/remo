@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Consumer:</b>
+  <%= @steam_consumption.consumer_id %>
+</p>
+
+<p>
+  <b>Steamproduction:</b>
+  <%= @steam_consumption.steamProduction_id %>
+</p>
+
+<p>
+  <b>System:</b>
+  <%= @steam_consumption.system %>
+</p>
+
+<p>
+  <b>Dpcompressionneeded:</b>
+  <%= @steam_consumption.dpCompressionNeeded %>
+</p>
+
+<p>
+  <b>Dptemperatureneeded:</b>
+  <%= @steam_consumption.dpTemperatureNeeded %>
+</p>
+
+<p>
+  <b>Massflownennneeded:</b>
+  <%= @steam_consumption.massFlowNennNeeded %>
+</p>
+
+<p>
+  <b>Massflowminneeded:</b>
+  <%= @steam_consumption.massFlowMinNeeded %>
+</p>
+
+<p>
+  <b>Massflowmaxneeded:</b>
+  <%= @steam_consumption.massFlowMaxNeeded %>
+</p>
+
+<p>
+  <b>Requirementtype:</b>
+  <%= @steam_consumption.requirementType %>
+</p>
+
+
+<%= link_to 'Edit', edit_steam_consumption_path(@steam_consumption) %> |
+<%= link_to 'Back', steam_consumptions_path %>

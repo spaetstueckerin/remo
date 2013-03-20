@@ -1,0 +1,2 @@
+module ColdDistributionsHelper
+end

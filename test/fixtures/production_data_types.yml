@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pd_type: MyString
+  description_text: MyString
+  unit: MyString
+  production_data_id: 1
+
+two:
+  pd_type: MyString
+  description_text: MyString
+  unit: MyString
+  production_data_id: 1

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  manufacturer: MyString
+  buildType: MyString
+  yearOfManufacturing: 1
+  capacity: 9.99
+  coolingCapacity: 9.99
+  coolingMedium: MyString
+  rkWayOfCooling: MyString
+  rkCoolingMedium: MyString
+  rkCapacity: 9.99
+
+two:
+  manufacturer: MyString
+  buildType: MyString
+  yearOfManufacturing: 1
+  capacity: 9.99
+  coolingCapacity: 9.99
+  coolingMedium: MyString
+  rkWayOfCooling: MyString
+  rkCoolingMedium: MyString
+  rkCapacity: 9.99

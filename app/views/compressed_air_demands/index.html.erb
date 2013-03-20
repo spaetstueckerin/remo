@@ -1,0 +1,29 @@
+<h1>Bedarfszeiträume</h1>
+
+<table>
+  <tr>
+    <th>Verbraucher</th>
+    <th>Datum</th>
+    <th>Von</th>
+    <th>Bis</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @compressed_air_demands.each do |compressed_air_demand| %>
+<tr>
+    <td><%= compressed_air_demand.compressed_air_consumer_id %></td>
+    <td><%= compressed_air_demand.demandDate.strftime('%d.%m.%Y') %></td>
+    <td><%= compressed_air_demand.timeFrom.strftime('%H:%M') %> Uhr</td>
+    <td><%= compressed_air_demand.timeTo.strftime('%H:%M') %> Uhr</td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_demand %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_demand_path(compressed_air_demand) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_demand, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuer Bedarfszeitraum', new_compressed_air_demand_path %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Leak:</b>
+  <%= @compressed_air_distribution_year.leak %>
+</p>
+
+<p>
+  <b>Pressureloss:</b>
+  <%= @compressed_air_distribution_year.pressureLoss %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @compressed_air_distribution_year.year_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_compressed_air_distribution_year_path(@compressed_air_distribution_year) %> |
+<%= link_to 'Back', compressed_air_distribution_years_path %>

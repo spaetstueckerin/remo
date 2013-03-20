@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Volumestream:</b>
+  <%= @cold_consumption_year.volumeStream %>
+</p>
+
+<p>
+  <b>Flowtemperature:</b>
+  <%= @cold_consumption_year.flowTemperature %>
+</p>
+
+<p>
+  <b>Returntemperature:</b>
+  <%= @cold_consumption_year.returnTemperature %>
+</p>
+
+<p>
+  <b>Processtemperature:</b>
+  <%= @cold_consumption_year.processTemperature %>
+</p>
+
+<p>
+  <b>Coldconsumption:</b>
+  <%= @cold_consumption_year.coldConsumption_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cold_consumption_year_path(@cold_consumption_year) %> |
+<%= link_to 'Back', cold_consumption_years_path %>

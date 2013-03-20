@@ -1,0 +1,45 @@
+<h1>Prozesswärme - Dampfverteilung</h1>
+
+<table>
+  <tr>
+    <th>Dampferzeuger</th>
+    <th>Dampfverbraucher</th>
+    <th>Durchmesser der Leitung</th>
+    <th>Isolierung der Leitung</th>
+    <th>Länge der Leitung</th>
+    <!--<th>Massflownenn</th>
+    <th>Massflowmin</th>
+    <th>Massflowmax</th>
+    <th>Kpaperture</th>
+    <th>Kpisolation</th>
+    <th>Kplength</th>
+    <th>Drain</th>-->
+    <th>Aktion</th>
+  </tr>
+
+<% @steam_distributions.each do |steam_distribution| %>
+<tr>
+    <td><%= SteamProduction.find_by_id(steam_distribution.steamProduction_id).kettleName %></td>
+    <td><%= steam_distribution.steamConsumer_id %></td>
+    <td><%= steam_distribution.dpAperture %></td>
+    <td><%= steam_distribution.dpIsolation %></td>
+    <td><%= steam_distribution.dpLength %></td>
+    <!--<td><%= steam_distribution.massFlowNenn %></td>
+    <td><%= steam_distribution.massFlowMin %></td>
+    <td><%= steam_distribution.massFlowMax %></td>
+    <td><%= steam_distribution.kpAperture %></td>
+    <td><%= steam_distribution.kpIsolation %></td>
+    <td><%= steam_distribution.kpLength %></td>
+    <td><%= steam_distribution.drain %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_distribution_path(steam_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Dampfverteilung anlegen', new_steam_distribution_path %>

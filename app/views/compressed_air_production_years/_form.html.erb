@@ -1,0 +1,64 @@
+<%= form_for(@compressed_air_production_year) do |f| %>
+  <% if @compressed_air_production_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compressed_air_production_year.errors.count, "error") %> prohibited this compressed_air_production_year from being saved:</h2>
+
+      <ul>
+      <% @compressed_air_production_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <tr>
+    <td width="100"><%= f.label :year_id, "Abrechnungsjahr" %></td>
+    <td><%= f.select :year_id, ["2010", "2011", "2012", "2013", "2014"]%></td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td width="100"><%= f.label :operatingHours, "Betriebsstunden" %></td>
+    <td><%= f.number_field :operatingHours %> h</td>
+    <td width="100"><%= f.label :loadHours, "Last-Stunden" %></td>
+    <td><%= f.number_field :loadHours %> h</td>
+</tr>
+<tr>
+    <td><%= f.label :capacity, "Auslastung" %></td>
+    <td><%= f.number_field :capacity %> %</td>
+    <td><%= f.label :energyConsumption, "Stromverbrauch" %></td>
+    <td><%= f.number_field :energyConsumption %> kWh</td>
+</tr>
+<tr>
+    <td><%= f.label :deliveryRate, "Fördermenge" %></td>
+    <td><%= f.number_field :deliveryRate %> m&sup3;</td>
+    <td><%= f.label :operatingCycles, "Schalthäufigkeit" %></td>
+    <td><%= f.number_field :operatingCycles %></td>
+</tr>
+<tr>
+    <td><%= f.label :overtravelTimeIdle, "Nachlaufzeit (Leerlauf)" %></td>
+    <td><%= f.number_field :overtravelTimeIdle %> min</td>
+    <td><%= f.label :pressureMin, "Minimaldruck" %></td>
+    <td><%= f.number_field :pressureMin %> bar Ü</td>
+</tr>
+<tr>
+    <td><%= f.label :pressureExhaustTempMin, "Druckluftansaugung Temperatur (min)" %></td>
+    <td><%= f.number_field :pressureExhaustTempMin %> °C</td>
+    <td><%= f.label :pressureExhaustTempMax, "Druckluftansaugung Temperatur (max)" %></td>
+    <td><%= f.number_field :pressureExhaustTempMax %> °C</td>
+</tr>
+<tr>
+    <td><%= f.label :advanceTemp, "Vorlauf Temperatur" %></td>
+    <td><%= f.number_field :advanceTemp %> °C</td>
+    <td><%= f.label :returnTemp, "Rücklauf Temperatur" %></td>
+    <td><%= f.number_field :returnTemp %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :amount_water, "Wassermenge" %></td>
+    <td><%= f.number_field :amount_water %> °C</td>
+    <td colspan="2"></td>
+  </tr>
+</table><br>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

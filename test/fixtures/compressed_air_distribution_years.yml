@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  leak: 1
+  pressureLoss: 9.99
+  year_id: 1
+
+two:
+  leak: 1
+  pressureLoss: 9.99
+  year_id: 1

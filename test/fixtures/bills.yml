@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: 9.99
+  consumption: 9.99
+  date: 2013-03-06
+  period_from: 2013-03-06
+  period_to: 2013-03-06
+
+two:
+  value: 9.99
+  consumption: 9.99
+  date: 2013-03-06
+  period_from: 2013-03-06
+  period_to: 2013-03-06

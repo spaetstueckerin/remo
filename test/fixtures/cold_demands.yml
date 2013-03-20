@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  timeFrom: 2013-03-19 14:39:28
+  timeTo: 2013-03-19 14:39:28
+  demandDate: 2013-03-19
+  coldConsumptionYear_id: 1
+  machinery_id: 1
+
+two:
+  timeFrom: 2013-03-19 14:39:28
+  timeTo: 2013-03-19 14:39:28
+  demandDate: 2013-03-19
+  coldConsumptionYear_id: 1
+  machinery_id: 1

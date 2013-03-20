@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  time_from: 2013-03-19 11:10:14
+  time_to: 2013-03-19 11:10:14
+  demandDate: 2013-03-19
+  hotWaterConsumption_id: 1
+  year_id: 1
+
+two:
+  time_from: 2013-03-19 11:10:14
+  time_to: 2013-03-19 11:10:14
+  demandDate: 2013-03-19
+  hotWaterConsumption_id: 1
+  year_id: 1

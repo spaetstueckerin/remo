@@ -1,0 +1,30 @@
+<%= form_for(@compressed_air_distribution_year) do |f| %>
+  <% if @compressed_air_distribution_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compressed_air_distribution_year.errors.count, "error") %> prohibited this compressed_air_distribution_year from being saved:</h2>
+
+      <ul>
+      <% @compressed_air_distribution_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <table>
+    <tr>
+    <td><%= f.label :year_id, "Jahr" %></td>
+    <td colspan="3"><%= f.select :year_id, Year.all.map{|y| [y.year, y.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :leak, "Leckage" %></td>
+    <td><%= f.number_field :leak %> %</td>
+    <td><%= f.label :pressureLoss, "Druckverlust" %></td>
+    <td><%= f.text_field :pressureLoss %> bar</td>
+</tr>
+</table>
+
+    <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

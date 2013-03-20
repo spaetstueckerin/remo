@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hotwaterproduction:</b>
+  <%= @hot_water_distribution.hotWaterProduction_id %>
+</p>
+
+<p>
+  <b>Hotwaterconsumption:</b>
+  <%= @hot_water_distribution.hotWaterConsumption_id %>
+</p>
+
+<p>
+  <b>Aperture:</b>
+  <%= @hot_water_distribution.aperture %>
+</p>
+
+<p>
+  <b>Isolation:</b>
+  <%= @hot_water_distribution.isolation %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%= @hot_water_distribution.length %>
+</p>
+
+<p>
+  <b>Volumeflownenn:</b>
+  <%= @hot_water_distribution.volumeFlowNenn %>
+</p>
+
+<p>
+  <b>Volumeflowmin:</b>
+  <%= @hot_water_distribution.volumeFlowMin %>
+</p>
+
+<p>
+  <b>Volumeflowmax:</b>
+  <%= @hot_water_distribution.volumeFlowMax %>
+</p>
+
+
+<%= link_to 'Edit', edit_hot_water_distribution_path(@hot_water_distribution) %> |
+<%= link_to 'Back', hot_water_distributions_path %>

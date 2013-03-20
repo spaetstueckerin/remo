@@ -1,0 +1,29 @@
+<h1>Howto - Alles zum Aufsetzen des Servers und der Anwendung</h1>
+
+<table>
+  <tr>
+    <th>Kategorie</th>
+    <th>Name</th>
+    <th>Beschreibung</th>
+
+    <!--<th></th>
+    <th></th>
+    <th></th>-->
+  </tr>
+
+<% @howtos.each do |howto| %>
+  <tr>
+    <td><%= howto.category %></td>
+    <td><%= howto.name %></td>
+    <td><%= howto.description %></td>
+
+    <!--<td><%# link_to 'Anzeigen', howto %></td>
+    <td><%# link_to 'Bearbeiten', edit_howto_path(howto) %></td>
+    <td><%# link_to 'Löschen', howto, method: :delete, data: { confirm: 'Bist du sicher?' } %></td>-->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neues Howto', new_howto_path %>

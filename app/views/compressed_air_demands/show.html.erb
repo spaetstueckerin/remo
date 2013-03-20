@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Timefrom:</b>
+  <%= @compressed_air_demand.timeFrom %>
+</p>
+
+<p>
+  <b>Timeto:</b>
+  <%= @compressed_air_demand.timeTo %>
+</p>
+
+
+<%= link_to 'Edit', edit_compressed_air_demand_path(@compressed_air_demand) %> |
+<%= link_to 'Back', compressed_air_demands_path %>

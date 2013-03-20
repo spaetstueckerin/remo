@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  steamProduction_id: 1
+  steamConsumer_id: 1
+  dpCompression: 9.99
+  dpTemperature: 9.99
+  kpCompression: 9.99
+  kpTemperature: 9.99
+  kpReflux: 9.99
+
+two:
+  steamProduction_id: 1
+  steamConsumer_id: 1
+  dpCompression: 9.99
+  dpTemperature: 9.99
+  kpCompression: 9.99
+  kpTemperature: 9.99
+  kpReflux: 9.99

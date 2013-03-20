@@ -1,0 +1,29 @@
+<h1>Listing enterprise_data</h1>
+
+<table>
+  <tr>
+    <th>Value</th>
+    <th>Year</th>
+    <th>Enterprise</th>
+    <th>Endt</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @enterprise_data.each do |enterprise_datum| %>
+  <tr>
+    <td><%= enterprise_datum.value %></td>
+    <td><%= enterprise_datum.year %></td>
+    <td><%= enterprise_datum.enterprise_id %></td>
+    <td><%= enterprise_datum.endt_id %></td>
+    <td><%= link_to 'Show', enterprise_datum %></td>
+    <td><%= link_to 'Edit', edit_enterprise_datum_path(enterprise_datum) %></td>
+    <td><%= link_to 'Destroy', enterprise_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Enterprise datum', new_enterprise_datum_path %>

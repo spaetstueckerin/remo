@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @contract.energy_type %>
+</p>
+
+<p>
+  <b>Supplier</b>
+  <%= @contract.supplier %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @contract.description %>
+</p>
+
+<p>
+  <b>Condition:</b>
+  <%= @contract.condition %>
+</p>
+
+<p>
+  <b>Duration from:</b>
+  <%= @contract.duration_from %>
+</p>
+
+<p>
+  <b>Duration to:</b>
+  <%= @contract.duration_to %>
+</p>
+
+
+<%= link_to 'Edit', edit_contract_path(@contract) %> |
+<%= link_to 'Back', contracts_path %>

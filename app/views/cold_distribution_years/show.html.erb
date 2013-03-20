@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Compression:</b>
+  <%= @cold_distribution_year.compression %>
+</p>
+
+<p>
+  <b>Flowtemperature:</b>
+  <%= @cold_distribution_year.flowTemperature %>
+</p>
+
+<p>
+  <b>Returntemperature:</b>
+  <%= @cold_distribution_year.returnTemperature %>
+</p>
+
+<p>
+  <b>Coldconsumption:</b>
+  <%= @cold_distribution_year.coldConsumption_id %>
+</p>
+
+<p>
+  <b>Coldproduction:</b>
+  <%= @cold_distribution_year.coldProduction_id %>
+</p>
+
+<p>
+  <b>Colddistribution:</b>
+  <%= @cold_distribution_year.coldDistribution_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cold_distribution_year_path(@cold_distribution_year) %> |
+<%= link_to 'Back', cold_distribution_years_path %>

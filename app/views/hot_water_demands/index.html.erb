@@ -1,0 +1,31 @@
+<h1>Bedarfszeiträume Heißwasser</h1>
+
+<table>
+  <tr>
+    <th>Heißwasserverbraucher</th>
+    <th>Datum</th>
+    <th>Von</th>
+    <th>Bis</th>
+    <!--<th>Year</th>-->
+    <th>Aktion</th>
+  </tr>
+
+<% @hot_water_demands.each do |hot_water_demand| %>
+  <tr>
+    <td><%= hot_water_demand.hotWaterConsumption_id %></td>
+    <td><%= hot_water_demand.demandDate.strftime('%d.%m.%Y') %></td>
+    <td><%= hot_water_demand.time_from.strftime('%H:%M') %></td>
+    <td><%= hot_water_demand.time_to.strftime('%H:%M') %></td>
+
+    <!--<td><%# hot_water_demand.year_id %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_demand %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_demand_path(hot_water_demand) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_demand, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuer Heißwasserverbrauchsbedarfszeitraum', new_hot_water_demand_path %>

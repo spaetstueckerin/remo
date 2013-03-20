@@ -1,0 +1,29 @@
+<h1>Listing production_data</h1>
+
+<table>
+  <tr>
+    <th>Value</th>
+    <th>Year</th>
+    <th>Enterprise</th>
+    <th>pdt</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @production_data.each do |production_datum| %>
+  <tr>
+    <td><%= production_datum.value %></td>
+    <td><%= production_datum.year %></td>
+    <td><%= production_datum.enterprise_id %></td>
+    <td><%= production_datum.pdt_id %></td>
+    <td><%= link_to 'Show', production_datum %></td>
+    <td><%= link_to 'Edit', edit_production_datum_path(production_datum) %></td>
+    <td><%= link_to 'Destroy', production_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Production datum', new_production_datum_path %>

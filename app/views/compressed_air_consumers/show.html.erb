@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Machinery:</b>
+  <%= @compressed_air_consumer.machinery_id %>
+</p>
+
+<p>
+  <b>Compressor:</b>
+  <%= @compressed_air_consumer.compressor_id %>
+</p>
+
+<p>
+  <b>Neededpressuresettling:</b>
+  <%= @compressed_air_consumer.neededPressureSettling %>
+</p>
+
+<p>
+  <b>Neededquality:</b>
+  <%= @compressed_air_consumer.neededQuality %>
+</p>
+
+<p>
+  <b>Volumestreamnom:</b>
+  <%= @compressed_air_consumer.volumeStreamNom %>
+</p>
+
+<p>
+  <b>Volumestreammin:</b>
+  <%= @compressed_air_consumer.volumeStreamMin %>
+</p>
+
+<p>
+  <b>Volumestreammax:</b>
+  <%= @compressed_air_consumer.volumeStreamMax %>
+</p>
+
+<p>
+  <b>Requirementtype:</b>
+  <%= @compressed_air_consumer.requirementType %>
+</p>
+
+
+<%= link_to 'Edit', edit_compressed_air_consumer_path(@compressed_air_consumer) %> |
+<%= link_to 'Back', compressed_air_consumers_path %>

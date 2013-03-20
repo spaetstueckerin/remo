@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  consumer_id: 1
+  steamProduction_id: 1
+  system: MyString
+  dpCompressionNeeded: 9.99
+  dpTemperatureNeeded: 9.99
+  massFlowNennNeeded: 9.99
+  massFlowMinNeeded: 9.99
+  massFlowMaxNeeded: 9.99
+  requirementType: MyString
+
+two:
+  consumer_id: 1
+  steamProduction_id: 1
+  system: MyString
+  dpCompressionNeeded: 9.99
+  dpTemperatureNeeded: 9.99
+  massFlowNennNeeded: 9.99
+  massFlowMinNeeded: 9.99
+  massFlowMaxNeeded: 9.99
+  requirementType: MyString

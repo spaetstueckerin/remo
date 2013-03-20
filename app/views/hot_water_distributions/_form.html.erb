@@ -1,0 +1,46 @@
+<%= form_for(@hot_water_distribution) do |f| %>
+  <% if @hot_water_distribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hot_water_distribution.errors.count, "error") %> prohibited this hot_water_distribution from being saved:</h2>
+
+      <ul>
+      <% @hot_water_distribution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <tr>
+    <td><%= f.label :hotWaterProduction_id, "Heißwasserproduktion" %></td>
+    <td><%= f.number_field :hotWaterProduction_id %></td>
+    <td><%= f.label :hotWaterConsumption_id, "Heißwasserverbraucher" %></td>
+    <td><%= f.number_field :hotWaterConsumption_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :aperture, "Durchmesser" %></td>
+    <td><%= f.number_field :aperture %> mm</td>
+    <td><%= f.label :isolation, "Isolation" %></td>
+    <td><%= f.number_field :isolation %> mm</td>
+  </tr>
+  <tr>
+    <td><%= f.label :length, "Länge" %></td>
+    <td colspan="3"><%= f.number_field :length %> m</td>
+  </tr>
+  <tr>
+    <td><%= f.label :volumeFlowNenn, "Volumenstrom Nenn" %></td>
+    <td><%= f.number_field :volumeFlowNenn %> m³/h</td>
+    <td><%= f.label :volumeFlowMin, "Volumenstron Min" %></td>
+    <td><%= f.number_field :volumeFlowMin %> m³/h</td>
+  </tr>
+  <tr>
+    <td><%= f.label :volumeFlowMax, "Volumenstrom Max" %></td>
+    <td colspan="3"><%= f.number_field :volumeFlowMax %> m³/h</td>
+  </tr>
+</table>
+
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

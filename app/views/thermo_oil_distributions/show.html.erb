@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Thermooilproduction:</b>
+  <%= @thermo_oil_distribution.thermoOilProduction_id %>
+</p>
+
+<p>
+  <b>Thermooilconsumption:</b>
+  <%= @thermo_oil_distribution.thermoOilConsumption_id %>
+</p>
+
+<p>
+  <b>Aperture:</b>
+  <%= @thermo_oil_distribution.aperture %>
+</p>
+
+<p>
+  <b>Isolation:</b>
+  <%= @thermo_oil_distribution.isolation %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%= @thermo_oil_distribution.length %>
+</p>
+
+<p>
+  <b>Volumeflownenn:</b>
+  <%= @thermo_oil_distribution.volumeFlowNenn %>
+</p>
+
+<p>
+  <b>Volumeflowmin:</b>
+  <%= @thermo_oil_distribution.volumeFlowMin %>
+</p>
+
+<p>
+  <b>Volumeflowmax:</b>
+  <%= @thermo_oil_distribution.volumeFlowMax %>
+</p>
+
+
+<%= link_to 'Edit', edit_thermo_oil_distribution_path(@thermo_oil_distribution) %> |
+<%= link_to 'Back', thermo_oil_distributions_path %>

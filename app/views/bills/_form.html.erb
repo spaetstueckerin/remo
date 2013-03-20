@@ -1,0 +1,41 @@
+<%= form_for(@bill) do |f| %>
+  <% if @bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+
+      <ul>
+      <% @bill.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Ebergievertrag"%>
+    <%= f.select :contract_id, Contract.all.map{|c| [c.energy_type, c.id]}%>
+  </div>
+  <div class="field">
+    <%= f.label :value, "Abrechnungskosten" %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :consumption, "Verbrauch" %><br />
+    <%= f.text_field :consumption %>
+  </div>
+  <div class="field">
+    <%= f.label :date, "Rechnungsdatum" %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :period_from, "Verbrauchszeitraum von" %><br />
+    <%= f.date_select :period_from %>
+  </div>
+  <div class="field">
+    <%= f.label :period_to, "bis" %><br />
+    <%= f.date_select :period_to %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

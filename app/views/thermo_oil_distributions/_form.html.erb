@@ -1,0 +1,49 @@
+<%= form_for(@thermo_oil_distribution) do |f| %>
+  <% if @thermo_oil_distribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thermo_oil_distribution.errors.count, "error") %> prohibited this thermo_oil_distribution from being saved:</h2>
+
+      <ul>
+      <% @thermo_oil_distribution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :thermoOilProduction_id %><br />
+    <%= f.number_field :thermoOilProduction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :thermoOilConsumption_id %><br />
+    <%= f.number_field :thermoOilConsumption_id %>
+  </div>
+  <div class="field">
+    <%= f.label :aperture %><br />
+    <%= f.text_field :aperture %>
+  </div>
+  <div class="field">
+    <%= f.label :isolation %><br />
+    <%= f.text_field :isolation %>
+  </div>
+  <div class="field">
+    <%= f.label :length %><br />
+    <%= f.text_field :length %>
+  </div>
+  <div class="field">
+    <%= f.label :volumeFlowNenn %><br />
+    <%= f.text_field :volumeFlowNenn %>
+  </div>
+  <div class="field">
+    <%= f.label :volumeFlowMin %><br />
+    <%= f.text_field :volumeFlowMin %>
+  </div>
+  <div class="field">
+    <%= f.label :volumeFlowMax %><br />
+    <%= f.text_field :volumeFlowMax %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Location:</b>
+  <%= @lighting.location_id %>
+</p>
+
+<p>
+  <b>Bulbs:</b>
+  <%= @lighting.bulbs %>
+</p>
+
+<p>
+  <b>Yearofmanufacturing:</b>
+  <%= @lighting.yearOfManufacturing %>
+</p>
+
+<p>
+  <b>Numberofbulbs:</b>
+  <%= @lighting.numberOfBulbs %>
+</p>
+
+<p>
+  <b>Numberofbulbsinlamp:</b>
+  <%= @lighting.numberOfBulbsInLamp %>
+</p>
+
+<p>
+  <b>Powerperlamp:</b>
+  <%= @lighting.powerPerLamp %>
+</p>
+
+<p>
+  <b>Installedpower:</b>
+  <%= @lighting.installedPower %>
+</p>
+
+<p>
+  <b>Controlgear:</b>
+  <%= @lighting.controlGear %>
+</p>
+
+<p>
+  <b>Lampconfiguration:</b>
+  <%= @lighting.lampConfiguration %>
+</p>
+
+<p>
+  <b>String:</b>
+  <%= @lighting.string %>
+</p>
+
+<p>
+  <b>Hoursofoperation:</b>
+  <%= @lighting.hoursOfOperation %>
+</p>
+
+<p>
+  <b>Illuminationtechnique:</b>
+  <%= @lighting.illuminationTechnique %>
+</p>
+
+<p>
+  <b>Lightcontrol:</b>
+  <%= @lighting.lightControl %>
+</p>
+
+<p>
+  <b>Groupswitchable:</b>
+  <%= @lighting.groupSwitchable %>
+</p>
+
+<p>
+  <b>Windowshadowing:</b>
+  <%= @lighting.windowShadowing %>
+</p>
+
+
+<%= link_to 'Edit', edit_lighting_path(@lighting) %> |
+<%= link_to 'Back', lightings_path %>

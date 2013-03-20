@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hotWaterProduction_id: 1
+  machinery_id: 1
+  useCapacity: 9.99
+  requirementType: MyString
+
+two:
+  hotWaterProduction_id: 1
+  machinery_id: 1
+  useCapacity: 9.99
+  requirementType: MyString

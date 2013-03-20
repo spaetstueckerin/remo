@@ -1,0 +1,50 @@
+<!--COMPRESSED AIR CONSUMER FORM-->
+
+<%= form_for(@compressed_air_consumer) do |f| %>
+  <% if @compressed_air_consumer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compressed_air_consumer.errors.count, "error") %> prohibited this compressed_air_consumer from being saved:</h2>
+
+      <ul>
+      <% @compressed_air_consumer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+    <td><%= f.label :machinery_id, "Maschine" %></td>
+    <td><%= f.number_field :machinery_id %></td>
+    <td><%= f.label :compressor_id, "Kompressor" %></td>
+    <td><%= f.select :compressor_id, CompressedAirProductionBasic.all.map{|c| [c.manufacturer, c.id]}%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :neededPressureSettling, "Benötigtes Druckniveau" %></td>
+    <td><%= f.number_field :neededPressureSettling %> bar Ü</td>
+    <td><%= f.label :neededQuality, "Benötigte Qualität" %></td>
+    <td><%= f.select :neededQuality, ["wasserfrei", "ölfrei", "staubfrei"]%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :volumeStreamNom, "Volumenstrom (Nenn)" %></td>
+    <td><%= f.number_field :volumeStreamNom %> m&sup3;/min</td>
+    <td><%= f.label :volumeStreamMin, "Volumenstrom (Min)" %></td>
+    <td><%= f.number_field :volumeStreamMin %> m&sup3;/min</td>
+  </tr>
+  <tr>  
+    <td><%= f.label :volumeStreamMax, "Volumenstrom (Max)" %></td>
+    <td><%= f.number_field :volumeStreamMax %> m&sup3;/min</td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td><%= f.label :requirementType, "Bedarfsart" %></td>
+    <td><%= f.select :requirementType, ["konstant", "taktgebunden", "manuell"]%></td>
+    <td colspan="2"></td>
+  </tr>
+  </table>
+<br>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

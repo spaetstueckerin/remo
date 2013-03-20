@@ -1,0 +1,23 @@
+<h2>Anmeldung</h2>
+
+<table>
+  <tr>
+    <td>
+      <%= form_tag sessions_path do %>
+      <%= label_tag :username %>:
+    </td>
+    <td>
+      <%= text_field_tag :username, params[:username] %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :password %>
+    </td>
+    <td>
+      <%= password_field_tag :password %>
+    </td>
+  </tr>
+</table>
+<%= submit_tag "Anmelden" %>
+<% end %>

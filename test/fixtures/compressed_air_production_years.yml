@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  operatingHours: 1
+  loadHours: 1
+  capacity: 1
+  energyConsumption: 9.99
+  deliveryRate: 9.99
+  operatingCycles: 1
+  overtravelTimeIdle: 1
+  pressureMin: 9.99
+  pressureExhaustTempMin: 9.99
+  pressureExhaustTempMax: 9.99
+  advanceTemp: 9.99
+  returnTemp: 9.99
+
+two:
+  operatingHours: 1
+  loadHours: 1
+  capacity: 1
+  energyConsumption: 9.99
+  deliveryRate: 9.99
+  operatingCycles: 1
+  overtravelTimeIdle: 1
+  pressureMin: 9.99
+  pressureExhaustTempMin: 9.99
+  pressureExhaustTempMax: 9.99
+  advanceTemp: 9.99
+  returnTemp: 9.99

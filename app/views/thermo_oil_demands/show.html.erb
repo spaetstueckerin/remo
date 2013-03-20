@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Timefrom:</b>
+  <%= @thermo_oil_demand.timeFrom %>
+</p>
+
+<p>
+  <b>Timeto:</b>
+  <%= @thermo_oil_demand.timeTo %>
+</p>
+
+<p>
+  <b>Machinery:</b>
+  <%= @thermo_oil_demand.machinery_id %>
+</p>
+
+<p>
+  <b>Demanddate:</b>
+  <%= @thermo_oil_demand.demandDate %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @thermo_oil_demand.year_id %>
+</p>
+
+<p>
+  <b>Thermooilconsumptionyear:</b>
+  <%= @thermo_oil_demand.thermoOilConsumptionYear_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_thermo_oil_demand_path(@thermo_oil_demand) %> |
+<%= link_to 'Back', thermo_oil_demands_path %>

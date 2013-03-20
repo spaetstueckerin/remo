@@ -1,0 +1,64 @@
+<%= form_for(@lighting) do |f| %>
+  <% if @lighting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lighting.errors.count, "error") %> prohibited this lighting from being saved:</h2>
+
+      <ul>
+      <% @lighting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <table>
+  <tr>
+    <td><%= f.label :location_id, "Ort / Raum" %></td>
+    <td colspan="4"><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :bulbs, "Lampentyp" %></td>
+    <td><%= f.select :bulbs, ["Leuchtstofflampe T5", "Leuchtstofflampe T8", "Hochdrucklampe", "Glühlampe", "Energiesparlampe", "Niedervolthalogenlampe", "LED", "Sonstiges"]%></td>
+    <td><%= f.label :yearOfManufacturing, "Baujahr" %></td>
+    <td><%= f.text_field :yearOfManufacturing, size: 20 %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :numberOfBulbs, "Anzahl der Lampen" %></td>
+    <td><%= f.text_field :numberOfBulbs, size: 20 %> Stück</td>
+    <td><%= f.label :numberOfBulbsInLamp, "Lampen je Leuchte"%></td>
+    <td><%= f.text_field :numberOfBulbsInLamp, size: 20 %> Stück</td>
+  </tr>
+  <tr>
+    <td><%= f.label :powerPerLamp, "Leistung pro Lampe"%></td>
+    <td><%= f.text_field :powerPerLamp, size: 20 %> W</td>
+    <td><%= f.label :installedPower, "Installierte Leistung"%></td>
+    <td><%= f.text_field :installedPower, size: 20 %> kW</td>
+  </tr>
+  <tr>
+    <td><%= f.label :controlGear, "Vorschaltgeräte (VG)"%></td>
+    <td><%= f.select :controlGear, ["Konventionelles VG", "Verlustarmes VG", "Normal elektronisches VG", "Cut-Off elektronisches VG"]%></td>
+    <td><%= f.label :lampConfiguration, "Leuchtenausstattung"%></td>
+    <td><%= f.select :lampConfiguration, ["Reflektor", "Spiegelraster", "Transparente Abdeckung", "Weiße Abdeckung"]%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :hoursOfOperation, "Betriebsstunden" %></td>
+    <td><%= f.text_field :hoursOfOperation, size: 20 %></td>  
+    <td><%= f.label :illuminationTechnique, "Beleuchtungsart"%></td>
+    <td><%= f. select :illuminationTechnique, ["Allgemein", "Arbeitsplatzorientiert", "Effektbeleuchtung"]%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :lightControl, "Lichtregelanlage" %></td>
+    <td><%= f.select :lightControl, ["Abschaltung", "Stufenlos", "Bewegungsmelder", "Zeitschaltuhr"]%></td>
+    <td><%= f.label :groupSwitchable, "in Gruppen schaltbar" %></td>
+    <td><%= f.select :groupSwitchable, {"Ja" => true, "Nein" => false}%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :windowShadowing, "Fensterbeschattung" %></td>
+    <td colspan="3"><%= f.select :windowShadowing, {"Ja" => true, "Nein" => false}%></td>
+</tr>
+</table><br>
+  <div class="actions">
+    <%= f.submit "Absenden"%>
+  </div>
+
+<% end %>

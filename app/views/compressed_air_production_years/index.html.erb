@@ -1,0 +1,49 @@
+<h1>Liste der jährlichen Drucklufterzeugungsdaten</h1>
+
+<table>
+  <tr>
+    <th>Jahr</th>
+    <th>Betriebsstunden</th>
+    <th>Laststunden</th>
+    <th>Auslastung</th>
+    <th>Stromverbrauch</th>
+    <th>Fördermenge</th>
+    <!--<th>Schalthäufigkeit</th>
+    <th>Nachlaufzeit (Leerlauf)</th>
+    <th>Minimaldruck</th>
+    <th>Druckluftansaugung (min)</th>
+    <th>Druckluftansaugung (max)</th>
+    <th>Kühlwasservorlauf °C</th>
+    <th>Kühlwasserrücklauf °C</th>
+    <th>Wassermenge l</th>-->
+    <th>Aktion</th>
+  </tr>
+
+<% @compressed_air_production_years.each do |compressed_air_production_year| %>
+  <tr>
+  <td><% year = Year.find_by_id(compressed_air_production_year.year_id)%><%= year.year %>
+    <td><%= compressed_air_production_year.operatingHours %></td>
+    <td><%= compressed_air_production_year.loadHours %></td>
+    <td><%= compressed_air_production_year.capacity %></td>
+    <td><%= compressed_air_production_year.energyConsumption %></td>
+    <td><%= compressed_air_production_year.deliveryRate %></td>
+    <!--<td><%= compressed_air_production_year.operatingCycles %></td>
+    <td><%= compressed_air_production_year.overtravelTimeIdle %></td>
+    <td><%= compressed_air_production_year.pressureMin %></td>
+    <td><%= compressed_air_production_year.pressureExhaustTempMin %></td>
+    <td><%= compressed_air_production_year.pressureExhaustTempMax %></td>
+    <td><%= compressed_air_production_year.advanceTemp %></td>
+    <td><%= compressed_air_production_year.returnTemp %></td>
+    <td><%= compressed_air_production_year.amount_water %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_production_year_path(compressed_air_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Jährliche Drucklufterzeugungsdaten anlegen', new_compressed_air_production_year_path %>

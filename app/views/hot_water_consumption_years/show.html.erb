@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hotwaterproduction:</b>
+  <%= @hot_water_consumption_year.hotWaterProduction_id %>
+</p>
+
+<p>
+  <b>Machinery:</b>
+  <%= @hot_water_consumption_year.machinery_id %>
+</p>
+
+<p>
+  <b>Volumestream:</b>
+  <%= @hot_water_consumption_year.volumeStream %>
+</p>
+
+<p>
+  <b>Flowtemperature:</b>
+  <%= @hot_water_consumption_year.flowTemperature %>
+</p>
+
+<p>
+  <b>Returntemperature:</b>
+  <%= @hot_water_consumption_year.returnTemperature %>
+</p>
+
+<p>
+  <b>Processtemperature:</b>
+  <%= @hot_water_consumption_year.processTemperature %>
+</p>
+
+
+<%= link_to 'Edit', edit_hot_water_consumption_year_path(@hot_water_consumption_year) %> |
+<%= link_to 'Back', hot_water_consumption_years_path %>

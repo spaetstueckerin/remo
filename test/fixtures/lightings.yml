@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location_id: 1
+  bulbs: MyString
+  yearOfManufacturing: 1
+  numberOfBulbs: 1
+  numberOfBulbsInLamp: 
+  powerPerLamp: 9.99
+  installedPower: 9.99
+  controlGear: MyString
+  lampConfiguration: MyString
+  string: MyString
+  hoursOfOperation: 1
+  illuminationTechnique: MyString
+  lightControl: MyString
+  groupSwitchable: 
+  windowShadowing: 
+
+two:
+  location_id: 1
+  bulbs: MyString
+  yearOfManufacturing: 1
+  numberOfBulbs: 1
+  numberOfBulbsInLamp: 
+  powerPerLamp: 9.99
+  installedPower: 9.99
+  controlGear: MyString
+  lampConfiguration: MyString
+  string: MyString
+  hoursOfOperation: 1
+  illuminationTechnique: MyString
+  lightControl: MyString
+  groupSwitchable: 
+  windowShadowing: 

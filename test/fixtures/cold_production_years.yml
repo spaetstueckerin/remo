@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  operatingHours: 1
+  energyConsumption: 9.99
+  coldAmount: 9.99
+  massFlow: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  temperatureIn: 9.99
+  temperatureOut: 9.99
+  waterRequirement: 9.99
+  coldProduction_id: 1
+
+two:
+  operatingHours: 1
+  energyConsumption: 9.99
+  coldAmount: 9.99
+  massFlow: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  temperatureIn: 9.99
+  temperatureOut: 9.99
+  waterRequirement: 9.99
+  coldProduction_id: 1

@@ -1,0 +1,27 @@
+<!--ENTERPRISE DATA SHOW-->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @enterprise_datum.value %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @enterprise_datum.year %>
+</p>
+
+<p>
+  <b>Enterprise:</b>
+  <%= @enterprise_datum.enterprise_id %>
+</p>
+
+<p>
+  <b>Endt:</b>
+  <%= @enterprise_datum.endt_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_enterprise_datum_path(@enterprise_datum) %> |
+<%= link_to 'Back', enterprise_data_path %>

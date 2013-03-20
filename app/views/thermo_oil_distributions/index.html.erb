@@ -1,0 +1,37 @@
+<h1>Listing thermo_oil_distributions</h1>
+
+<table>
+  <tr>
+    <th>Thermooilproduction</th>
+    <th>Thermooilconsumption</th>
+    <th>Aperture</th>
+    <th>Isolation</th>
+    <th>Length</th>
+    <th>Volumeflownenn</th>
+    <th>Volumeflowmin</th>
+    <th>Volumeflowmax</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @thermo_oil_distributions.each do |thermo_oil_distribution| %>
+  <tr>
+    <td><%= thermo_oil_distribution.thermoOilProduction_id %></td>
+    <td><%= thermo_oil_distribution.thermoOilConsumption_id %></td>
+    <td><%= thermo_oil_distribution.aperture %></td>
+    <td><%= thermo_oil_distribution.isolation %></td>
+    <td><%= thermo_oil_distribution.length %></td>
+    <td><%= thermo_oil_distribution.volumeFlowNenn %></td>
+    <td><%= thermo_oil_distribution.volumeFlowMin %></td>
+    <td><%= thermo_oil_distribution.volumeFlowMax %></td>
+    <td><%= link_to 'Show', thermo_oil_distribution %></td>
+    <td><%= link_to 'Edit', edit_thermo_oil_distribution_path(thermo_oil_distribution) %></td>
+    <td><%= link_to 'Destroy', thermo_oil_distribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Thermo oil distribution', new_thermo_oil_distribution_path %>

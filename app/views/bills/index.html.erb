@@ -1,0 +1,35 @@
+<h1>Liste der Abrechnungen</h1>
+
+
+<!-- Specify the size of the Container element explicitly! -->
+<div id='chart' align="center" style='width: 800px; height: 240px;'></div>
+<%= render_chart @chart, 'chart' %>
+
+
+<p><%= link_to 'Neue Abrechnung hinzufügen', new_bill_path %></p>
+
+<div align="center">
+<table>
+  <tr>
+    <th>Betrag</th>
+    <th>Verbrauch</th>
+    <th>Rechnungsdatum</th>
+    <th>Abrechnungszeitraum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bills.each do |bill| %>
+  <tr>
+    <td><%= number_with_precision(bill.value, :precision =>2) %> Euro</td>
+    <td><%= bill.consumption %></td>
+    <td><%= bill.date.strftime('%d.%m.%Y') %></td>
+    <td><%= bill.period_from.strftime('%d.%m.%Y') %> - <%= bill.period_to.strftime('%d.%m.%Y') %></td>
+    <td><%= link_to 'Show', bill %></td>
+    <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
+    <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+</div>

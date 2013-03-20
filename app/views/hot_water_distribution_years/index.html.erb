@@ -1,0 +1,34 @@
+<h1>Heißwasserverteilung - jährliche Erhebung</h1>
+
+<table>
+  <tr>
+    <th>Heißwasserproduktion</th>
+    <th>Heißwasserverbraucher</th>
+    <th>Heißwasserverteilung</th>
+    <th>Druck</th>
+    <!--<th>Vorlauftemperatur</th>
+    <th>Rücklauftemperatur</th>-->
+    <th>Aktion</th>
+  </tr>
+
+<% @hot_water_distribution_years.each do |hot_water_distribution_year| %>
+  <tr>
+    <td><%= hot_water_distribution_year.hotWaterProduction_id %></td>
+    <td><%= hot_water_distribution_year.hotWaterConsumption_id %></td>
+    <td><%= hot_water_distribution_year.hotWaterDistribution_id %></td>
+    <td><%= hot_water_distribution_year.compression %></td>
+    <!--<td><%= hot_water_distribution_year.flowTemperature %></td>
+    <td><%= hot_water_distribution_year.returnTemperature %></td>-->
+
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_distribution_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_distribution_year_path(hot_water_distribution_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_distribution_year, method: :delete, data: { confirm: 'Are you sure?' }    %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue jährliche Erhebung Heißwasserverteilung', new_hot_water_distribution_year_path %>

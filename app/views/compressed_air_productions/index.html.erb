@@ -1,0 +1,66 @@
+<!--COMPRESSED AIR PRODUCTION INDEX-->
+
+<h1>Liste der Drucklufterzeuger (Kompressoren)</h1>
+
+<table>
+  <tr>
+    <th>Hersteller</th>
+    <th>Bauart</th>
+    <th>Baujahr</th>
+    <th>Nennleistung</th>
+    <th>Nenn-Fördermenge</th>
+    <th>Druckniveau</th>
+    <!--<th>Einschaltdruck</th>
+    <th>Ausschaltdruck</th>
+    <th>Lastart</th>
+    <th>Anlageart</th>
+    <th>Standort</th>
+    <th>Drehzahlregelung</th>
+    <th>Übergeordnete Steuerung</th>
+    <th>Wartung</th>
+    <th>Redundanz gefordert</th>
+    <th>Druckluftansaugung</th>
+    <th>Kühlmedium</th>
+    <th>bei Luft woher</th>
+    <th>bei Luft wohin</th>
+    <th>Wärmerückgewinnung</th>
+    <th>Einsatzgebiet Wärme</th>-->
+    <th>Aktion</th>
+
+  </tr>
+
+<% @compressed_air_productions.each do |compressed_air_production| %>
+  <tr>
+    <td><%= compressed_air_production.manufacturer %></td>
+    <td><%= compressed_air_production.version %></td>
+    <td><%= compressed_air_production.yearOfManufacturing %></td>
+    <td><%= compressed_air_production.capacity %></td>
+    <td><%= compressed_air_production.nominalDeliveryRate %></td>
+    <td><%= compressed_air_production.pressureSettling %></td>
+    <!--<td><%= compressed_air_production.raisingPressure %></td>
+    <td><%# compressed_air_production.breakPressure %></td>
+    <td><%# compressed_air_production.loadCharacter %></td>
+    <td><%# compressed_air_production.facilityCharacter %></td>
+    <td><%# compressed_air_production.location_id %></td>
+    <td><%# compressed_air_production.speedRegulation %></td>
+    <td><%# compressed_air_production.higherControl %></td>
+    <td><%# compressed_air_production.support %></td>
+    <td><%# compressed_air_production.redundancyRequirements %></td>
+    <td><%# compressed_air_production.pressureExhaust %></td>
+    <td><%# compressed_air_production.coolingMedium %></td>
+    <td><%# compressed_air_production.airFrom %></td>
+    <td><%# compressed_air_production.airWhere %></td>
+    <td><%# compressed_air_production.heatRecovery %></td>
+    <td><%# compressed_air_production.heatApplicationArea %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_production_path(compressed_air_production) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_production, method: :delete, data: { confirm: 'Are you sure?' }   %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuen Kompressor anlegen', new_compressed_air_production_path %>

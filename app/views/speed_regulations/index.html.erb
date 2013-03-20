@@ -1,0 +1,43 @@
+<h1>Drehzahlmessungen (Frequenzumrichter)</h1>
+<h2>Fördermenge in m&sup3;/min bei n % Teillast</h2>
+
+<table>
+  <tr>
+    <th>Jahr</th>
+    <th>10</th>
+    <th>20</th>
+    <th>30</th>
+    <th>40</th>
+    <th>50</th>
+    <th>60</th>
+    <th>70</th>
+    <th>80</th>
+    <th>90</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @speed_regulations.each do |speed_regulation| %>
+  <tr>
+    <td align="center"><%= Year.find_by_id(speed_regulation.year_id).year %></td>
+    <td><%= speed_regulation.deliveryRate10 %></td>
+    <td><%= speed_regulation.deliveryRate20 %></td>
+    <td><%= speed_regulation.deliveryRate30 %></td>
+    <td><%= speed_regulation.deliveryRate40 %></td>
+    <td><%= speed_regulation.deliveryRate50 %></td>
+    <td><%= speed_regulation.deliveryRate60 %></td>
+    <td><%= speed_regulation.deliveryRate70 %></td>
+    <td><%= speed_regulation.deliveryRate80 %></td>
+    <td><%= speed_regulation.deliveryRate90 %></td>
+
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), speed_regulation %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_speed_regulation_path(speed_regulation) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), speed_regulation, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Drehzahlmessung anlegen', new_speed_regulation_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Verbrauch:</b>
+  <%= @compressed_air_consumption_year.verbrauch %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @compressed_air_consumption_year.year_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_compressed_air_consumption_year_path(@compressed_air_consumption_year) %> |
+<%= link_to 'Back', compressed_air_consumption_years_path %>

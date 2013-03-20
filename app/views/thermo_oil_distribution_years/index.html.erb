@@ -1,0 +1,33 @@
+<h1>Listing thermo_oil_distribution_years</h1>
+
+<table>
+  <tr>
+    <th>Compression</th>
+    <th>Flowtemperature</th>
+    <th>Returntemperature</th>
+    <th>Thermooilproduction</th>
+    <th>Thermooilconsumption</th>
+    <th>Thermooildistribution</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @thermo_oil_distribution_years.each do |thermo_oil_distribution_year| %>
+  <tr>
+    <td><%= thermo_oil_distribution_year.compression %></td>
+    <td><%= thermo_oil_distribution_year.flowTemperature %></td>
+    <td><%= thermo_oil_distribution_year.returnTemperature %></td>
+    <td><%= thermo_oil_distribution_year.thermoOilProduction_id %></td>
+    <td><%= thermo_oil_distribution_year.thermoOilConsumption_id %></td>
+    <td><%= thermo_oil_distribution_year.thermoOilDistribution_id %></td>
+    <td><%= link_to 'Show', thermo_oil_distribution_year %></td>
+    <td><%= link_to 'Edit', edit_thermo_oil_distribution_year_path(thermo_oil_distribution_year) %></td>
+    <td><%= link_to 'Destroy', thermo_oil_distribution_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Thermo oil distribution year', new_thermo_oil_distribution_year_path %>

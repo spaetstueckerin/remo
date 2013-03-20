@@ -1,0 +1,34 @@
+<%= form_for(@business_datum) do |f| %>
+  <% if @business_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business_datum.errors.count, "error") %> prohibited this business_datum from being saved:</h2>
+
+      <ul>
+      <% @business_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  
+    <% user = User.find_by_id(session[:user_id]) %>
+    <% enterprise = Enterprise.find_by_id(user.enterprise_id) %>
+    <%= f.hidden_field :enterprise_id, :value => enterprise.id %>
+  
+  <div class="field">
+    <%= f.label "Datenart" %>
+    <%= f.select :bdt_id, BusinessDataType.all.map{|b| [b.bd_type, b.id]}%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

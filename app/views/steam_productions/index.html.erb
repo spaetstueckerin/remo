@@ -1,0 +1,56 @@
+<h1>Prozesswärme: Dampferzeugung</h1>
+
+<table>
+  <tr>
+    <th>Kesselbezeichnung</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Kesselleistung</th>
+    <!--<th>Sattdampf</th>-->
+    <th>Brennertyp</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <!--<th>Feuerungswärmeleistung (min)</th>
+    <th>Feuerungswärmeleistung (max)</th>
+    <th>Brennstofftyp</th>
+    <th>Brennstoffdichte</th>
+    <th>Brennwert</th>
+    <th>Abgasrückgewinnung</th>
+    <th>Brüdenkondensator</th>
+    <th>O&sup2;-Regelung</th>
+    <th>Kamin</th>-->
+    <th>Aktion</th>
+
+  </tr>
+
+<% @steam_productions.each do |steam_production| %>
+  <tr>
+    <td><%= steam_production.kettleName %></td>
+    <td><%= steam_production.kettleManufaturer %></td>
+    <td><%= steam_production.kettleManuYear%></td>
+    <td><%= steam_production.kettleCapacity %></td>
+    <!--<td><%= steam_production.kettleSaturatedSteam %></td>-->
+    <td><%= steam_production.burnerType %></td>
+    <td><%= steam_production.burnerManufacturer %></td>
+    <td><%= steam_production.burnerManufacturingYear %></td>
+    <!--<td><%= steam_production.districtHeatMin %></td>
+    <td><%= steam_production.districtHeatMax %></td>
+    <td><%= steam_production.fuelType %></td>
+    <td><%= steam_production.fuelCapacity %></td>
+    <td><%= steam_production.fuelValue %><%= steam_production.fuelValueUnit %></td>
+    <td><%= steam_production.exhaustHeatRecovery %></td>
+    <td><%= steam_production.ventCondenser %></td>
+    <td><%= steam_production.o2Control %></td>
+    <td><%= steam_production.chimney %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_production_path(steam_production) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_production, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Dampferzeugung anlegen', new_steam_production_path %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Volumestream:</b>
+  <%= @thermo_oil_consumption_year.volumeStream %>
+</p>
+
+<p>
+  <b>Flowtemperature:</b>
+  <%= @thermo_oil_consumption_year.flowTemperature %>
+</p>
+
+<p>
+  <b>Returntemperature:</b>
+  <%= @thermo_oil_consumption_year.returnTemperature %>
+</p>
+
+<p>
+  <b>Processtemperature:</b>
+  <%= @thermo_oil_consumption_year.processTemperature %>
+</p>
+
+<p>
+  <b>Thermooilproduction:</b>
+  <%= @thermo_oil_consumption_year.thermoOilProduction_id %>
+</p>
+
+<p>
+  <b>Machinery:</b>
+  <%= @thermo_oil_consumption_year.machinery_id %>
+</p>
+
+<p>
+  <b>Thermooilconsumption:</b>
+  <%= @thermo_oil_consumption_year.thermoOilConsumption_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_thermo_oil_consumption_year_path(@thermo_oil_consumption_year) %> |
+<%= link_to 'Back', thermo_oil_consumption_years_path %>

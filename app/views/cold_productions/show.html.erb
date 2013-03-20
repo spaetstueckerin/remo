@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Manufacturer:</b>
+  <%= @cold_production.manufacturer %>
+</p>
+
+<p>
+  <b>Buildtype:</b>
+  <%= @cold_production.buildType %>
+</p>
+
+<p>
+  <b>Yearofmanufacturing:</b>
+  <%= @cold_production.yearOfManufacturing %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @cold_production.capacity %>
+</p>
+
+<p>
+  <b>Coolingcapacity:</b>
+  <%= @cold_production.coolingCapacity %>
+</p>
+
+<p>
+  <b>Coolingmedium:</b>
+  <%= @cold_production.coolingMedium %>
+</p>
+
+<p>
+  <b>Rkwayofcooling:</b>
+  <%= @cold_production.rkWayOfCooling %>
+</p>
+
+<p>
+  <b>Rkcoolingmedium:</b>
+  <%= @cold_production.rkCoolingMedium %>
+</p>
+
+<p>
+  <b>Rkcapacity:</b>
+  <%= @cold_production.rkCapacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_cold_production_path(@cold_production) %> |
+<%= link_to 'Back', cold_productions_path %>

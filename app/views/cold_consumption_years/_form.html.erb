@@ -1,0 +1,37 @@
+<%= form_for(@cold_consumption_year) do |f| %>
+  <% if @cold_consumption_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cold_consumption_year.errors.count, "error") %> prohibited this cold_consumption_year from being saved:</h2>
+
+      <ul>
+      <% @cold_consumption_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :volumeStream %><br />
+    <%= f.text_field :volumeStream %>
+  </div>
+  <div class="field">
+    <%= f.label :flowTemperature %><br />
+    <%= f.text_field :flowTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :returnTemperature %><br />
+    <%= f.text_field :returnTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :processTemperature %><br />
+    <%= f.text_field :processTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :coldConsumption_id %><br />
+    <%= f.number_field :coldConsumption_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

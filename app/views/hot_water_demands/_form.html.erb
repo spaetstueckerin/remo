@@ -1,0 +1,36 @@
+<%= form_for(@hot_water_demand) do |f| %>
+  <% if @hot_water_demand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hot_water_demand.errors.count, "error") %> prohibited this hot_water_demand from being saved:</h2>
+
+      <ul>
+      <% @hot_water_demand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <tr>
+    <td><%= f.label :demandDate, "Datum" %></td>
+    <td><%= f.date_select :demandDate %></td>
+    <td><%= f.label :hotWaterConsumption_id, "Heißwasserverbraucher" %></td>
+    <td><%= f.number_field :hotWaterConsumption_id %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :time_from, "Von:" %></td>
+    <td><%= f.time_select :time_from %></td>
+    <td><%= f.label :time_to, "Bis:" %></td>
+    <td><%= f.time_select :time_to %></td>
+  </tr>
+</table>
+
+
+    <!--Brauchen wir wahrscheinlich nicht!-->
+    <%# f.label :year_id %>
+    <%# f.number_field :year_id %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

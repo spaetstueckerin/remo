@@ -1,0 +1,59 @@
+<%= form_for(@steam_distribution) do |f| %>
+  <% if @steam_distribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@steam_distribution.errors.count, "error") %> prohibited this steam_distribution from being saved:</h2>
+
+      <ul>
+      <% @steam_distribution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <tr>
+    <td><%= f.label :steamProduction_id, "Dampferzeuger" %></td>
+    <td><%= f.select :steamProduction_id, SteamProduction.all.map{|s| [s.kettleName, s.id]}%></td>
+    <td><%= f.label :steamConsumer_id, "Dampfverbraucher" %></td>
+    <td colspan="3"><%= f.number_field :steamConsumer_id %></td>
+  </tr>
+  <tr>
+    <td colspan="6"><b>Dampfparameter</b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :dpAperture, "Durchmesser" %></td>
+    <td><%= f.number_field :dpAperture %> mm</td>
+    <td><%= f.label :dpIsolation, "Isolation" %></td>
+    <td><%= f.number_field :dpIsolation %> mm</td>
+    <td><%= f.label :dpLength, "Länge" %> m</td>
+    <td><%= f.number_field :dpLength %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :massFlowNenn, "Massenstrom Nenn" %></td>
+    <td><%= f.number_field :massFlowNenn %> t/h</td>
+    <td><%= f.label :massFlowMin, "Massenstrom Min" %></td>
+    <td><%= f.number_field :massFlowMin %> t/h</td>
+    <td><%= f.label :massFlowMax, "Massenstrom Max" %></td>
+    <td><%= f.number_field :massFlowMax %> t/h</td>
+  </tr>
+  <tr>
+    <td colspan="6"><b>Kondensatparameter</b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :kpAperture, "Durchmesser" %></td>
+    <td><%= f.number_field :kpAperture %> mm</td>
+    <td><%= f.label :kpIsolation, "Isolierung" %></td>
+    <td><%= f.number_field :kpIsolation %> mm</td>
+    <td><%= f.label :kpLength, "Länge" %></td>
+    <td><%= f.number_field :kpLength %> m</td>
+  </tr>
+  <tr>
+    <td><%= f.label :drain, "Ableitung" %></td>
+    <td colspan="5"><%= f.select :drain, ["offen", "geschlossen"] %></td>
+  </tr>
+</table>
+<br>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

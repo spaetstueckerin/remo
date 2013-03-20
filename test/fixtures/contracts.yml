@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  description: MyText
+  condition: MyString
+  duration_from: 2013-03-06
+  duration_to: 2013-03-06
+
+two:
+  type: 
+  description: MyText
+  condition: MyString
+  duration_from: 2013-03-06
+  duration_to: 2013-03-06

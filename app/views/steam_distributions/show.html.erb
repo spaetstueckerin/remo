@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Steamproduction:</b>
+  <%= @steam_distribution.steamProduction_id %>
+</p>
+
+<p>
+  <b>Steamconsumer:</b>
+  <%= @steam_distribution.steamConsumer_id %>
+</p>
+
+<p>
+  <b>Dpaperture:</b>
+  <%= @steam_distribution.dpAperture %>
+</p>
+
+<p>
+  <b>Dpisolation:</b>
+  <%= @steam_distribution.dpIsolation %>
+</p>
+
+<p>
+  <b>Dplength:</b>
+  <%= @steam_distribution.dpLength %>
+</p>
+
+<p>
+  <b>Massflownenn:</b>
+  <%= @steam_distribution.massFlowNenn %>
+</p>
+
+<p>
+  <b>Massflowmin:</b>
+  <%= @steam_distribution.massFlowMin %>
+</p>
+
+<p>
+  <b>Massflowmax:</b>
+  <%= @steam_distribution.massFlowMax %>
+</p>
+
+<p>
+  <b>Kpaperture:</b>
+  <%= @steam_distribution.kpAperture %>
+</p>
+
+<p>
+  <b>Kpisolation:</b>
+  <%= @steam_distribution.kpIsolation %>
+</p>
+
+<p>
+  <b>Kplength:</b>
+  <%= @steam_distribution.kpLength %>
+</p>
+
+<p>
+  <b>Drain:</b>
+  <%= @steam_distribution.drain %>
+</p>
+
+
+<%= link_to 'Edit', edit_steam_distribution_path(@steam_distribution) %> |
+<%= link_to 'Back', steam_distributions_path %>

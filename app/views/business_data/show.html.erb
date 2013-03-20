@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @business_datum.value %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @business_datum.year %>
+</p>
+
+<p>
+  <b>Enterprise:</b>
+  <%= @business_datum.enterprise_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_business_datum_path(@business_datum) %> |
+<%= link_to 'Back', business_data_path %>

@@ -1,0 +1,105 @@
+<!--COMPRESSED AIR DISTRIBUTION FORM-->
+
+<%= form_for(@compressed_air_distribution) do |f| %>
+  <% if @compressed_air_distribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compressed_air_distribution.errors.count, "error") %> prohibited this compressed_air_distribution from being saved:</h2>
+
+      <ul>
+      <% @compressed_air_distribution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<!--<tr>
+    <td><%# f.label :compressor_id %></td>
+    <td><%# f.number_field :compressor_id %></td>
+  </tr>-->
+  <tr>
+    <td colspan="4"><h3>Druckluftaufbereitung</h3>
+  </tr>
+  <tr>
+    <td colspan="4"><b>Drucklufttrockner<b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :manufacturer, "Hersteller" %></td>
+    <td><%= f.text_field :manufacturer %></td>
+    <td><%= f.label :compressor_id, "Kompressor" %></td>
+    <td><%= f.select :compressor_id, CompressedAirProductionBasic.all.map{|c| [c.manufacturer, c.id]}%></td>
+  </tr>
+  <tr>   
+    <td><%= f.label :yearOfManufacturing, "Baujahr" %></td>
+    <td> <%= f.number_field :yearOfManufacturing %></td>
+    <td><%= f.label :capacity, "Elektrische Leistung" %></td>
+    <td><%= f.number_field :capacity %> kW</td>
+  </tr>
+  <tr>
+    <td><%= f.label :compressedAirDryerType, "Drucklufttrocknertyp" %></td>
+    <td><%= f.select :compressedAirDryerType, ["Kälte", "Adsorption"]%></td>
+    <td><%= f.label :addons, "Zusätze" %></td>
+    <td><%= f.select :addons, ["Ölabscheider", "Staubfilter"]%></td>
+  </tr>
+  <tr>
+    <td colspan="4"><h3>Druckluftspeicher</h3></td>
+  </tr>
+  <tr>
+    <td><%= f.label :volume, "Volumen" %></td>
+    <td><%= f.number_field :volume %> m&sup3;</td>
+    <td><%= f.label :location_id, "Standort Druckluftspeicher" %></td>
+    <td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+  </tr>
+
+  <tr>
+    <td colspan="4"><h3>Druckluftnetzwerk</h3></td>
+  </tr>
+
+    <tr>
+    <td><%= f.label :leak, "Leckagen" %></td>
+    <td><%= f.number_field :leak %> %</td>
+    <td><%= f.label :pressureLoss, "Druckverlust" %></td>
+    <td><%= f.number_field :pressureLoss %> bar</td>
+  </tr>
+    <tr>
+    <td colspan="4"><b>Durchmesser</b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :mainline, "Hauptleitung" %></td>
+    <td><%= f.number_field :mainline %> mm</td>
+    <td><%= f.label :stubline, "Stichleitung" %></td>
+    <td><%= f.number_field :stubline %> mm</td>
+  </tr>
+  <tr>
+    <td><%= f.label :branchline, "Anschlussleitung" %></td>
+    <td><%= f.number_field :branchline %> mm</td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td colspan="4"><b>Länge</b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :mainlineL, "Hauptleitung" %></td>
+    <td><%= f.number_field :mainlineL %> m</td>
+    <td><%= f.label :stublineL, "Stichleitung" %></td>
+    <td><%= f.number_field :stublineL %> m</td>
+  </tr>
+  <tr>
+    <td><%= f.label :branchlineL, "Anschlussleitung" %></td>
+    <td><%= f.number_field :branchlineL %> m</td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td colspan="4"><b>Material der Leitungen</b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :material, "Material" %></td>
+    <td><%= f.select :material, ["Stahl", "Kunststoff"]%></td>
+    <td colspan="2"></td>
+  </tr>
+</table><br>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<h1>Heißwasserverteilung</h1>
+
+<table>
+  <tr>
+    <th>Kessel</th>
+    <th>Verbraucher</th>
+    <th>Durchmesser</th>
+    <th>Isolation</th>
+    <th>Länge</th>
+    <!--<th>Volumeflownenn</th>
+    <th>Volumeflowmin</th>
+    <th>Volumeflowmax</th>-->
+    <th>Aktion</th>
+  </tr>
+
+<% @hot_water_distributions.each do |hot_water_distribution| %>
+  <tr>
+    <td><%= hot_water_distribution.hotWaterProduction_id %></td>
+    <td><%= hot_water_distribution.hotWaterConsumption_id %></td>
+    <td><%= hot_water_distribution.aperture %></td>
+    <td><%= hot_water_distribution.isolation %></td>
+    <td><%= hot_water_distribution.length %></td>
+    <!--<td><%= hot_water_distribution.volumeFlowNenn %></td>
+    <td><%= hot_water_distribution.volumeFlowMin %></td>
+    <td><%= hot_water_distribution.volumeFlowMax %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_distribution_path(hot_water_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_distribution, method: :delete, data: { confirm: 'Are you sure?' }   %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Heißwasserverteilung anlegen', new_hot_water_distribution_path %>

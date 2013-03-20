@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Steamproduction:</b>
+  <%= @steam_distribution_year.steamProduction_id %>
+</p>
+
+<p>
+  <b>Steamconsumer:</b>
+  <%= @steam_distribution_year.steamConsumer_id %>
+</p>
+
+<p>
+  <b>Dpcompression:</b>
+  <%= @steam_distribution_year.dpCompression %>
+</p>
+
+<p>
+  <b>Dptemperature:</b>
+  <%= @steam_distribution_year.dpTemperature %>
+</p>
+
+<p>
+  <b>Kpcompression:</b>
+  <%= @steam_distribution_year.kpCompression %>
+</p>
+
+<p>
+  <b>Kptemperature:</b>
+  <%= @steam_distribution_year.kpTemperature %>
+</p>
+
+<p>
+  <b>Kpreflux:</b>
+  <%= @steam_distribution_year.kpReflux %>
+</p>
+
+
+<%= link_to 'Edit', edit_steam_distribution_year_path(@steam_distribution_year) %> |
+<%= link_to 'Back', steam_distribution_years_path %>

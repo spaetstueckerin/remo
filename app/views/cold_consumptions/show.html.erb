@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Machinery:</b>
+  <%= @cold_consumption.machinery_id %>
+</p>
+
+<p>
+  <b>Coldproduction:</b>
+  <%= @cold_consumption.coldProduction_id %>
+</p>
+
+<p>
+  <b>Profitcapacity:</b>
+  <%= @cold_consumption.profitCapacity %>
+</p>
+
+<p>
+  <b>Requirementtype:</b>
+  <%= @cold_consumption.requirementType %>
+</p>
+
+<p>
+  <b>Colddistribution:</b>
+  <%= @cold_consumption.coldDistribution_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cold_consumption_path(@cold_consumption) %> |
+<%= link_to 'Back', cold_consumptions_path %>

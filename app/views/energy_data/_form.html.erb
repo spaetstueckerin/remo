@@ -1,0 +1,36 @@
+<!--ENERGY DATA FORM-->
+
+<%= form_for(@energy_datum) do |f| %>
+  <% if @energy_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@energy_datum.errors.count, "error") %> prohibited this energy_datum from being saved:</h2>
+
+      <ul>
+      <% @energy_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  
+    <% user = User.find_by_id(session[:user_id]) %>
+    <% enterprise = Enterprise.find_by_id(user.enterprise_id) %>
+    <%= f.hidden_field :enterprise_id, :value => enterprise.id %>
+    
+    <div class="field">
+    <%= f.label "Datenart" %>
+    <%= f.select :edt_id, EnergyDataType.all.map{|e| [e.ed_type, e.id]}%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

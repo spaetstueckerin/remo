@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  compressor_id: 1
+  manufacturer: MyString
+  yearOfManufacturing: 1
+  capacity: 9.99
+  compressedAirDryerType: MyString
+  addons: MyString
+  volume: 9.99
+  location_id: 1
+  leak: 1
+  pressureLoss: 9.99
+  mainline: 9.99
+  stubline: 9.99
+  branchline: 9.99
+  mainlineL: 9.99
+  stublineL: 9.99
+  branchlineL: 9.99
+  material: MyString
+
+two:
+  compressor_id: 1
+  manufacturer: MyString
+  yearOfManufacturing: 1
+  capacity: 9.99
+  compressedAirDryerType: MyString
+  addons: MyString
+  volume: 9.99
+  location_id: 1
+  leak: 1
+  pressureLoss: 9.99
+  mainline: 9.99
+  stubline: 9.99
+  branchline: 9.99
+  mainlineL: 9.99
+  stublineL: 9.99
+  branchlineL: 9.99
+  material: MyString

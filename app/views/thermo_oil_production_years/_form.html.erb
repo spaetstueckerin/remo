@@ -1,0 +1,65 @@
+<%= form_for(@thermo_oil_production_year) do |f| %>
+  <% if @thermo_oil_production_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thermo_oil_production_year.errors.count, "error") %> prohibited this thermo_oil_production_year from being saved:</h2>
+
+      <ul>
+      <% @thermo_oil_production_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :thermoOilProduction_id %><br />
+    <%= f.number_field :thermoOilProduction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :fuelConsumption %><br />
+    <%= f.text_field :fuelConsumption %>
+  </div>
+  <div class="field">
+    <%= f.label :kettleEnergyConsumption %><br />
+    <%= f.text_field :kettleEnergyConsumption %>
+  </div>
+  <div class="field">
+    <%= f.label :operatingHours %><br />
+    <%= f.number_field :operatingHours %>
+  </div>
+  <div class="field">
+    <%= f.label :kettleExitCompression %><br />
+    <%= f.text_field :kettleExitCompression %>
+  </div>
+  <div class="field">
+    <%= f.label :kettleExitTemperature %><br />
+    <%= f.text_field :kettleExitTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :thermoOilAmount %><br />
+    <%= f.text_field :thermoOilAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :tempAdditionalWater %><br />
+    <%= f.text_field :tempAdditionalWater %>
+  </div>
+  <div class="field">
+    <%= f.label :tempCombustionAir %><br />
+    <%= f.text_field :tempCombustionAir %>
+  </div>
+  <div class="field">
+    <%= f.label :tempExhaustBeforeWRG %><br />
+    <%= f.text_field :tempExhaustBeforeWRG %>
+  </div>
+  <div class="field">
+    <%= f.label :tempExhaustAfterWRG %><br />
+    <%= f.text_field :tempExhaustAfterWRG %>
+  </div>
+  <div class="field">
+    <%= f.label :carbonDioxideExhaust %><br />
+    <%= f.number_field :carbonDioxideExhaust %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

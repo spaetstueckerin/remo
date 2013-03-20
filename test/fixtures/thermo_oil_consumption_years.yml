@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  volumeStream: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  processTemperature: 9.99
+  thermoOilProduction_id: 1
+  machinery_id: 1
+  thermoOilConsumption_id: MyString
+
+two:
+  volumeStream: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  processTemperature: 9.99
+  thermoOilProduction_id: 1
+  machinery_id: 1
+  thermoOilConsumption_id: MyString

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  machinery_id: 1
+  coldProduction_id: 1
+  profitCapacity: 9.99
+  requirementType: MyString
+  coldDistribution_id: 1
+
+two:
+  machinery_id: 1
+  coldProduction_id: 1
+  profitCapacity: 9.99
+  requirementType: MyString
+  coldDistribution_id: 1

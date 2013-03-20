@@ -1,0 +1,28 @@
+<h1>Energielieferverträge</h1>
+<p><%= link_to 'Neuen Vertrag erstellen', new_contract_path %></p>
+
+<table>
+  <tr>
+    <th>Energieträger</th>
+    <th>Anbieter</th>
+    <!--<th>Beschreibung</th>-->
+    <th>Konditionen</th>
+    <th>Vertragsdauer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contracts.each do |contract| %>
+  <tr>
+    <td><%= contract.energy_type %></td>
+    <td><%= contract.supplier %></td>
+    <!--<td><%= contract.description %></td>-->
+    <td><%= contract.condition %></td>
+    <td><%= contract.duration_from %> - <%= contract.duration_to %></td>
+    <td><%= link_to 'Show', contract %></td>
+    <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+    <td><%= link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

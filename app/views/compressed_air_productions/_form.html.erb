@@ -1,0 +1,88 @@
+<%= form_for(@compressed_air_production) do |f| %>
+  <% if @compressed_air_production.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compressed_air_production.errors.count, "error") %> prohibited this compressed_air_production from being saved:</h2>
+
+      <ul>
+      <% @compressed_air_production.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<table>
+  <tr>
+    <td><%= f.label :manufacturer, "Hersteller" %></td>
+    <td><%= f.text_field :manufacturer %></td>
+    <td><%= f.label :version, "Bauart" %></td>
+    <td><%= f.select :version, ["Schraube", "Turbo", "Kolben"]%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :yearOfManufacturing, "Baujahr" %></td>
+    <td><%= f.text_field :yearOfManufacturing %></td>
+    <td><%= f.label :location_id, "Ort/Raum" %></td>
+    <td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :capacity, "Nennleistung" %></td>
+    <td><%= f.number_field :capacity %> kW</td>
+    <td><%= f.label :nominalDeliveryRate, "Nenn-Fördermenge" %></td>
+    <td><%= f.number_field :nominalDeliveryRate %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :pressureSettling, "Druckniveau" %></td>
+    <td><%= f.number_field :pressureSettling %> bar Ü</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><%= f.label :raisingPressure, "Einschaltdruck" %></td>
+    <td><%= f.number_field :raisingPressure %> bar Ü</td>
+   <td> <%= f.label :breakPressure, "Ausschaltdruck" %></td>
+    <td><%= f.number_field :breakPressure %> bar Ü</td>
+  </tr>
+  <tr>
+    <td><%= f.label :loadCharacter, "Lastart" %></td>
+    <td><%= f.select :loadCharacter, ["Grundlast", "Spitzenlast", "Reserve"]%></td>
+    <td><%= f.label :facilityCharacter, "Anlageart" %></td>
+    <td><%= f.select :facilityCharacter, ["zentral", "dezentral"]%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :speedRegulation, "Drehzahlregelung" %></td>
+    <td><%= f.select :speedRegulation, {"Ja" => true, "Nein" => false}%></td>
+    <td><%= f.label :higherControl, "Übergeordnete Steuerung" %></td>
+    <td><%= f.select :higherControl, {"Ja" => true, "Nein" => false}%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :support, "Wartungskontakt" %></td>
+    <td colspan ="3"><%= f.text_area :support, size: "93x2" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :redundancyRequirements, "Redundanz (gefordert)" %></td>
+    <td><%= f.select :redundancyRequirements, {"Ja" => true, "Nein" => false}%></td>
+    <td><%= f.label :pressureExhaust, "Druckluftansaugung (Wo?)" %></td>
+    <td><%= f.text_field :pressureExhaust %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :coolingMedium, "Kühlmedium" %></td>
+    <td colspan="3"><%= f.select :version, ["Wasser", "Luft"]%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :airFrom, "Bei Luft: woher" %></td>
+    <td><%= f.text_field :airFrom %></td>
+    <td><%= f.label :airWhere, "Bei Luft: wohin" %></td>
+    <td><%= f.text_field :airWhere %></td>
+  </tr>
+    <tr>
+    <td><%= f.label :heatRecovery, "Wärmerückgewinnung" %></td>
+    <td><%= f.select :speedRegulation, {"Ja" => true, "Nein" => false}%></td>
+    <td><%= f.label :heatApplicationArea, "Einsatzgebiet Wärme" %></td>
+    <td><%= f.text_field :heatApplicationArea %></td>
+  </tr>
+</table><br>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>
+<br>

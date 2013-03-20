@@ -1,0 +1,60 @@
+<%= form_for(@speed_regulation) do |f| %>
+  <% if @speed_regulation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@speed_regulation.errors.count, "error") %> prohibited this speed_regulation from being saved:</h2>
+
+      <ul>
+      <% @speed_regulation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <tr>
+    <td><%= f.label :year_id, "Jahr" %>
+    <td><%= f.select :year_id, Year.all.map{|y| [y.year, y.id]}%></td>
+  </tr>
+    <td><%= f.label :compressor_id, "Kompressor" %>
+    <td><%= f.select :compressor_id, CompressedAirProductionBasic.all.map{|c| [c.manufacturer, c.id]}%></td>
+  <tr>
+    <td><%= f.label :deliveryRate10, "Teillast 10%" %></td>
+    <td><%= f.number_field :deliveryRate10 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate20, "Teillast 20%" %></td>
+    <td><%= f.number_field :deliveryRate20 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate30, "Teillast 30%" %></td>
+    <td><%= f.number_field :deliveryRate30 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate40, "Teillast 40%" %></td>
+    <td><%= f.number_field :deliveryRate40 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate50, "Teillast 50%" %></td>
+    <td><%= f.number_field :deliveryRate50 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate60, "Teillast 60%" %></td>
+    <td><%= f.number_field :deliveryRate60 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate70, "Teillast 70%" %></td>
+    <td><%= f.number_field :deliveryRate70 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate80, "Teillast 80%" %></td>
+    <td><%= f.number_field :deliveryRate80 %> m&sup3;/min</td>
+  </tr>
+  <tr>
+    <td><%= f.label :deliveryRate90, "Teillast 90%" %></td>
+    <td><%= f.number_field :deliveryRate90 %> m&sup3;/min</td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

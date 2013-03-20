@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ed_type: MyString
+  description_text: MyString
+  unit: MyString
+  energy_data_id: 1
+
+two:
+  ed_type: MyString
+  description_text: MyString
+  unit: MyString
+  energy_data_id: 1

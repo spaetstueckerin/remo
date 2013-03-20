@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  compression: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  coldConsumption_id: 1
+  coldProduction_id: 1
+  coldDistribution_id: 1
+
+two:
+  compression: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  coldConsumption_id: 1
+  coldProduction_id: 1
+  coldDistribution_id: 1

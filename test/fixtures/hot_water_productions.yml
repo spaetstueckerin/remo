@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  kettleName: MyString
+  kettleManufacturer: MyString
+  kettleManuYear: 1
+  kettleCapacity: 9.99
+  burnerType: MyString
+  burnerManufacturer: MyString
+  burnerManuYear: 1
+  districtHeatMin: 9.99
+  districtHeatMax: 9.99
+  fuelType: MyString
+  fuelDenseness: 9.99
+  fuelValue: 9.99
+  exhaustHeatRecovery: MyString
+
+two:
+  kettleName: MyString
+  kettleManufacturer: MyString
+  kettleManuYear: 1
+  kettleCapacity: 9.99
+  burnerType: MyString
+  burnerManufacturer: MyString
+  burnerManuYear: 1
+  districtHeatMin: 9.99
+  districtHeatMax: 9.99
+  fuelType: MyString
+  fuelDenseness: 9.99
+  fuelValue: 9.99
+  exhaustHeatRecovery: MyString

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  volumeStream: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  processTemperature: 9.99
+  coldConsumption_id: 1
+
+two:
+  volumeStream: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  processTemperature: 9.99
+  coldConsumption_id: 1

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hotWaterProduction_id: 1
+  machinery_id: 1
+  volumeStream: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  processTemperature: 9.99
+
+two:
+  hotWaterProduction_id: 1
+  machinery_id: 1
+  volumeStream: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  processTemperature: 9.99

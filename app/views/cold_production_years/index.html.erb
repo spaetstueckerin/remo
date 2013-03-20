@@ -1,0 +1,41 @@
+<h1>Listing cold_production_years</h1>
+
+<table>
+  <tr>
+    <th>Operatinghours</th>
+    <th>Energyconsumption</th>
+    <th>Coldamount</th>
+    <th>Massflow</th>
+    <th>Flowtemperature</th>
+    <th>Returntemperature</th>
+    <th>Temperaturein</th>
+    <th>Temperatureout</th>
+    <th>Waterrequirement</th>
+    <th>Coldproduction</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cold_production_years.each do |cold_production_year| %>
+  <tr>
+    <td><%= cold_production_year.operatingHours %></td>
+    <td><%= cold_production_year.energyConsumption %></td>
+    <td><%= cold_production_year.coldAmount %></td>
+    <td><%= cold_production_year.massFlow %></td>
+    <td><%= cold_production_year.flowTemperature %></td>
+    <td><%= cold_production_year.returnTemperature %></td>
+    <td><%= cold_production_year.temperatureIn %></td>
+    <td><%= cold_production_year.temperatureOut %></td>
+    <td><%= cold_production_year.waterRequirement %></td>
+    <td><%= cold_production_year.coldProduction_id %></td>
+    <td><%= link_to 'Show', cold_production_year %></td>
+    <td><%= link_to 'Edit', edit_cold_production_year_path(cold_production_year) %></td>
+    <td><%= link_to 'Destroy', cold_production_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cold production year', new_cold_production_year_path %>

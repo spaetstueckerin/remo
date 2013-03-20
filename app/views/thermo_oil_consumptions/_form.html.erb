@@ -1,0 +1,37 @@
+<%= form_for(@thermo_oil_consumption) do |f| %>
+  <% if @thermo_oil_consumption.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thermo_oil_consumption.errors.count, "error") %> prohibited this thermo_oil_consumption from being saved:</h2>
+
+      <ul>
+      <% @thermo_oil_consumption.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :thermoOilProduction_id %><br />
+    <%= f.number_field :thermoOilProduction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :machinery_id %><br />
+    <%= f.text_field :machinery_id %>
+  </div>
+  <div class="field">
+    <%= f.label :profitCapacity %><br />
+    <%= f.text_field :profitCapacity %>
+  </div>
+  <div class="field">
+    <%= f.label :requirementType %><br />
+    <%= f.text_field :requirementType %>
+  </div>
+  <div class="field">
+    <%= f.label :thermoOilDistribution_id %><br />
+    <%= f.number_field :thermoOilDistribution_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  steamProduction_id: 1
+  steamConsumer_id: 1
+  dpAperture: 9.99
+  dpIsolation: 9.99
+  dpLength: 9.99
+  massFlowNenn: 9.99
+  massFlowMin: 9.99
+  massFlowMax: 9.99
+  kpAperture: 9.99
+  kpIsolation: 9.99
+  kpLength: 9.99
+  drain: MyString
+
+two:
+  steamProduction_id: 1
+  steamConsumer_id: 1
+  dpAperture: 9.99
+  dpIsolation: 9.99
+  dpLength: 9.99
+  massFlowNenn: 9.99
+  massFlowMin: 9.99
+  massFlowMax: 9.99
+  kpAperture: 9.99
+  kpIsolation: 9.99
+  kpLength: 9.99
+  drain: MyString

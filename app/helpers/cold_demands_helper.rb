@@ -1,0 +1,2 @@
+module ColdDemandsHelper
+end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  verbrauch: 9.99
+  year_id: 1
+
+two:
+  verbrauch: 9.99
+  year_id: 1

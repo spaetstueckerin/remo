@@ -1,0 +1,30 @@
+<%= form_for(@compressed_air_consumption_year) do |f| %>
+  <% if @compressed_air_consumption_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compressed_air_consumption_year.errors.count, "error") %> prohibited this compressed_air_consumption_year from being saved:</h2>
+
+      <ul>
+      <% @compressed_air_consumption_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+    <td><%= f.label :year_id, "Jahr" %></td>
+    <td colspan="3"><%= f.select :year_id, Year.all.map{|y| [y.year, y.id]}%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :compressed_air_consumer_id, "Verbraucher" %></td>
+    <td><%= f.select :compressed_air_consumer_id, CompressedAirProduction.all.map{|c| [c.manufacturer, c.id]}%>
+    <td><%= f.label :verbrauch, "Verbrauch" %></td>
+    <td><%= f.number_field :verbrauch %> m&sup3;/a</td>
+
+
+    </tr>
+  </table>
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

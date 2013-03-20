@@ -1,0 +1,73 @@
+<%= form_for(@steam_production) do |f| %>
+  <% if @steam_production.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@steam_production.errors.count, "error") %> prohibited this steam_production from being saved:</h2>
+
+      <ul>
+      <% @steam_production.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <tr>
+    <td><%= f.label :kettleName, "Kesselname/typ" %></td>
+    <td><%= f.text_field :kettleName %></td>
+    <td><%= f.label :kettleManufaturer, "Hersteller Kessel" %></td>
+    <td><%= f.text_field :kettleManufaturer %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :kettleCapacity, "Leistung" %></td>
+    <td><%= f.number_field :kettleCapacity %> kW</td>
+    <td><%= f.label :kettleSaturatedSteam, "Sattdampf" %></td>
+    <td><%= f.number_field :kettleSaturatedSteam %> t/h</td>
+  </tr>
+  <tr>
+    <td><%= f.label :kettleManuYear, "Kessel Baujahr" %></td>
+    <td colspan="3"><%= f.number_field :kettleManuYear %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :burnerType, "Brennertyp" %></td>
+    <td><%= f.text_field :burnerType %></td>
+    <td><%= f.label :burnerManufacturer, "Hersteller Brenner" %></td>
+    <td><%= f.text_field :burnerManufacturer %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :burnerManufacturingYear, "Brenner Baujahr" %></td>
+    <td colspan="3"><%= f.number_field :burnerManufacturingYear %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :districtHeatMin, "Feuerungswärmeleistung (min)" %></td>
+    <td><%= f.number_field :districtHeatMin %> MW</td>
+    <td><%= f.label :districtHeatMax, "Feuerungswärmeleistung (max)" %></td>
+    <td><%= f.number_field :districtHeatMax %> MW</td>
+  </tr>
+  <tr>
+    <td><%= f.label :fuelType, "Brennstofftyp" %></td>
+    <td><%= f.text_field :fuelType %></td>
+    <td><%= f.label :fuelCapacity, "Brennstoffdichte" %></td>
+    <td><%= f.number_field :fuelCapacity %> kg/m&sup3;</td>
+  </tr>
+  <tr>
+    <td><%= f.label :fuelValue, "Brennwert" %></td>
+    <td><%= f.number_field :fuelValue %><%= f.select :fuelValueUnit, ["kj/kg", "m³", "l", "Nm³"] %></td>
+    <td><%= f.label :exhaustHeatRecovery, "Abwärmerückgewinnung" %></td>
+    <td><%= f.select :exhaustHeatRecovery, ["ECO", "BWT", "LuVo"]%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :ventCondenser, "Brüdenkondensator" %></td>
+    <td><%= f.number_field :ventCondenser %> kW</td>
+    <td><%= f.label :o2Control, "O2-Regelung" %></td>
+    <td colspan="3"><%= f.select :o2Control, {"Ja" => true, "Nein" => false}%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :chimney, "Kamin (Material, Höhe, Querschnitt)" %></td>
+    <td colspan="3"><%= f.text_area :chimney, size: "90x3"%></td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden"%>
+  </div>
+<% end %>

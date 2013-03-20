@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @production_datum.value %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @production_datum.year %>
+</p>
+
+<p>
+  <b>Enterprise:</b>
+  <%= @production_datum.enterprise_id %>
+</p>
+
+<p>
+  <b>Edt:</b>
+  <%= @production_datum.pdt_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_production_datum_path(@production_datum) %> |
+<%= link_to 'Back', production_data_path %>

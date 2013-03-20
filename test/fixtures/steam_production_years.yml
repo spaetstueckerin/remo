@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fuelConsumption: 9.99
+  kettleEnergyConsumption: 9.99
+  operationHours: 1
+  kettleSteamParameterBar: 9.99
+  kettleSteamParameterCel: 9.99
+  steamAmount: 9.99
+  tempAdditionalWater: 9.99
+  tempCombustionAir: 9.99
+  tempExhaustBeforeWRG: 9.99
+  tempExhaustAfterWRG: 9.99
+  carbonDioxideExhaust: 9.99
+  yearId_integer: MyString
+
+two:
+  fuelConsumption: 9.99
+  kettleEnergyConsumption: 9.99
+  operationHours: 1
+  kettleSteamParameterBar: 9.99
+  kettleSteamParameterCel: 9.99
+  steamAmount: 9.99
+  tempAdditionalWater: 9.99
+  tempCombustionAir: 9.99
+  tempExhaustBeforeWRG: 9.99
+  tempExhaustAfterWRG: 9.99
+  carbonDioxideExhaust: 9.99
+  yearId_integer: MyString

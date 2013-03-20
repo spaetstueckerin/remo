@@ -1,0 +1,29 @@
+<h1>Druckluftverbrauch - Bedarfszeiträume</h1>
+
+<table>
+   <tr>
+    <th>Verbraucher</th>
+    <th>Datum</th>
+    <th>Von</th>
+    <th>Bis</th>
+    <th>Aktion</th>
+  </tr>
+  
+<% @steam_demands.each do |steam_demand| %>
+  <tr>
+    <td><%= steam_demand.steamConsumption_id %></td>
+    <td><%= steam_demand.demandDate.strftime('%d.%m.%Y') %></td>
+    <td><%= steam_demand.timeFrom.strftime('%H:%M') %></td>
+    <td><%= steam_demand.timeTo.strftime('%H:%M') %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_demand %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_demand_path(steam_demand) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_demand, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuen Bedarfszeitraum anlegen', new_steam_demand_path %>

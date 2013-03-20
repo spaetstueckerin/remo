@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Kettlename:</b>
+  <%= @hot_water_production.kettleName %>
+</p>
+
+<p>
+  <b>Kettlemanufacturer:</b>
+  <%= @hot_water_production.kettleManufacturer %>
+</p>
+
+<p>
+  <b>Kettlemanuyear:</b>
+  <%= @hot_water_production.kettleManuYear %>
+</p>
+
+<p>
+  <b>Kettlecapacity:</b>
+  <%= @hot_water_production.kettleCapacity %>
+</p>
+
+<p>
+  <b>Burnertype:</b>
+  <%= @hot_water_production.burnerType %>
+</p>
+
+<p>
+  <b>Burnermanufacturer:</b>
+  <%= @hot_water_production.burnerManufacturer %>
+</p>
+
+<p>
+  <b>Burnermanuyear:</b>
+  <%= @hot_water_production.burnerManuYear %>
+</p>
+
+<p>
+  <b>Districtheatmin:</b>
+  <%= @hot_water_production.districtHeatMin %>
+</p>
+
+<p>
+  <b>Districtheatmax:</b>
+  <%= @hot_water_production.districtHeatMax %>
+</p>
+
+<p>
+  <b>Fueltype:</b>
+  <%= @hot_water_production.fuelType %>
+</p>
+
+<p>
+  <b>Fueldenseness:</b>
+  <%= @hot_water_production.fuelDenseness %>
+</p>
+
+<p>
+  <b>Fuelvalue:</b>
+  <%= @hot_water_production.fuelValue %>
+</p>
+
+<p>
+  <b>Exhaustheatrecovery:</b>
+  <%= @hot_water_production.exhaustHeatRecovery %>
+</p>
+
+
+<%= link_to 'Edit', edit_hot_water_production_path(@hot_water_production) %> |
+<%= link_to 'Back', hot_water_productions_path %>

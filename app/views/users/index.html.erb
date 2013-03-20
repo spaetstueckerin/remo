@@ -1,0 +1,33 @@
+<h1>Benutzerliste</h1>
+
+<table>
+  <tr>
+    <th>Nr.</th>
+    <th>Name</th>
+    <th>Vorname</th>
+    <th>Benutzername</th>
+    <!--<th>Password</th>-->
+    <th>Email</th>
+    <th>Position</th>
+    <!--<th>Bemerkung</th>-->
+    <!--<th>Aktionen</th>-->
+  </tr>
+
+<% @users.each do |user| %>
+<tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.firstname %></td>
+    <td><%= user.username %></td>
+    <!--<td><%= user.password_digest %></td>-->
+    <td><%= user.email %></td>
+    <td><%= user.position %></td>
+    <!--<td><%= user.annotation %></td>-->
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), user %>
+    <!--<%# link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_user_path(user) %>
+    <%# link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Neuer Benutzer', new_user_path %>

@@ -1,0 +1,35 @@
+<!--BUSINESS DATA INDEX-->
+
+<h1>Liste der betriebswirtschaftlichen Daten</h1>
+
+<table>
+  <tr>
+    <th>Datensatz</th>
+    <th>Wert</th>
+    <th>Jahr</th>
+    <th>Unternehmen</th>
+    <th></th>
+  </tr>
+
+<% @business_data.each do |business_datum| %>
+  <tr>
+  <td><% bdt = BusinessDataType.find_by_id(business_datum.bdt_id) %><%= bdt.bd_type %>
+    <td><%= business_datum.value %></td>
+    <td><%= business_datum.year %></td>
+    <% enterprise = Enterprise.find_by_id(business_datum.enterprise_id)%>
+    <td><%= enterprise.name %></td>
+    <td><%# link_to 'Show', business_datum %>
+    <%# link_to 'Edit', edit_business_datum_path(business_datum) %>
+    <%# link_to 'Destroy', business_datum, method: :delete, data: { confirm: 'Are you sure?' } %>
+    
+    <%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), business_datum %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_business_datum_path(business_datum) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), business_datum, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuer betriebswirtschaftlicher Datensatz', new_business_datum_path %>

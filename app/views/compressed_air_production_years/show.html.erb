@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Operatinghours:</b>
+  <%= @compressed_air_production_year.operatingHours %>
+</p>
+
+<p>
+  <b>Loadhours:</b>
+  <%= @compressed_air_production_year.loadHours %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @compressed_air_production_year.capacity %>
+</p>
+
+<p>
+  <b>Energyconsumption:</b>
+  <%= @compressed_air_production_year.energyConsumption %>
+</p>
+
+<p>
+  <b>Deliveryrate:</b>
+  <%= @compressed_air_production_year.deliveryRate %>
+</p>
+
+<p>
+  <b>Operatingcycles:</b>
+  <%= @compressed_air_production_year.operatingCycles %>
+</p>
+
+<p>
+  <b>Overtraveltimeidle:</b>
+  <%= @compressed_air_production_year.overtravelTimeIdle %>
+</p>
+
+<p>
+  <b>Pressuremin:</b>
+  <%= @compressed_air_production_year.pressureMin %>
+</p>
+
+<p>
+  <b>Pressureexhausttempmin:</b>
+  <%= @compressed_air_production_year.pressureExhaustTempMin %>
+</p>
+
+<p>
+  <b>Pressureexhausttempmax:</b>
+  <%= @compressed_air_production_year.pressureExhaustTempMax %>
+</p>
+
+<p>
+  <b>Advancetemp:</b>
+  <%= @compressed_air_production_year.advanceTemp %>
+</p>
+
+<p>
+  <b>Returntemp:</b>
+  <%= @compressed_air_production_year.returnTemp %>
+</p>
+
+
+<%= link_to 'Edit', edit_compressed_air_production_year_path(@compressed_air_production_year) %> |
+<%= link_to 'Back', compressed_air_production_years_path %>

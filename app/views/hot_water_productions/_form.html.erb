@@ -1,0 +1,65 @@
+<%= form_for(@hot_water_production) do |f| %>
+  <% if @hot_water_production.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hot_water_production.errors.count, "error") %> prohibited this hot_water_production from being saved:</h2>
+
+      <ul>
+      <% @hot_water_production.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <tr>
+    <td><%= f.label :kettleName, "Kesselname/Typ" %></td>
+    <td><%= f.text_field :kettleName %></td>
+    <td><%= f.label :kettleManufacturer, "Kessel Hersteller" %></td>
+    <td><%= f.text_field :kettleManufacturer %></td>
+</tr>
+<tr>
+    <td><%= f.label :kettleManuYear, "Baujahr" %></td>
+    <td colspan="3"><%= f.number_field :kettleManuYear %></td>
+</tr>
+<tr>
+    <td><%= f.label :kettleCapacityKw, "Kesselleistung" %></td>
+    <td><%= f.number_field :kettleCapacityKw %> kW</td>
+    <td><%= f.label :kettleCapacity, "Kesselleistung" %></td>
+    <td><%= f.number_field :kettleCapacity %> m&sup3;/h</td>
+</tr>
+<tr>
+    <td><%= f.label :burnerType, "Brennertyp" %></td>
+    <td><%= f.text_field :burnerType %></td>
+    <td><%= f.label :burnerManufacturer, "Hersteller Brenner" %></td>
+    <td><%= f.text_field :burnerManufacturer %></td>
+</tr>
+<tr>
+    <td><%= f.label :burnerManuYear, "Brenner Baujahr" %></td>
+    <td colspan="3"><%= f.number_field :burnerManuYear %></td>
+</tr>
+<tr>
+    <td><%= f.label :districtHeatMin, "Feuerungswärmeleistung (Min)" %></td>
+    <td><%= f.number_field :districtHeatMin %> MW</td>
+    <td><%= f.label :districtHeatMax, "Feuerungswärmeleistung (Max)" %></td>
+    <td><%= f.number_field :districtHeatMax %> MW</td>
+</tr>
+<tr>
+    <td><%= f.label :fuelType, "Brennstofftyp" %></td>
+    <td><%= f.text_field :fuelType %></td>
+    <td><%= f.label :fuelDenseness, "Brennstoff Dichte" %></td>
+    <td><%= f.number_field :fuelDenseness %> kg/m³</td>
+</tr>
+<tr>
+    <td><%= f.label :fuelValue, "Brennwert" %></td>
+    <td colspan="3"><%= f.text_field :fuelValue %><%= f.select :fuelValueUnit, ["kJ/kg", "m³", "l", "Nm³"]%></td>
+</tr>
+<tr>
+    <td><%= f.label :exhaustHeatRecovery, "Abgaswärmerückgewinnung" %></td>
+    <td colspan="3"><%= f.select :exhaustHeatRecovery, ["ECO", "BWT", "LuVo"] %></td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden"%>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  thermoOilProduction_id: 1
+  thermoOilConsumption_id: 1
+  aperture: 9.99
+  isolation: 9.99
+  length: 9.99
+  volumeFlowNenn: 9.99
+  volumeFlowMin: 9.99
+  volumeFlowMax: 9.99
+
+two:
+  thermoOilProduction_id: 1
+  thermoOilConsumption_id: 1
+  aperture: 9.99
+  isolation: 9.99
+  length: 9.99
+  volumeFlowNenn: 9.99
+  volumeFlowMin: 9.99
+  volumeFlowMax: 9.99

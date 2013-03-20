@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fuelconsumption:</b>
+  <%= @steam_production_year.fuelConsumption %>
+</p>
+
+<p>
+  <b>Kettleenergyconsumption:</b>
+  <%= @steam_production_year.kettleEnergyConsumption %>
+</p>
+
+<p>
+  <b>Operationhours:</b>
+  <%= @steam_production_year.operationHours %>
+</p>
+
+<p>
+  <b>Kettlesteamparameterbar:</b>
+  <%= @steam_production_year.kettleSteamParameterBar %>
+</p>
+
+<p>
+  <b>Kettlesteamparametercel:</b>
+  <%= @steam_production_year.kettleSteamParameterCel %>
+</p>
+
+<p>
+  <b>Steamamount:</b>
+  <%= @steam_production_year.steamAmount %>
+</p>
+
+<p>
+  <b>Tempadditionalwater:</b>
+  <%= @steam_production_year.tempAdditionalWater %>
+</p>
+
+<p>
+  <b>Tempcombustionair:</b>
+  <%= @steam_production_year.tempCombustionAir %>
+</p>
+
+<p>
+  <b>Tempexhaustbeforewrg:</b>
+  <%= @steam_production_year.tempExhaustBeforeWRG %>
+</p>
+
+<p>
+  <b>Tempexhaustafterwrg:</b>
+  <%= @steam_production_year.tempExhaustAfterWRG %>
+</p>
+
+<p>
+  <b>Carbondioxideexhaust:</b>
+  <%= @steam_production_year.carbonDioxideExhaust %>
+</p>
+
+<p>
+  <b>Yearid integer:</b>
+  <%= @steam_production_year.yearId_integer %>
+</p>
+
+
+<%= link_to 'Edit', edit_steam_production_year_path(@steam_production_year) %> |
+<%= link_to 'Back', steam_production_years_path %>

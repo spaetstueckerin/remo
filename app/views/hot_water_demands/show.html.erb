@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Time from:</b>
+  <%= @hot_water_demand.time_from %>
+</p>
+
+<p>
+  <b>Time to:</b>
+  <%= @hot_water_demand.time_to %>
+</p>
+
+<p>
+  <b>Demanddate:</b>
+  <%= @hot_water_demand.demandDate %>
+</p>
+
+<p>
+  <b>Hotwaterconsumption:</b>
+  <%= @hot_water_demand.hotWaterConsumption_id %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @hot_water_demand.year_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_hot_water_demand_path(@hot_water_demand) %> |
+<%= link_to 'Back', hot_water_demands_path %>

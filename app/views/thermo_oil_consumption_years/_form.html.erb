@@ -1,0 +1,45 @@
+<%= form_for(@thermo_oil_consumption_year) do |f| %>
+  <% if @thermo_oil_consumption_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thermo_oil_consumption_year.errors.count, "error") %> prohibited this thermo_oil_consumption_year from being saved:</h2>
+
+      <ul>
+      <% @thermo_oil_consumption_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :volumeStream %><br />
+    <%= f.text_field :volumeStream %>
+  </div>
+  <div class="field">
+    <%= f.label :flowTemperature %><br />
+    <%= f.text_field :flowTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :returnTemperature %><br />
+    <%= f.text_field :returnTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :processTemperature %><br />
+    <%= f.text_field :processTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :thermoOilProduction_id %><br />
+    <%= f.number_field :thermoOilProduction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :machinery_id %><br />
+    <%= f.number_field :machinery_id %>
+  </div>
+  <div class="field">
+    <%= f.label :thermoOilConsumption_id %><br />
+    <%= f.text_field :thermoOilConsumption_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

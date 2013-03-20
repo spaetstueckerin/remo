@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  machinery_id: 1
+  compressor_id: 1
+  neededPressureSettling: 9.99
+  neededQuality: MyString
+  volumeStreamNom: 9.99
+  volumeStreamMin: 9.99
+  volumeStreamMax: 9.99
+  requirementType: MyString
+
+two:
+  machinery_id: 1
+  compressor_id: 1
+  neededPressureSettling: 9.99
+  neededQuality: MyString
+  volumeStreamNom: 9.99
+  volumeStreamMin: 9.99
+  volumeStreamMax: 9.99
+  requirementType: MyString

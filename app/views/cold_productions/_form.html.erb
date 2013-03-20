@@ -1,0 +1,53 @@
+<%= form_for(@cold_production) do |f| %>
+  <% if @cold_production.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cold_production.errors.count, "error") %> prohibited this cold_production from being saved:</h2>
+
+      <ul>
+      <% @cold_production.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer %>
+  </div>
+  <div class="field">
+    <%= f.label :buildType %><br />
+    <%= f.text_field :buildType %>
+  </div>
+  <div class="field">
+    <%= f.label :yearOfManufacturing %><br />
+    <%= f.number_field :yearOfManufacturing %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity %><br />
+    <%= f.text_field :capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :coolingCapacity %><br />
+    <%= f.text_field :coolingCapacity %>
+  </div>
+  <div class="field">
+    <%= f.label :coolingMedium %><br />
+    <%= f.text_field :coolingMedium %>
+  </div>
+  <div class="field">
+    <%= f.label :rkWayOfCooling %><br />
+    <%= f.text_field :rkWayOfCooling %>
+  </div>
+  <div class="field">
+    <%= f.label :rkCoolingMedium %><br />
+    <%= f.text_field :rkCoolingMedium %>
+  </div>
+  <div class="field">
+    <%= f.label :rkCapacity %><br />
+    <%= f.text_field :rkCapacity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

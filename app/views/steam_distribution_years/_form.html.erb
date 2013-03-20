@@ -1,0 +1,47 @@
+<%= form_for(@steam_distribution_year) do |f| %>
+  <% if @steam_distribution_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@steam_distribution_year.errors.count, "error") %> prohibited this steam_distribution_year from being saved:</h2>
+
+      <ul>
+      <% @steam_distribution_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+    <td><%= f.label :steamProduction_id, "Dampferzeuger" %></td>
+    <td><%= f.select :steamProduction_id, SteamProduction.all.map{|s| [s.kettleName, s.id]}%></td>
+    <td><%= f.label :steamConsumer_id, "Dampfverbraucher" %></td>
+    <td><%= f.number_field :steamConsumer_id %></td>
+  </tr>
+  <tr>
+    <td colspan="4"><b>Dampfparameter</b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :dpCompression, "Druck" %></td>
+    <td><%= f.number_field :dpCompression %> bar Ü</td>
+    <td><%= f.label :dpTemperature, "Temperatur" %></td>
+    <td><%= f.number_field :dpTemperature %> °C</td>
+  </tr>
+    <tr>
+    <td colspan="4"><b>Kondensatparameter</b></td>
+  </tr>
+  <tr>
+    <td><%= f.label :kpCompression, "Druck" %></td>
+    <td><%= f.number_field :kpCompression %> bar Ü</td>
+    <td><%= f.label :kpTemperature, "Temperatur" %></td>
+    <td><%= f.number_field :kpTemperature %> °C</td>
+  </tr>
+  <tr>
+    <td><%= f.label :kpReflux, "Rückfluss" %></td>
+    <td colspan="3"><%= f.number_field :kpReflux %> %</td>
+  </tr>
+</table><br>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

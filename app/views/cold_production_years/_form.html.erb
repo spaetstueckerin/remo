@@ -1,0 +1,57 @@
+<%= form_for(@cold_production_year) do |f| %>
+  <% if @cold_production_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cold_production_year.errors.count, "error") %> prohibited this cold_production_year from being saved:</h2>
+
+      <ul>
+      <% @cold_production_year.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :operatingHours %><br />
+    <%= f.number_field :operatingHours %>
+  </div>
+  <div class="field">
+    <%= f.label :energyConsumption %><br />
+    <%= f.text_field :energyConsumption %>
+  </div>
+  <div class="field">
+    <%= f.label :coldAmount %><br />
+    <%= f.text_field :coldAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :massFlow %><br />
+    <%= f.text_field :massFlow %>
+  </div>
+  <div class="field">
+    <%= f.label :flowTemperature %><br />
+    <%= f.text_field :flowTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :returnTemperature %><br />
+    <%= f.text_field :returnTemperature %>
+  </div>
+  <div class="field">
+    <%= f.label :temperatureIn %><br />
+    <%= f.text_field :temperatureIn %>
+  </div>
+  <div class="field">
+    <%= f.label :temperatureOut %><br />
+    <%= f.text_field :temperatureOut %>
+  </div>
+  <div class="field">
+    <%= f.label :waterRequirement %><br />
+    <%= f.text_field :waterRequirement %>
+  </div>
+  <div class="field">
+    <%= f.label :coldProduction_id %><br />
+    <%= f.number_field :coldProduction_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,58 @@
+<h1>Liste der Druckluftverteiler</h1>
+
+<table>
+  <tr>
+    <th>Kompressor</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Leistung</th>
+    <th>Typ</th>
+    <!--<th>Zusatz</th>-->
+    <th>Volumen</th>
+    <th>Ort (DLS)</th>
+    <!--<th>Leak</th>
+    <th>Pressureloss</th>
+    <th>Mainline</th>
+    <th>Stubline</th>
+    <th>Branchline</th>
+    <th>Mainlinel</th>
+    <th>Stublinel</th>
+    <th>Branchlinel</th>
+    <th>Material</th>-->
+    <th>Aktion</th>
+
+  </tr>
+
+<% @compressed_air_distributions.each do |compressed_air_distribution| %>
+  <tr>
+    <% compressor = CompressedAirProductionBasic.find_by_id(compressed_air_distribution.compressor_id)%>
+    <td><%= compressor.manufacturer %></td>
+    <td><%= compressed_air_distribution.manufacturer %></td>
+    <td><%= compressed_air_distribution.yearOfManufacturing %></td>
+    <td><%= compressed_air_distribution.capacity %></td>
+    <td><%= compressed_air_distribution.compressedAirDryerType %></td>
+    <!--<td><%= compressed_air_distribution.addons %></td>-->
+    <td><%= compressed_air_distribution.volume %></td>
+    <% location = Location.find_by_id(compressed_air_distribution.location_id)%>
+    <td><%= location.name %></td>
+    <!--<td><%= compressed_air_distribution.leak %></td>
+    <td><%= compressed_air_distribution.pressureLoss %></td>
+    <td><%= compressed_air_distribution.mainline %></td>
+    <td><%= compressed_air_distribution.stubline %></td>
+    <td><%= compressed_air_distribution.branchline %></td>
+    <td><%= compressed_air_distribution.mainlineL %></td>
+    <td><%= compressed_air_distribution.stublineL %></td>
+    <td><%= compressed_air_distribution.branchlineL %></td>
+    <td><%= compressed_air_distribution.material %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_distribution_path(compressed_air_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Druckluftverteilung anlegen', new_compressed_air_distribution_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  thermoOilProduction_id: 1
+  machinery_id: MyString
+  profitCapacity: 9.99
+  requirementType: MyString
+  thermoOilDistribution_id: 1
+
+two:
+  thermoOilProduction_id: 1
+  machinery_id: MyString
+  profitCapacity: 9.99
+  requirementType: MyString
+  thermoOilDistribution_id: 1

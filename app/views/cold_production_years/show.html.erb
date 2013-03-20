@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Operatinghours:</b>
+  <%= @cold_production_year.operatingHours %>
+</p>
+
+<p>
+  <b>Energyconsumption:</b>
+  <%= @cold_production_year.energyConsumption %>
+</p>
+
+<p>
+  <b>Coldamount:</b>
+  <%= @cold_production_year.coldAmount %>
+</p>
+
+<p>
+  <b>Massflow:</b>
+  <%= @cold_production_year.massFlow %>
+</p>
+
+<p>
+  <b>Flowtemperature:</b>
+  <%= @cold_production_year.flowTemperature %>
+</p>
+
+<p>
+  <b>Returntemperature:</b>
+  <%= @cold_production_year.returnTemperature %>
+</p>
+
+<p>
+  <b>Temperaturein:</b>
+  <%= @cold_production_year.temperatureIn %>
+</p>
+
+<p>
+  <b>Temperatureout:</b>
+  <%= @cold_production_year.temperatureOut %>
+</p>
+
+<p>
+  <b>Waterrequirement:</b>
+  <%= @cold_production_year.waterRequirement %>
+</p>
+
+<p>
+  <b>Coldproduction:</b>
+  <%= @cold_production_year.coldProduction_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cold_production_year_path(@cold_production_year) %> |
+<%= link_to 'Back', cold_production_years_path %>

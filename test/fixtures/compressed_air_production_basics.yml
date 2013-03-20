@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  manufacturer: MyString
+  version: MyString
+  yearOfManufacturing: 1
+  capacity: 9.99
+  nominalDeliveryRate: 9.99
+  pressureSettling: 9.99
+  raisingPressure: 9.99
+  breakPressure: 9.99
+  loadCharacter: MyString
+  facilityCharacter: MyString
+  location_id: 1
+  speedRegulation: false
+  higherControl: false
+  support: MyText
+  redundancyRequirements: false
+  pressureExhaust: MyText
+  coolingMedium: MyString
+  airFrom: MyString
+  airWhere: MyString
+  heatRecovery: false
+  heatApplicationArea: MyString
+
+two:
+  manufacturer: MyString
+  version: MyString
+  yearOfManufacturing: 1
+  capacity: 9.99
+  nominalDeliveryRate: 9.99
+  pressureSettling: 9.99
+  raisingPressure: 9.99
+  breakPressure: 9.99
+  loadCharacter: MyString
+  facilityCharacter: MyString
+  location_id: 1
+  speedRegulation: false
+  higherControl: false
+  support: MyText
+  redundancyRequirements: false
+  pressureExhaust: MyText
+  coolingMedium: MyString
+  airFrom: MyString
+  airWhere: MyString
+  heatRecovery: false
+  heatApplicationArea: MyString

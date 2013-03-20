@@ -1,0 +1,27 @@
+<h1>Druckluftverteilung jährliche Erhebung</h1>
+
+<table>
+  <tr>
+    <th>Jahr</th>
+    <th>Leckagen (%)</th>
+    <th>Druckverlust (bar)</th>
+    <th></th>
+  </tr>
+
+<% @compressed_air_distribution_years.each do |compressed_air_distribution_year| %>
+  <tr>
+    <td><%= Year.find_by_id(compressed_air_distribution_year.year_id).year %></td>
+    <td><%= compressed_air_distribution_year.leak %></td>
+    <td><%= compressed_air_distribution_year.pressureLoss %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_distribution_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_distribution_year_path(compressed_air_distribution_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_distribution_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue jährliche Erhebung zur Druckluftverteilung anlegen', new_compressed_air_distribution_year_path %>

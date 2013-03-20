@@ -1,0 +1,27 @@
+<h1>Todos - Was muss noch gemacht werden?!</h1>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Beschreibung</th>
+    <th></th>
+    <!--<th></th>
+    <th></th>-->
+  </tr>
+
+<% @todos.each do |todo| %>
+  <tr>
+    <td><%= todo.id %></td>
+    <td><%= todo.name %></td>
+    <td><%= todo.description %></td>
+    <!--<td><%= link_to 'Anzeigen', todo %></td>
+    <td><%= link_to 'Bearbeiten', edit_todo_path(todo) %></td>-->
+    <td><%= link_to 'Löschen', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neues Todo', new_todo_path %>

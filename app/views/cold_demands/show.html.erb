@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Timefrom:</b>
+  <%= @cold_demand.timeFrom %>
+</p>
+
+<p>
+  <b>Timeto:</b>
+  <%= @cold_demand.timeTo %>
+</p>
+
+<p>
+  <b>Demanddate:</b>
+  <%= @cold_demand.demandDate %>
+</p>
+
+<p>
+  <b>Coldconsumptionyear:</b>
+  <%= @cold_demand.coldConsumptionYear_id %>
+</p>
+
+<p>
+  <b>Machinery:</b>
+  <%= @cold_demand.machinery_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cold_demand_path(@cold_demand) %> |
+<%= link_to 'Back', cold_demands_path %>

@@ -1,0 +1,30 @@
+<%= form_for(@hot_water_consumption) do |f| %>
+  <% if @hot_water_consumption.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hot_water_consumption.errors.count, "error") %> prohibited this hot_water_consumption from being saved:</h2>
+
+      <ul>
+      <% @hot_water_consumption.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <tr>
+    <td><%= f.label :hotWaterProduction_id, "Heißwasserproduktion" %></td>
+    <td><%= f.number_field :hotWaterProduction_id %></td>
+    <td><%= f.label :machinery_id, "Heißwasserverbraucher" %></td>
+    <td><%= f.number_field :machinery_id %></td>
+</tr>
+<tr>
+    <td><%= f.label :useCapacity, "Nutzenleistung" %></td>
+    <td><%= f.number_field :useCapacity %> kW</td>
+    <td><%= f.label :requirementType, "Bedarfsart" %></td>
+    <td><%= f.select :requirementType, ["konstant", "taktgebunden", "manuell"] %></td>
+  </tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module ColdConsumptionsHelper
+end

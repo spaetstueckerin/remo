@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  compression: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  hotWaterProduction_id: 1
+  hotWaterConsumption_id: 1
+
+two:
+  compression: 9.99
+  flowTemperature: 9.99
+  returnTemperature: 9.99
+  hotWaterProduction_id: 1
+  hotWaterConsumption_id: 1

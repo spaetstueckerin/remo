@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Timefrom:</b>
+  <%= @steam_demand.timeFrom %>
+</p>
+
+<p>
+  <b>Timeto:</b>
+  <%= @steam_demand.timeTo %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @steam_demand.year_id %>
+</p>
+
+<p>
+  <b>Steamconsumption:</b>
+  <%= @steam_demand.steamConsumption_id %>
+</p>
+
+<p>
+  <b>Demanddate:</b>
+  <%= @steam_demand.demandDate %>
+</p>
+
+
+<%= link_to 'Edit', edit_steam_demand_path(@steam_demand) %> |
+<%= link_to 'Back', steam_demands_path %>

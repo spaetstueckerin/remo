@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  timeFrom: 2013-03-19 14:57:08
+  timeTo: 2013-03-19 14:57:08
+  machinery_id: 1
+  demandDate: 2013-03-19
+  year_id: 1
+  thermoOilConsumptionYear_id: 1
+
+two:
+  timeFrom: 2013-03-19 14:57:08
+  timeTo: 2013-03-19 14:57:08
+  machinery_id: 1
+  demandDate: 2013-03-19
+  year_id: 1
+  thermoOilConsumptionYear_id: 1

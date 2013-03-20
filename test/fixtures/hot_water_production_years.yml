@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hotWaterProduction_id: 1
+  fuelConsumption: 9.99
+  kettleEnergyConsumption: 9.99
+  operationHours: 1
+  kettleExitCompression: 9.99
+  kettleExitTemperature: 9.99
+  tempAdditionalWater: 9.99
+  tempCombustionAir: 9.99
+  tempExhaustBeforeWRG: 9.99
+  tempExhaustAfterWRG: 9.99
+  carbonDioxideExhaust: 9.99
+  year_id: 1
+
+two:
+  hotWaterProduction_id: 1
+  fuelConsumption: 9.99
+  kettleEnergyConsumption: 9.99
+  operationHours: 1
+  kettleExitCompression: 9.99
+  kettleExitTemperature: 9.99
+  tempAdditionalWater: 9.99
+  tempCombustionAir: 9.99
+  tempExhaustBeforeWRG: 9.99
+  tempExhaustAfterWRG: 9.99
+  carbonDioxideExhaust: 9.99
+  year_id: 1

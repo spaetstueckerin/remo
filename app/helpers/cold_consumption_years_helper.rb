@@ -1,0 +1,2 @@
+module ColdConsumptionYearsHelper
+end

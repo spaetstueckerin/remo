@@ -1,0 +1,2 @@
+module SteamConsumptionsHelper
+end
