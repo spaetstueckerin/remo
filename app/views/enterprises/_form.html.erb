@@ -11,51 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :number %><br />
-    <%= f.text_field :number %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.number_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.number_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :fax %><br />
-    <%= f.text_field :fax %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label "Branche" %>
-    <%= f.select :branch_id, Branch.all.map{|b| [b.name, b.id]}%>
-  </div>
+<table>
+<tr>
+    <td><%= f.label :name, "Name" %>
+    <td colspan=3><%= f.text_field :name %>
+</tr>
+<tr>
+    <td><%= f.label :address, "Straße" %></td>
+    <td><%= f.text_field :address %></td>
+    <td><%= f.label :number, "Nummer" %></td>
+    <td><%= f.text_field :number %></td>
+</tr>
+<tr>
+    <td><%= f.label :zip, "PLZ" %></td>
+    <td><%= f.number_field :zip %></td>
+    <td><%= f.label :city, "Stadt" %></td>
+    <td><%= f.text_field :city %></td>
+</tr>
+<tr>
+    <td><%= f.label :phone, "Telefon" %></td>
+    <td><%= f.telephone_field :phone %></td>
+    <td><%= f.label :fax, "Fax" %></td>
+    <td><%= f.text_field :fax %></td>
+</tr>
+<tr>
+    <td><%= f.label :website, "Website" %></td>
+    <td><%= f.url_field :website %></td>
+    <td><%= f.label :email, "E-Mail" %></td>
+    <td><%= f.email_field :email %></td>
+</tr>
+<!--<tr>
+    <td><%= f.label :country, "Land" %></td>
+    <td colspan=3><%= f.text_field :country %></td>
+</tr>-->
+<tr>
+    <td><%= f.label "Branche" %></td>
+    <td colspan=3><%= f.select :branch_id, Branch.all.map{|b| [b.name, b.id]}%></td>
+</tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden"%>
   </div>
 <% end %>

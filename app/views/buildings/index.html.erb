@@ -1,0 +1,26 @@
+<h1>Gebäude</h1>
+
+<table class="zentriert">
+  <tr>
+    <th>Produktionsstandort</th>
+    <th>Name</th>
+    <th>Beschreibung</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @buildings.each do |building| %>
+  <tr>
+    <td><%= ProduktionSite.find_by_id(building.site_id).name %></td>
+    <td><%= building.name %></td>
+    <td><%= excerpt(building.description, " ", 9) %></td>
+
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), building %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_building_path(building) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), building, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neues Gebäude', new_building_path %>

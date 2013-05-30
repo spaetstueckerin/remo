@@ -8,11 +8,17 @@
   <script src='http://www.google.com/jsapi'></script>
 </head>
 <body>
-<div id="header"><div id="feld" align="center"><%= link_to "Dashboard", '/welcome/index' %></div></div>
-<div id="inhalt">
-  
-
-          
+<div id="header">
+	<div id="feld" align="center"><%= link_to "Dashboard", '/welcome/index' %></div>
+	<div id="feld" align="center"><%= link_to "Internes", '/sites/internal' %></div>
+	<div id="feld" align="center"><%= link_to "Stammdaten", '/sites/general' %></div>
+	<div id="feld" align="center"><%= link_to "Monitoring", '/sites/monitoring' %></div>
+	<div id="feld" align="center"><%= link_to "Controlling", '/sites/controlling' %></div>
+	<div id="feld" align="center"><%= link_to "Reporting", '/sites/reporting' %></div>
+	<div id="feld" align="center"><%= link_to "Benchmarking", '/sites/benchmarking' %></div>
+	<div id="feld" align="center"><%= link_to "Simulation", '/sites/simulation' %></div>
+</div>
+<div id="inhalt">  
   <div id="flash">
     <% if flash[:notice] %>
      <%= flash[:notice] %>

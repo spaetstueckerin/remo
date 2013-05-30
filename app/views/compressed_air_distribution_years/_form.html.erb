@@ -14,7 +14,9 @@
   <table>
     <tr>
     <td><%= f.label :year_id, "Jahr" %></td>
-    <td colspan="3"><%= f.select :year_id, Year.all.map{|y| [y.year, y.id]}%></td>
+    <td><%= f.select :year_id, ["2010", "2011", "2012", "2013", "2014"]%></td>
+    <td><%= f.label :compressor_id, "Kompressor" %></td>
+    <td><%= f.select :compressor_id, CompressedAirProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
 </tr>
 <tr>
     <td><%= f.label :leak, "Leckage" %></td>

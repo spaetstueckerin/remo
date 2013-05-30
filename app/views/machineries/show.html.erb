@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @machinery.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @machinery.description %>
+</p>
+
+<p>
+  <b>Energyconsumption:</b>
+  <%= @machinery.energyConsumption %>
+</p>
+
+<p>
+  <b>Yearofconstruction:</b>
+  <%= @machinery.yearOfConstruction %>
+</p>
+
+<p>
+  <b>Yearofbuy:</b>
+  <%= @machinery.yearOfBuy %>
+</p>
+
+<p>
+  <b>Enterpriseid:</b>
+  <%= @machinery.enterpriseID %>
+</p>
+
+<p>
+  <b>Machinerytypeid:</b>
+  <%= @machinery.machineryTypeID %>
+</p>
+
+
+<%= link_to 'Edit', edit_machinery_path(@machinery) %> |
+<%= link_to 'Back', machineries_path %>

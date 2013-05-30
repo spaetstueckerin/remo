@@ -11,7 +11,11 @@
 
 <% @compressed_air_demands.each do |compressed_air_demand| %>
 <tr>
-    <td><%= compressed_air_demand.compressed_air_consumer_id %></td>
+    <td>
+		<%= compressed_air_demand.compressed_air_consumer_id%>
+		<%# machinery = CompressedAirConsumer.find_by_id(compressed_air_demand.compressed_air_consumer_id).machinery_id %>
+		<%# Machinery.find_by_id(machinery).name %>
+	</td>
     <td><%= compressed_air_demand.demandDate.strftime('%d.%m.%Y') %></td>
     <td><%= compressed_air_demand.timeFrom.strftime('%H:%M') %> Uhr</td>
     <td><%= compressed_air_demand.timeTo.strftime('%H:%M') %> Uhr</td>

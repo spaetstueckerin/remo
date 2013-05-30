@@ -1,0 +1,28 @@
+<h1>Liste der Produktionsstandorte</h1>
+
+<table class="zentriert">
+  <tr>
+    <th>Name</th>
+    <th>Beschreibung</th>
+	<th>Adresse</th>
+    <th>Aktion</th>
+
+  </tr>
+
+<% @produktion_sites.each do |produktion_site| %>
+  <tr>
+    <td><%= produktion_site.name %></td>
+    <td><%= excerpt(produktion_site.description, " ", 9) %></td>
+    <td><%= produktion_site.address %> <%=produktion_site.number%></td>
+
+  <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), produktion_site %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_produktion_site_path(produktion_site) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), produktion_site, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuer Produktionsstandort', new_produktion_site_path %>

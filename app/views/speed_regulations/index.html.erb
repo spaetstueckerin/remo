@@ -1,7 +1,7 @@
 <h1>Drehzahlmessungen (Frequenzumrichter)</h1>
 <h2>Fördermenge in m&sup3;/min bei n % Teillast</h2>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Jahr</th>
     <th>10</th>
@@ -18,7 +18,7 @@
 
 <% @speed_regulations.each do |speed_regulation| %>
   <tr>
-    <td align="center"><%= Year.find_by_id(speed_regulation.year_id).year %></td>
+    <td><%= speed_regulation.year_id %></td>
     <td><%= speed_regulation.deliveryRate10 %></td>
     <td><%= speed_regulation.deliveryRate20 %></td>
     <td><%= speed_regulation.deliveryRate30 %></td>

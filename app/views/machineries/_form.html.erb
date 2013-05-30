@@ -1,0 +1,44 @@
+<%= form_for(@machinery) do |f| %>
+  <% if @machinery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@machinery.errors.count, "error") %> prohibited this machinery from being saved:</h2>
+
+      <ul>
+      <% @machinery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+    <td><%= f.label :name, "Name" %></td>
+    <td><%= f.text_field :name %></td>
+    <td><%= f.label :machineryTypeID, "Maschinentyp" %></td>
+	<td><%= f.select :machineryTypeID, MachineryType.all.map{|m| [m.m_type, m.id]}%></td>
+<tr>
+</tr>
+    <td><%= f.label :description, "Beschreibung" %></td>
+    <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
+<tr>
+</tr>
+    <td><%= f.label :yearOfConstruction, "Baujahr" %></td>
+    <td><%= f.number_field :yearOfConstruction %></td>
+    <td><%= f.label :yearOfBuy, "Kaufjahr" %></td>
+    <td><%= f.number_field :yearOfBuy %></td>
+<tr>
+</tr>
+    <td><%= f.label :energyConsumption, "Energieverbrauch" %></td>
+    <td colspan=3><%= f.text_field :energyConsumption %> kWh</td>
+</table>
+ 
+
+	<!--Hier im Hiddenfeld die EnterpriseID übergeben-->
+    <%# f.label :enterpriseID %><br />
+    <%# f.number_field :enterpriseID %>
+
+
+  <div class="actions">
+    <%= f.submit "Anlegen" %>
+  </div>
+<% end %>

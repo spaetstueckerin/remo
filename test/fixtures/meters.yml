@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  enterprise_id: 1
+  location_id: 1
+  meterType_id: 1
+  name: MyString
+  description: MyText
+
+two:
+  enterprise_id: 1
+  location_id: 1
+  meterType_id: 1
+  name: MyString
+  description: MyText

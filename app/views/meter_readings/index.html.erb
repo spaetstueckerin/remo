@@ -1,0 +1,37 @@
+<h1>Zählerlesungen</h1>
+
+<table class="zentriert">
+  <tr>
+    <th>Zähler</th>
+    <th>Datum</th>
+    <th>Wert</th>
+    <th>Verbauch</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @meter_readings.each do |meter_reading| %>
+  <tr>
+    <td><%= Meter.find_by_id(meter_reading.meter_id).name %></td>
+    <td><%= meter_reading.readingDate.strftime('%d.%m.%Y') %></td>
+    <td><%= number_to_currency(meter_reading.readingValue, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"kWh ")  %></td>
+	<% if meter_reading.id > 1 %>
+	<td>
+		<% previous = MeterReading.find_by_id(meter_reading.id-1).readingValue %>
+		<% difference = meter_reading.readingValue - previous %>
+		<%= number_to_currency(difference, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"kWh ") %>
+	</td>
+	<% else %>
+	<td>Startwert</td>
+	<% end %>
+	
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), meter_reading %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_meter_reading_path(meter_reading) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), meter_reading, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Zählerlesung', new_meter_reading_path %>

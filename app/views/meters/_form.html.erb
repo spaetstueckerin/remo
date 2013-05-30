@@ -1,0 +1,36 @@
+<%= form_for(@meter) do |f| %>
+  <% if @meter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meter.errors.count, "error") %> prohibited this meter from being saved:</h2>
+
+      <ul>
+      <% @meter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--Hidden field-->
+    <%# f.label :enterprise_id %><br />
+    <%# f.number_field :enterprise_id %>
+<table>
+<tr>
+    <td><%= f.label :location_id, "Standort" %></td>
+    <td colspan=3><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :meterType_id, "Zählertyp" %></td>
+    <td><%= f.select :meterType_id, MeterType.all.map{|m| [m.name, m.id]}%></td>
+    <td><%= f.label :name, "Bezeichnung" %></td>
+    <td><%= f.text_field :name %></td>
+</tr>
+<tr>
+    <td><%= f.label :description, "Beschreibung" %></td>
+    <td colspan=3><%= f.text_area :description, size: "90x3"%></td>
+</tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden"%>
+  </div>
+<% end %>

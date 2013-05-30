@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319153206) do
+ActiveRecord::Schema.define(:version => 20130530085654) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -31,22 +31,23 @@ ActiveRecord::Schema.define(:version => 20130319153206) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "business_data", :force => true do |t|
-    t.decimal  "value"
-    t.integer  "year"
-    t.integer  "enterprise_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "bdt_id"
+  create_table "buildings", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  create_table "business_data_types", :force => true do |t|
-    t.string   "bd_type"
-    t.text     "description"
-    t.string   "unit"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "business_data_id"
+  create_table "business_data", :force => true do |t|
+    t.integer  "enterpriseId"
+    t.integer  "year"
+    t.decimal  "annualSales"
+    t.decimal  "netIncome"
+    t.decimal  "energyEfficiencyInvestment"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.decimal  "productCosts"
   end
 
   create_table "cold_consumption_years", :force => true do |t|
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20130319153206) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "compressed_air_consumer_id"
+    t.integer  "compressor_id"
   end
 
   create_table "compressed_air_demands", :force => true do |t|
@@ -168,8 +170,9 @@ ActiveRecord::Schema.define(:version => 20130319153206) do
     t.integer  "leak"
     t.decimal  "pressureLoss"
     t.integer  "year_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "compressor_id"
   end
 
   create_table "compressed_air_distributions", :force => true do |t|
@@ -260,15 +263,6 @@ ActiveRecord::Schema.define(:version => 20130319153206) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "energy_data_types", :force => true do |t|
-    t.string   "ed_type"
-    t.string   "description_text"
-    t.string   "unit"
-    t.integer  "energy_data_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "enterprise_data", :force => true do |t|
     t.decimal  "value"
     t.integer  "year"
@@ -276,15 +270,6 @@ ActiveRecord::Schema.define(:version => 20130319153206) do
     t.integer  "endt_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-  end
-
-  create_table "enterprise_data_types", :force => true do |t|
-    t.string   "end_type"
-    t.string   "description_text"
-    t.string   "unit"
-    t.integer  "enterprise_data_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
   end
 
   create_table "enterprises", :force => true do |t|
@@ -430,6 +415,53 @@ ActiveRecord::Schema.define(:version => 20130319153206) do
     t.decimal  "squaremeter"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.decimal  "height"
+    t.integer  "building_id"
+    t.string   "floor"
+  end
+
+  create_table "machineries", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "energyConsumption"
+    t.integer  "yearOfConstruction"
+    t.integer  "yearOfBuy"
+    t.integer  "enterpriseID"
+    t.integer  "machineryTypeID"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "machinery_types", :force => true do |t|
+    t.string   "m_type"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "meter_readings", :force => true do |t|
+    t.integer  "meter_id"
+    t.date     "readingDate"
+    t.decimal  "readingValue"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "meter_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "meters", :force => true do |t|
+    t.integer  "enterprise_id"
+    t.integer  "location_id"
+    t.integer  "meterType_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "production_data", :force => true do |t|
@@ -441,13 +473,22 @@ ActiveRecord::Schema.define(:version => 20130319153206) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "production_data_types", :force => true do |t|
-    t.string   "pd_type"
-    t.string   "description_text"
-    t.string   "unit"
-    t.integer  "production_data_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+  create_table "production_levels", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "produktion_sites", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "address"
+    t.integer  "number"
+    t.integer  "zip"
+    t.string   "city"
   end
 
   create_table "roles", :force => true do |t|

@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  value: 9.99
+  enterpriseId: 1
   year: 1
-  enterprise_id: 1
+  annualSales: 9.99
+  netIncome: 9.99
+  energyEfficiencyInvestment: 9.99
 
 two:
-  value: 9.99
+  enterpriseId: 1
   year: 1
-  enterprise_id: 1
+  annualSales: 9.99
+  netIncome: 9.99
+  energyEfficiencyInvestment: 9.99

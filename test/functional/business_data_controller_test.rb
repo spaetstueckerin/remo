@@ -18,7 +18,7 @@ class BusinessDataControllerTest < ActionController::TestCase
 
   test "should create business_datum" do
     assert_difference('BusinessDatum.count') do
-      post :create, business_datum: { enterprise_id: @business_datum.enterprise_id, value: @business_datum.value, year: @business_datum.year }
+      post :create, business_datum: { annualSales: @business_datum.annualSales, energyEfficiencyInvestment: @business_datum.energyEfficiencyInvestment, enterpriseId: @business_datum.enterpriseId, netIncome: @business_datum.netIncome, year: @business_datum.year }
     end
 
     assert_redirected_to business_datum_path(assigns(:business_datum))
@@ -35,7 +35,7 @@ class BusinessDataControllerTest < ActionController::TestCase
   end
 
   test "should update business_datum" do
-    put :update, id: @business_datum, business_datum: { enterprise_id: @business_datum.enterprise_id, value: @business_datum.value, year: @business_datum.year }
+    put :update, id: @business_datum, business_datum: { annualSales: @business_datum.annualSales, energyEfficiencyInvestment: @business_datum.energyEfficiencyInvestment, enterpriseId: @business_datum.enterpriseId, netIncome: @business_datum.netIncome, year: @business_datum.year }
     assert_redirected_to business_datum_path(assigns(:business_datum))
   end
 

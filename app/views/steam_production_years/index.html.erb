@@ -1,6 +1,6 @@
 <h1>Drucklufterzeugung - jährliche Erhebung</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Jahr</th>
     <th>Brennstoffverbrauch</th>
@@ -19,7 +19,7 @@
 
 <% @steam_production_years.each do |steam_production_year| %>
   <tr>
-    <td><%= steam_production_year.yearId_integer %></td>
+    <td><%= steam_production_year.year_id %></td>
     <td><%= steam_production_year.fuelConsumption %></td>
     <td><%= steam_production_year.kettleEnergyConsumption %></td>
     <td><%= steam_production_year.operationHours %></td>

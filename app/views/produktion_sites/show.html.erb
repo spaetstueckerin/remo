@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @produktion_site.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @produktion_site.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_produktion_site_path(@produktion_site) %> |
+<%= link_to 'Back', produktion_sites_path %>

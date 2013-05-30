@@ -2,7 +2,7 @@
 
 <h1>Liste der Drucklufterzeuger (Kompressoren)</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Hersteller</th>
     <th>Bauart</th>
@@ -34,7 +34,7 @@
     <td><%= compressed_air_production.manufacturer %></td>
     <td><%= compressed_air_production.version %></td>
     <td><%= compressed_air_production.yearOfManufacturing %></td>
-    <td><%= compressed_air_production.capacity %></td>
+    <td><%= number_to_currency(compressed_air_production.capacity, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"bar/Ü ")  %></td>
     <td><%= compressed_air_production.nominalDeliveryRate %></td>
     <td><%= compressed_air_production.pressureSettling %></td>
     <!--<td><%= compressed_air_production.raisingPressure %></td>

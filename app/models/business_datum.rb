@@ -1,4 +1,3 @@
 class BusinessDatum < ActiveRecord::Base
-  attr_accessible :enterprise_id, :value, :year, :bdt_id
-  belongs_to :enterprises
+  attr_accessible :annualSales, :energyEfficiencyInvestment, :enterpriseId, :netIncome, :year
 end

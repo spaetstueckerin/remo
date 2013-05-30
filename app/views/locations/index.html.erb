@@ -1,27 +1,38 @@
 <h1>Räumlichkeiten</h1>
 
 <table  class="zentriert">
-  <tr>
-    <th>Name</th>
-    <th>Beschreibung</th>
-    <th>Quadratmeter</th>
-    <th>Aktion</th>
+	<tr>
+		<th>Name</th>
+		<th>Beschreibung</th>
+		<th>Etage</th>
+		<th width=70>Fläche</th>
+		<th width=70>Höhe</th>
+		<th width=70>Volumen</th>
+		<th width=100>Aktion</th>
+	</tr>
+	<% sum = 0 %>
+	<% sum2 = 0 %>
+	<% sum3 = 0 %>
+	<% @locations.each do |location| %>
+	<tr>
+		<td><%= location.name %></td>
+		<td><%= excerpt(location.description, "", 100) %></td>
+		<td><%= location.floor %></td>
+		<td><%= location.squaremeter %> m&sup2; <% sum = sum + location.squaremeter %></td>
+		<td><%= location.height %> m</td>
+		<td><%= volume = location.height * location.squaremeter %> m&sup3;<% sum3 = sum3 + volume %></td>
+		<td>
+			<%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), location %>
+			<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_location_path(location) %>
+			<%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), location, method: :delete, data: { confirm: 'Are you sure?' }  %>
+		</td>
+		</tr>
+		<% end %>
+		<tr>
+			<td><b>Summe</b><td></td></td><td></td><td><b><%= sum %> m&sup2;</b></td><td><b></b></td><td><b><%= sum3 %> m&sup3;</b></td><td></td>
+		</tr>
+	</table>
 
-  </tr>
+	<br />
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= location.name %></td>
-    <td><%= location.description %></td>
-    <td><%= location.squaremeter %> m&sup2;
-    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), location %>
-    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_location_path(location) %>
-    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), location, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-    
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'Neuen Raum anlegen', new_location_path %>
+	<%= link_to 'Neuen Raum anlegen', new_location_path %>

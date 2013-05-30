@@ -1,149 +1,16 @@
 <!--WELCOME SHOW-->
 
 <h1>Schaltzentrale ReMo App</h1>
-<p>Herzlich willkommen <%= User.find_by_id(session[:user_id]).firstname %> <%= User.find_by_id(session[:user_id]).name %>!</p>
+<p>Herzlich willkommen <%# User.find_by_id(session[:user_id]).firstname %> <%# User.find_by_id(session[:user_id]).name %>!</p>
 
-<h2>Projektdokumentation</h2>
-<table>
-  <tr>
-    <td><%= link_to 'Howtos anzeigen', howtos_path %></td>
-    <td><%= link_to 'Todos anzeigen', todos_path %></td>
-  </tr>
-</table>
 
-<h2>Benutzerverwaltung</h2>
-<table>
-  <tr>
-  <td><%= link_to 'Benutzer', users_path %></td>
-  <td><%= link_to 'Rollen', roles_path %></td>
-  <td><%= link_to 'Unternehmen', enterprises_path %></td>
-  <td><%= link_to 'Branchen', branches_path %></td>
-  </tr>
-</table>
 
-<h2>Abrechnungen</h2>
-<table>
-  <tr>  
-  <td>  <%= link_to 'Verträge', contracts_path %></td>
-  <td><%= link_to 'Abrechnungen', bills_path %></td>
-  </tr>
-</table>
+
 
 <h2>Jahresauswertungen</h2>
 <table>
   <tr>
-  <td><%= link_to 'Betriebswirtschaftliche Daten', business_data_path %></td>
-  <td><%= link_to 'Produktionsbezogene Daten', production_data_path %></td>
-  <td><%= link_to 'Energiebezogene Daten', energy_data_path %></td>
-  <td><%= link_to 'Unternehmensbezogene Daten', enterprise_data_path %></td>
-  </tr>
-</table>
 
-<h3>Einstellungen</h3>
-<table>
-  <tr>
-  <td><%= link_to 'Betriebswirtschaftliche Datentypen', business_data_types_path %></td>
-  <td><%= link_to 'Produktionsbezogene Datentypen', production_data_types_path %></td>
-  <td><%= link_to 'Energiebezogene Datentypen', energy_data_types_path %></td>
-  <td><%= link_to 'Unternehmensbezogene Datentypen', enterprise_data_types_path %></td>
-  </tr>
-</table>
 
-<h2>Stammdaten</h2>
-<table>               
-  <tr>                                        
-  <td><%= link_to 'Standort', locations_path %></td>
   </tr>
-</table>
-<h3>Querschnittstechnologien</h3>
-<table>
-  <tr>
-  <td><%= link_to 'Beleuchtung', lightings_path %></td>
-  <td></td>
-  <td></td>
-</tr> 
-<tr>
-  <td><%= link_to 'Drucklufterzeugung', compressed_air_productions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', compressed_air_production_years_path %></td>
-  <td><%= link_to 'Drehzahlmessungen', speed_regulations_path %></td>
-</tr>
-  <td><%= link_to 'Druckluftverteilung', compressed_air_distributions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', compressed_air_distribution_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Druckluftverbrauch', compressed_air_consumers_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', compressed_air_consumption_years_path %></td>
-  <td><%= link_to 'Bedarfszeiträume', compressed_air_demands_path %></td>
-</tr>
-<tr>
-  <td><%= link_to 'Dampferzeugung', steam_productions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', steam_production_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Dampfverteilung', steam_distributions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', steam_distribution_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Dampfverbrauch', steam_consumptions_path %></td>
-  <td></td>
-  <td><%= link_to 'Bedarfszeiträume', steam_demands_path %></td>
-</tr>
-<tr>
-  <td><%= link_to 'Heißwassererzeugung', hot_water_productions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', hot_water_production_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Heißwasserverteilung', hot_water_distributions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', hot_water_distribution_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Heißwasserverbrauch', hot_water_consumptions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', hot_water_consumption_years_path %></td>
-  <td><%= link_to 'Bedarfszeiträume', hot_water_demands_path %></td>
-</tr>
-<tr>
-  <td><%= link_to 'Thermoölproduktion', thermo_oil_productions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', thermo_oil_production_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Thermoölverteilung', thermo_oil_distributions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', thermo_oil_distribution_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Thermoölverbrauch', thermo_oil_consumptions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', thermo_oil_consumption_years_path %></td>
-  <td><%= link_to 'Bedarfszeiträume', thermo_oil_demands_path %></td>
-</tr>
-<tr>
-  <td><%= link_to 'Kälteproduktion', cold_productions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', cold_production_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Kälteverteilung', cold_distributions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', cold_distribution_years_path %></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Kälteverbrauch', cold_consumptions_path %></td>
-  <td><%= link_to 'jährliche Erhebungen', cold_consumption_years_path %></td>
-  <td><%= link_to 'Bedarfszeiträume', cold_demands_path %></td>
-</tr>
-<tr>
-  <td><%= link_to 'Elektrische Antriebe', energy_data_types_path %></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td><%= link_to 'Klimatechnik', energy_data_types_path %></td>
-  <td></td>
-  <td></td>
-</tr>
 </table>

@@ -11,31 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Ebergievertrag"%>
-    <%= f.select :contract_id, Contract.all.map{|c| [c.energy_type, c.id]}%>
-  </div>
-  <div class="field">
-    <%= f.label :value, "Abrechnungskosten" %><br />
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :consumption, "Verbrauch" %><br />
-    <%= f.text_field :consumption %>
-  </div>
-  <div class="field">
-    <%= f.label :date, "Rechnungsdatum" %><br />
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :period_from, "Verbrauchszeitraum von" %><br />
-    <%= f.date_select :period_from %>
-  </div>
-  <div class="field">
-    <%= f.label :period_to, "bis" %><br />
-    <%= f.date_select :period_to %>
-  </div>
+<table>
+<tr>
+    <td><%= f.label "Ebergieart"%></td>
+    <td colspan=3><%= f.select :contract_id, Contract.all.map{|c| [c.energy_type, c.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :date, "Rechnungsdatum" %></td>
+    <td colspan=3><%= f.date_select :date %></td>
+</tr>
+<tr>
+    <td><%= f.label :value, "Abrechnungskosten" %></td>
+    <td><%= f.text_field :value %> Euro</td>
+    <td><%= f.label :consumption, "Verbrauch" %></td>
+    <td><%= f.text_field :consumption %> kWh</td>
+</tr>
+
+<tr>
+    <td><%= f.label :period_from, "Verbrauchszeitraum" %></td>
+	<td colspan=3>von: <%= f.date_select :period_from %><%= f.label :period_to, "bis: " %><%= f.date_select :period_to %></td>
+</tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden"%>
   </div>
 <% end %>

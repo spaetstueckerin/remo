@@ -2,15 +2,19 @@
 
 <table  class="zentriert">
   <tr>
+	<th>Jahr</th>
+	<th>Kompressor</th>
+	<th>Verbraucher</th>
     <th>Verbrauch</th>
-    <th>Jahr</th>
     <th>Aktion</th>
   </tr>
 
 <% @compressed_air_consumption_years.each do |compressed_air_consumption_year| %>
   <tr>
-    <td><%= compressed_air_consumption_year.verbrauch %></td>
-    <td><%= compressed_air_consumption_year.year_id %></td>
+	<td><%= compressed_air_consumption_year.year_id %></td>
+	<td><%= CompressedAirProduction.find_by_id(compressed_air_consumption_year.compressor_id).manufacturer %></td>
+	<td><%= Machinery.find_by_id(compressed_air_consumption_year.compressed_air_consumer_id).name%></td>
+    <td><%= compressed_air_consumption_year.verbrauch %> m&sup3;/a</td>
     
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_consumption_year %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_consumption_year_path(compressed_air_consumption_year) %>

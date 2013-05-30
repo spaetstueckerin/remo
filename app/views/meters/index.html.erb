@@ -1,0 +1,33 @@
+<h1>Zähler und Messgeräte</h1>
+
+<table class="zentriert">
+  <tr>
+    <!--<th>Enterprise</th>-->
+    <th>Standort</th>
+    <th>Messgerätetyp</th>
+    <th>Bezeichnung</th>
+    <th>Beschreibung</th>
+    <th>Aktion</th>
+
+  </tr>
+
+<% @meters.each do |meter| %>
+  <tr>
+    <!--<td><%= meter.enterprise_id %></td>-->
+    <td><%= Location.find_by_id(meter.location_id).name %></td>
+    <td><%= MeterType.find_by_id(meter.meterType_id).name %></td>
+    <td><%= meter.name %></td>
+    <td><%= meter.description %></td>
+
+    <td>
+	<%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), meter %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_meter_path(meter) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), meter, method: :delete, data: { confirm: 'Are you sure?' }  %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuen Zähler', new_meter_path %>

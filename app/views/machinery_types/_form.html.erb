@@ -1,0 +1,27 @@
+<%= form_for(@machinery_type) do |f| %>
+  <% if @machinery_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@machinery_type.errors.count, "error") %> prohibited this machinery_type from being saved:</h2>
+
+      <ul>
+      <% @machinery_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<tr>
+    <td><%= f.label :m_type, "Maschinentyp" %></td>
+    <td><%= f.text_field :m_type %></td>
+</tr>
+<tr>
+    <td><%= f.label :description, "Beschreibung" %></td>
+    <td><%= f.text_area :description, size: "90x3" %></td>
+</tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

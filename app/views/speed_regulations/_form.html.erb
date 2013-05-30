@@ -13,10 +13,10 @@
 <table>
   <tr>
     <td><%= f.label :year_id, "Jahr" %>
-    <td><%= f.select :year_id, Year.all.map{|y| [y.year, y.id]}%></td>
+	<td><%= f.select :year_id, ["2010", "2011", "2012", "2013", "2014"]%></td>
   </tr>
     <td><%= f.label :compressor_id, "Kompressor" %>
-    <td><%= f.select :compressor_id, CompressedAirProductionBasic.all.map{|c| [c.manufacturer, c.id]}%></td>
+    <td><%= f.select :compressor_id, CompressedAirProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
   <tr>
     <td><%= f.label :deliveryRate10, "Teillast 10%" %></td>
     <td><%= f.number_field :deliveryRate10 %> m&sup3;/min</td>

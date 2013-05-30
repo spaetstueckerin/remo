@@ -1,0 +1,83 @@
+<h2>Unternehmensstammdaten</h2>
+<table>               
+  <tr>
+  <td><%= link_to 'Betriebswirtschaftliche Daten', business_data_path %></td>
+  </tr>
+</table>
+
+<h2>Standorte und Gebäude</h2>
+<table>               
+  <tr>
+  <td><%= link_to 'Standort', produktion_sites_path %></td>
+  <td><%= link_to 'Gebäude', buildings_path %></td>                                       
+  <td><%= link_to 'Raum/Halle', locations_path %></td>
+  </tr>
+</table>
+
+<h2>Energielieferverträge</h2>
+<table>
+  <tr>  
+  <td><%= link_to 'Verträge', contracts_path %></td>
+  </tr>
+</table>
+
+<h2>Messgeräte</h2>
+<table>
+  <tr>
+  <td><%= link_to 'Messgerätetypen', meter_types_path %></td>
+  <td><%= link_to 'Messgeräte', meters_path %></td>
+</tr>
+</table>
+
+<h2>Maschinen</h2>
+<table>
+  <tr>
+  <td><%= link_to 'Maschinentypen', machinery_types_path %></td>
+  <td><%= link_to 'Produktionslevel', production_levels_path %></td>
+  <td><%= link_to 'Produktionsmaschinen', machineries_path %></td>
+</tr>
+</table>
+
+<h2>Querschnittstechnologien</h2>
+<table>
+  <tr>
+  <td><%= link_to 'Beleuchtung', lightings_path %></td>
+  <td></td>
+  <td></td>
+</tr> 
+<tr>
+  <td><%= link_to 'Drucklufterzeugung', compressed_air_productions_path %></td>
+  <td><%= link_to 'Druckluftverteilung', compressed_air_distributions_path %></td>
+  <td><%= link_to 'Druckluftverbrauch', compressed_air_consumers_path %></td>
+</tr>
+<tr>
+  <td><%= link_to 'Dampferzeugung', steam_productions_path %></td>
+  <td><%= link_to 'Dampfverteilung', steam_distributions_path %></td>
+  <td><%= link_to 'Dampfverbrauch', steam_consumptions_path %></td>
+</tr>
+<tr>
+  <td><%= link_to 'Heißwassererzeugung', hot_water_productions_path %></td>
+  <td><%= link_to 'Heißwasserverteilung', hot_water_distributions_path %></td>
+  <td><%= link_to 'Heißwasserverbrauch', hot_water_consumptions_path %></td>
+</tr>
+<tr>
+  <td><%= link_to 'Thermoölproduktion', thermo_oil_productions_path %></td>
+  <td><%= link_to 'Thermoölverteilung', thermo_oil_distributions_path %></td>
+  <td><%= link_to 'Thermoölverbrauch', thermo_oil_consumptions_path %></td>
+</tr>
+<tr>
+  <td><%= link_to 'Kälteproduktion', cold_productions_path %></td>
+  <td><%= link_to 'Kälteverteilung', cold_distributions_path %></td>
+  <td><%= link_to 'Kälteverbrauch', cold_consumptions_path %></td>
+</tr>
+<tr>
+  <td><%= link_to 'Elektrische Antriebe', energy_data_types_path %></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td><%= link_to 'Klimatechnik', energy_data_types_path %></td>
+  <td></td>
+  <td></td>
+</tr>
+</table>

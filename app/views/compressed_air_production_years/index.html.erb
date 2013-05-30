@@ -1,6 +1,6 @@
 <h1>Liste der jährlichen Drucklufterzeugungsdaten</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Jahr</th>
     <th>Betriebsstunden</th>
@@ -21,12 +21,12 @@
 
 <% @compressed_air_production_years.each do |compressed_air_production_year| %>
   <tr>
-  <td><% year = Year.find_by_id(compressed_air_production_year.year_id)%><%= year.year %>
-    <td><%= compressed_air_production_year.operatingHours %></td>
-    <td><%= compressed_air_production_year.loadHours %></td>
-    <td><%= compressed_air_production_year.capacity %></td>
-    <td><%= compressed_air_production_year.energyConsumption %></td>
-    <td><%= compressed_air_production_year.deliveryRate %></td>
+  	<td><%= compressed_air_production_year.year_id %>
+    <td><%= compressed_air_production_year.operatingHours %> h</td>
+    <td><%= compressed_air_production_year.loadHours %> h</td>
+    <td><%= compressed_air_production_year.capacity %> %</td>
+    <td><%= compressed_air_production_year.energyConsumption %> kWh</td>
+    <td><%= compressed_air_production_year.deliveryRate %> l</td>
     <!--<td><%= compressed_air_production_year.operatingCycles %></td>
     <td><%= compressed_air_production_year.overtravelTimeIdle %></td>
     <td><%= compressed_air_production_year.pressureMin %></td>

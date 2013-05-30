@@ -1,0 +1,32 @@
+<%= form_for(@meter_reading) do |f| %>
+  <% if @meter_reading.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meter_reading.errors.count, "error") %> prohibited this meter_reading from being saved:</h2>
+
+      <ul>
+      <% @meter_reading.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+	<tr>
+    <td><%= f.label :meter_id, "Zähler" %></td>
+    <td><%= f.select :meter_id, Meter.all.map{|m| [m.name, m.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :readingDate, "Ablesedatum" %></td>
+    <td><%= f.date_select :readingDate %></td>
+</tr>
+<tr>
+    <td><%= f.label :readingValue, "Ablesewert" %></td>
+    <td><%= f.text_field :readingValue %> kWh</td>
+</tr>
+</table>
+
+  <div class="actions">
+    <%= f.submit "Absenden"%>
+  </div>
+<% end %>

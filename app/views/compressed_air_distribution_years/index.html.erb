@@ -10,7 +10,7 @@
 
 <% @compressed_air_distribution_years.each do |compressed_air_distribution_year| %>
   <tr>
-    <td><%= Year.find_by_id(compressed_air_distribution_year.year_id).year %></td>
+    <td><%= compressed_air_distribution_year.year_id %></td>
     <td><%= compressed_air_distribution_year.leak %> %</td>
     <td><%= compressed_air_distribution_year.pressureLoss %> bar</td>
     

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  energyConsumption: 9.99
+  yearOfConstruction: 1
+  yearOfBuy: 1
+  enterpriseID: 1
+  machineryTypeID: 1
+
+two:
+  name: MyString
+  description: MyText
+  energyConsumption: 9.99
+  yearOfConstruction: 1
+  yearOfBuy: 1
+  enterpriseID: 1
+  machineryTypeID: 1

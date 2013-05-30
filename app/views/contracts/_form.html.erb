@@ -10,33 +10,30 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :energy_type, "Energieart" %><br />
-    <%= f.select :energy_type, ["Strom", "Gas", "Wasser", "Öl", "Heizung"]%>
-  </div>
-  <div class="field">
-    <%= f.label :supplier, "Energielieferant" %><br />
-    <%= f.text_field :supplier %>
-  </div>
-  <div class="field">
-    <%= f.label :description, "Beschreibung" %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :condition, "Konditionen" %><br />
-    <%= f.text_field :condition %>
-  </div>
-  <div class="field">
-    <%= f.label :duration_from, "Vertragsdauer von" %><br />
-    <%= f.date_select :duration_from %>
-
-    <%= f.label :duration_to, "bis" %> <%= f.date_select :duration_to %>
+<table>
+<tr>
+    <td><%= f.label :energy_type, "Energieart" %></td>
+    <td><%= f.select :energy_type, ["Strom", "Gas", "Wasser", "Öl", "Heizung"]%></td>
+    <td><%= f.label :supplier, "Energielieferant" %></td>
+    <td><%= f.text_field :supplier %></td>
+</tr>
+<tr>
+    <td><%= f.label :description, "Beschreibung" %></td>
+    <td colspan=3><%= f.text_area :description, size: "90x3"%></td>
+</tr>
+<tr>
+    <td><%= f.label :condition, "Konditionen" %></td>
+    <td colspan=3><%= f.text_field :condition %> € per Kilowattstunde</td>
+</tr>
+<tr>
+    <td><%= f.label :duration_from, "Vertragsdauer" %></td>
+    <td colspan=3>von: <%= f.date_select :duration_from %><%= f.label :duration_to, "bis: " %> <%= f.date_select :duration_to %></td>
     <% user = User.find_by_id(session[:user_id]) %>
     <% enterprise = Enterprise.find_by_id(user.enterprise_id) %>
     <%= f.hidden_field :enterprise_id, :value => enterprise.id %>
-  </div>
+</tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

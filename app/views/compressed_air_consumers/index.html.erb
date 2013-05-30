@@ -2,7 +2,7 @@
 
 <h1>Liste der Druckluftverbraucher</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Maschine</th>
     <th>Kompressor</th>
@@ -17,7 +17,7 @@
 
 <% @compressed_air_consumers.each do |compressed_air_consumer| %>
   <tr>
-    <td><%= compressed_air_consumer.machinery_id %></td>
+    <td><%= Machinery.find_by_id(compressed_air_consumer.machinery_id).name %></td>
     <td><%= CompressedAirProduction.find_by_id(compressed_air_consumer.compressor_id).manufacturer %></td>
     <td><%= compressed_air_consumer.neededPressureSettling %></td>
     <td><%= compressed_air_consumer.neededQuality %></td>
