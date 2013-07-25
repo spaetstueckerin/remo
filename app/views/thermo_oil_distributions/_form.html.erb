@@ -14,9 +14,10 @@
 <table>
   <tr>
     <td><%= f.label :thermoOilProduction_id, "Thermoölproduktion" %></td>
-    <td><%= f.number_field :thermoOilProduction_id %></td>
-    <td><%= f.label :thermoOilConsumption_id, "Thermoölverbraucher" %></td>
-    <td><%= f.number_field :thermoOilConsumption_id %></td>
+    <td colspan=3><%= f.select :thermoOilProduction_id, ThermoOilProduction.all.map{|s| [s.kettleName, s.id]}%></td>
+    <!--Kann weggelassen werden
+	<td><%# f.label :thermoOilConsumption_id, "Thermoölverbraucher" %></td>
+    <td><%# f.number_field :thermoOilConsumption_id %></td>-->
   </tr>
   <tr>
     <td><%= f.label :aperture, "Durchmesser" %></td>

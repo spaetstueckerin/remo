@@ -1,5 +1,9 @@
 <h1>Zählerlesungen</h1>
 
+<div id='chart' style='width: 1050px; height: 450px;'>
+<%= render_chart @chart, 'chart' %>
+</div>
+
 <table class="zentriert">
   <tr>
     <th>Zähler</th>
@@ -14,7 +18,7 @@
     <td><%= Meter.find_by_id(meter_reading.meter_id).name %></td>
     <td><%= meter_reading.readingDate.strftime('%d.%m.%Y') %></td>
     <td><%= number_to_currency(meter_reading.readingValue, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"kWh ")  %></td>
-	<% if meter_reading.id > 1 %>
+	<% if meter_reading.id > 6 %>
 	<td>
 		<% previous = MeterReading.find_by_id(meter_reading.id-1).readingValue %>
 		<% difference = meter_reading.readingValue - previous %>

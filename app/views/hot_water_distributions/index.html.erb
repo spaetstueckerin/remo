@@ -1,9 +1,8 @@
 <h1>Heißwasserverteilung</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Kessel</th>
-    <th>Verbraucher</th>
     <th>Durchmesser</th>
     <th>Isolation</th>
     <th>Länge</th>
@@ -15,11 +14,10 @@
 
 <% @hot_water_distributions.each do |hot_water_distribution| %>
   <tr>
-    <td><%= hot_water_distribution.hotWaterProduction_id %></td>
-    <td><%= hot_water_distribution.hotWaterConsumption_id %></td>
-    <td><%= hot_water_distribution.aperture %></td>
-    <td><%= hot_water_distribution.isolation %></td>
-    <td><%= hot_water_distribution.length %></td>
+    <td><%= HotWaterProduction.find_by_id(hot_water_distribution.hotWaterProduction_id).kettleName %></td>
+    <td><%= hot_water_distribution.aperture %> mm</td>
+    <td><%= hot_water_distribution.isolation %> mm</td>
+    <td><%= hot_water_distribution.length %> m</td>
     <!--<td><%= hot_water_distribution.volumeFlowNenn %></td>
     <td><%= hot_water_distribution.volumeFlowMin %></td>
     <td><%= hot_water_distribution.volumeFlowMax %></td>-->

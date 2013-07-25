@@ -1,0 +1,86 @@
+<h1>Kälte</h1>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor i</p>
+<br><br>
+
+<h2>Kälteproduktion</h2>
+
+<table class="zentriert">
+  <tr>
+    <th>Hersteller</th>
+    <th>Bauart</th>
+    <th>Baujahr</th>
+    <th>Elektrische Leistung</th>
+    <th>Kühlleistung</th>
+    <th>Kühlmedium</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% ColdProduction.all.each do |cold_production| %>
+  <tr>
+    <td><%= cold_production.manufacturer %></td>
+    <td><%= cold_production.buildType %></td>
+    <td><%= cold_production.yearOfManufacturing %></td>
+    <td><%= cold_production.capacity %> kW</td>
+    <td><%= cold_production.coolingCapacity %> kW</td>
+    <td><%= cold_production.coolingMedium %></td>    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_production_path(cold_production)  %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_production, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Kälteverteilung</h2>
+
+<table class="zentriert">
+  <tr>
+    <th>Kälteproduktion</th>
+    <th>Kälteverbrauch</th>
+    <th>Durchmesser</th>
+    <th>Isolation</th>
+    <th>Länge</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% ColdDistribution.all.each do |cold_distribution| %>
+  <tr>
+    <td><%= ColdProduction.find_by_id(cold_distribution.coldProduction_id).manufacturer %></td>
+    <td><%= cold_distribution.coldConsumer_id %></td>
+    <td><%= cold_distribution.aperture %> mm</td>
+    <td><%= cold_distribution.isolation %> mm</td>
+    <td><%= cold_distribution.length %> m</td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_distribution_path(cold_distribution)  %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+</table>
+<br><br>
+<h2>Kälteverbraucher</h2>
+
+<table class="zentriert">
+  <tr>
+    <th>Verbraucher</th>
+    <th>Kälteproduktion</th>
+    <!--<th>Kälteverteilung</th>-->
+    <th>Nutzenleistung</th>
+    <th>Bedarfsart</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% ColdConsumption.all.each do |cold_consumption| %>
+  <tr>
+    <td><%= Machinery.find_by_id(cold_consumption.machinery_id).name %></td>
+    <td><%= ColdProduction.find_by_id(cold_consumption.coldProduction_id).manufacturer %></td>
+    <!--<td><%= cold_consumption.coldDistribution_id %></td>-->
+    <td><%= cold_consumption.profitCapacity %> kW</td>
+    <td><%= cold_consumption.requirementType %></td> 
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_consumption %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_consumption_path(cold_consumption)  %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_consumption, method: :delete, data: { confirm: 'Are you sure?' }  %></td> 
+  </tr>
+<% end %>
+</table>

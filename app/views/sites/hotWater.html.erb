@@ -1,0 +1,95 @@
+<table class="zentriert">
+	<tr>
+		<td><%= link_to 'Beleuchtung', lightings_path %></td>
+		<td><%= link_to 'Druckluft', '/sites/compressedAir' %></td>
+		<td><%= link_to 'Dampf', '/sites/steam' %></td>
+		<td><%= link_to 'Heißwasser', '/sites/hotWater' %></td>
+		<td><%= link_to 'Thermoöl', '/sites/thermoOil' %></td>
+		<td><%= link_to 'Kälte', cold_productions_path %></td>
+		<td>Klima</td>
+		<td>Elektrische Antriebe</td>
+	</tr>
+</table>
+
+<h1>Heißwasser</h1>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+<br><br>
+
+<h2>Heißwasserproduktion</h2>
+<table class="zentriert">
+  <tr>
+    <th>Kesselname</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Leistung</th>
+    <th>Brennertyp</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% HotWaterProduction.all.each do |hot_water_production| %>
+  <tr>
+    <td><%= hot_water_production.kettleName %></td>
+    <td><%= hot_water_production.kettleManufacturer %></td>
+    <td><%= hot_water_production.kettleManuYear %></td>
+    <td><%= hot_water_production.kettleCapacity %></td>
+    <td><%= hot_water_production.burnerType %></td>
+    <td><%= hot_water_production.burnerManufacturer %></td>
+    <td><%= hot_water_production.burnerManuYear %></td>    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_production_path(hot_water_production)  %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_production, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Heißwasserverteilung</h2>
+<table class="zentriert">
+  <tr>
+    <th>Kessel</th>
+    <th>Durchmesser</th>
+    <th>Isolation</th>
+    <th>Länge</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% HotWaterDistribution.all.each do |hot_water_distribution| %>
+  <tr>
+    <td><%= HotWaterProduction.find_by_id(hot_water_distribution.hotWaterProduction_id).kettleName %></td>
+    <td><%= hot_water_distribution.aperture %> mm</td>
+    <td><%= hot_water_distribution.isolation %> mm</td>
+    <td><%= hot_water_distribution.length %> m</td>    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_distribution_path(hot_water_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_distribution, method: :delete, data: { confirm: 'Are you sure?' }   %></td>
+
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Heißwasserverbraucher</h2>
+<table class="zentriert">
+  <tr>
+    <th>Heißwasserproduktion</th>
+    <th>Heißwasserverbraucher</th>
+    <th>Nutzenleistung</th>
+    <th>Bedarfsart</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% HotWaterConsumption.all.each do |hot_water_consumption| %>
+  <tr>
+    <td><%= HotWaterProduction.find_by_id(hot_water_consumption.hotWaterProduction_id).kettleName %></td>
+    <td><%= hot_water_consumption.machinery_id %></td>
+    <td><%= hot_water_consumption.useCapacity %></td>
+    <td><%= hot_water_consumption.requirementType %></td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_consumption %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_consumption_path(hot_water_consumption) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_consumption, method: :delete, data: { confirm: 'Are you sure?' }   %></td>
+  </tr>
+<% end %>
+</table>

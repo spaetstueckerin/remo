@@ -1,4 +1,6 @@
-<h1>Produktionsmaschinen</h1>
+<h3>Produktionsmaschinen</h3>
+
+<p>Dies ist eine Liste aller Produktionsmaschinen in Ihrem Unternehmen. Mit Klick auf das Plus können Sie neue Maschinen hinzufügen. Zum Anzeigen der Maschinendaten klicken Sie bitte auf das Datenblatt-Symbol. Zum Editieren der Daten nutzen Sie bitte den Stift und zum Löschen das rote Kreuz.</p>
 
 <table class="zentriert">
   <tr>
@@ -8,8 +10,8 @@
     <th>Energieverbrauch</th>
     <th>Baujahr</th>
     <th>Kaufjahr</th>
-
-    <th>Aktion</th>
+	<th>Standort</th>
+    <th width=100>Aktion</th>
   </tr>
 
 <% @machineries.each do |machinery| %>
@@ -20,16 +22,11 @@
     <td><%= number_to_currency(machinery.energyConsumption, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"kWh ")  %></td>
     <td><%= machinery.yearOfConstruction %></td>
     <td><%= machinery.yearOfBuy %></td>
-
-
-  <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), machinery %>
+	<td><%= Location.find_by_id(machinery.location_id).name%>
+  	<td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), machinery %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_machinery_path(machinery) %>
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), machinery, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-
   </tr>
 <% end %>
+<tr><th colspan=6></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_machinery_path %></th></tr>
 </table>
-
-<br />
-
-<%= link_to 'Neue Maschine anlegen', new_machinery_path %>

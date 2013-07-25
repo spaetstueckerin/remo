@@ -1,21 +1,20 @@
 <h1>Thermoölverbraucher</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Thermoölproduktion</th>
-    <th>Thermoölverteilung</th>
+    <th>Thermoölverteilung Durchmesser</th>
     <th>Verbraucher</th>
     <th>Nutzenleistung</th>
     <th>Bedarfsart</th>
-
-    <th>Aktion</th>
+    <th width=100>Aktion</th>
   </tr>
 
 <% @thermo_oil_consumptions.each do |thermo_oil_consumption| %>
   <tr>
-    <td><%= thermo_oil_consumption.thermoOilProduction_id %></td>
-    <td><%= thermo_oil_consumption.thermoOilDistribution_id %></td>
-    <td><%= thermo_oil_consumption.machinery_id %></td>
+    <td><%= ThermoOilProduction.find_by_id(thermo_oil_consumption.thermoOilProduction_id).kettleName %></td>
+    <td><%= ThermoOilDistribution.find_by_id(thermo_oil_consumption.thermoOilDistribution_id).aperture %> mm</td>
+    <td><%= Machinery.find_by_id(thermo_oil_consumption.machinery_id).name %></td>
     <td><%= thermo_oil_consumption.profitCapacity %></td>
     <td><%= thermo_oil_consumption.requirementType %></td>
     

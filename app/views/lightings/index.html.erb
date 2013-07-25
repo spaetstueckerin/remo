@@ -1,11 +1,11 @@
-<h1>Liste der Beleuchtungsanlagen</h1>
+<h3>Beleuchtungsanlagen</h3>
 
 <table class="zentriert">
   <tr>
     <th>Ort/Raum</th>
     <th>Lampentyp</th>
     <th>Baujahr</th>
-    <th width="100">Anzahl der Leuchten</th>
+    <th>Anzahl der Leuchten</th>
     <!--<th>Numberofbulbsinlamp</th>
     <th>Powerperlamp</th>
     <th>Installedpower</th>-->
@@ -17,7 +17,7 @@
     <th>Lightcontrol</th>
     <th>Groupswitchable</th>
     <th>Windowshadowing</th>-->
-    <th>Aktion</th>
+    <th width=100>Aktion</th>
   </tr>
 
 <% @lightings.each do |lighting| %>
@@ -44,8 +44,9 @@
 
   </tr>
 <% end %>
+<tr><th colspan=6></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_lighting_path %></th></tr>
 </table>
 
 <br />
 
-<%= link_to 'Neue Beleuchtung anlegen', new_lighting_path %>
+

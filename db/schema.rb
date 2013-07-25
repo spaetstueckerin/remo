@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530085654) do
+ActiveRecord::Schema.define(:version => 20130719084004) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.date     "date"
     t.date     "period_from"
     t.date     "period_to"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "contract_id"
+    t.integer  "enterpriseId"
+    t.integer  "meterId"
   end
 
   create_table "branches", :force => true do |t|
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.decimal  "productCosts"
+    t.decimal  "maxCapacity"
   end
 
   create_table "cold_consumption_years", :force => true do |t|
@@ -131,6 +134,9 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.decimal  "rkCapacity"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "detachablePart"
+    t.integer  "detachDuration"
+    t.integer  "detachTerm"
   end
 
   create_table "compressed_air_consumers", :force => true do |t|
@@ -210,10 +216,11 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.decimal  "pressureExhaustTempMax"
     t.decimal  "advanceTemp"
     t.decimal  "returnTemp"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "year_id"
     t.decimal  "amount_water"
+    t.integer  "compressedAirProduction_id"
   end
 
   create_table "compressed_air_productions", :force => true do |t|
@@ -240,6 +247,9 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.string   "heatApplicationArea"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.integer  "detachablePart"
+    t.integer  "detachDuration"
+    t.integer  "detachTerm"
   end
 
   create_table "contracts", :force => true do |t|
@@ -252,6 +262,7 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.datetime "updated_at",    :null => false
     t.integer  "enterprise_id"
     t.string   "supplier"
+    t.integer  "contractNo"
   end
 
   create_table "energy_data", :force => true do |t|
@@ -378,6 +389,9 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.datetime "updated_at",          :null => false
     t.decimal  "kettleCapacityKw"
     t.string   "fuelValueUnit"
+    t.integer  "detachablePart"
+    t.integer  "detachDuration"
+    t.integer  "detachTerm"
   end
 
   create_table "howtos", :force => true do |t|
@@ -407,6 +421,9 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.boolean  "windowShadowing"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "detachablePart"
+    t.integer  "detachDuration"
+    t.integer  "detachTerm"
   end
 
   create_table "locations", :force => true do |t|
@@ -430,6 +447,11 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.integer  "machineryTypeID"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.decimal  "capacity"
+    t.integer  "detachablePart"
+    t.integer  "detachDuration"
+    t.integer  "detachTerm"
+    t.integer  "location_id"
   end
 
   create_table "machinery_types", :force => true do |t|
@@ -437,6 +459,27 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "measuring_data", :force => true do |t|
+    t.date     "measuringDate"
+    t.time     "measuringTime"
+    t.decimal  "capacity"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "enterpriseID"
+    t.integer  "mnumber"
+  end
+
+  create_table "measurings", :force => true do |t|
+    t.integer  "enterprise_id"
+    t.datetime "dateFrom"
+    t.datetime "dateTo"
+    t.integer  "location_id"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "name"
   end
 
   create_table "meter_readings", :force => true do |t|
@@ -462,6 +505,8 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.text     "description"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "contract_id"
+    t.integer  "meterNo"
   end
 
   create_table "production_data", :force => true do |t|
@@ -606,6 +651,9 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
     t.integer  "kettleManuYear"
+    t.integer  "detachablePart"
+    t.integer  "detachDuration"
+    t.integer  "detachTerm"
   end
 
   create_table "thermo_oil_consumption_years", :force => true do |t|
@@ -702,6 +750,9 @@ ActiveRecord::Schema.define(:version => 20130530085654) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "fuelValueUnit"
+    t.integer  "detachablePart"
+    t.integer  "detachDuration"
+    t.integer  "detachTerm"
   end
 
   create_table "todos", :force => true do |t|

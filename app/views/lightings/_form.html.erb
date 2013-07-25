@@ -34,6 +34,16 @@
     <td><%= f.label :installedPower, "Installierte Leistung"%></td>
     <td><%= f.text_field :installedPower, size: 20 %> kW</td>
   </tr>
+<tr>
+    <td><%= f.label :detachablePart, "Abschaltbarer Anteil" %></td>
+    <td><%= f.number_field :detachablePart %> %</td>
+    <td><%= f.label :detachDuration, "Abschaltdauer" %></td>
+    <td><%= f.number_field :detachDuration %> min</td>
+</tr>
+<tr>
+    <td><%= f.label :detachTerm, "Laufzeit bis zur nächsten Abschaltung" %></td>
+    <td colspan=3><%= f.number_field :detachTerm %> min</td>
+</tr>
   <tr>
     <td><%= f.label :controlGear, "Vorschaltgeräte (VG)"%></td>
     <td><%= f.select :controlGear, ["Konventionelles VG", "Verlustarmes VG", "Normal elektronisches VG", "Cut-Off elektronisches VG"]%></td>

@@ -13,8 +13,10 @@
 
 <table>
 <tr>
-    <td><%= f.label "Ebergieart"%></td>
-    <td colspan=3><%= f.select :contract_id, Contract.all.map{|c| [c.energy_type, c.id]}%></td>
+    <td><%= f.label "Energievertrag"%></td>
+    <td><%= f.select :contract_id, Contract.all.map{|c| [c.supplier + " " + " " + c.energy_type, c.id]}%></td>
+    <td><%= f.label "Zähler"%></td>
+    <td><%= f.select :meterId, Meter.all.map{|m| [m.name, m.id]}%></td>
 </tr>
 <tr>
     <td><%= f.label :date, "Rechnungsdatum" %></td>

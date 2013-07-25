@@ -4,30 +4,21 @@ class BillsController < ApplicationController
   
   
   def index
-    @bills = Bill.all
-
-    logger.info("Hallo")
+    @bills = Bill.find(:all, :order => "date")
     
-    data_table = GoogleVisualr::DataTable.new
-    data_table.new_column('string', 'Jahr')
-    data_table.new_column('number', 'Ausgaben')
-    data_table.new_column('number', 'Verbrauch')
-    data_table.add_rows(4)
-    data_table.set_cell(0, 0, '2004')
-    data_table.set_cell(0, 1, 1000)
-    data_table.set_cell(0, 2, 400)
-    data_table.set_cell(1, 0, '2005')
-    data_table.set_cell(1, 1, 1170)
-    data_table.set_cell(1, 2, 460)
-    data_table.set_cell(2, 0, '2006')
-    data_table.set_cell(2, 1, 860)
-    data_table.set_cell(2, 2, 580)
-    data_table.set_cell(3, 0, '2007')
-    data_table.set_cell(3, 1, 1030)
-    data_table.set_cell(3, 2, 540)
- 
- opts = { :width => 600, :height => 240, :title => 'Verlauf der Stromkosten', :legend => 'bottom' }
-@chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
+        data_table = GoogleVisualr::DataTable.new
+        data_table.new_column('string', 'Zeit')
+        data_table.new_column('number', 'Energiekosten in EUR')
+        #data_table.new_column('number', 'Verbrauch')
+        
+        @bills.each do |data|
+            #data_table.add_row(["#{data.date.strftime('%d.%m.%Y')}",data.value, data.consumption])
+            data_table.add_row(["#{data.date.strftime('%d.%m.%Y')}",data.value])
+        end
+
+     opts = { :width => 800, :height => 250, :title => 'Energiekosten laut Abrechnung', :legend => 'bottom' }
+    @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
+    
     
     respond_to do |format|
       format.html # index.html.erb

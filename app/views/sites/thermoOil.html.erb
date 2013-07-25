@@ -1,0 +1,85 @@
+<h1>Thermoöl</h1>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p><br><br>
+<h2>Thermoölproduktion</h2>
+
+
+<table class="zentriert">
+  <tr>
+    <th>Kesselname</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Leistung</th>
+    <th>Brennertyp</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% ThermoOilProduction.all.each do |thermo_oil_production| %>
+  <tr>
+    <td><%= thermo_oil_production.kettleName %></td>
+    <td><%= thermo_oil_production.kettleManufacturer %></td>
+    <td><%= thermo_oil_production.kettleManuYear %></td>
+    <td><%= thermo_oil_production.kettleCapacity %></td>
+    <td><%= thermo_oil_production.burnerType %></td>
+    <td><%= thermo_oil_production.burnerManufacturer %></td>
+    <td><%= thermo_oil_production.burnerManuYear %></td>    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_production_path(thermo_oil_production) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_production, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Thermoölverteilung</h2>
+<table class="zentriert">
+  <tr>
+    <th>Thermoölproduktion</th>
+    <th>Durchmesser</th>
+    <th>Isolation</th>
+    <th>Länge</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% ThermoOilDistribution.all.each do |thermo_oil_distribution| %>
+  <tr>
+    <td><%= ThermoOilProduction.find_by_id(thermo_oil_distribution.thermoOilProduction_id).kettleName %></td>
+    <td><%= thermo_oil_distribution.aperture %> mm</td>
+    <td><%= thermo_oil_distribution.isolation %> mm</td>
+    <td><%= thermo_oil_distribution.length %> m</td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_distribution_path(thermo_oil_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Thermoölverbraucher</h2>
+
+<table class="zentriert">
+  <tr>
+    <th>Thermoölproduktion</th>
+    <th>Durchmesser Verteilung</th>
+    <th>Verbraucher</th>
+    <th>Nutzenleistung</th>
+    <th>Bedarfsart</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% ThermoOilConsumption.all.each do |thermo_oil_consumption| %>
+  <tr>
+    <td><%= ThermoOilProduction.find_by_id(thermo_oil_consumption.thermoOilProduction_id).kettleName %></td>
+    <td><%= ThermoOilDistribution.find_by_id(thermo_oil_consumption.thermoOilDistribution_id).aperture %> mm</td>
+    <td><%= Machinery.find_by_id(thermo_oil_consumption.machinery_id).name %></td>
+    <td><%= thermo_oil_consumption.profitCapacity %></td>
+    <td><%= thermo_oil_consumption.requirementType %></td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_consumption %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_consumption_path(thermo_oil_consumption) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_consumption, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br><br>

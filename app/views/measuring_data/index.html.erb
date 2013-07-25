@@ -1,0 +1,146 @@
+<h1>Messdaten</h1>
+
+<!--Anzeigen und Verstecken der Datentabelle-->
+<script type="text/javascript">
+function toggle5(showHideDiv, switchImgTag) 
+{
+        var ele = document.getElementById(showHideDiv);
+        var imageEle = document.getElementById(switchImgTag);
+
+        if(ele.style.display == "block") 
+		{
+			ele.style.display = "none";
+			imageEle.innerHTML = 'Datentabelle anzeigen';
+        }
+        else 
+		{
+			ele.style.display = "block";
+			imageEle.innerHTML = 'Datentabelle ausblenden';
+        }
+}
+</script>
+
+<div id='chart' style='width: 1050px; height: 450px;'>
+<%= render_chart @chart, 'chart' %>
+</div>
+
+Höchster kW-Wert im Messzeitraum: <b><%= MeasuringDatum.maximum("capacity") %> kW </b><br>
+Niedrigster kW-Wert im Messzeitraum: <b><%= MeasuringDatum.minimum("capacity") %> kW </b><br>
+Durchschnitt kW-Wert im Messzeitraum: <b><%= number_to_currency(MeasuringDatum.average("capacity"), :precision => 1, :unit =>"") %> kW </b><br>
+
+<br>
+
+
+<!--Ausklappquatsch-->
+<div>
+	<a id="imageDivLink2" href="javascript:toggle5('contentDivImg2','imageDivLink2');">Datentabelle anzeigen</a>
+</div>
+	
+<div id="contentDivImg2" style="display: none;">	
+<%= javascript_include_tag params[:controller] %>
+<table class="zentriert">
+  <tr>
+    <th>Datum</th>
+    <th>Zeit</th>
+    <th>Leistung</th>
+	<th> ! </th>
+    <!--<th width=100>Aktion</th>-->
+  </tr>
+
+<!--Datentabelle ausgeben-->
+<% @measuring_data.each do |measuring_datum| %>
+  <tr>
+    <td><%= measuring_datum.measuringDate.strftime('%d.%m.%Y') %></td>
+    <td><%= measuring_datum.measuringTime.strftime('%H:%M')+" Uhr" %></td>
+    <td><%= measuring_datum.capacity %> kW</td>
+
+<% if measuring_datum.capacity > 1200 %>
+	<td><%= image_tag("drueber.png", size: "20x20", alt: "Grenzwert überschritten!")%></td>
+<% else %>
+	<td><%= image_tag("drunter.png", size: "20x20", alt: "Grenzwert eingehalten")%></td>
+<% end %>
+	
+  <!--<td><%# link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), measuring_datum %>
+    <%# link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_measuring_datum_path(measuring_datum) %>
+    <%# link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), measuring_datum, method: :delete, data: { confirm: 'Are you sure?' }  %></td>-->
+
+  </tr>
+<% end %>
+</table>
+	</div>
+<br />
+
+<!--Verbraucher der Spitzenlast (Grenzwertüberschreitung) ermitteln-->
+<% @measuring_data.each do |measuring_datum| %>
+	<% if measuring_datum.capacity > 1200 %>
+		<%= measuring_datum.measuringDate.strftime('%d.%m.%Y') %>
+    	<%= measuring_datum.measuringTime.strftime('%H:%M')+" Uhr" %><br>
+	<% end %>
+<% end %>
+<br>
+<%= link_to 'Neue Messdaten hochladen', new_measuring_datum_path %>
+
+
+<% @machinery = Machinery.all %>
+<% @lighting = Lighting.all %>
+<% @compressedAirProduction = CompressedAirProduction.all %>
+<% @steamProduction = SteamProduction.all %>
+<% @hotWaterProduction = HotWaterProduction.all %>
+<% @thermoOilProduction = ThermoOilProduction.all%>
+<% @coldProduction = ColdProduction.all%>
+
+<table class="zentriert">
+	<th>Maschine</th>
+	<th>Abschaltbare Leistung</th>
+	<% sumCapacity = 0 %>
+	<% sumDetach = 0 %>
+	
+	<% @machinery.each do |machine| %>
+	<tr>		
+		<td><%= machine.name %></td>
+		<td><%= sumDetach1 = machine.capacity * machine.detachablePart/100 %> kW</td>
+	</tr>
+	<% end %>
+
+	<% @lighting.each do |light|%>
+	<tr>
+		<td>Beleuchtung <%= Location.find_by_id(light.location_id).name %></td>
+		<td><%= sumDetach2 = light.installedPower * light.detachablePart/100 %> kW</td>
+	</tr>
+	<% end %>
+
+	<% @compressedAirProduction.each do |com|%>
+	<tr>
+		<td><%= com.manufacturer %></td>
+		<td><%= sumDetach2 = com.capacity * com.detachablePart/100 %> kW</td>
+	</tr>
+	<% end %>
+
+	<% @steamProduction.each do |steam|%>
+	<tr>
+		<td><%= steam.kettleName %></td>
+		<td><%= sumDetach2 = steam.kettleCapacity * steam.detachablePart/100 %> kW</td>
+	</tr>
+	<% end %>
+
+	<% @hotWaterProduction.each do |hot|%>
+	<tr>
+		<td><%= hot.kettleName %></td>
+		<td><%= sumDetach2 = hot.kettleCapacity * hot.detachablePart/100 %> kW</td>
+	</tr>
+	<% end %>
+
+	<% @thermoOilProduction.each do |thermo|%>
+	<tr>
+		<td><%= thermo.kettleName %></td>
+		<td><%= sumDetach2 = thermo.kettleCapacity * thermo.detachablePart/100 %> kW</td>
+	</tr>
+	<% end %>
+	
+	<% @coldProduction.each do |cold|%>
+	<tr>
+		<td><%= cold.manufacturer %></td>
+		<td><%= sumDetach2 = cold.capacity * cold.detachablePart/100 %> kW</td>
+	</tr>
+	<% end %>
+</table>

@@ -12,14 +12,14 @@
   <% end %>
 <table>
   <tr>
-    <td><%= f.label :coldDistribution_id, "Kälteverteilung" %></td>
-    <td><%= f.number_field :coldDistribution_id %></td>
-    <td><%= f.label :machinery_id, "Kälteverbraucher" %></td>
-    <td><%= f.number_field :machinery_id %></td>
+	<td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
+    <td><%= f.select :coldProduction_id, ColdProduction.all.map{|p| [p.buildType, p.id]}%></td>
+    <td><%= f.label :coldDistribution_id, "Kälteverteilung Durchmesser" %></td>
+    <td><%= f.select :coldDistribution_id, ColdDistribution.all.map{|c| [c.aperture, c.id]}%></td>
   </tr>
   <tr>
-    <td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
-    <td colspan="3"><%= f.number_field :coldProduction_id %></td>
+    <td><%= f.label :machinery_id, "Kälteverbraucher" %></td>
+    <td colspan=3><%= f.select :machinery_id, Machinery.all.map{|m| [m.name, m.id]}%></td>
   </tr>
   <tr>
     <td><%= f.label :profitCapacity, "Nutzenleistung" %></td>

@@ -1,6 +1,6 @@
 <!--COMPRESSED AIR PRODUCTION INDEX-->
 
-<h1>Liste der Drucklufterzeuger (Kompressoren)</h1>
+<h3>Liste der Drucklufterzeuger (Kompressoren)</h3>
 
 <table class="zentriert">
   <tr>
@@ -25,7 +25,7 @@
     <th>bei Luft wohin</th>
     <th>Wärmerückgewinnung</th>
     <th>Einsatzgebiet Wärme</th>-->
-    <th>Aktion</th>
+    <th width="100">Aktion</th>
 
   </tr>
 
@@ -34,9 +34,9 @@
     <td><%= compressed_air_production.manufacturer %></td>
     <td><%= compressed_air_production.version %></td>
     <td><%= compressed_air_production.yearOfManufacturing %></td>
-    <td><%= number_to_currency(compressed_air_production.capacity, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"bar/Ü ")  %></td>
+    <td><%= number_to_currency(compressed_air_production.capacity, :precision => 2, :delimiter => ".", :separator => ",", :unit=> "")  %> kW</td>
     <td><%= compressed_air_production.nominalDeliveryRate %></td>
-    <td><%= compressed_air_production.pressureSettling %></td>
+    <td><%= compressed_air_production.pressureSettling %> bar/Ü</td>
     <!--<td><%= compressed_air_production.raisingPressure %></td>
     <td><%# compressed_air_production.breakPressure %></td>
     <td><%# compressed_air_production.loadCharacter %></td>

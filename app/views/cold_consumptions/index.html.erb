@@ -1,24 +1,22 @@
 <h1>Kälteverbraucher</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Verbraucher</th>
     <th>Kälteproduktion</th>
-    <th>Kälteverteilung</th>
+    <th>Kälteverteilung Durchmesser</th>
     <th>Nutzenleistung</th>
     <th>Bedarfsart</th>
-    <th>Aktion</th>
+    <th width=100>Aktion</th>
   </tr>
 
 <% @cold_consumptions.each do |cold_consumption| %>
   <tr>
-    <td><%= cold_consumption.machinery_id %></td>
-    <td><%= cold_consumption.coldProduction_id %></td>
-    <td><%= cold_consumption.coldDistribution_id %></td>
-    <td><%= cold_consumption.profitCapacity %></td>
+    <td><%= Machinery.find_by_id(cold_consumption.machinery_id).name %></td>
+    <td><%= ColdProduction.find_by_id(cold_consumption.coldProduction_id).buildType %></td>
+    <td><%= ColdDistribution.find_by_id(cold_consumption.coldDistribution_id).aperture %> mm</td>
+    <td><%= cold_consumption.profitCapacity %> kW</td>
     <td><%= cold_consumption.requirementType %></td>
-
-    
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_consumption %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_consumption_path(cold_consumption)  %>
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_consumption, method: :delete, data: { confirm: 'Are you sure?' }  %></td>

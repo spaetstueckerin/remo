@@ -1,6 +1,6 @@
 <h1>Heißwasserverbraucher</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Heißwasserproduktion</th>
     <th>Heißwasserverbraucher</th>
@@ -11,7 +11,7 @@
 
 <% @hot_water_consumptions.each do |hot_water_consumption| %>
   <tr>
-    <td><%= hot_water_consumption.hotWaterProduction_id %></td>
+    <td><%= HotWaterProduction.find_by_id(hot_water_consumption.hotWaterProduction_id).kettleName %></td>
     <td><%= hot_water_consumption.machinery_id %></td>
     <td><%= hot_water_consumption.useCapacity %></td>
     <td><%= hot_water_consumption.requirementType %></td>

@@ -1,4 +1,6 @@
-<h1>Gebäude</h1>
+<h3>Gebäude</h3>
+
+<p>An dieser Stelle sind alle Gebäude ihres Unternehmens registriert.</p>
 
 <table class="zentriert">
   <tr>
@@ -17,10 +19,7 @@
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), building %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_building_path(building) %>
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), building, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-  </tr>
+  	</tr>
 <% end %>
+	<tr><th colspan = 3></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_building_path %></th></tr>
 </table>
-
-<br />
-
-<%= link_to 'Neues Gebäude', new_building_path %>

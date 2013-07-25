@@ -14,6 +14,22 @@ class MetersController < ApplicationController
   # GET /meters/1.json
   def show
     @meter = Meter.find(params[:id])
+    @meter_readings = MeterReading.find_all_by_meter_id(params[:id])
+
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Zeit')
+    data_table.new_column('number', 'Verbrauch im Ablesezeitraum in kWh')
+    
+    @meter_readings.each do |data|
+  	  if data.id > 6
+  	    previous = MeterReading.find_by_id(data.id-1).readingValue
+        data_table.add_row(["#{data.readingDate.strftime('%d.%m.%Y')}",data.readingValue-previous])
+      else
+      end
+    end
+
+    opts = { :width => 800, :height => 400, :title => 'Ablesungen', :legend => 'bottom' }
+    @chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, opts)
 
     respond_to do |format|
       format.html # show.html.erb

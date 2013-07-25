@@ -1,25 +1,22 @@
-<h1>Listing roles</h1>
+<h3>Benutzerrollen</h3>
 
-<table>
+<table class="zentriert">
   <tr>
-    <th>Role name</th>
-    <th>Role description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Rollenbezeichnung</th>
+    <th>Rollenbeschreibung</th>
+    <th>Aktion</th>
   </tr>
 
 <% @roles.each do |role| %>
   <tr>
     <td><%= role.role_name %></td>
     <td><%= role.role_description %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), role %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_role_path(role) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), role, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
   </tr>
 <% end %>
+<tr><th colspan=2></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_role_path %></th></tr>
 </table>
-
-<br />
-
-<%= link_to 'New Role', new_role_path %>

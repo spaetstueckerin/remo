@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  measuringDate: 2013-06-11
+  measuringTime: 2013-06-11 17:48:14
+  capacity: 9.99
+
+two:
+  measuringDate: 2013-06-11
+  measuringTime: 2013-06-11 17:48:14
+  capacity: 9.99

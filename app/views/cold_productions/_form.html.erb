@@ -23,6 +23,16 @@
     <td><%= f.label :capacity, "Elektrische Leistung" %></td>
     <td><%= f.number_field :capacity %> kW</td>
   </tr>
+<tr>
+    <td><%= f.label :detachablePart, "Abschaltbarer Anteil" %></td>
+    <td><%= f.number_field :detachablePart %> %</td>
+    <td><%= f.label :detachDuration, "Abschaltdauer" %></td>
+    <td><%= f.number_field :detachDuration %> min</td>
+</tr>
+<tr>
+    <td><%= f.label :detachTerm, "Laufzeit bis zur nächsten Abschaltung" %></td>
+    <td colspan=3><%= f.number_field :detachTerm %> min</td>
+</tr>
   <tr>
     <td><%= f.label :coolingCapacity, "Kälteleistung" %></td>
     <td><%= f.number_field :coolingCapacity %> kW</td>

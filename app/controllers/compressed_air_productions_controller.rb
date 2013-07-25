@@ -17,6 +17,7 @@ class CompressedAirProductionsController < ApplicationController
   # GET /compressed_air_production/1.json
   def show
     @compressed_air_production = CompressedAirProduction.find(params[:id])
+    @compressed_air_production_years = CompressedAirProductionYear.find_all_by_compressedAirProduction_id(params[:id], :order =>"year_id DESC")
 
     respond_to do |format|
       format.html # show.html.erb

@@ -17,13 +17,19 @@
 <table>
 <tr>
     <td><%= f.label :location_id, "Standort" %></td>
-    <td colspan=3><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+    <td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+    <td><%= f.label :contract_id, "Energieliefervertrag" %></td>
+    <td><%= f.select :contract_id, Contract.all.map{|c| [c.energy_type + " " + c.supplier, c.id]}%></td>
 </tr>
 <tr>
     <td><%= f.label :meterType_id, "Zählertyp" %></td>
     <td><%= f.select :meterType_id, MeterType.all.map{|m| [m.name, m.id]}%></td>
     <td><%= f.label :name, "Bezeichnung" %></td>
     <td><%= f.text_field :name %></td>
+</tr>
+<tr>
+	<td><%= f.label :meterNo, "Zählernummer" %></td>
+    <td colspan=3><%= f.text_field :meterNo %></td>
 </tr>
 <tr>
     <td><%= f.label :description, "Beschreibung" %></td>

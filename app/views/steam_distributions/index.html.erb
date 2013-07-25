@@ -1,9 +1,8 @@
 <h1>Prozesswärme - Dampfverteilung</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Dampferzeuger</th>
-    <th>Dampfverbraucher</th>
     <th>Durchmesser der Leitung</th>
     <th>Isolierung der Leitung</th>
     <th>Länge der Leitung</th>
@@ -14,16 +13,15 @@
     <th>Kpisolation</th>
     <th>Kplength</th>
     <th>Drain</th>-->
-    <th>Aktion</th>
+    <th width=100>Aktion</th>
   </tr>
 
 <% @steam_distributions.each do |steam_distribution| %>
 <tr>
     <td><%= SteamProduction.find_by_id(steam_distribution.steamProduction_id).kettleName %></td>
-    <td><%= steam_distribution.steamConsumer_id %></td>
-    <td><%= steam_distribution.dpAperture %></td>
-    <td><%= steam_distribution.dpIsolation %></td>
-    <td><%= steam_distribution.dpLength %></td>
+    <td><%= steam_distribution.dpAperture %> mm</td>
+    <td><%= steam_distribution.dpIsolation %> mm</td>
+    <td><%= steam_distribution.dpLength %> m</td>
     <!--<td><%= steam_distribution.massFlowNenn %></td>
     <td><%= steam_distribution.massFlowMin %></td>
     <td><%= steam_distribution.massFlowMax %></td>

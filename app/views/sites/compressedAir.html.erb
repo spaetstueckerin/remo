@@ -1,0 +1,93 @@
+<h1>Druckluftanlagen</h1>
+
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+<br><br>
+
+<h2>Drucklufterzeugung</h2>
+<table class="zentriert">
+  <tr>
+    <th>Hersteller</th>
+    <th>Bauart</th>
+    <th>Baujahr</th>
+    <th>Nennleistung</th>
+    <th>Nenn-Fördermenge</th>
+    <th>Druckniveau</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% CompressedAirProduction.all.each do |compressed_air_production| %>
+  <tr>
+    <td><%= compressed_air_production.manufacturer %></td>
+    <td><%= compressed_air_production.version %></td>
+    <td><%= compressed_air_production.yearOfManufacturing %></td>
+    <td><%= number_to_currency(compressed_air_production.capacity, :precision => 2, :delimiter => ".", :separator => ",", :unit => "")  %> kW</td>
+    <td><%= compressed_air_production.nominalDeliveryRate %> m&sup3;/min</td>
+    <td><%= compressed_air_production.pressureSettling %> bar Ü</td>    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_production_path(compressed_air_production) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_production, method: :delete, data: { confirm: 'Are you sure?' }   %></td>
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Druckluftverteilung</h2>
+<table class="zentriert">
+  <tr>
+    <th>Kompressor</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Leistung</th>
+    <th>Typ</th>
+    <th>Volumen</th>
+    <th>Ort (DLS)</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% CompressedAirDistribution.all.each do |compressed_air_distribution| %>
+  <tr>
+    <% compressor = CompressedAirProduction.find_by_id(compressed_air_distribution.compressor_id)%>
+    <td><%= compressor.manufacturer %></td>
+    <td><%= compressed_air_distribution.manufacturer %></td>
+    <td><%= compressed_air_distribution.yearOfManufacturing %></td>
+    <td><%= compressed_air_distribution.capacity %> kW</td>
+    <td><%= compressed_air_distribution.compressedAirDryerType %></td>
+    <td><%= compressed_air_distribution.volume %> m&sup3;</td>
+    <% location = Location.find_by_id(compressed_air_distribution.location_id)%>
+    <td><%= location.name %></td>    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_distribution_path(compressed_air_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Druckluftverbraucher</h2>
+<table class="zentriert">
+  <tr>
+    <th>Maschine</th>
+    <th>Kompressor</th>
+    <th width="50">Benötigtes Druckniveau</th>
+    <th>Benötigte Qualität</th>
+    <th width="50">Volumenstrom Nennwert</th>
+    <th>Bedarfsart</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% CompressedAirConsumer.all.each do |compressed_air_consumer| %>
+  <tr>
+    <td><%= Machinery.find_by_id(compressed_air_consumer.machinery_id).name %></td>
+    <td><%= CompressedAirProduction.find_by_id(compressed_air_consumer.compressor_id).manufacturer %></td>
+    <td><%= compressed_air_consumer.neededPressureSettling %> bar Ü</td>
+    <td><%= compressed_air_consumer.neededQuality %></td>
+    <td><%= compressed_air_consumer.volumeStreamNom %> m&sup3;/min</td>
+    <td><%= compressed_air_consumer.requirementType %></td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_consumer %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_consumer_path(compressed_air_consumer) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_consumer, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+</table>
+

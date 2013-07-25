@@ -1,110 +1,137 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Manufacturer:</b>
-  <%= @compressed_air_production.manufacturer %>
-</p>
+<h3>Druckluftproduktion <%=@compressed_air_production.manufacturer%> <%= @compressed_air_production.version %></h3>
 
-<p>
-  <b>Version:</b>
-  <%= @compressed_air_production.version %>
-</p>
+<table class="left">
+	<tr><th colspan=4> </th></tr>
+	<tr>
+  		<th width=100>Hersteller</th>
+  		<td><%= @compressed_air_production.manufacturer %></td>
+  		<th width=100>Bauart</th>
+  		<td><%= @compressed_air_production.version %></td>
+	</tr>
+	<tr>
+  		<th>Baujahr</th>
+  		<td><%= @compressed_air_production.yearOfManufacturing %></td>
+  		<th>Standort</th>
+  		<td><%= Location.find(@compressed_air_production.location_id).name %></td>
+	</tr>
+	<tr>
+  		<th>Nennleistung</th>
+  		<td><%= @compressed_air_production.capacity %> kW</td>
+  		<th>Nennfördermenge</th>
+  		<td><%= @compressed_air_production.nominalDeliveryRate %> m&sup3;/min</td>
+	</tr>
+	<tr>
+  		<th>Kompressor Druckniveau</th>
+  		<td colspan=3><%= @compressed_air_production.pressureSettling %> bar Ü</td>
+	</tr>
+	<tr>
+  		<th>Einschaltdruck</th	>
+  		<td><%= @compressed_air_production.raisingPressure %> bar Ü</td>
+  		<th>Ausschaltdruck</th>
+  		<td><%= @compressed_air_production.breakPressure %> bar Ü</td>
+	</tr>
+	<tr>
+  		<th>Lastart</th>
+  		<td><%= @compressed_air_production.loadCharacter %></td>
+  		<th>Anlage</th>
+  		<td><%= @compressed_air_production.facilityCharacter %></td>
+	</tr>
+	<tr>
+  		<th>Drehzahlregelung</th>
+  		<td><% if @compressed_air_production.speedRegulation == true %>ja<% else %>nein<% end %></td>
+  		<th>Übergeordnete Steuerung</th>
+  		<td><% if @compressed_air_production.higherControl == true %>ja<% else %>nein<% end %></td>
+	</tr>
+	<tr>
+  		<th>Redundanz gefordert</th>
+  		<td><% if @compressed_air_production.redundancyRequirements == true %>ja<% else %>nein<% end %></td>
+  		<th>Druckluftansaugung (wo)</th>
+  		<td><%= @compressed_air_production.pressureExhaust %></td>
+	</tr>
+	<tr>
+  		<th>Kühlmedium:</th>
+  		<td colspan=3><%= @compressed_air_production.coolingMedium %></td>
+	</tr>
+	<tr>
+  		<th>Zuluft (woher)</th>
+  		<td><%= @compressed_air_production.airFrom %></td>
+  		<th>Abluft (wohin)</th>
+  		<td><%= @compressed_air_production.airWhere %></td>
+	</tr>
+	<tr>
+  		<th>Wärmerückgewinnung</th>
+  		<td><% if @compressed_air_production.heatRecovery == true %>ja<% else %>nein<% end %></td>
+  		<th>Einssatzgebiet der Wärme</th>
+  		<td><%= @compressed_air_production.heatApplicationArea %></td>
+	</tr>
+	<tr>
+  		<th>Wartung Kontaktdaten</th>
+  		<td colspan=3><%= @compressed_air_production.support %></td>
+	</tr>
+	<tr><th colspan=4 align="right"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), compressed_air_production_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_production_path(@compressed_air_production) %></th></tr>
+</table>
+<br><br>
 
-<p>
-  <b>Yearofmanufacturing:</b>
-  <%= @compressed_air_production.yearOfManufacturing %>
-</p>
+<h3>Jährliche Erhebungen für diesen Kompressor</h3>
+<table class="zentriert">
+  <tr>
+    <th>Jahr</th>
+    <th>jährliche Betriebsstunden</th>
+    <th>jährliche Laststunden</th>
+    <th>jährliche Auslastung</th>
+    <th>Stromverbrauch</th>
+    <th>Fördermenge</th>
+    <!--<th>Schalthäufigkeit</th>
+    <th>Nachlaufzeit (Leerlauf)</th>
+    <th>Minimaldruck</th>
+    <th>Druckluftansaugung (min)</th>
+    <th>Druckluftansaugung (max)</th>
+    <th>Kühlwasservorlauf °C</th>
+    <th>Kühlwasserrücklauf °C</th>
+    <th>Wassermenge l</th>-->
+    <th width =100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Capacity:</b>
-  <%= @compressed_air_production.capacity %>
-</p>
+<% operating = 0; %>
+<% load = 0; %>
 
-<p>
-  <b>Nominaldeliveryrate:</b>
-  <%= @compressed_air_production.nominalDeliveryRate %>
-</p>
+<% @compressed_air_production_years.each do |compressed_air_production_year| %>
+  <tr>
+  	<td><%= compressed_air_production_year.year_id %>
+    <td><%= compressed_air_production_year.operatingHours %> h</td>
+    <td><%= compressed_air_production_year.loadHours %> h</td>
+    <td><%= compressed_air_production_year.capacity %> %</td>
+    <td><%= compressed_air_production_year.energyConsumption %> kWh</td>
+    <td><%= compressed_air_production_year.deliveryRate %> l</td>
+	<% load = load + compressed_air_production_year.loadHours %>
+	<% operating = operating + compressed_air_production_year.operatingHours %>
+    <!--<td><%= compressed_air_production_year.operatingCycles %></td>
+    <td><%= compressed_air_production_year.overtravelTimeIdle %></td>
+    <td><%= compressed_air_production_year.pressureMin %></td>
+    <td><%= compressed_air_production_year.pressureExhaustTempMin %></td>
+    <td><%= compressed_air_production_year.pressureExhaustTempMax %></td>
+    <td><%= compressed_air_production_year.advanceTemp %></td>
+    <td><%= compressed_air_production_year.returnTemp %></td>
+    <td><%= compressed_air_production_year.amount_water %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_production_year_path(compressed_air_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+	<tr><th>Summe:</th><th><%= operating %> h</th><th><%= load %> h</th><th><%= number_to_currency(load.to_f / operating*100, :unit=>"") %> % 
+	<a onmouseover="document.getElementById('erklaerung').style.display='block';" onmouseout="document.getElementById('erklaerung').style.display='none';">
+		?</a>
+		<div id='erklaerung' style="display:none; position:absolute; width:350px; left:500px; background:white;border:solid 1px; padding:10px;">
+			Gesamte Auslastung der Anlage ergibt sich aus:<br>
+			Lasstunden / Betriebbstunden * 100
+		</div>
+	</th><th colspan=3></th></tr>
+</table>
 
-<p>
-  <b>Pressuresettling:</b>
-  <%= @compressed_air_production.pressureSettling %>
-</p>
+<br />
 
-<p>
-  <b>Raisingpressure:</b>
-  <%= @compressed_air_production.raisingPressure %>
-</p>
-
-<p>
-  <b>Breakpressure:</b>
-  <%= @compressed_air_production.breakPressure %>
-</p>
-
-<p>
-  <b>Loadcharacter:</b>
-  <%= @compressed_air_production.loadCharacter %>
-</p>
-
-<p>
-  <b>Facilitycharacter:</b>
-  <%= @compressed_air_production.facilityCharacter %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @compressed_air_production.location_id %>
-</p>
-
-<p>
-  <b>Speedregulation:</b>
-  <%= @compressed_air_production.speedRegulation %>
-</p>
-
-<p>
-  <b>Highercontrol:</b>
-  <%= @compressed_air_production.higherControl %>
-</p>
-
-<p>
-  <b>Support:</b>
-  <%= @compressed_air_production.support %>
-</p>
-
-<p>
-  <b>Redundancyrequirements:</b>
-  <%= @compressed_air_production.redundancyRequirements %>
-</p>
-
-<p>
-  <b>Pressureexhaust:</b>
-  <%= @compressed_air_production.pressureExhaust %>
-</p>
-
-<p>
-  <b>Coolingmedium:</b>
-  <%= @compressed_air_production.coolingMedium %>
-</p>
-
-<p>
-  <b>Airfrom:</b>
-  <%= @compressed_air_production.airFrom %>
-</p>
-
-<p>
-  <b>Airwhere:</b>
-  <%= @compressed_air_production.airWhere %>
-</p>
-
-<p>
-  <b>Heatrecovery:</b>
-  <%= @compressed_air_production.heatRecovery %>
-</p>
-
-<p>
-  <b>Heatapplicationarea:</b>
-  <%= @compressed_air_production.heatApplicationArea %>
-</p>
-
-
-<%= link_to 'Edit', edit_compressed_air_production_path(@compressed_air_production) %> |
-<%= link_to 'Back', compressed_air_production_path %>
+<%= link_to 'Jährliche Drucklufterzeugungsdaten anlegen', new_compressed_air_production_year_path %>
+<br><br><br><br><br><br><br><br><br>

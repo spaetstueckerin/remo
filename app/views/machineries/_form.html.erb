@@ -16,20 +16,35 @@
     <td><%= f.text_field :name %></td>
     <td><%= f.label :machineryTypeID, "Maschinentyp" %></td>
 	<td><%= f.select :machineryTypeID, MachineryType.all.map{|m| [m.m_type, m.id]}%></td>
-<tr>
 </tr>
+<tr>
     <td><%= f.label :description, "Beschreibung" %></td>
     <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
-<tr>
 </tr>
+<tr>
     <td><%= f.label :yearOfConstruction, "Baujahr" %></td>
     <td><%= f.number_field :yearOfConstruction %></td>
     <td><%= f.label :yearOfBuy, "Kaufjahr" %></td>
     <td><%= f.number_field :yearOfBuy %></td>
-<tr>
 </tr>
+<tr>
     <td><%= f.label :energyConsumption, "Energieverbrauch" %></td>
-    <td colspan=3><%= f.text_field :energyConsumption %> kWh</td>
+    <td><%= f.number_field :energyConsumption %> kWh</td>
+    <td><%= f.label :capacity, "Leistung" %></td>
+    <td><%= f.number_field :capacity %> kW</td>
+</tr>
+<tr>
+    <td><%= f.label :detachablePart, "Abschaltbarer Anteil" %></td>
+    <td><%= f.number_field :detachablePart %> %</td>
+    <td><%= f.label :detachDuration, "Abschaltdauer" %></td>
+    <td><%= f.number_field :detachDuration %> min</td>
+</tr>
+<tr>
+    <td><%= f.label :detachTerm, "Laufzeit bis zur nächsten Abschaltung" %></td>
+    <td><%= f.number_field :detachTerm %> min</td>
+    <td><%= f.label :location_id, "Standort" %></td>
+	<td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+</tr>
 </table>
  
 

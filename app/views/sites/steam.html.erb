@@ -1,0 +1,83 @@
+<h1>Dampfverbräuche</h1>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+<br><br>
+
+<h2>Dampferzeuger</h2>
+<table class="zentriert">
+  <tr>
+    <th>Kesselname</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Kesselleistung</th>
+    <th>Brennertyp</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% SteamProduction.all.each do |steam_production| %>
+  <tr>
+    <td><%= steam_production.kettleName %></td>
+    <td><%= steam_production.kettleManufaturer %></td>
+    <td><%= steam_production.kettleManuYear%></td>
+    <td><%= steam_production.kettleCapacity %> kWh</td>
+    <td><%= steam_production.burnerType %></td>
+    <td><%= steam_production.burnerManufacturer %></td>
+    <td><%= steam_production.burnerManufacturingYear %></td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_production %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_production_path(steam_production) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_production, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Dampfverteilung</h2>
+<table class="zentriert">
+  <tr>
+    <th>Dampferzeuger</th>
+    <th>Durchmesser der Leitung</th>
+    <th>Isolierung der Leitung</th>
+    <th>Länge der Leitung</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% SteamDistribution.all.each do |steam_distribution| %>
+<tr>
+    <td><%= SteamProduction.find_by_id(steam_distribution.steamProduction_id).kettleName %></td>
+    <td><%= steam_distribution.dpAperture %> mm</td>
+    <td><%= steam_distribution.dpIsolation %> mm</td>
+    <td><%= steam_distribution.dpLength %> m</td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_distribution_path(steam_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<h2>Dampfverbraucher</h2>
+<table class="zentriert">
+  <tr>
+    <th>Verbraucher</th>
+    <th>Dampferzeuger</th>
+    <th>System</th>
+    <th>Benötigter Druck DP</th>
+    <th>Benötigte Temperatur DP</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% SteamConsumption.all.each do |steam_consumption| %>
+  <tr>
+    <td><%= Machinery.find_by_id(steam_consumption.consumer_id).name %></td>
+    <td><%= SteamProduction.find_by_id(steam_consumption.steamProduction_id).kettleName %></td>
+    <td><%= steam_consumption.system %></td>
+    <td><%= steam_consumption.dpCompressionNeeded %> bar/Ü</td>
+    <td><%= steam_consumption.dpTemperatureNeeded %> °C</td>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_consumption %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_consumption_path(steam_consumption) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_consumption, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+</table>

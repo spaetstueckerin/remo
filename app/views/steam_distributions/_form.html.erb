@@ -13,9 +13,7 @@
 <table>
   <tr>
     <td><%= f.label :steamProduction_id, "Dampferzeuger" %></td>
-    <td><%= f.select :steamProduction_id, SteamProduction.all.map{|s| [s.kettleName, s.id]}%></td>
-    <td><%= f.label :steamConsumer_id, "Dampfverbraucher" %></td>
-    <td colspan="3"><%= f.number_field :steamConsumer_id %></td>
+    <td colspan=6><%= f.select :steamProduction_id, SteamProduction.all.map{|s| [s.kettleName, s.id]}%></td>
   </tr>
   <tr>
     <td colspan="6"><b>Dampfparameter</b></td>

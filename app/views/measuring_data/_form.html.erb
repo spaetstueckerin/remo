@@ -1,0 +1,47 @@
+<%= form_for(@measuring_datum, :multipart => true) do |f| %>
+<table>
+	<tr>
+		<td><%= f.label :mnumber, "Messung" %>
+		<td colspan=3><%= f.select :mnumber, Measuring.all.map{|m| [m.name, m.id]}%></td>
+	</tr>
+	<tr>
+		<td><%= f.label :tsv_file, "Dateiupload" %></td>
+		<td colspan=3><%= f.file_field :tsv_file %></td>
+	</tr>
+</table>
+<br>
+<%= f.submit "Upload >>", :class => "submit" %>
+
+<% end %>
+
+
+
+<%# form_for(@measuring_datum) do |f| %>
+  <%# if @measuring_datum.errors.any? %>
+    <!--<div id="error_explanation">
+      <h2><%# pluralize(@measuring_datum.errors.count, "error") %> prohibited this measuring_datum from being saved:</h2>
+
+      <ul>
+      <%# @measuring_datum.errors.full_messages.each do |msg| %>
+        <li><%# msg %></li>
+      <%# end %>
+      </ul>
+    </div>-->
+  <%# end %>
+
+  <!--<div class="field">
+    <%# f.label :measuringDate %><br />
+    <%# f.date_select :measuringDate %>
+  </div>
+  <div class="field">
+    <%# f.label :measuringTime %><br />
+    <%# f.time_select :measuringTime %>
+  </div>
+  <div class="field">
+    <%# f.label :capacity %><br />
+    <%# f.text_field :capacity %>
+  </div>
+  <div class="actions">
+    <%# f.submit %>
+  </div>-->
+<%# end %>

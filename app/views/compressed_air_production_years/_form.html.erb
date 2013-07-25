@@ -14,7 +14,8 @@
   <tr>
     <td width="100"><%= f.label :year_id, "Abrechnungsjahr" %></td>
     <td><%= f.select :year_id, ["2010", "2011", "2012", "2013", "2014"]%></td>
-    <td colspan="2"></td>
+    <td><%= f.label :compressedAirProduction_id, "Druckluftproduktion" %></td>
+    <td><%= f.select :compressedAirProduction_id, CompressedAirProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
   </tr>
   <tr>
     <td width="100"><%= f.label :operatingHours, "Betriebsstunden" %></td>

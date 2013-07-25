@@ -14,9 +14,10 @@
 <table>
   <tr>
     <td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
-    <td><%= f.number_field :coldProduction_id %></td>
-    <td><%= f.label :coldConsumer_id, "Kälteverbrauch" %></td>
-    <td><%= f.number_field :coldConsumer_id %></td>
+    <td colspan=3><%= f.select :coldProduction_id, ColdProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
+	<!--Brauchen wir wahrscheinlich nicht
+    <td><%# f.label :coldConsumer_id, "Kälteverbrauch" %></td>
+    <td><%# f.number_field :coldConsumer_id %></td>-->
   </tr>
   <tr>
     <td><%= f.label :aperture, "Durchmesser" %></td>

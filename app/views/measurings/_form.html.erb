@@ -1,0 +1,47 @@
+<%= form_for(@measuring, :multipart => true) do |f| %>
+  <% if @measuring.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@measuring.errors.count, "error") %> prohibited this measuring from being saved:</h2>
+
+      <ul>
+      <% @measuring.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!--Über Hidden Field abwickeln
+	<div class="field">
+    <%# f.label :enterprise_id %><br />
+    <%# f.number_field :enterprise_id %>
+  </div>-->
+
+<table>
+<tr>
+	<td><%= f.label :name, "Bezeichnung" %></td>
+    <td><%= f.text_field :name %></td>
+    <td><%= f.label :location_id, "Messort" %></td>
+	<td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :dateFrom, "Zeitraum von:" %></td>
+    <td colspan=3><%= f.datetime_select :dateFrom %></td>
+</tr>
+<tr>
+    <td><%= f.label :dateTo, "Zeitraum bis:" %></td>
+    <td colspan=3><%= f.datetime_select :dateTo %></td>
+</tr>
+<tr>
+    <td><%= f.label :description, "Beschreibung" %></td>
+    <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
+</tr>
+<tr>
+	<td><%= f.label :tsv_file, "Dateiupload" %></td>
+	<td colspan=3><%= f.file_field :tsv_file %></td>
+</tr>
+</table>
+  <div class="actions">
+    <%= f.submit "Absenden"%>
+  </div>
+<% end %>

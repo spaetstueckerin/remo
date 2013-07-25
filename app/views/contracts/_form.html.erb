@@ -18,13 +18,16 @@
     <td><%= f.text_field :supplier %></td>
 </tr>
 <tr>
+    <td><%= f.label :condition, "Konditionen" %></td>
+    <td><%= f.text_field :condition %> € per Kilowattstunde</td>
+    <td><%= f.label :contractNo, "Vertragsnummer" %></td>
+    <td><%= f.text_field :contractNo %></td>
+</tr>
+<tr>
     <td><%= f.label :description, "Beschreibung" %></td>
     <td colspan=3><%= f.text_area :description, size: "90x3"%></td>
 </tr>
-<tr>
-    <td><%= f.label :condition, "Konditionen" %></td>
-    <td colspan=3><%= f.text_field :condition %> € per Kilowattstunde</td>
-</tr>
+
 <tr>
     <td><%= f.label :duration_from, "Vertragsdauer" %></td>
     <td colspan=3>von: <%= f.date_select :duration_from %><%= f.label :duration_to, "bis: " %> <%= f.date_select :duration_to %></td>

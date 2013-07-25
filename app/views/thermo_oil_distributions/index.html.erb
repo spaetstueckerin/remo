@@ -1,9 +1,9 @@
 <h1>Thermoölverteilung</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Thermoölproduktion</th>
-    <th>Thermoölverbraucher</th>
+    <!--<th>Thermoölverbraucher</th>-->
     <th>Durchmesser</th>
     <th>Isolation</th>
     <th>Länge</th>
@@ -15,11 +15,11 @@
 
 <% @thermo_oil_distributions.each do |thermo_oil_distribution| %>
   <tr>
-    <td><%= thermo_oil_distribution.thermoOilProduction_id %></td>
-    <td><%= thermo_oil_distribution.thermoOilConsumption_id %></td>
-    <td><%= thermo_oil_distribution.aperture %></td>
-    <td><%= thermo_oil_distribution.isolation %></td>
-    <td><%= thermo_oil_distribution.length %></td>
+    <td><%= ThermoOilProduction.find_by_id(thermo_oil_distribution.thermoOilProduction_id).kettleName %></td>
+    <!--<td><%# thermo_oil_distribution.thermoOilConsumption_id %></td>-->
+    <td><%= thermo_oil_distribution.aperture %> mm</td>
+    <td><%= thermo_oil_distribution.isolation %> mm</td>
+    <td><%= thermo_oil_distribution.length %> m</td>
     <!--<td><%= thermo_oil_distribution.volumeFlowNenn %></td>
     <td><%= thermo_oil_distribution.volumeFlowMin %></td>
     <td><%= thermo_oil_distribution.volumeFlowMax %></td>-->

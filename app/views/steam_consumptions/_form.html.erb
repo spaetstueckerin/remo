@@ -13,7 +13,7 @@
 <table>
 <tr>
   <td><%= f.label :consumer_id, "Verbraucher" %></td>
-    <td><%= f.number_field :consumer_id %></td>
+	<td><%= f.select :consumer_id, Machinery.all.map{|m| [m.name, m.id]}%></td>
     <td><%= f.label :steamProduction_id, "Dampferzeuger" %></td>
     <td><%= f.select :steamProduction_id, SteamProduction.all.map{|s| [s.kettleName, s.id]}%></td>
 </tr>

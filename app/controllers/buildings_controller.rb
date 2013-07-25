@@ -2,7 +2,7 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
   def index
-    @buildings = Building.all
+    @buildings = Building.find(:all, :order => "name ASC")
 
     respond_to do |format|
       format.html # index.html.erb

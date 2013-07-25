@@ -1,4 +1,4 @@
-<h1>Zähler und Messgeräte</h1>
+<h1>Zähler</h1>
 
 <table class="zentriert">
   <tr>
@@ -6,6 +6,7 @@
     <th>Standort</th>
     <th>Messgerätetyp</th>
     <th>Bezeichnung</th>
+	<th>Zählernummer</th>
     <th>Beschreibung</th>
     <th>Aktion</th>
 
@@ -17,6 +18,7 @@
     <td><%= Location.find_by_id(meter.location_id).name %></td>
     <td><%= MeterType.find_by_id(meter.meterType_id).name %></td>
     <td><%= meter.name %></td>
+	<td><%=meter.meterNo %></td>
     <td><%= meter.description %></td>
 
     <td>
@@ -30,4 +32,4 @@
 
 <br />
 
-<%= link_to 'Neuen Zähler', new_meter_path %>
+<%= link_to 'Neuen Zähler anlegen', new_meter_path %>

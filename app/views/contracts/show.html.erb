@@ -1,35 +1,74 @@
+<h3>Energieliefervertrag #<%= @contract.contractNo %> <%= @contract.supplier %></h3>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Type:</b>
-  <%= @contract.energy_type %>
-</p>
+<div id='chart' align="center" style='width: 800px; height: 300px;'></div>
+<%= render_chart @chart, 'chart' %><br>
 
-<p>
-  <b>Supplier</b>
-  <%= @contract.supplier %>
-</p>
+<table>
+	<tr>
+		<th>Energieart:</th>
+		<td><%= @contract.energy_type %></td>
+	</tr>
+	<tr>
+		<th>Energielieferant</th>
+		<td><%= @contract.supplier %></td>
+	</tr>
+	<tr>
+		<th>Beschreibung:</th>
+		<td><%= @contract.description %></td>
+	</tr>
+	<tr>
+		<th>Konditionen:</th>
+		<td><%= number_to_currency(@contract.condition, :precision => 2, :unit => "") %> €/kWh</td>
+	</tr>
+	<tr>
+		<th>Vertragsdauer</th>
+		<td><%= @contract.duration_from.strftime('%d.%m.%Y')  %> - <%= @contract.duration_to.strftime('%d.%m.%Y')  %></td>
+	</tr>
+	<tr>
+		<th colspan=2 align="right"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), contracts_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_contract_path(@contract) %></th>
+	</tr>
+</table>
+<br><br>
+<h3>Energieabrechnungen</h3>
 
-<p>
-  <b>Description:</b>
-  <%= @contract.description %>
-</p>
+<table  class="zentriert">
+  <tr>
+    <th>Betrag</th>
+    <th>Verbrauch</th>
+	<th>€ pro kWh</th>
+    <th>Rechnungsdatum</th>
+    <th>Abrechnungszeitraum</th>
+    <th>Aktion</th>
+  </tr>
 
-<p>
-  <b>Condition:</b>
-  <%= @contract.condition %>
-</p>
+<% @bills.each do |bill| %>
+  <tr>
+    <td><%= number_with_precision(bill.value, :precision =>2) %> Euro</td>
+    <td><%= bill.consumption %> kW/h</td>
+	<td><%= number_with_precision(bill.consumption / bill.value, :precision =>2) %></td>
+    <td><%= bill.date.strftime('%d.%m.%Y') %></td>
+    <td><%= bill.period_from.strftime('%d.%m.%Y') %> - <%= bill.period_to.strftime('%d.%m.%Y') %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), bill %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_bill_path(bill) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), bill, method: :delete, data: { confirm: 'Are you sure?' }  %>
+    
+  </tr>
+<% end %>
+<tr><th colspan="5"></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_bill_path %></th></tr>
+</table>
 
-<p>
-  <b>Duration from:</b>
-  <%= @contract.duration_from %>
-</p>
+<br><br>
 
-<p>
-  <b>Duration to:</b>
-  <%= @contract.duration_to %>
-</p>
+<!--<h2>Angebundene Zähler</h2>
 
-
-<%= link_to 'Edit', edit_contract_path(@contract) %> |
-<%= link_to 'Back', contracts_path %>
+<table class="zentriert">
+	<tr>
+		<%# @meter = Meter.find_all_by_contract_id(@contract.id)%>
+		<%# @meter.each do |met| %>
+		<td><%# met.name%></td>
+		<%# end %>
+	<tr>
+</table>-->

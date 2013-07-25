@@ -1,0 +1,25 @@
+<h3>Messung vom <%= @measuring.dateFrom.strftime('%d.%m.%Y') %></h3>
+
+<div id='chart' style='width: 1050px; height: 450px;'>
+<%= render_chart @chart, 'chart' %>
+</div>
+
+<table>
+	<tr>
+		<td width=100>Messzeitraum</td>
+		<td><%= @measuring.dateFrom.strftime('%d.%m.%Y') %> bis <%= @measuring.dateTo.strftime('%d.%m.%Y') %></td>
+	</tr>
+	<tr>
+		<td>Messort:</td>
+		<td><%= Location.find_by_id(@measuring.location_id).name %></td>
+	</tr>
+	<tr>
+		<td>Kommentar:</td>
+		<td><%= @measuring.description %></td>
+	</tr>
+</table>
+<br>
+
+
+<%= link_to 'Bearbeiten', edit_measuring_path(@measuring) %> |
+<%= link_to 'Zurück', measurings_path %>

@@ -1,14 +1,14 @@
 Remo::Application.routes.draw do
 
+  resources :measurings
+
+
+  resources :measuring_data
+
+
   resources :meters
-
-
   resources :meter_readings
-
-
   resources :meter_types
-
-
   resources :produktion_sites
   resources :buildings
   resources :machineries
@@ -78,7 +78,15 @@ Remo::Application.routes.draw do
   get "sites/general"
   get "sites/internal"
   get "sites/controlling"
-  
+  get "sites/compressedAir"
+  get "sites/steam"
+  get "sites/hotWater"
+  get "sites/thermoOil"
+  get "sites/cold"
+  get "sites/reporting"
+  get "sites/crossSection"
+  get "sites/goals"
+    
   get "login" => "sessions#new", as: "login"
   post "sessions" => "sessions#create", as: "sessions"
  # delete "logout" => "sessions#destroy", as: "logout"

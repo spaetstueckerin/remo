@@ -29,6 +29,16 @@
     <td><%= f.number_field :kettleCapacity %> m&sup3;/h</td>
 </tr>
 <tr>
+    <td><%= f.label :detachablePart, "Abschaltbarer Anteil" %></td>
+    <td><%= f.number_field :detachablePart %> %</td>
+    <td><%= f.label :detachDuration, "Abschaltdauer" %></td>
+    <td><%= f.number_field :detachDuration %> min</td>
+</tr>
+<tr>
+    <td><%= f.label :detachTerm, "Laufzeit bis zur nächsten Abschaltung" %></td>
+    <td colspan=3><%= f.number_field :detachTerm %> min</td>
+</tr>
+<tr>
     <td><%= f.label :burnerType, "Brennertyp" %></td>
     <td><%= f.text_field :burnerType %></td>
     <td><%= f.label :burnerManufacturer, "Hersteller Brenner" %></td>

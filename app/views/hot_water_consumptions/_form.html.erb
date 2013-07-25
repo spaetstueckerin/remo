@@ -13,9 +13,9 @@
 <table>
   <tr>
     <td><%= f.label :hotWaterProduction_id, "Heißwasserproduktion" %></td>
-    <td><%= f.number_field :hotWaterProduction_id %></td>
+    <td><%= f.select :hotWaterProduction_id, HotWaterProduction.all.map{|h| [h.kettleName, h.id]}%></td>
     <td><%= f.label :machinery_id, "Heißwasserverbraucher" %></td>
-    <td><%= f.number_field :machinery_id %></td>
+    <td><%= f.select :machinery_id, Machinery.all.map{|m| [m.name, m.id]}%></td>
 </tr>
 <tr>
     <td><%= f.label :useCapacity, "Nutzenleistung" %></td>

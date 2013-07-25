@@ -1,16 +1,40 @@
 <!--WELCOME SHOW-->
 
-<h1>Schaltzentrale ReMo App</h1>
-<p>Herzlich willkommen <%# User.find_by_id(session[:user_id]).firstname %> <%# User.find_by_id(session[:user_id]).name %>!</p>
+<p>Mit dieser Software haben Sie Ihre Energieverbräuche und andere energierelevanten Daten im Griff. Bei Fragen wenden Sie sich bitte an den Administrator admin@remo-green.de.</p><br>
 
+<p><b>Folgende Meldungen wurden durch das System generiert:</b></p>
 
-
-
-
-<h2>Jahresauswertungen</h2>
 <table>
-  <tr>
+<% @measurings = Measuring.all%>
+<% if @measurings.last.dateTo < Date.today %>
+	<tr><td><b>Bitte Zähler ablesen!</b></td></tr>
+	<tr><td><b>Bitte Energieabrechnung nachtragen!</b></td></tr>
+<% else %>
+	<tr><td><p>Alle Zählerlesungen auf dem neusten Stand!</p></td></tr>
+<% end %>
+</table>
 
+<p>Mit Klick auf die jeweilige Meldung gelangen Sie zur jeweiligen Eingabemaske.</p><br>
 
-  </tr>
+<h2>Legende</h2>
+
+<p>An dieser Stelle sind die wichtigsten Symbole der Anwendung und deren Bedeutung bzw. Funktion abgebildet.</p>
+
+<table class="zentriert">
+	<tr>
+		<th width=50><%= image_tag("delete.png", size: "20x20")%></th><td>Löschen eines Datensatzes</td>
+		<th><%= image_tag("new.png", size: "20x20")%></th><td>Anlegen eines neuen Datensatzes</td>
+	</tr>
+	<tr>
+		<th><%= image_tag("show.png", size: "20x20")%></th><td>Anzeigen eines Datensatzes</td>
+		<th><%= image_tag("zurueck.png", size: "20x20")%></th><td>Zurück zur vorherigen Ansicht</td>
+	</tr>
+	<tr>
+		<th><%= image_tag("edit.png", size: "20x20")%></th><td>Bearbeiten eines Datensatzes</td>
+		<th><%= image_tag("rauf.png", size: "20x20")%><%= image_tag("runter.png", size: "20x20")%></th><td>Detailansichten eines Dastensatzes öffnen und schließen</td>
+	</tr>
+	<tr>
+		<th><%= image_tag("bulb.png", size: "20x20")%></th><td>Zusätzliche Erklärungen/Informationen</td>
+		<th></th><td></td>
+	</tr>
 </table>

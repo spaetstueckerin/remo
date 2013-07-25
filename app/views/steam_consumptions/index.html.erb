@@ -1,7 +1,7 @@
 <h1>Liste der Dampfverbraucher</h1>
 <h2>DP = Dampfparameter</h2>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Verbraucher</th>
     <th>Dampferzeuger</th>
@@ -17,11 +17,11 @@
 
 <% @steam_consumptions.each do |steam_consumption| %>
   <tr>
-    <td><%= steam_consumption.consumer_id %></td>
+    <td><%= Machinery.find_by_id(steam_consumption.consumer_id).name %></td>
     <td><%= SteamProduction.find_by_id(steam_consumption.steamProduction_id).kettleName %></td>
     <td><%= steam_consumption.system %></td>
-    <td><%= steam_consumption.dpCompressionNeeded %></td>
-    <td><%= steam_consumption.dpTemperatureNeeded %></td>
+    <td><%= steam_consumption.dpCompressionNeeded %> bar/Ü</td>
+    <td><%= steam_consumption.dpTemperatureNeeded %> °C</td>
     <!--<td><%= steam_consumption.massFlowNennNeeded %></td>
     <td><%= steam_consumption.massFlowMinNeeded %></td>
     <td><%= steam_consumption.massFlowMaxNeeded %></td>

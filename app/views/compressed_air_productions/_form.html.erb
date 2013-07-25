@@ -30,6 +30,16 @@
     <td><%= f.label :nominalDeliveryRate, "Nenn-Fördermenge" %></td>
     <td><%= f.number_field :nominalDeliveryRate %> m&sup3;/min</td>
   </tr>
+<tr>
+    <td><%= f.label :detachablePart, "Abschaltbarer Anteil" %></td>
+    <td><%= f.number_field :detachablePart %> %</td>
+    <td><%= f.label :detachDuration, "Abschaltdauer" %></td>
+    <td><%= f.number_field :detachDuration %> min</td>
+</tr>
+<tr>
+    <td><%= f.label :detachTerm, "Laufzeit bis zur nächsten Abschaltung" %></td>
+    <td colspan=3><%= f.number_field :detachTerm %> min</td>
+</tr>
   <tr>
     <td><%= f.label :pressureSettling, "Druckniveau" %></td>
     <td><%= f.number_field :pressureSettling %> bar Ü</td>
@@ -66,7 +76,7 @@
   </tr>
   <tr>
     <td><%= f.label :coolingMedium, "Kühlmedium" %></td>
-    <td colspan="3"><%= f.select :version, ["Wasser", "Luft"]%></td>
+    <td colspan="3"><%= f.select :coolingMedium, ["Wasser", "Luft"]%></td>
   </tr>
   <tr>
     <td><%= f.label :airFrom, "Bei Luft: woher" %></td>
@@ -76,7 +86,7 @@
   </tr>
     <tr>
     <td><%= f.label :heatRecovery, "Wärmerückgewinnung" %></td>
-    <td><%= f.select :speedRegulation, {"Ja" => true, "Nein" => false}%></td>
+    <td><%= f.select :heatRecovery, {"Ja" => true, "Nein" => false}%></td>
     <td><%= f.label :heatApplicationArea, "Einsatzgebiet Wärme" %></td>
     <td><%= f.text_field :heatApplicationArea %></td>
   </tr>

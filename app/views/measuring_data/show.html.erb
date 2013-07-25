@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Measuringdate:</b>
+  <%= @measuring_datum.measuringDate %>
+</p>
+
+<p>
+  <b>Measuringtime:</b>
+  <%= @measuring_datum.measuringTime %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @measuring_datum.capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_measuring_datum_path(@measuring_datum) %> |
+<%= link_to 'Back', measuring_data_path %>

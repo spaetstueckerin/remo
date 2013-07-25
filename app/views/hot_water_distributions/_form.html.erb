@@ -14,9 +14,7 @@
 <table>
   <tr>
     <td><%= f.label :hotWaterProduction_id, "Heißwasserproduktion" %></td>
-    <td><%= f.number_field :hotWaterProduction_id %></td>
-    <td><%= f.label :hotWaterConsumption_id, "Heißwasserverbraucher" %></td>
-    <td><%= f.number_field :hotWaterConsumption_id %></td>
+    <td colspan=3><%= f.select :hotWaterProduction_id, HotWaterProduction.all.map{|h| [h.kettleName, h.id]}%></td>
   </tr>
   <tr>
     <td><%= f.label :aperture, "Durchmesser" %></td>

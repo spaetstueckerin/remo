@@ -1,30 +1,33 @@
 <p id="notice"><%= notice %></p>
+<h1>Zähler</h1>
 
-<p>
-  <b>Enterprise:</b>
-  <%= @meter.enterprise_id %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @meter.location_id %>
-</p>
-
-<p>
-  <b>Metertype:</b>
-  <%= @meter.meterType_id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @meter.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @meter.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_meter_path(@meter) %> |
-<%= link_to 'Back', meters_path %>
+  <!--<b>Enterprise:</b>-->
+  <%# @meter.enterprise_id %>
+<div id='chart' style='width: 1050px; height: 450px;'>
+<%= render_chart @chart, 'chart' %>
+</div>
+<table>
+	<tr>
+  		<td width=100>Standort:</td>
+  		<td><%= Location.find_by_id(@meter.location_id).name %></td>
+	</tr>
+	<tr>
+  		<td>Zählertyp:</td>
+  		<td><%= MeterType.find_by_id(@meter.meterType_id).name %></td>
+	</tr>
+	<tr>
+  		<td>Bezeichnung:</td>
+  		<td><%= @meter.name %></td>
+	</tr>
+	<tr>
+		<td>Zählernummer:</td>
+		<td><%= @meter.meterNo %></td>
+	</tr>
+	<tr>
+  		<td>Beschreibung:</td>
+  		<td><%= @meter.description %></td>
+	</tr>
+	<tr>
+		<td colspan=2 align="right"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), meters_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_meter_path(@meter) %></td>
+	</tr>
+</table>

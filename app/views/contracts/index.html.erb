@@ -1,5 +1,5 @@
-<h1>Energielieferverträge</h1>
-<p><%= link_to 'Neuen Vertrag erstellen', new_contract_path %></p>
+<h3>Energielieferverträge</h3>
+<p>An dieser Stelle haben Sie alle Ihre Energielieferverträge auf einem Blick. Sie können diese mit Klick auf den Stift bearbeiten oder über das grüne Plus einen neuen Vertrag anlegen. Mit Klick auf das Datenblatt erhalten Sie detaillierte Informationen zu diesem Vertrag und eine Grafik über den Verlauf der Energiekosten in Ihrem Unternehmen.</p>
 
 <table class="zentriert">
   <tr>
@@ -22,7 +22,7 @@
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), contract %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_contract_path(contract) %>
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), contract, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-    
   </tr>
 <% end %>
+	<tr><th colspan=4 align="right"></th><th><%= link_to image_tag("new.png", size: "20x20", alt: 'Neuen Vertrag erstellen'), new_contract_path %></th></tr>
 </table>

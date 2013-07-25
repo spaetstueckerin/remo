@@ -2,7 +2,23 @@ class MeterReadingsController < ApplicationController
   # GET /meter_readings
   # GET /meter_readings.json
   def index
-    @meter_readings = MeterReading.all
+    @meter_readings = MeterReading.find(:all, :order => "readingDate")
+    
+        data_table = GoogleVisualr::DataTable.new
+        data_table.new_column('string', 'Zeit')
+        data_table.new_column('number', 'Verbrauch im Ablesezeitraum in kWh')
+
+        @meter_readings.each do |data|
+		      if data.id > 6
+		        previous = MeterReading.find_by_id(data.id-1).readingValue
+            data_table.add_row(["#{data.readingDate.strftime('%d.%m.%Y')}",data.readingValue-previous])
+          else
+          end
+        end
+
+     opts = { :width => 800, :height => 400, :title => 'Zählerlesungen', :legend => 'bottom' }
+    @chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, opts)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @meter_readings }
@@ -47,7 +63,7 @@ class MeterReadingsController < ApplicationController
 
     respond_to do |format|
       if @meter_reading.save
-        format.html { redirect_to @meter_reading, notice: 'Meter reading was successfully created.' }
+        format.html { redirect_to "/meter_readings", notice: 'Zaehlerlesung wurde erfolgreich erstellt.' }
         format.json { render json: @meter_reading, status: :created, location: @meter_reading }
       else
         format.html { render action: "new" }
@@ -63,7 +79,7 @@ class MeterReadingsController < ApplicationController
 
     respond_to do |format|
       if @meter_reading.update_attributes(params[:meter_reading])
-        format.html { redirect_to @meter_reading, notice: 'Meter reading was successfully updated.' }
+        format.html { redirect_to @meter_reading, notice: 'Zaehlerlesung wurde erfolgreich bearbeitet.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,25 +1,25 @@
 <h1>Kälteverteilung</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Kälteproduktion</th>
-    <th>Kälteverbrauch</th>
+    <!--<th>Kälteverbrauch</th>-->
     <th>Durchmesser</th>
     <th>Isolation</th>
     <th>Länge</th>
     <!--<th>Volumestreamnenn</th>
     <th>Volumestreammin</th>
     <th>Volumestreammax</th>-->
-    <th>Aktion</th>
+    <th width=100>Aktion</th>
   </tr>
 
 <% @cold_distributions.each do |cold_distribution| %>
   <tr>
-    <td><%= cold_distribution.coldProduction_id %></td>
-    <td><%= cold_distribution.coldConsumer_id %></td>
-    <td><%= cold_distribution.aperture %></td>
-    <td><%= cold_distribution.isolation %></td>
-    <td><%= cold_distribution.length %></td>
+    <td><%= ColdProduction.find_by_id(cold_distribution.coldProduction_id).buildType %></td>
+    <!--<td><%= cold_distribution.coldConsumer_id %></td>-->
+    <td><%= cold_distribution.aperture %> mm</td>
+    <td><%= cold_distribution.isolation %> mm</td>
+    <td><%= cold_distribution.length %> m</td>
     <!--<td><%= cold_distribution.volumeStreamNenn %></td>
     <td><%= cold_distribution.volumeStreamMin %></td>
     <td><%= cold_distribution.volumeStreamMax %></td>-->
