@@ -1,90 +1,99 @@
-<p id="notice"><%= notice %></p>
+<h2>Druckluftverteilung</h2>
+<p>Hier erhalten sie alle detaillierten Informationen über Ihre Druckluftverteilung. Mit Klick auf den Stift gelangen Sie in das Bearbeitungsmenü. Weiter unten finden Sie die jährlichen Erhebungen zur Wartung der Anlage.</p>
+<table class="left">
+	<tr><th colspan=4 align="center">Druckluftaufbereitung</th></tr>
+	<tr>
+  		<th width=100>Kompressor:</th>
+  		<td colspan=3><%= CompressedAirProduction.find(@compressed_air_distribution.compressor_id).manufacturer %></td>
+	</tr>
 
-<p>
-  <b>Compressor:</b>
-  <%= @compressed_air_distribution.compressor_id %>
-</p>
+	<tr><th colspan=4 align="center">Drucklufttrockner</th></tr>
+	<tr>
+		<th width=100>Hersteller:</th>
+  		<td><%= @compressed_air_distribution.manufacturer %></td>
+  		<th>Baujahr:</th>
+  		<td><%= @compressed_air_distribution.yearOfManufacturing %></td>
+	</tr>
+	<tr>
+		<th>Leistung:</th>
+  		<td><%= @compressed_air_distribution.capacity %> kW</td>
+  		<th>Typ:</th>
+  		<td><%= @compressed_air_distribution.compressedAirDryerType %></td>
+	</tr>
+	<tr>
+  		<th>Addons:</th>
+  		<td><%= @compressed_air_distribution.addons %></td>
+  		<th></th>
+  		<td></td>
+	</tr>
+	<tr><th colspan=4 align="center">Druckluftspeicher</th></tr>
+	<tr>
+  		<th>Volumen:</th>
+  		<td><%= @compressed_air_distribution.volume %> m&sup3;</td>
+  		<th>Standort:</th>
+  		<td><%= Location.find(@compressed_air_distribution.location_id).name %></td>
+	</tr>
+	<tr><th colspan=6 align="right"><%= link_to image_tag("edit.png", size: "20x20", alt: 'Zurück'), edit_compressed_air_distribution_path(@compressed_air_distribution) %><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), compressed_air_distributions_path %></th></th></tr>
+</table>
+<br>
+<table class="left">
+	<tr><th colspan=6 align="center">Druckluftnetz</th></tr>
+	<tr>
+  		<th>Leckage:</th>
+  		<td><%= @compressed_air_distribution.leak %> %</td>
+  		<th>Druckverlust:</th>
+  		<td><%= @compressed_air_distribution.pressureLoss %> bar</td>
+		<th>Material:</th>
+  		<td><%= @compressed_air_distribution.material %></td>
+	</tr>
+	<tr><th colspan=6 align="center">Durchmesser</th></tr>
+	<tr>
+  		<th>Hauptleitung:</th>
+  		<td><%= @compressed_air_distribution.mainline %> mm</td>
+  		<th>Stichleitung:</th>
+  		<td><%= @compressed_air_distribution.stubline %> mm</td>
+  		<th>Anschlussleitung:</th>
+  		<td><%= @compressed_air_distribution.branchline %> mm</td>
+	</tr>
+	<tr><th colspan=6 align="center">Länge</th></tr>
+	<tr>
+  		<th>Hauptleitung:</th>
+  		<td><%= @compressed_air_distribution.mainlineL %> m</td>
+  		<th>Stichleitung:</th>
+  		<td><%= @compressed_air_distribution.stublineL %> m</td>
+  		<th>Anschlussleitung:</th>
+  		<td><%= @compressed_air_distribution.branchlineL %> m</td>
+	</tr>
+	<tr><th colspan=6 align="right"><%= link_to image_tag("edit.png", size: "20x20", alt: 'Zurück'), edit_compressed_air_distribution_path(@compressed_air_distribution) %><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), compressed_air_distributions_path %></th></tr>
+</table>
+<br><br>
 
-<p>
-  <b>Manufacturer:</b>
-  <%= @compressed_air_distribution.manufacturer %>
-</p>
+<h3>Jährliche Erhebungen der Druckluftverteilung</h3>
 
-<p>
-  <b>Yearofmanufacturing:</b>
-  <%= @compressed_air_distribution.yearOfManufacturing %>
-</p>
+<p>Für die regelmäßige Pflege und Wartung der Druckluftanlagen sind regelmäßige Messungen notwendig. Bitte nutzen Sie dafür die unten stehende Tabelle. So erhalten Sie einen Überblick über den Zustand Ihrer Anlage.</p>
 
-<p>
-  <b>Capacity:</b>
-  <%= @compressed_air_distribution.capacity %>
-</p>
+<table class="zentriert">
+  <tr>
+    <th>Jahr</th>
+    <th>Leckage</th>
+    <th>Druckverlust</th>
+    <th width =100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Compressedairdryertype:</b>
-  <%= @compressed_air_distribution.compressedAirDryerType %>
-</p>
+<% operating = 0; %>
+<% load = 0; %>
 
-<p>
-  <b>Addons:</b>
-  <%= @compressed_air_distribution.addons %>
-</p>
+<% @compressed_air_distribution_years.each do |compressed_air_distribution_year| %>
+  <tr>
+	<td><%= compressed_air_distribution_year.year_id %></td>
+  	<td><%= compressed_air_distribution_year.leak %> %</td>
+    <td><%= compressed_air_distribution_year.pressureLoss %> bar</td>
+   
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_distribution_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_distribution_year_path(compressed_air_distribution_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_distribution_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
 
-<p>
-  <b>Volume:</b>
-  <%= @compressed_air_distribution.volume %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @compressed_air_distribution.location_id %>
-</p>
-
-<p>
-  <b>Leak:</b>
-  <%= @compressed_air_distribution.leak %>
-</p>
-
-<p>
-  <b>Pressureloss:</b>
-  <%= @compressed_air_distribution.pressureLoss %>
-</p>
-
-<p>
-  <b>Mainline:</b>
-  <%= @compressed_air_distribution.mainline %>
-</p>
-
-<p>
-  <b>Stubline:</b>
-  <%= @compressed_air_distribution.stubline %>
-</p>
-
-<p>
-  <b>Branchline:</b>
-  <%= @compressed_air_distribution.branchline %>
-</p>
-
-<p>
-  <b>Mainlinel:</b>
-  <%= @compressed_air_distribution.mainlineL %>
-</p>
-
-<p>
-  <b>Stublinel:</b>
-  <%= @compressed_air_distribution.stublineL %>
-</p>
-
-<p>
-  <b>Branchlinel:</b>
-  <%= @compressed_air_distribution.branchlineL %>
-</p>
-
-<p>
-  <b>Material:</b>
-  <%= @compressed_air_distribution.material %>
-</p>
-
-
-<%= link_to 'Edit', edit_compressed_air_distribution_path(@compressed_air_distribution) %> |
-<%= link_to 'Back', compressed_air_distributions_path %>
+	</th><th colspan=3></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_distribution_year_path %></th></tr>
+</table>

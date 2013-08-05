@@ -1,6 +1,12 @@
-html, body 
-{
-	height: 100%;
+/* 
+ *= require jqueryTable
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require css3-progress-bar
+*/
+
+body,
+html {
 	background-color: #C3C4BE;
   font-family: Verdana, 'Lucida Sans Unicode', sans-serif;
   font-size: 12px;
@@ -11,43 +17,71 @@ html, body
 	margin-top: 20px
 }
 
-#header
-{
-	height: 80px;
-	width: 1070px;
+#wrap {
+  width:1000px;
+  margin:0 auto;
+  background-color: #ffffff;
+	box-shadow: 0px 0px 5px #888;
+
+}
+
+#header {
+	width: 985px;
 	background-color: #e1e2d4;
-	padding: 20px;
+	padding-left: 15px;
+	text-shadow: 1px 1px 1px #fff;
+}
+
+#main {
+float:left;
+margin-left: 20px;
+margin-top: 20px;
+margin-bottom: 20px;
+width:500px;
+background-color: #ffffff;
+}
+#sidebar {
+float:left;
+margin-left: 20px;
+margin-top: 20px;
+width:150px;
+background-color: #ffffff;
+
+}
+#footer {
+clear:both;
+background:#cc9;
+background-color: #e1e2d4;
+font-size: 10px;
+padding-top: 40px;
+padding: 10px;
 }
 
 #title
 {
-	float: left;
 	line-height: 10px;
 }
 
 #logo
-{
-	position: absolute;   
+{   
 	height: auto; 
 	width: 200px;    
-	left: 1290px; 
-	top: 55px;
 }
 
 #navi 
 {
+	float:left;
 	min-height: 700px;
 	height: 100%;
 	width: 150px;
-	float: left;
 	padding: 10px;
 	background-color: #ffffff;
   margin: 0 auto;}
 
 #inhalt 
 {
+	float:right;
 	min-height: 700px;
-	height: 100%;
  	width: 900px;
 	padding: 10px;
   background-color: #ffffff;
@@ -58,7 +92,6 @@ html, body
 #wrapper
 {
 	background-color: #ffffff;
-	width: 501px;
 }
 
 #feld
@@ -68,6 +101,23 @@ html, body
 	font-weight: bold;
   margin: 10px;
   padding: 10px;
+	box-shadow: inset 0px 0px 3px #888;
+	-moz-border-radius: 15px;
+	border-radius: 3px;
+}
+
+#feldSidebar
+{
+  width: 100px;
+  background-color: #F1F2EB;
+font-size: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+h1
+{
+	line-height: 0.5;
 }
 
 #feldLong
@@ -82,6 +132,8 @@ html, body
 {
 	background-color: #C3C4BE;
 	height: 6px;
+	box-shadow: inset 0px 0px 3px #888;
+	
 }
 
 /*Hyperlinks formatieren*/
@@ -90,14 +142,14 @@ a:visited {color:#6B6B68; size:14px;}
 a:active {color:#00FFFF; size:14px;} 
 a:hover {color:#6B6B68; size:14px; text-decoration:underline;}
 
-#footer
+/*#footer
 {
 	width: 1090px;
 	padding-top: 40px;
 	padding: 10px;
 	background-color: #e1e2d4;
 	font-size: 10px;
-}
+}*/
 
 p
 {
@@ -118,6 +170,31 @@ p
 table
 {
   width: 750px;
+}
+
+table.header
+{
+	border: 0px;
+  width: 983px;
+	height: 120px;
+	background-color: #e1e2d4;
+	padding:0;
+}
+
+td.header1
+{
+	background-color: #e1e2d4;
+	width: 700px;
+	margin: 0px;
+	padding-left: 15px;
+}
+
+td.header2
+{
+	background-color: #e1e2d4;
+	text-align: right;
+	margin: 0px;
+	padding: 0px;
 }
 
 th
@@ -164,4 +241,10 @@ p #warning
 #flash
 {
   padding: 10px;
+}
+
+.photo {
+   padding:3px;
+   border:1px solid #5e5e5e;
+   background-color:#F1F2EB;
 }

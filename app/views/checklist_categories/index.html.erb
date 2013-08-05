@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag("jquery.dataTables.css") %>
+<%= javascript_include_tag("jquery.js") %>
+<%= javascript_include_tag("jquery.dataTables.min.js") %>
+<%= javascript_include_tag("jquery.dataTables.de.js") %>
+
+<h2>Kategorien von Maßnahmen zur Energieeffizienz</h2>
+
+<p>An dieser Stelle finden Sie eine Liste aller Maßnahmen zur Energieeffizienz. Bitte nutzen Sie die Suchfunktion um die richtige Maßnahme zu ermitteln.</p>
+
+<table class="display" id="bills">
+ <thead>
+  <tr>
+    <th>Kategorie</th>
+    <!--<th>Beschreibung</th>-->
+    <th>Checkliste</th>
+    <th style="width: 70px;">Aktion</th>
+   </tr>
+ </thead>
+ <tbody>
+<% @checklist_categories.each do |checklist_category| %>
+  <tr>
+    <td><%= checklist_category.name %></td>
+    <!--<td><%= checklist_category.description %></td>-->
+    <td><%= ChecklistDefinition.find(checklist_category.checklist_definition_id).name %></td>
+    <td>
+      <%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), checklist_category  %>
+      <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_checklist_category_path(checklist_category) %>
+      <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), checklist_category, method: :delete, data: { confirm: 'Are you sure?' }  %>
+    </td>
+  </tr>
+<% end %>
+ </tbody>
+</table>
+
+<br />
+
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), 'sites/checklists_manager' %>
+<%= link_to image_tag("new.png", size: "20x20", alt: "Neue Kategorie"), new_checklist_category_path %>

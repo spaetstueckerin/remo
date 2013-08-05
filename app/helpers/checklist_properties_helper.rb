@@ -1,0 +1,2 @@
+module ChecklistPropertiesHelper
+end

@@ -1,0 +1,27 @@
+<h1>Listing energy_mixes</h1>
+
+<table>
+  <tr>
+    <th>Energytype</th>
+    <th>Value</th>
+    <th>Contractid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @energy_mixes.each do |energy_mix| %>
+  <tr>
+    <td><%= energy_mix.energyType %></td>
+    <td><%= energy_mix.value %></td>
+    <td><%= energy_mix.contractId %></td>
+    <td><%= link_to 'Show', energy_mix %></td>
+    <td><%= link_to 'Edit', edit_energy_mix_path(energy_mix) %></td>
+    <td><%= link_to 'Destroy', energy_mix, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Energy mix', new_energy_mix_path %>

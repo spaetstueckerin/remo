@@ -1,9 +1,11 @@
-<h1>Räumlichkeiten</h1>
+<h2>Räumlichkeiten</h2>
+
+<p>An dieser Stelle werden alle Räume in Ihrem Unternehmen angezeigt. Mit Klick auf die entsprechenden Symbole könne Sie verschiedene Aktionen ausführen.</p>
 
 <table  class="zentriert">
 	<tr>
+		<th>Bild</th>
 		<th>Name</th>
-		<th>Beschreibung</th>
 		<th>Etage</th>
 		<th width=70>Fläche</th>
 		<th width=70>Höhe</th>
@@ -15,8 +17,8 @@
 	<% sum3 = 0 %>
 	<% @locations.each do |location| %>
 	<tr>
+		<td><%= link_to image_tag(location.photo.url(:thumb), {:class => 'photo'}), location %></td>
 		<td><%= location.name %></td>
-		<td><%= excerpt(location.description, "", 100) %></td>
 		<td><%= location.floor %></td>
 		<td><%= location.squaremeter %> m&sup2; <% sum = sum + location.squaremeter %></td>
 		<td><%= location.height %> m</td>
@@ -29,10 +31,10 @@
 		</tr>
 		<% end %>
 		<tr>
-			<td><b>Summe</b><td></td></td><td></td><td><b><%= sum %> m&sup2;</b></td><td><b></b></td><td><b><%= sum3 %> m&sup3;</b></td><td></td>
+			<th><b>Summe</b><th colspan="2"><th><b><%= sum %> m&sup2;</b></th><th></th><th><b><%= sum3 %> m&sup3;</b></th><th ><%= link_to image_tag("new.png", size: "20x20", alt: "Anzeigen"), new_location_path %></th>
 		</tr>
 	</table>
 
 	<br />
 
-	<%= link_to 'Neuen Raum anlegen', new_location_path %>
+	

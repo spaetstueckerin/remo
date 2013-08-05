@@ -1,27 +1,27 @@
-<h3>Produktionsmaschinen</h3>
+<h2>Produktionsmaschinen</h2>
 
-<p>Dies ist eine Liste aller Produktionsmaschinen in Ihrem Unternehmen. Mit Klick auf das Plus können Sie neue Maschinen hinzufügen. Zum Anzeigen der Maschinendaten klicken Sie bitte auf das Datenblatt-Symbol. Zum Editieren der Daten nutzen Sie bitte den Stift und zum Löschen das rote Kreuz.</p>
+<p>Dies ist eine Liste aller Produktionsmaschinen in Ihrem Unternehmen. Mit Klick auf das Plus können Sie neue Maschinen hinzufügen. Zum Anzeigen der Maschinendaten klicken Sie bitte auf das Datenblatt-Symbol oder das angezeigte Bild. Zum Editieren der Daten nutzen Sie bitte den Stift und zum Löschen das rote Kreuz.</p>
 
 <table class="zentriert">
   <tr>
-    <th>Name</th>
+	<th>Bild</th>
+    <th width=100>Name</th>
     <th>Maschinentyp</th>
     <!--<th>Beschreibung</th>-->
-    <th>Energieverbrauch</th>
+    <th>Verbrauch in kWh</th>
     <th>Baujahr</th>
-    <th>Kaufjahr</th>
 	<th>Standort</th>
     <th width=100>Aktion</th>
   </tr>
 
 <% @machineries.each do |machinery| %>
   <tr>
+	<td><%= link_to image_tag(machinery.photo.url(:thumb), {:class => 'photo'}), machinery %></td>
     <td><%= machinery.name %></td>
     <td><%= MachineryType.find_by_id(machinery.machineryTypeID).m_type %></td>
     <!--<td><%# machinery.description %></td>-->
-    <td><%= number_to_currency(machinery.energyConsumption, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"kWh ")  %></td>
+    <td><%= machinery.energyConsumption%></td>
     <td><%= machinery.yearOfConstruction %></td>
-    <td><%= machinery.yearOfBuy %></td>
 	<td><%= Location.find_by_id(machinery.location_id).name%>
   	<td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), machinery %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_machinery_path(machinery) %>

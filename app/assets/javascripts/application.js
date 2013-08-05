@@ -10,27 +10,8 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-= require jquery
-= require jquery_ujs
-= require_tree .
-
-= require jquery.facebox
-
-<script type="text/javascript">
-function toggle5(showHideDiv, switchImgTag) 
-{
-        var ele = document.getElementById(showHideDiv);
-        var imageEle = document.getElementById(switchImgTag);
-
-        if(ele.style.display == "block") 
-		{
-			ele.style.display = "none";
-			imageEle.innerHTML = '<img src = "runter.png">';
-        }
-        else 
-		{
-			ele.style.display = "block";
-			imageEle.innerHTML = '<img src = "rauf.png">';
-        }
-}
-</script>
+//= require jquery
+//= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require_tree .
+//= require jquery.facebox

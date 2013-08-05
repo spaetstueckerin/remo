@@ -1,0 +1,42 @@
+<%= form_for(@checklist_category) do |f| %>
+  <% if @checklist_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checklist_category.errors.count, "error") %> Kategorie konnte nicht gespeichert werden:</h2>
+
+      <ul>
+      <% @checklist_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label(:name,'Name') %><br />
+    <%= f.text_field :name %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label(:description,'Beschreibung') %><br />
+    <%= f.text_area :description %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label(:checklist_definitions_id,"Checkliste") %><br />
+    <%= f.select :checklist_definition_id, ChecklistDefinition.all.map{|e| [e.name, e.id]}%>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label(:category_order,"Reihenfolge") %><br />
+    <%= f.number_field :category_order %>
+  </div>
+  </br>
+
+  <div class="actions">
+    <%= f.submit "Kategorie anlegen" %>
+  </div>
+  </br>
+<% end %>

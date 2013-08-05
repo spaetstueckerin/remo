@@ -1,4 +1,4 @@
-<%= form_for(@machinery) do |f| %>
+<%= form_for(@machinery, :multipart => true) do |f| %>
   <% if @machinery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@machinery.errors.count, "error") %> prohibited this machinery from being saved:</h2>
@@ -12,6 +12,8 @@
   <% end %>
 
 <table>
+	<tr><th colspan=4></th></th>
+<tr>
     <td><%= f.label :name, "Name" %></td>
     <td><%= f.text_field :name %></td>
     <td><%= f.label :machineryTypeID, "Maschinentyp" %></td>
@@ -23,28 +25,35 @@
 </tr>
 <tr>
     <td><%= f.label :yearOfConstruction, "Baujahr" %></td>
-    <td><%= f.number_field :yearOfConstruction %></td>
+    <td><%= f.text_field :yearOfConstruction %></td>
     <td><%= f.label :yearOfBuy, "Kaufjahr" %></td>
-    <td><%= f.number_field :yearOfBuy %></td>
+    <td><%= f.text_field :yearOfBuy %></td>
 </tr>
 <tr>
     <td><%= f.label :energyConsumption, "Energieverbrauch" %></td>
-    <td><%= f.number_field :energyConsumption %> kWh</td>
+    <td><%= f.text_field :energyConsumption %> kWh</td>
     <td><%= f.label :capacity, "Leistung" %></td>
-    <td><%= f.number_field :capacity %> kW</td>
+    <td><%= f.text_field :capacity %> kW</td>
 </tr>
 <tr>
     <td><%= f.label :detachablePart, "Abschaltbarer Anteil" %></td>
-    <td><%= f.number_field :detachablePart %> %</td>
+    <td><%= f.text_field :detachablePart %> %</td>
     <td><%= f.label :detachDuration, "Abschaltdauer" %></td>
-    <td><%= f.number_field :detachDuration %> min</td>
+    <td><%= f.text_field :detachDuration %> min</td>
 </tr>
 <tr>
     <td><%= f.label :detachTerm, "Laufzeit bis zur nächsten Abschaltung" %></td>
-    <td><%= f.number_field :detachTerm %> min</td>
+    <td><%= f.text_field :detachTerm %> min</td>
     <td><%= f.label :location_id, "Standort" %></td>
 	<td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
 </tr>
+<tr>
+    <td><%= f.label :productionLevel, "Produktionslevel" %></td>
+	<td><%= f.select :productionLevel, ProductionLevel.all.map{|p| [p.name, p.id]}%></td>
+	<td><%= f.label :photo, "Bild" %></td>
+	<td><%= f.file_field :photo %></td>
+</tr>
+	<tr><th colspan=4></th></th>
 </table>
  
 

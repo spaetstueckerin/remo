@@ -1,0 +1,57 @@
+<%= form_for(@energy_mix) do |f| %>
+  <% if @energy_mix.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@energy_mix.errors.count, "error") %> prohibited this energy_mix from being saved:</h2>
+
+      <ul>
+      <% @energy_mix.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+	<tr>
+		<td width=200><%= f.label :renewableEEG, "Erneuerbare Energien" %></td><td><%= f.text_field :renewableEEG %>%</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td width=200><%= f.label :photovoltaics, "Photovoltaik" %></td><td><%= f.text_field :photovoltaics %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :waterPower, "Wasserkraft" %></td><td><%= f.text_field :waterPower %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :biomass, "Biomasse" %></td><td><%= f.text_field :biomass %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :wind, "Windkraft" %></td><td><%= f.text_field :wind %>%</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td width=200><%= f.label :brownCoal, "Braunkohle" %></td><td><%= f.text_field :brownCoal %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :stoneCoal, "Steinkohle" %></td><td><%= f.text_field :stoneCoal %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :nuclear, "Atomstrom" %></td><td><%= f.text_field :nuclear %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :naturalGas, "Erdgas" %></td><td><%= f.text_field :naturalGas %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :mineralOil, "Erdöl" %></td><td><%= f.text_field :mineralOil %>%</td>
+	</tr>
+	<tr>
+		<td><%= f.label :other, "Andere" %></td><td><%= f.text_field :other %>%</td>
+	</tr>
+</table>
+
+  <div class="actions">
+    <%= f.submit "Absenden" %>
+  </div>
+<% end %>

@@ -1,7 +1,6 @@
 <!--WELCOME SHOW-->
-
-<p>Mit dieser Software haben Sie Ihre Energieverbräuche und andere energierelevanten Daten im Griff. Bei Fragen wenden Sie sich bitte an den Administrator admin@remo-green.de.</p><br>
-
+<h2>Herzlich Willkommen!</h2>
+<p>Mit dieser Software haben Sie Ihre Energieverbräuche und andere energierelevanten Daten im Griff. Bei Fragen wenden Sie sich bitte an den Administrator <%= mail_to "admin@remo-green.de" %>.</p>
 <p><b>Folgende Meldungen wurden durch das System generiert:</b></p>
 
 <table>
@@ -16,7 +15,7 @@
 
 <p>Mit Klick auf die jeweilige Meldung gelangen Sie zur jeweiligen Eingabemaske.</p><br>
 
-<h2>Legende</h2>
+<h2>Symbole</h2>
 
 <p>An dieser Stelle sind die wichtigsten Symbole der Anwendung und deren Bedeutung bzw. Funktion abgebildet.</p>
 
@@ -31,10 +30,10 @@
 	</tr>
 	<tr>
 		<th><%= image_tag("edit.png", size: "20x20")%></th><td>Bearbeiten eines Datensatzes</td>
-		<th><%= image_tag("rauf.png", size: "20x20")%><%= image_tag("runter.png", size: "20x20")%></th><td>Detailansichten eines Dastensatzes öffnen und schließen</td>
+		<th><%= image_tag("rauf.png", size: "20x20")%><%= image_tag("runter.png", size: "20x20")%></th><td>Detailansichten eines Dastensatzes<br>öffnen und schließen</td>
 	</tr>
 	<tr>
 		<th><%= image_tag("bulb.png", size: "20x20")%></th><td>Zusätzliche Erklärungen/Informationen</td>
-		<th></th><td></td>
+		<th><%= image_tag("mail.png", size: "20x20")%></th><td>E-mail versenden</td>
 	</tr>
 </table>

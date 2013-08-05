@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h2>Standortdetails: <%= @location.name %></h2>
 
-
-  <h3>Standortdetails: <%= @location.name %></h3>
-
+<p>Hier erhalten Sie Detailinformationen zum jeweiligen Raum. Weiter unten sind die sich dort befindenden Beräte aufgelistet.</p>
 
 <table class="left">
-	<tr><th colspan=2> </th></tr>
+    <tr><th colspan=4 align="center"><%= image_tag @location.photo.url(:show), {:class => 'photo'} %></th></tr>
 	<tr>
-  		<th><b>Beschreibung:</b></th>
+  		<th width=100><b>Beschreibung:</b></th>
   		<td><%= @location.description %></td>
 	</tr>
 	<tr>
@@ -28,4 +26,17 @@
 			<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_location_path(@location) %>
 		</th>
 	</tr>
+</table>
+
+<h3>Maschinen und Geräte vor Ort</h3>
+
+<p>Klicken Sie auf das jeweilige Bild der Maschine, um zu den Maschinendetails zu gelangen.</p>
+
+<% @machinery = Machinery.find_all_by_location_id(@location.id) %>
+
+<table>
+<% @machinery.each do |machine| %>
+	<tr><td width=100><%= link_to image_tag(machine.photo.url(:thumb), {:class => 'photo'}), machine %></td>
+		<td><%= MachineryType.find(machine.machineryTypeID).m_type%> <%= link_to machine.name, machine %></td></tr>
+<% end %>
 </table>

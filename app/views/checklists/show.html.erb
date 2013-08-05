@@ -1,0 +1,34 @@
+<% # encoding: UTF-8 %>
+
+<h2 xmlns="http://www.w3.org/1999/html">Checkliste <%= @checklist_name.name %> </h2>
+
+  <table style="width: 100%;">
+    <tr>
+      <td>Ausgefüllt von: <%= @checklist_properties.ausgefullt_von %></td>
+      <td>Datum: <%= @checklist_properties.datum.strftime("%d.%m.%Y") %></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color: #dcdcdc;"><b>Unternehmensinformation</b></td>
+    </tr>
+    <tr>
+      <td>Name des Unternehmens: <%= @checklist_properties.name_unternehmen %></td>
+      <td>Adresse:  <%= @checklist_properties.adresse_unternehmen %></td>
+    </tr>
+    <tr>
+      <td>Branche: <%= @checklist_properties.branche_unternehmen %></td>
+      <td>Telefonnummer: <%= @checklist_properties.telefonnummer_unternehmen %></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color: #dcdcdc;"><b>Kontaktperson für Energie</b></td>
+    </tr>
+    <tr>
+      <td>Name: <%= @checklist_properties.name_kontaktpersonenergie %></td>
+      <td>Telefonnummer: <%= @checklist_properties.telefonnummer_kontaktpersonenergie %></td>
+    </tr>
+    <tr>
+      <td>Position im Unternehmen: <%= @checklist_properties.positionimunternehmen_kontaktpersonenergie %></td>
+      <td>Email: <%= @checklist_properties.email_kontaktpersonenergie %></td>
+    </tr>
+  </table>
+
+<%= link_to 'Back', checklists_path %>

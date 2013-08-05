@@ -12,6 +12,10 @@
   <% end %>
 <table>
 <tr>
+	<%# f.label :enterprise_id %><br />
+	<%# @enterprise = User.find(session[:user_id]).enterprise_id %>
+    <%# f.hidden_field :enterprise_id, :value => @enterprise %>
+
     <td><%= f.label :energy_type, "Energieart" %></td>
     <td><%= f.select :energy_type, ["Strom", "Gas", "Wasser", "Öl", "Heizung"]%></td>
     <td><%= f.label :supplier, "Energielieferant" %></td>
@@ -31,9 +35,6 @@
 <tr>
     <td><%= f.label :duration_from, "Vertragsdauer" %></td>
     <td colspan=3>von: <%= f.date_select :duration_from %><%= f.label :duration_to, "bis: " %> <%= f.date_select :duration_to %></td>
-    <% user = User.find_by_id(session[:user_id]) %>
-    <% enterprise = Enterprise.find_by_id(user.enterprise_id) %>
-    <%= f.hidden_field :enterprise_id, :value => enterprise.id %>
 </tr>
 </table>
   <div class="actions">

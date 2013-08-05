@@ -1,11 +1,21 @@
 Remo::Application.routes.draw do
+  post 'checklists/saveform', :controller => 'checklists', :action => 'saveform'
+
+  resources :checklists
+  resources :checklist_category_items
+  resources :checklist_categories
+  resources :checklist_definitions
+  resources :checklist_properties do
+    member do
+      post 'updateform'
+    end
+  end
 
   resources :measurings
-
-
   resources :measuring_data
-
-
+  
+  match '/benchmarking/index', :controller => 'benchmarking', :action => 'index'
+  resources :benchmarking
   resources :meters
   resources :meter_readings
   resources :meter_types
@@ -65,7 +75,7 @@ Remo::Application.routes.draw do
   resources :branches
   resources :enterprises
   resources :roles
-
+  resources :energy_mixes
 
   root :to => "sessions#new"
 
@@ -86,6 +96,7 @@ Remo::Application.routes.draw do
   get "sites/reporting"
   get "sites/crossSection"
   get "sites/goals"
+  get "sites/checklists_manager"
     
   get "login" => "sessions#new", as: "login"
   post "sessions" => "sessions#create", as: "sessions"

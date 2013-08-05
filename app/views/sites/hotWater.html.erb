@@ -1,21 +1,8 @@
-<table class="zentriert">
-	<tr>
-		<td><%= link_to 'Beleuchtung', lightings_path %></td>
-		<td><%= link_to 'Druckluft', '/sites/compressedAir' %></td>
-		<td><%= link_to 'Dampf', '/sites/steam' %></td>
-		<td><%= link_to 'Heißwasser', '/sites/hotWater' %></td>
-		<td><%= link_to 'Thermoöl', '/sites/thermoOil' %></td>
-		<td><%= link_to 'Kälte', cold_productions_path %></td>
-		<td>Klima</td>
-		<td>Elektrische Antriebe</td>
-	</tr>
-</table>
-
-<h1>Heißwasser</h1>
+<h2>Heißwasser</h2>
 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-<br><br>
 
-<h2>Heißwasserproduktion</h2>
+
+<h3>Heißwasserproduktion</h3>
 <table class="zentriert">
   <tr>
     <th>Kesselname</th>
@@ -23,7 +10,6 @@
     <th>Baujahr</th>
     <th>Leistung</th>
     <th>Brennertyp</th>
-    <th>Hersteller</th>
     <th>Baujahr</th>
     <th width=100>Aktion</th>
   </tr>
@@ -33,9 +19,8 @@
     <td><%= hot_water_production.kettleName %></td>
     <td><%= hot_water_production.kettleManufacturer %></td>
     <td><%= hot_water_production.kettleManuYear %></td>
-    <td><%= hot_water_production.kettleCapacity %></td>
+    <td><%= hot_water_production.kettleCapacity %> kW</td>
     <td><%= hot_water_production.burnerType %></td>
-    <td><%= hot_water_production.burnerManufacturer %></td>
     <td><%= hot_water_production.burnerManuYear %></td>    
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_production %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_production_path(hot_water_production)  %>
@@ -44,9 +29,9 @@
   </tr>
 <% end %>
 </table>
-<br><br>
+<br>
 
-<h2>Heißwasserverteilung</h2>
+<h3>Heißwasserverteilung</h3>
 <table class="zentriert">
   <tr>
     <th>Kessel</th>
@@ -69,9 +54,9 @@
   </tr>
 <% end %>
 </table>
-<br><br>
+<br>
 
-<h2>Heißwasserverbraucher</h2>
+<h3>Heißwasserverbraucher</h3>
 <table class="zentriert">
   <tr>
     <th>Heißwasserproduktion</th>

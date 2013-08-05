@@ -2,7 +2,7 @@ class MachineryTypesController < ApplicationController
   # GET /machinery_types
   # GET /machinery_types.json
   def index
-    @machinery_types = MachineryType.all
+    @machinery_types = MachineryType.find(:all, :order =>"m_type ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +44,7 @@ class MachineryTypesController < ApplicationController
 
     respond_to do |format|
       if @machinery_type.save
-        format.html { redirect_to @machinery_type, notice: 'Machinery type was successfully created.' }
+        format.html { redirect_to "/machinery_types", notice: 'Machinery type was successfully created.' }
         format.json { render json: @machinery_type, status: :created, location: @machinery_type }
       else
         format.html { render action: "new" }

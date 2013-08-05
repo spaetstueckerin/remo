@@ -1,0 +1,34 @@
+<%= form_for(@checklist_definition) do |f| %>
+  <% if @checklist_definition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checklist_definition.errors.count, "error") %> Checkliste konnte nicht gespeichert werden:</h2>
+      <ul>
+      <% @checklist_definition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label(:name,"Name") %><br />
+    <%= f.text_field :name %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= f.label(:checktype,"Sorte") %><br />
+    <%= f.select(:checktype,{'Ja und Nein'=>'Ja und Nein','Opt'=>'Opt','S M L'=>'S M L'}) %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= f.label(:description,"Beschreibung") %><br />
+    <%= f.text_area :description %>
+  </div>
+  <br />
+
+  <div class="actions">
+    <%= f.submit "Checkliste anlegen" %>
+  </div>
+<% end %>

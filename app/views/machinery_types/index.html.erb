@@ -1,16 +1,16 @@
 <h1>Maschinentypen</h1>
 
-<table>
+<table class="zentriert">
   <tr>
     <th>Typ</th>
-    <th>Beschreibung</th>
+    <!--<th>Beschreibung</th>-->
     <th>Aktion</th>
   </tr>
 
 <% @machinery_types.each do |machinery_type| %>
   <tr>
     <td><%= machinery_type.m_type %></td>
-    <td width=400><%= sanitize(truncate(machinery_type.description), :length => 300) %></td>
+    <!--<td width=400><%# sanitize(truncate(machinery_type.description), :length => 300) %></td>-->
 
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), machinery_type %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_machinery_type_path(machinery_type) %>

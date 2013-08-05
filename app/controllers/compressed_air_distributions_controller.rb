@@ -14,7 +14,8 @@ class CompressedAirDistributionsController < ApplicationController
   # GET /compressed_air_distributions/1.json
   def show
     @compressed_air_distribution = CompressedAirDistribution.find(params[:id])
-
+    @compressed_air_distribution_years = CompressedAirDistributionYear.find_all_by_compressor_id(params[:id], :order =>"year_id DESC")
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @compressed_air_distribution }

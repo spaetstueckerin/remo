@@ -1,0 +1,25 @@
+<h1>Details der Kategorie</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @checklist_category.name %>
+</p>
+
+<p>
+  <b>Beschreibung:</b>
+  <%= @checklist_category.description %>
+</p>
+
+<p>
+  <b>Checkliste:</b>
+  <%= ChecklistDefinition.find(@checklist_category.checklist_definition_id).name %>
+</p>
+<p>
+  <b>Reihenfolge:</b>
+  <%= @checklist_category.category_order%>
+</p>
+
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), checklist_categories_path %>
+<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_checklist_category_path(@checklist_category) %>

@@ -1,0 +1,52 @@
+<%= form_for(@checklist_category_item) do |f| %>
+  <% if @checklist_category_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checklist_category_item.errors.count, "error") %> Maßnahme konnte nicht gespeichert werden:</h2>
+      <ul>
+      <% @checklist_category_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label(:name,'Name') %><br />
+    <%= f.text_field :name, :size=>100 %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= f.label(:description, "Beschreibung") %><br />
+    <%= f.text_area :description,:rows => 15 %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= f.label(:checklist_definition_id,"Checkliste") %><br />
+    <%= f.select :checklist_definition_id, ChecklistDefinition.all.map{|e| [e.name, e.id]} %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= f.label(:checklist_category_id,"Kategorie") %><br />
+    <%= f.select :checklist_category_id, ChecklistCategory.all.map{|e| [e.name, e.id]} %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= f.label(:item_order,"Reihenfolge") %><br />
+    <%= f.number_field :item_order %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= f.label(:item_head,"Kopfzeile") %><br />
+    <%= f.text_area :item_head,:rows => 6, :text=>'' %>
+  </div>
+  <br />
+
+  <div class="actions">
+    <%= f.submit "Maßnahme anlegen" %>
+  </div>
+<% end %>

@@ -1,45 +1,80 @@
-<p id="notice"><%= notice %></p>
+<h2>Druckluftverbraucher</h2>
+<p>Hier erhalten sie alle detaillierten Informationen über Ihre Druckluftverbraucher. Mit Klick auf den Stift gelangen Sie in das Bearbeitungsmenü. Weiter unten finden Sie die jährlichen Erhebungen zur Wartung der Anlage.</p>
 
-<p>
-  <b>Machinery:</b>
-  <%= @compressed_air_consumer.machinery_id %>
-</p>
+<table class="left">
+	<tr><th colspan=6 align="center"><%= Machinery.find(@compressed_air_consumer.machinery_id).name %> <% m_type = Machinery.find(@compressed_air_consumer.machinery_id).machineryTypeID%><%= MachineryType.find(m_type).m_type %></th></tr>
+<tr>
+  <th>Kompressor:</th>
+  <td colspan="2"><%= CompressedAirProduction.find(@compressed_air_consumer.compressor_id).manufacturer %></td>
+  <th>Bedarfsart:</th>
+  <td colspan="2"><%= @compressed_air_consumer.requirementType %></td>
+</tr>
+<tr>
+  <th>Benötigtes Druckniveau:</th>
+  <td colspan="2"><%= @compressed_air_consumer.neededPressureSettling %></td>
+  <th>Benötigte Qualität:</th>
+  <td colspan="2"><%= @compressed_air_consumer.neededQuality %></td>
+</tr>
+<tr><th colspan="6" align="center">Volumenstrom</th></tr>
+<tr>
+  <th width=100>Nenn:</th>
+  <td width="100"><%= @compressed_air_consumer.volumeStreamNom %> m&sup3;</td>
+  <th>Min:</th>
+  <td width="100"><%= @compressed_air_consumer.volumeStreamMin %> m&sup3;</td>
+  <th>Max:</th	>
+  <td width="100"><%= @compressed_air_consumer.volumeStreamMax %> m&sup3;</td>
+</tr>
+<tr><th colspan="6" align="right"><%= link_to image_tag("edit.png", size: "20x20", alt: 'Zurück'), edit_compressed_air_consumer_path(@compressed_air_consumer) %><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), compressed_air_consumers_path %></th></tr>
+</table>
 
-<p>
-  <b>Compressor:</b>
-  <%= @compressed_air_consumer.compressor_id %>
-</p>
+<h3>Jährliche Erhebungen der Druckluftverbraucher</h3>
 
-<p>
-  <b>Neededpressuresettling:</b>
-  <%= @compressed_air_consumer.neededPressureSettling %>
-</p>
+<p>Für die regelmäßige Pflege und Wartung der Druckluftanlagen sind regelmäßige Messungen notwendig. Bitte nutzen Sie dafür die unten stehende Tabelle. So erhalten Sie einen Überblick über den Zustand Ihrer Anlage.</p>
 
-<p>
-  <b>Neededquality:</b>
-  <%= @compressed_air_consumer.neededQuality %>
-</p>
+<table class="zentriert">
+  <tr>
+    <th>Jahr</th>
+    <th>Verbrauch</th>
+    <th width =100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Volumestreamnom:</b>
-  <%= @compressed_air_consumer.volumeStreamNom %>
-</p>
+<% @compressed_air_consumption_years.each do |compressed_air_consumption_year| %>
+  <tr>
+	<td><%= compressed_air_consumption_year.year_id %></td>
+  	<td><%= compressed_air_consumption_year.verbrauch %> m&sup3;/a</td>
+   
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_consumption_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_consumption_year_path(compressed_air_consumption_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_consumption_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
 
-<p>
-  <b>Volumestreammin:</b>
-  <%= @compressed_air_consumer.volumeStreamMin %>
-</p>
+	</th><th colspan=2></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_consumption_year_path %></th></tr>
+</table>
 
-<p>
-  <b>Volumestreammax:</b>
-  <%= @compressed_air_consumer.volumeStreamMax %>
-</p>
+<h3>Bedarfszeiträume Druckluft</h3>
 
-<p>
-  <b>Requirementtype:</b>
-  <%= @compressed_air_consumer.requirementType %>
-</p>
+<table class="zentriert">
+  <tr>
+    <th>Datum</th>
+    <th>Von</th>
+    <th>Bis</th>
+	<th>Dauer</th>
+    <th>Aktion</th>
+  </tr>
 
-
-<%= link_to 'Edit', edit_compressed_air_consumer_path(@compressed_air_consumer) %> |
-<%= link_to 'Back', compressed_air_consumers_path %>
+<% @compressed_air_demands.each do |compressed_air_demand| %>
+<tr>
+    <td><%= compressed_air_demand.demandDate.strftime('%d.%m.%Y') %></td>
+    <td><%= compressed_air_demand.timeFrom.strftime('%H:%M') %> Uhr</td>
+    <td><%= compressed_air_demand.timeTo.strftime('%H:%M') %> Uhr</td>
+	<td><%= duration=(compressed_air_demand.timeTo.to_datetime-compressed_air_demand.timeFrom.to_datetime).minutes %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_demand %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_demand_path(compressed_air_demand) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_demand, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+	<tr><th colspan=2>Jährliche Betriebstage:</th><th></th><th></th><th></th></tr>
+</table>

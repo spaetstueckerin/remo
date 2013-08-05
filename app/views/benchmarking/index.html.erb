@@ -1,0 +1,45 @@
+<h3>Auswertung des Energieeffizienz-Benchmarking</h3>
+
+<p>Kurze Erklärung zum Benchmarking</p>
+
+<p>Folgende Angaben werden für das Energieeffizienz-Benchmarking berücksichtigt:</p>
+
+<table>
+	<tr><th>Unternehmensangaben</th><th>Dimension</th><th>Zahlenwerte</th></tr>
+	<tr>
+		<td width="150">Branche</td><td></td><td><%= @branch.name %></td>
+	</tr>
+	<tr>
+		<td>Beschäftigte</td><td>Anzahl</td><td><%= @businessDatum.employees %></td>
+	</tr>
+	<tr>
+		<td>Gesamtumsatz</td><td>1000€</td><td><%= @businessDatum.annualSales %></td>
+	</tr>
+	<tr>
+		<td>Bruttowertschöpfung</td><td>1000€</td><td><%= @businessDatum.netIncome %></td>
+	</tr>
+	<tr>
+		<td>Stromverbrauch</td><td>kWh</td><td><%= @sumEnergy %></td>
+	</tr>
+	<tr>
+		<td>Fernwärmeverbrauch</td><td>kWh</td><td><%= @sumHeat %></td>
+	</tr>
+	<tr>
+		<td>Erdgasverbrauch</td><td>kWh</td><td><%= @sumGas %></td>
+	</tr>
+	<!--<tr>
+		<td>Heizölverbrauch</td><td>t</td><td></td>
+	</tr>
+	<tr>
+		<td>Steinkohleverbrauch</td><td>t</td><td></td>
+	</tr>
+	<tr>
+		<td>Braunkohleverbrauch</td><td>t</td><td></td>
+	</tr>
+	<tr>
+		<td>Einsatz erneuerbarer Energien</td><td>kWh</td><td></td>
+	</tr>
+	<tr>
+		<td>Einsatz sonstiger Energieträger</td><td>kWh</td><td></td>
+	</tr>-->
+</table>

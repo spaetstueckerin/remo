@@ -1,0 +1,248 @@
+<p id="notice"><%= notice %></p>
+
+<h2 xmlns="http://www.w3.org/1999/html">Checkliste <%= @checklist_definition.name %> </h2>
+
+<table style="width: 100%;">
+  <tr>
+    <td>Ausgefüllt von: <%= @checklist_properties.ausgefullt_von %></td>
+    <td>Datum: <%= @checklist_properties.datum.strftime("%d.%m.%Y") %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" style="background-color: #dcdcdc;"><b>Unternehmensinformation</b></td>
+  </tr>
+
+  <tr>
+    <td>Name des Unternehmens: <%= @checklist_properties.name_unternehmen %></td>
+    <td>Adresse:  <%= @checklist_properties.adresse_unternehmen %></td>
+  </tr>
+
+  <tr>
+    <td>Branche: <%= @checklist_properties.branche_unternehmen %></td>
+    <td>Telefonnummer: <%= @checklist_properties.telefonnummer_unternehmen %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" style="background-color: #dcdcdc;"><b>Kontaktperson für Energie</b></td>
+  </tr>
+
+  <tr>
+    <td>Name: <%= @checklist_properties.name_kontaktpersonenergie %></td>
+    <td>Telefonnummer: <%= @checklist_properties.telefonnummer_kontaktpersonenergie %></td>
+  </tr>
+
+  <tr>
+    <td>Position im Unternehmen: <%= @checklist_properties.positionimunternehmen_kontaktpersonenergie %></td>
+    <td>Email: <%= @checklist_properties.email_kontaktpersonenergie %></td>
+  </tr>
+</table>
+
+<% c=0 %>
+<% item=0 %>
+
+<table border="1">
+  <% if(@checklist_definition.checktype=="Ja und Nein") %>
+      <tr>
+        <td></td>
+        <td><b>Ja</b></td>
+        <td><b>Nein</b></td>
+      </tr>
+  <% elsif(@checklist_definition.checktype=="Opt")  %>
+      <tr>
+        <td rowspan="2"></td>
+        <td colspan="3"><b>Priorität der Maßnahme</b></td>
+      </tr>
+      <tr>
+        <td><b>Ja</b></td>
+        <td><b>Nein</b></td>
+        <td><b>Opt</b></td>
+      </tr>
+  <% else %>
+      <tr>
+        <td rowspan="2"></td>
+        <td colspan="3"><b>Priorität der Maßnahme</b></td>
+      </tr>
+      <tr>
+        <td><b>S</b></td>
+        <td><b>M</b></td>
+        <td><b>L</b></td>
+      </tr>
+  <% end %>
+  <% item_order=0 %>
+  <% @checklist_categories.each do |cat| %>
+      <ul>
+        <tr>
+          <td colspan="4" style="background-color: gray;"><b><%= cat.name %></b></td>
+        </tr>
+        <% @checklist_data.each do |data| %>
+            <% c=0 %>
+            <% if(cat.id==data.checklist_category_id) %>
+                <% if(data.item_head=='') %>
+                    <tr>
+                      <td><li></datalist><%= data.name  %></li></td>
+                      <% if(@checklist_definition.checktype=="Ja und Nein") %>
+                          <% if(@checklist[item].boolean_value)%>
+                              <td><%= image_tag('onebit_34.png', size: "15x15") %> </td>
+                              <td></td>
+                              <% item = item + 1 %>
+                          <% else %>
+                              <td></td>
+                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                              <% item = item + 1 %>
+                          <% end %>
+                      <% elsif (@checklist_definition.checktype=="Opt")  %>
+                          <% if(@checklist[item].boolean_value)%>
+                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                              <td></td>
+                          <% else %>
+                              <td></td>
+                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                          <% end %>
+                          <% if(@checklist[item].string_value == 'true')%>
+                              <td><%= image_tag('onebit_48.png', size: "20x20") %></td>
+                              <% item = item + 1 %>
+                          <% else %>
+                              <td></td>
+                              <% item = item + 1 %>
+                          <% end %>
+                      <% else %>
+                          <% if(@checklist[item].string_value == 'S')%>
+                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                              <td></td>
+                              <td></td>
+                              <% item = item + 1 %>
+                          <% elsif (@checklist[item].string_value == 'M')  %>
+                              <td></td>
+                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                              <td></td>
+                              <% item = item + 1 %>
+                          <% else %>
+                              <td></td>
+                              <td></td>
+                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                              <% item = item + 1 %>
+                          <% end %>
+                      <% end %>
+                    </tr>
+                <% else%>
+                    <% if(item_order==0 || item_order != data.item_order ) %>
+                        <% @checklist_b.each do |b| %>
+                            <% if(b.checklist_category_id == data.checklist_category_id && b.item_order == data.item_order  ) %>
+                                <% item_order = b.item_order %>
+                                <% if(c==0) %>
+                                    <tr>
+                                      <td colspan="4" style="background-color: #cccccc;">
+                                        <b><%= b.item_head %></b>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td><li><%= b.name  %></li></td>
+                                      <% if(@checklist_definition.checktype=="Ja und Nein") %>
+                                          <% if(@checklist[item].boolean_value)%>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% else %>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <% item = item + 1 %>
+                                          <% end %>
+                                      <% elsif (@checklist_definition.checktype=="Opt")  %>
+                                          <% if(@checklist[item].boolean_value)%>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                          <% else %>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                          <% end %>
+                                          <% if(@checklist[item].string_value == 'true')%>
+                                              <td><%= image_tag('onebit_48.png', size: "20x20") %></td>
+                                              <% item = item + 1 %>
+                                          <% else %>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% end %>
+                                      <% else %>
+                                          <% if(@checklist[item].string_value == 'S')%>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% elsif (@checklist[item].string_value == 'M')  %>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% else %>
+                                              <td></td>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <% item = item + 1 %>
+                                          <% end %>
+                                      <% end %>
+                                      </tr>
+                                      <% c=1 %>
+                                <% else %>
+                                    <tr>
+                                      <td><li><%= b.name  %></li></td>
+                                      <% if(@checklist_definition.checktype=="Ja und Nein") %>
+                                          <% if(@checklist[item].boolean_value)%>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% else %>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <% item = item + 1 %>
+                                          <% end %>
+                                      <% elsif (@checklist_definition.checktype=="Opt")  %>
+                                          <% if(@checklist[item].boolean_value)%>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                          <% else %>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                          <% end %>
+                                          <% if(@checklist[item].string_value == 'true')%>
+                                              <td><%= image_tag('onebit_48.png', size: "20x20") %></td>
+                                              <% item = item + 1 %>
+                                          <% else %>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% end %>
+                                      <% else %>
+                                          <% if(@checklist[item].string_value == 'S')%>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% elsif (@checklist[item].string_value == 'M')  %>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <td></td>
+                                              <% item = item + 1 %>
+                                          <% else %>
+                                              <td></td>
+                                              <td></td>
+                                              <td><%= image_tag('onebit_34.png', size: "15x15") %></td>
+                                              <% item = item + 1 %>
+                                          <% end %>
+                                      <% end %>
+                                    </tr>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+      </ul>
+  <% end %>
+</table>
+
+Notizen / Ergänzungen:<p><%= @checklist_properties.notizen%></p>
+
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), {:controller=>'sites', :action=>'checklists_manager'}%>
+<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_checklist_property_path(@checklist_properties) %>
+
+

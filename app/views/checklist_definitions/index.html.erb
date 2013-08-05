@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag("jquery.dataTables.css") %>
+<%= javascript_include_tag("jquery.js") %>
+<%= javascript_include_tag("jquery.dataTables.min.js") %>
+<%= javascript_include_tag("jquery.dataTables.de.js") %>
+
+<h2>Checklisten</h2>
+<p>Hier finden Sie eine Liste aller Arten von Checklisten in der Anwendung ketegorisiert nach den verschiedenen Querschnittstechnologien.</p>
+<table class="display" id="bills">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Sorte</th>
+    <th>Beschreibung</th>
+    <th style="width: 70px;">Aktion</th>
+   </tr>
+  </thead>
+
+  <tbody>
+  <% @checklist_definitions.each do |checklist_definition| %>
+  <tr>
+    <td><%= checklist_definition.name %></td>
+    <td><%= checklist_definition.checktype %></td>
+    <td><%= checklist_definition.description %></td>
+    <td>
+      <%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), checklist_definition %>
+      <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_checklist_definition_path(checklist_definition) %>
+      <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), checklist_definition, method: :delete, data: { confirm: 'Are you sure?' }  %>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), 'sites/checklists_manager' %>
+<%= link_to image_tag("new.png", size: "20x20", alt: "Neue Item"), new_checklist_definition_path %>

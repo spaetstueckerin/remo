@@ -9,7 +9,11 @@ gem "google_visualr", "~> 2.1.0"
 
 gem 'sqlite3'
 gem 'facebox-rails'
-
+gem 'paperclip'
+gem 'jquery-datatables-rails'
+gem 'jquery-ui-rails'
+gem 'css3-progress-bar-rails'
+gem 'rails-i18n', '~> 3.0.0.pre'
 
 # Gems used only for assets and not required
 # in production environments by default.

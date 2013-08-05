@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719084004) do
+ActiveRecord::Schema.define(:version => 20130804105348) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -51,6 +51,61 @@ ActiveRecord::Schema.define(:version => 20130719084004) do
     t.datetime "updated_at",                 :null => false
     t.decimal  "productCosts"
     t.decimal  "maxCapacity"
+    t.integer  "employees"
+  end
+
+  create_table "checklist_categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "checklist_definition_id"
+    t.integer  "category_order"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  create_table "checklist_category_items", :force => true do |t|
+    t.text     "name"
+    t.text     "description"
+    t.integer  "checklist_category_id"
+    t.integer  "checklist_definition_id"
+    t.integer  "item_order"
+    t.text     "item_head"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  create_table "checklist_definitions", :force => true do |t|
+    t.string   "name"
+    t.string   "checktype"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "checklist_properties", :force => true do |t|
+    t.string   "ausgefullt_von"
+    t.date     "datum"
+    t.string   "name_unternehmen"
+    t.string   "branche_unternehmen"
+    t.text     "adresse_unternehmen"
+    t.string   "telefonnummer_unternehmen"
+    t.string   "name_kontaktpersonenergie"
+    t.string   "positionimunternehmen_kontaktpersonenergie"
+    t.string   "telefonnummer_kontaktpersonenergie"
+    t.string   "email_kontaktpersonenergie"
+    t.text     "notizen"
+    t.integer  "checklist_definition_id"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "checklists", :force => true do |t|
+    t.boolean  "boolean_value"
+    t.string   "string_value"
+    t.integer  "checklist_category_item_id"
+    t.integer  "checklist_property_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "cold_consumption_years", :force => true do |t|
@@ -274,6 +329,26 @@ ActiveRecord::Schema.define(:version => 20130719084004) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "energy_mixes", :force => true do |t|
+    t.string   "energyType"
+    t.decimal  "value"
+    t.integer  "contractId"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.decimal  "renewableEEG"
+    t.decimal  "renewableOther"
+    t.decimal  "brownCoal"
+    t.decimal  "nuclear"
+    t.decimal  "naturalGas"
+    t.decimal  "mineralOil"
+    t.decimal  "photovoltaics"
+    t.decimal  "waterPower"
+    t.decimal  "biomass"
+    t.decimal  "wind"
+    t.decimal  "stoneCoal"
+    t.decimal  "other"
+  end
+
   create_table "enterprise_data", :force => true do |t|
     t.decimal  "value"
     t.integer  "year"
@@ -430,11 +505,14 @@ ActiveRecord::Schema.define(:version => 20130719084004) do
     t.string   "name"
     t.text     "description"
     t.decimal  "squaremeter"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.decimal  "height"
     t.integer  "building_id"
     t.string   "floor"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "machineries", :force => true do |t|
@@ -452,6 +530,10 @@ ActiveRecord::Schema.define(:version => 20130719084004) do
     t.integer  "detachDuration"
     t.integer  "detachTerm"
     t.integer  "location_id"
+    t.integer  "productionLevel"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "machinery_types", :force => true do |t|

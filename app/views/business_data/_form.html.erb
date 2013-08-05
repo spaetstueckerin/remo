@@ -12,12 +12,13 @@
   <% end %>
 
 <!--Hidden Field -->
-    <%# f.label :enterpriseId %><br />
-    <%# f.number_field :enterpriseId %>
+    <% f.label :enterpriseId %><br />
+	<% @enterprise = User.find(session[:user_id]).enterprise_id %>
+    <%= f.hidden_field :enterpriseId, :value => @enterprise %>
 <table>
 <tr>
-    <td><%= f.label :year %></td>
-    <td colspan = 3><%= f.number_field :year %></td>
+    <td><%= f.label :year, "Jahr" %></td>
+    <td colspan = 3><%= f.text_field :year%></td>
 </tr>
 <tr>
     <td><%= f.label :annualSales, "Jahresumsatz" %></td>
@@ -28,8 +29,8 @@
 <tr>
     <td width = 100><%= f.label :energyEfficiencyInvestment, "Investitionen in Energieeffizienz" %></td>
     <td><%= f.text_field :energyEfficiencyInvestment %> Euro</td>
-    <td><%= f.label :maxCapacity, "Maximale Leistung" %></td>
-    <td><%= f.text_field :maxCapacity %> kW</td>
+    <td><%= f.label :employees, "Anzahl Mitarbeiter" %></td>
+    <td><%= f.text_field :employees %></td>
 </tr>
 </table>
   <div class="actions">

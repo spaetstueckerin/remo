@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Energytype:</b>
+  <%= @energy_mix.energyType %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @energy_mix.value %>
+</p>
+
+<p>
+  <b>Contractid:</b>
+  <%= @energy_mix.contractId %>
+</p>
+
+
+<%= link_to 'Edit', edit_energy_mix_path(@energy_mix) %> |
+<%= link_to 'Back', energy_mixes_path %>

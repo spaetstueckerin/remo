@@ -32,6 +32,10 @@
     <td><%= f.label :description, "Beschreibung" %></td>
     <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
 </tr>
+<tr>
+	<td><%= f.label :photo, "Bild" %></td>
+	<td colspan=3><%= f.file_field :photo %></td>
+</tr>
 </table>
 
   <div class="actions">

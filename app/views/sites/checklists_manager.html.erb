@@ -1,0 +1,89 @@
+<%= stylesheet_link_tag("jquery.dataTables.css") %>
+<%= javascript_include_tag("jquery.js") %>
+<%= javascript_include_tag("jquery.dataTables.min.js") %>
+<%= javascript_include_tag("jquery.dataTables.de.js") %>
+
+<h2>Checklisten für die Energieeffizienz</h2>
+
+<p>An dieser Stelle wird die Maßnahmendatenbank für die Energieeffizienz des Unternehmens zusammengefasst.
+Die Maßnahmendatenbank besteht aus verschiedenen Checklisten, die einmalig definiert werden
+aber auch regelmäßig durchgeprüft und nachgefüllt werden können.</p>
+
+<h3>Neue Checkliste anlegen</h3>
+<table>
+  <% total_element = ChecklistDefinition.count %>
+  <%  item = ChecklistDefinition.all.to_a %>
+  <% 0.step(total_element-1, 2) do |i| %>
+    <tr>
+      <td>
+        <%= link_to image_tag("new.png", size: "15x15", alt: "Neue Checkliste") + ' Checkliste '+ item[i].name, {:controller => 'checklists',:action => 'new',:id=>item[i].id} %>
+      </td>
+      <td>
+        <% if item[i+1] %>
+            <%= link_to image_tag("new.png", size: "15x15", alt: "Neue Checkliste") + ' Checkliste '+ item[i+1].name, {:controller => 'checklists',:action => 'new',:id=>item[i+1].id} %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Vorhandene Checklisten</h3>
+
+<table class="display" id="bills">
+  <thead>
+  <tr>
+    <th>Checkliste</th>
+    <th>Zuletzt bearbeitet</th>
+    <th>Fortschritt</th>
+    <th>Aktion</th>
+  </tr>
+  </thead>
+<% anteil = 0 %>
+  <tbody>
+  <% ChecklistProperty.all.each do |checklist_property| %>
+      <tr>
+        <td><% checklistDefinition = ChecklistDefinition.find(checklist_property.checklist_definition_id) %><%= checklistDefinition.name %></td>
+        <td align="center"><%= checklist_property.updated_at.strftime("%d.%m.%Y") %></td>
+
+ 		<% if checklistDefinition.checktype == "Ja und Nein" %>
+		<td>
+			<% gesamt = Checklist.find_all_by_checklist_property_id(checklist_property.id) %>
+			<% alle = gesamt.count %>
+			<% gesamt.each do |gesamt| %>
+				<% if gesamt.boolean_value == true %>
+					<% gesamt.boolean_value %>
+					<% anteil = anteil+1 %>
+					<% else %>
+					<% end %>
+				<% end %><% anteil %>
+			<% prozent = (anteil.to_f/alle.to_f)*100 %><% final = number_with_precision(prozent.to_f, :precision => 0)%>
+			<%= progress_bar(final, :color => 'info', :tiny=> true, :rounded => true) %>
+			<% anteil = 0 %>
+		</td>
+		<% else %>
+
+		<% end %>
+		
+
+        <td align="center">
+          <%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), checklist_property %>
+          <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_checklist_property_path(checklist_property) %>
+          <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), checklist_property, confirm: 'Are you sure?', method: :delete %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<h3>Checklisten verwalten</h3>
+
+<table>
+  <tr>
+    <td><%= link_to 'Checklisten anzeigen', checklist_definitions_path %></td>
+    <td><%= link_to 'Kategorien anzeigen', checklist_categories_path %></td>
+    <td><%= link_to 'Maßnahmen anzeigen', checklist_category_items_path %></td>
+  </tr>
+</table>
+

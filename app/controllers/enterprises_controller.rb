@@ -44,7 +44,7 @@ class EnterprisesController < ApplicationController
 
     respond_to do |format|
       if @enterprise.save
-        format.html { redirect_to @enterprise, notice: 'Enterprise was successfully created.' }
+        format.html { redirect_to "/enterprises", notice: 'Enterprise was successfully created.' }
         format.json { render json: @enterprise, status: :created, location: @enterprise }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class EnterprisesController < ApplicationController
 
     respond_to do |format|
       if @enterprise.update_attributes(params[:enterprise])
-        format.html { redirect_to @enterprise, notice: 'Enterprise was successfully updated.' }
+        format.html { redirect_to "/enterprises", notice: 'Enterprise was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

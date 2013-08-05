@@ -24,7 +24,7 @@ function showonlyonev2(thechosenone) {
 <h2>Unternehmensstammdaten</h2>
 <table>               
 	<tr>
-		<td><%= link_to 'Betriebswirtschaftliche Daten', business_data_path %></td>
+		<th align="left"><%= link_to 'Betriebswirtschaftliche Daten', business_data_path %></th>
 	</tr>
 </table>
 
@@ -79,24 +79,61 @@ function showonlyonev2(thechosenone) {
 <% end %> <%# Hier ist das Ende der ProduktionSite Schleife%>
 <table>  
 	<tr>
-		<td><%= link_to 'Standort', produktion_sites_path %></td>
+		<td><%= link_to 'Standorte anzeigen', produktion_sites_path %></td>
 		<td width=100 align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_produktion_site_path %></td>
 	</tr>
 	<tr>
-		<td><%= link_to 'Gebäude', buildings_path %></td>
+		<td><%= link_to 'Gebäude anzeigen', buildings_path %></td>
 		<td align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_building_path %></td>
 	</tr>
 	<tr>                                     
-		<td><%= link_to 'Raum/Halle', locations_path %></td>
+		<td><%= link_to 'Raum/Halle anzeigen', locations_path %></td>
 		<td align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_location_path %></td>
 	</tr>
 </table>
+<br>
 
-<h3>Maschinen</h3>
+<h3>Maschinen und Geräte</h3>
+
+<p>An dieser Stelle finden Sie alle Maschinen geordnet nach Arbeitsablauf. Mit Klick auf die Pfeile können Sie sich die zugeordneten Maschinen ansehen und gelangen darüber auch in den Bearbeitungsmodus.</p>
+
+<% @productionLevels = ProductionLevel.find(:all) %>
+<% @productionLevels.each do |pl| %>
+
 <table>
 	<tr>
-		<td><%= link_to 'Maschinentypen', machinery_types_path %></td>
-		<td><%= link_to 'Produktionslevel', production_levels_path %></td>
+		<th align="left"><%= pl.name %></th><th width=100><a id="<%="myHeader"+ "#{element}"+"-2"%>" href="javascript:showonlyonev2('<%="newboxes"+ "#{element}"+"-2"%>');" ><%= image_tag("runter.png", size: "20x20", alt: "Zeige Maschinen") %></a></th>
+	</tr>
+</table>
+
+<div class="newboxes-2" id="<%="newboxes"+ "#{element}"+"-2"%>" style="display: none;">
+<% @machinery = Machinery.find_all_by_productionLevel(pl.id)%>
+<% @machinery.each do |m| %>
+
+<table>
+	<tr>
+		<td align="left"><%= link_to "#{m.name}", m %>, <%= MachineryType.find(m.machineryTypeID).m_type %></td><td width=100></td>
+	</tr>
+</table>
+
+<% end %>
+<% element = element+1 %>
+</div>
+
+<% end %>
+
+<!--Diese Tabelle müsste raus und durch den Admin geregelt werden. Möglicherweise in "Internes"-->
+<table>
+	<tr>
+		<td><%= link_to 'Maschinen- und Gerätetypen (Produktionsmaschinen, Peripherie, sonstige...)', machinery_types_path %></td>
+		<td width=100 align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_machinery_type_path %></td>
+	</tr>
+	<tr>
+		<td><%= link_to 'Produktionslevel (Druckvorstufe, Druckprozess, Drucknachbearbeitung, sonstige...)', production_levels_path %></td>
+		<td width=100 align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_production_level_path %></td>
+	</tr>
+	<tr>
 		<td><%= link_to 'Produktionsmaschinen', machineries_path %></td>
+		<td width=100 align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_machinery_path %></td>
 	</tr>
 </table>

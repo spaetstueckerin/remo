@@ -1,6 +1,6 @@
-<h3>Energieliefervertrag #<%= @contract.contractNo %> <%= @contract.supplier %></h3>
+<h2>Energieliefervertrag #<%= @contract.contractNo %> <%= @contract.supplier %></h2>
 
-<p id="notice"><%= notice %></p>
+<p>An dieser Stelle erfahren Sie alle Details zum oben genannten Energieliefervertrag. Zum Bearbeiten der Angaben benutzen Sie bitte die dafür vorgesehenen Schaltflächen. Weiter unten finden Sie weiterhin alle zu diesem Vertrag zugeordneten Energierechnungen, sowie eine interaktive Ansicht der Zusammensetzung ihres Strommixes.</p>
 
 <div id='chart' align="center" style='width: 800px; height: 300px;'></div>
 <%= render_chart @chart, 'chart' %><br>
@@ -33,7 +33,8 @@
 <br><br>
 <h3>Energieabrechnungen</h3>
 
-<table  class="zentriert">
+<table class="display" id="bills">
+	<thead>
   <tr>
     <th>Betrag</th>
     <th>Verbrauch</th>
@@ -42,8 +43,10 @@
     <th>Abrechnungszeitraum</th>
     <th>Aktion</th>
   </tr>
-
+</thead>
+<tbody>
 <% @bills.each do |bill| %>
+
   <tr>
     <td><%= number_with_precision(bill.value, :precision =>2) %> Euro</td>
     <td><%= bill.consumption %> kW/h</td>
@@ -57,10 +60,23 @@
     
   </tr>
 <% end %>
-<tr><th colspan="5"></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_bill_path %></th></tr>
+</tbody>
+</table>
+<br>
+<%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_bill_path %>
+<br><br>
+
+<h3>Energie-Mix</h3>
+<p>Das folgende Chart stellt den Energiemix für diesen Vertrag dar. Je höher der Anteil der erneuerbaren Energien, umso geringer der Verbrauch von CO&sup2;. Mit Klick auf den Stift können Sie die Angaben für den Energiemix bearbeiten. Diese erhalten Sie normalerweise automatisch von Ihrem Energielieferanten.</p>
+
+<div id='chart2' align="center" style='width: 800px; height: 300px;'></div>
+<%= render_chart @chart2, 'chart2' %><br>
+<table>
+	<tr>
+		<th align="right">Angaben zum Energiemix dieses Vertrags bearbeiten:&nbsp;&nbsp;<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), new_energy_mix_path %></th>
+	</tr>
 </table>
 
-<br><br>
 
 <!--<h2>Angebundene Zähler</h2>
 

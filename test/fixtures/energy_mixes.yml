@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  energyType: MyString
+  value: 9.99
+  contractId: 1
+
+two:
+  energyType: MyString
+  value: 9.99
+  contractId: 1

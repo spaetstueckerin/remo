@@ -1,11 +1,14 @@
 <h1>Jährliche Geschäftsdatensätze</h1>
 
+<p>Diese Daten sind die Grundlage des Energie-Effizienz-Benchmarkings. Bitte versuchen Sie diese Daten einmal jährlich zu aktualisieren. Mit Klick auf den Stift gelangen Sie in der Bearbeitungsmodus. Beim Betätigen des grünen Plus können Sie einen neuen Datensatz anlegen.</p>
+
 <table class="zentriert">
   <tr>
     <!--<th>Enterpriseid</th>-->
     <th>Jahr</th>
     <th>Jahresumsatz</th>
     <th>Einkommen</th>
+	<th>Anzahl Mitarbeiter</th>
     <th>Investment in Energieeffizienz</th>
     <th>Aktion</th>
   </tr>
@@ -16,6 +19,7 @@
     <td><%= business_datum.year %></td>
     <td><%= number_to_currency(business_datum.annualSales, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"€ ") %></td>
     <td><%= number_to_currency(business_datum.netIncome, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"€ ") %></td>
+    <td><%= business_datum.employees %></td>
     <td><%= number_to_currency(business_datum.energyEfficiencyInvestment, :precision => 2, :delimiter => ".", :separator => ",", :unit =>"€ ") %></td>
 
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), business_datum %>
@@ -23,8 +27,5 @@
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), business_datum, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   </tr>
 <% end %>
+  <tr><th colspan="5"></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_business_datum_path %></th></tr>
 </table>
-
-<br />
-
-<%= link_to 'Neuer Geschäftsdatensatz', new_business_datum_path %>

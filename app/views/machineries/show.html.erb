@@ -1,40 +1,23 @@
-<p id="notice"><%= notice %></p>
+<h2><%= MachineryType.find(@machinery.machineryTypeID).m_type %> <%= @machinery.name %></h2>
 
-<p>
-  <b>Name:</b>
-  <%= @machinery.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @machinery.description %>
-</p>
-
-<p>
-  <b>Energyconsumption:</b>
-  <%= @machinery.energyConsumption %>
-</p>
-
-<p>
-  <b>Yearofconstruction:</b>
-  <%= @machinery.yearOfConstruction %>
-</p>
-
-<p>
-  <b>Yearofbuy:</b>
-  <%= @machinery.yearOfBuy %>
-</p>
-
-<p>
-  <b>Enterpriseid:</b>
-  <%= @machinery.enterpriseID %>
-</p>
-
-<p>
-  <b>Machinerytypeid:</b>
-  <%= @machinery.machineryTypeID %>
-</p>
-
-
-<%= link_to 'Edit', edit_machinery_path(@machinery) %> |
-<%= link_to 'Back', machineries_path %>
+<table  class="left">
+	<tr><th colspan=4 align="center"><%= image_tag @machinery.photo.url(:show), {:class => 'photo'} %></th></tr>
+<tr>
+  <th>Beschreibung:</th>
+  <td colspan=3><%= @machinery.description %></td>
+</tr>
+<tr>
+  <th>Leistung:</th>
+  <td><%= @machinery.energyConsumption %> kWh</td>
+  <th>Maschinentyp:</th>
+  <td><%= MachineryType.find(@machinery.machineryTypeID).m_type %></td>
+</tr>
+<tr>
+  <th>Baujahr:</th>
+  <td><%= @machinery.yearOfConstruction %></td>
+  <th>Kaufjahr:</th>
+  <td><%= @machinery.yearOfBuy %></td>
+</tr>
+	<tr><th colspan=4 align="right"><%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_machinery_path(@machinery)  %>
+	    <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Löschen"), machineries_path %></th></tr>
+</table>

@@ -1,0 +1,224 @@
+<% # encoding: UTF-8 %>
+
+<%= stylesheet_link_tag("jquery-ui.css") %>
+<%= stylesheet_link_tag("jquery.ui.datepicker.css") %>
+<%= javascript_include_tag("jquery.js") %>
+<%= javascript_include_tag("jquery-ui-1.10.1.custom.min.js") %>
+<%= javascript_include_tag("jquery.metadata.js") %>
+<%= javascript_include_tag("jquery.ui.core.js") %>
+<%= javascript_include_tag("jquery.ui.widget.js") %>
+<%= javascript_include_tag("jquery.ui.datepicker.js") %>
+<%= javascript_include_tag("jquery.ui.datepicker-de.js") %>
+<%= javascript_include_tag("jquery.validate.min.js") %>
+
+<h2 xmlns="http://www.w3.org/1999/html">Checkliste <%= @checklist_definition.name %> </h2>
+
+<p>Bitte nutzen Sie dieses Formular, um Ihre Maßnahmen für die Energieeffzienz zu dokumentieren. Sollte eine der Maßnahme nicht zutreffen, kreuzen Sie bitte <b>n.z. (nicht zutreffend)</b> an. Diese Angaben werden dann bei der Auswertung nicht berücksichtigt.
+
+<form id="checklistform" name="checklistform" class="cmxform" method="post" action="saveform" >
+<table style="width: 750px;">
+    <tr>
+      <td>
+        <label for="ausgefullt_von">Ausgefüllt von:</label>
+        <input id="ausgefullt_von" type="text" value="" name="ausgefullt_von" class="required" />
+      </td>
+      <td>
+        <label for="datum">Datum:</label>
+        <input id="datum" type="text" value="" name="datum" class="required" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color: #dcdcdc;"><b>Unternehmensinformation</b></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="name_unternehmen">Name des Unternehmens:</label>
+        <input id="name_unternehmen" type="text" value="" name="name_unternehmen" class="required" />
+      </td>
+      <td>
+        <label for="adresse_unternehmen">Adresse:</label></br>
+        <textarea id="adresse_unternehmen" value="" name="adresse_unternehmen" rows="5" cols="30" class="required"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="branche_unternehmen">Branche:</label>
+        <input id="branche_unternehmen" type="text" value="" name="branche_unternehmen" class="required" />
+      </td>
+      <td>
+        <label for="telefonnummer_unternehmen">Telefonnummer:</label>
+        <input id="telefonnummer_unternehmen" type="text" value="" name="telefonnummer_unternehmen" class="number" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color: #dcdcdc;"><b>Kontaktperson für Energie</b></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="name_kontaktpersonenergie">Name:</label>
+        <input id="name_kontaktpersonenergie" type="text" value="" name="name_kontaktpersonenergie" class="required" />
+      </td>
+      <td>
+        <label for="telefonnummer_kontaktpersonenergie">Telefonnummer:</label>
+        <input id="telefonnummer_kontaktpersonenergie" type="text" value="" name="telefonnummer_kontaktpersonenergie" class="number" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="positionimunternehmen_kontaktpersonenergie">Position im Unternehmen:</label>
+        <input id="positionimunternehmen_kontaktpersonenergie" type="text" value="" name="positionimunternehmen_kontaktpersonenergie" class="required" />
+      </td>
+      <td>
+        <label for="email_kontaktpersonenergie">Email:</label>
+        <input id="email_kontaktpersonenergie" type="text" value="" name="email_kontaktpersonenergie" class="{validate:{required:true, email:true, messages:{required:'Please enter your email address', email:'Please enter a valid email address'}}}" />
+      </td>
+    </tr>
+  </table>
+
+<table>
+  <% c=0 %>
+      <% if(@checklist_definition.checktype=="Ja und Nein") %>
+          <tr>
+             <td></td>
+             <td><b>Ja</b></td>
+             <td align="center"><b>Nein</b></td>
+			<!--<td align="center"><b>n.z.</b></td>-->
+          </tr>
+      <% elsif(@checklist_definition.checktype=="Opt")  %>
+          <tr>
+            <td rowspan="2"></td>
+            <td colspan="3"><b>Priorität der Maßnahme</b></td>
+          </tr>
+          <tr>
+            <td><b>Ja</b></td>
+            <td><b>Nein</b></td>
+            <td><b>Opt</b></td>
+          </tr>
+      <% else %>
+          <tr>
+            <td rowspan="2"></td>
+            <td colspan="3"><b>Priorität der Maßnahme</b></td>
+          </tr>
+          <tr>
+            <td><b>S</b></td>
+            <td><b>M</b></td>
+            <td><b>L</b></td>
+          </tr>
+      <% end %>
+  <% item_order=0 %>
+    <% @checklist_categories.each do |cat| %>
+      <ul>
+      <tr>
+        <th colspan="4"><b><%= cat.name %></b></th>
+      </tr>
+        <% @checklist_data.each do |data| %>
+           <% c=0 %>
+           <% if(cat.id==data.checklist_category_id) %>
+            <% if(data.item_head=='') %>
+              <tr>
+               <td><li></datalist><%= data.name  %></li></td>
+                <% if(@checklist_definition.checktype=="Ja und Nein") %>
+                    <td align="center"><input  type="radio" id="<%=data.id%>" value=true name="<%= "item_#{data.id}"  %>" validate="required:true" /></td>
+                    <td align="center"><input  type="radio" id="<%=data.id%>" value=false name="<%="item_#{data.id}" %>" validate="required:true" /></td>
+ 					<!--<td align="center"><input  type="radio" id="<%=data.id%>" value=nil name="<%="item_#{data.id}" %>" validate="required:true" /></td>-->
+                <% elsif (@checklist_definition.checktype=="Opt")  %>
+                    <td><input  type="radio" id="<%=data.id%>" value=true name="<%= "item_#{data.id}"  %>" validate="required:true" /></td>
+                    <td><input  type="radio" id="<%=data.id%>" value=false name="<%="item_#{data.id}" %>" validate="required:true" /></td>
+                    <td><input type="hidden" value=false id="<%=data.id%>" name="<%="citem_#{data.id}" %>" />
+                      <input type="checkbox" value=true id="<%=data.id%>" name="<%="citem_#{data.id}" %>" />
+                    </td>
+                <% else %>
+                    <td><input  type="radio" id="<%=data.id%>" value="S" name="<%= "item_#{data.id}"  %>" validate="required:true" /></td>
+                    <td><input  type="radio" id="<%=data.id%>" value="M" name="<%="item_#{data.id}" %>" validate="required:true" /></td>
+                    <td><input  type="radio" id="<%=data.id%>" value="L" name="<%="item_#{data.id}" %>" validate="required:true" /></td>
+                <% end %>
+              </tr>
+           <% else%>
+               <% if(item_order==0 || item_order != data.item_order ) %>
+               <% @checklist_b.each do |b| %>
+                       <% if(b.checklist_category_id == data.checklist_category_id && b.item_order == data.item_order  ) %>
+                        <% item_order = b.item_order %>
+                            <% if(c==0) %>
+                             <tr>
+                              <td colspan="4" style="background-color: #cccccc;">
+                                <b><%= b.item_head %></b>
+                              </td>
+                             </tr>
+                               <tr>
+                                 <td><li><%= b.name  %></li></td>
+
+                               <% if(@checklist_definition.checktype=="Ja und Nein") %>
+                                   <td><input  type="radio" id="<%= b.id %>" value=true name="<%= "item_#{b.id}"  %>" validate="required:true" /></td>
+                                   <td><input  type="radio" id="<%= b.id %>" value=false name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                               <% elsif (@checklist_definition.checktype=="Opt")  %>
+                                   <td><input  type="radio" id="<%= b.id %>" value=true name="<%= "item_#{b.id}"  %>" validate="required:true" /></td>
+                                   <td><input  type="radio" id="<%= b.id %>" value=false name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                                   <td>
+                                     <input type="hidden" value=false id="<%=b.id%>" name="<%="item_#{b.id}" %>" />
+                                     <input type="checkbox" value=true id="<%=b.id%>" name="<%="citem_#{b.id}" %>" />
+                                   </td>
+                               <% else %>
+                                   <td><input  type="radio" id="<%= b.id %>" value="S" name="<%= "item_#{b.id}"  %>" validate="required:true" /></td>
+                                   <td><input  type="radio" id="<%= b.id %>" value="M" name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                                   <td><input  type="radio" id="<%= b.id %>" value="L" name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                               <% end %>
+                                <% c=1 %>
+                             <% else %>
+                                    <tr>
+                                        <td><li><%= b.name  %></li></td>
+                                      <% if(@checklist_definition.checktype=="Ja und Nein") %>
+                                          <td><input  type="radio" id="<%= b.id %>" value=true name="<%= "item_#{b.id}"  %>" validate="required:true" /></td>
+                                          <td><input  type="radio" id="<%= b.id %>" value=false name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                                      <% elsif (@checklist_definition.checktype=="Opt")  %>
+                                          <td><input  type="radio" id="<%= b.id %>" value=true name="<%= "item_#{b.id}"  %>" validate="required:true" /></td>
+                                          <td><input  type="radio" id="<%= b.id %>" value=false name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                                          <td>
+                                            <input type="hidden" value=false id="<%= b. id %>" name="<%="item_#{b.id}" %>" />
+                                            <input type="checkbox" value=true id="<%= b.id %>" name="<%="citem_#{b.id}" %>" />
+                                          </td>
+                                      <% else %>
+                                          <td><input  type="radio" id="<%=b.id%>" value="S" name="<%= "item_#{b.id}"  %>" validate="required:true" /></td>
+                                          <td><input  type="radio" id="<%=b.id%>" value="M" name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                                          <td><input  type="radio" id="<%=b.id%>" value="L" name="<%="item_#{b.id}" %>" validate="required:true" /></td>
+                                      <% end %>
+                                    </tr>
+                            <% end %>
+                      <% end %>
+                <% end %>
+              <% end %>
+           <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+
+ </table>
+<table><tr>
+
+    <td><label for="notizen">Notizen / Ergänzungen:</label> </br>
+    <textarea id="notizen" name="notizen" rows="5" cols="90"></textarea>
+  <input type="hidden" id="checklist_definition_id" name="checklist_definition_id" value="<%=@checklist_definition.id %>" ></td>
+</tr></table>
+  </br>
+  </br>
+  <input id="submitbutton" class="btn btn-primary" type="submit" value="Speichern" name="submit"/>
+  <input id="resetbutton" class="btn btn-primary" type="reset" value="Zurücksetzen" name="reset"/>
+  </form>
+</br>
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), {:controller=>'sites', :action=>'checklists_manager'}%>
+
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+    $.metadata.setType("attr", "validate");
+
+    $(document).ready(function() {
+        $("#checklistform").validate();
+        $( "#datum" ).datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
+        $( "#datum" ).datepicker( "option", "dateFormat", "dd.mm.yy" );
+        $( "#datepicker" ).datepicker( $.datepicker.regional[ "de" ] );
+
+    });
+</script>
