@@ -18,6 +18,10 @@ class CompressedAirProductionsController < ApplicationController
   def show
     @compressed_air_production = CompressedAirProduction.find(params[:id])
     @compressed_air_production_years = CompressedAirProductionYear.find_all_by_compressedAirProduction_id(params[:id], :order =>"year_id DESC")
+    @compressed_air_distributions = CompressedAirDistribution.find_all_by_compressor_id(params[:id])
+    @compressed_air_distribution_years = CompressedAirDistributionYear.find_all_by_compressor_id(params[:id])
+    @compressed_air_consumptions = CompressedAirConsumer.find_all_by_compressor_id(params[:id])
+    @compressed_air_consumption_years = CompressedAirConsumptionYear.find_all_by_compressor_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

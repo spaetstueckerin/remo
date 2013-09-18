@@ -1,0 +1,142 @@
+<div align="center">
+  <h1>Lastenmanagement</h1>
+
+  <% @machinery = Machinery.all %>
+  <% @lighting = Lighting.all %>
+  <% @compressedAirProduction = CompressedAirProduction.all %>
+  <% @steamProduction = SteamProduction.all %>
+  <% @hotWaterProduction = HotWaterProduction.all %>
+  <% @thermoOilProduction = ThermoOilProduction.all%>
+  <% @coldProduction = ColdProduction.all%>
+
+  <table>
+    <th>Maschine</th>
+    <th width=100>Leistung</th>
+    <th>Abschaltbarer Anteil</th>
+    <th>Abschaltbare Leistung</th>
+    <th>Abschaltdauer</th>
+    <th>Anlaufzeit bei Abschaltung</th>
+
+    <% sumCapacity = 0 %>
+    <% sumDetach = 0 %>
+
+    <tr><td colspan=6>Maschinen</td></tr>
+
+    <% @machinery.each do |machine| %>
+        <tr>
+          <td><%= machine.name %></td>
+          <td><%= machine.capacity %> kW</td>
+          <td><%= machine.detachablePart %> %</td>
+          <td><%= sumDetach1 = machine.capacity * machine.detachablePart/100 %> kW</td>
+          <td><%= machine.detachDuration %> min</td>
+          <td><%= machine.detachTerm %> min</td>
+          <% sumCapacity= sumCapacity + machine.capacity %>
+          <% sumDetach = sumDetach + sumDetach1 %>
+        </tr>
+    <% end %>
+    <tr><td colspan=6>Beleuchtung</td></tr>
+
+    <% @lighting.each do |light|%>
+        <tr>
+          <td><%= Location.find_by_id(light.location_id).name %></td>
+          <td><%= light.installedPower %> kW</td>
+          <td><%= light.detachablePart %> %</td>
+          <td><%= sumDetach2 = light.installedPower * light.detachablePart/100 %> kW</td>
+          <td><%= light.detachDuration %> min</td>
+          <td><%= light.detachTerm %> min</td>
+          <% sumCapacity = sumCapacity + light.installedPower %>
+          <% sumDetach = sumDetach + sumDetach2 %>
+        </tr>
+
+    <% end %>
+
+    <tr><td colspan=6>Druckluftkessel</td></tr>
+
+    <% @compressedAirProduction.each do |com|%>
+        <tr>
+          <td><%= com.manufacturer %></td>
+          <td><%= com.capacity %> kW</td>
+          <td><%= com.detachablePart %> %</td>
+          <td><%= sumDetach2 = com.capacity * com.detachablePart/100 %> kW</td>
+          <td><%= com.detachDuration %> min</td>
+          <td><%= com.detachTerm %> min</td>
+          <% sumCapacity = sumCapacity + com.capacity %>
+          <% sumDetach = sumDetach + sumDetach2 %>
+        </tr>
+
+    <% end %>
+
+    <tr><td colspan=6>Dampfkessel</td></tr>
+
+    <% @steamProduction.each do |steam|%>
+        <tr>
+          <td><%= steam.kettleName %></td>
+          <td><%= steam.kettleCapacity %> kW</td>
+          <td><%= steam.detachablePart %> %</td>
+          <td><%= sumDetach2 = steam.kettleCapacity * steam.detachablePart/100 %> kW</td>
+          <td><%= steam.detachDuration %> min</td>
+          <td><%= steam.detachTerm %> min</td>
+          <% sumCapacity = sumCapacity + steam.kettleCapacity %>
+          <% sumDetach = sumDetach + sumDetach2 %>
+        </tr>
+
+    <% end %>
+    <tr><td colspan=6>Heißwasserkessel</td></tr>
+
+    <% @hotWaterProduction.each do |hot|%>
+        <tr>
+          <td><%= hot.kettleName %></td>
+          <td><%= hot.kettleCapacity %> kW</td>
+          <td><%= hot.detachablePart %> %</td>
+          <td><%= sumDetach2 = hot.kettleCapacity * hot.detachablePart/100 %> kW</td>
+          <td><%= hot.detachDuration %> min</td>
+          <td><%= hot.detachTerm %> min</td>
+          <% sumCapacity = sumCapacity + hot.kettleCapacity %>
+          <% sumDetach = sumDetach + sumDetach2 %>
+        </tr>
+
+    <% end %>
+
+    <tr><td colspan=6>Termoöl</td></tr>
+
+    <% @thermoOilProduction.each do |thermo|%>
+        <tr>
+          <td><%= thermo.kettleName %></td>
+          <td><%= thermo.kettleCapacity %> kW</td>
+          <td><%= thermo.detachablePart %> %</td>
+          <td><%= sumDetach2 = thermo.kettleCapacity * thermo.detachablePart/100 %> kW</td>
+          <td><%= thermo.detachDuration %> min</td>
+          <td><%= thermo.detachTerm %> min</td>
+          <% sumCapacity = sumCapacity + thermo.kettleCapacity %>
+          <% sumDetach = sumDetach + sumDetach2 %>
+        </tr>
+
+    <% end %>
+
+    <tr><td colspan=6>Kälteanlagen</td></tr>
+
+    <% @coldProduction.each do |cold|%>
+        <tr>
+          <td><%= cold.manufacturer %></td>
+          <td><%= cold.capacity %> kW</td>
+          <td><%= cold.detachablePart %> %</td>
+          <td><%= sumDetach2 = cold.capacity * cold.detachablePart/100 %> kW</td>
+          <td><%= cold.detachDuration %> min</td>
+          <td><%= cold.detachTerm %> min</td>
+          <% sumCapacity = sumCapacity + cold.capacity %>
+          <% sumDetach = sumDetach + sumDetach2 %>
+        </tr>
+
+    <% end %>
+
+    <tr>
+      <td><b>Summe:</b></td>
+      <td><b><%= sumCapacity %> kW </b></td>
+      <td></td>
+      <td><b><%= sumDetach %> kW </b></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <br><br>
+</div>

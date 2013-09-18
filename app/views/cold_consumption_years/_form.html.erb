@@ -13,8 +13,8 @@
   
 <table>
   <tr>
-    <td><%= f.label :coldConsumption_id, "Kälteverbrauch" %></td>
-    <td colspan="3"><%= f.number_field :coldConsumption_id %></td>
+    <td><%= f.label :coldConsumption_id, "Kälteverbraucher" %></td>
+    <td><%= f.select :coldConsumption_id, Machinery.all.map{|m| [m.name, m.id]}%>
   </tr>
   <tr>
     <td><%= f.label :volumeStream, "Volumenstrom" %></td>

@@ -1,70 +1,103 @@
-<p id="notice"><%= notice %></p>
+<h2>Heißwasserproduktion <%=@hot_water_production.kettleName%></h2>
 
-<p>
-  <b>Kettlename:</b>
-  <%= @hot_water_production.kettleName %>
-</p>
+<p>An dieser Stelle sind alle Details Ihrer Heißwasserproduktionsanlage aufgeführt. Weiter unten finden Sie zusätzlich die jährlichen Erhebungen für Ihre Anlage.</p>
 
-<p>
-  <b>Kettlemanufacturer:</b>
-  <%= @hot_water_production.kettleManufacturer %>
-</p>
+<table class="left">
+	<tr><th colspan=4> </th></tr>
+<tr>
+  <th width=100>Bezeichnung:</th>
+  <td><%= @hot_water_production.kettleName %></td>
+  <th width=100>Hersteller:</th>
+  <td><%= @hot_water_production.kettleManufacturer %></td>
+</tr>
 
-<p>
-  <b>Kettlemanuyear:</b>
-  <%= @hot_water_production.kettleManuYear %>
-</p>
+<tr>
+  <th>Baujahr:</th>
+  <td><%= @hot_water_production.kettleManuYear %></td>
+  <th>Kesselleistung:</th>
+  <td><%= @hot_water_production.kettleCapacity %></td>
+</tr>
 
-<p>
-  <b>Kettlecapacity:</b>
-  <%= @hot_water_production.kettleCapacity %>
-</p>
+<tr>
+  <th>Brennertyp:</th>
+  <td><%= @hot_water_production.burnerType %></td>
+  <th>Hersteller:</th>
+  <td><%= @hot_water_production.burnerManufacturer %></td>
+</tr>
 
-<p>
-  <b>Burnertype:</b>
-  <%= @hot_water_production.burnerType %>
-</p>
+<tr>
+  <th>Baujahr:</th>
+  <td><%= @hot_water_production.burnerManuYear %></td>
+  <th></th><td></td>
+</tr>
 
-<p>
-  <b>Burnermanufacturer:</b>
-  <%= @hot_water_production.burnerManufacturer %>
-</p>
+<tr>
+  <th>Feuerungswärmeleistung (min):</th>
+  <td><%= @hot_water_production.districtHeatMin %> Min MW</td>
+  <th>Feuerungswärmeleistung (max):</th>
+  <td><%= @hot_water_production.districtHeatMax %> Max MW</td>
+</tr>
 
-<p>
-  <b>Burnermanuyear:</b>
-  <%= @hot_water_production.burnerManuYear %>
-</p>
+<tr>
+  <th>Brennstofftyp:</th>
+  <td><%= @hot_water_production.fuelType %></td>
+  <th>Dichte:</th>
+  <td><%= @hot_water_production.fuelDenseness %> kg/m&sup3;</td>
+</tr>
 
-<p>
-  <b>Districtheatmin:</b>
-  <%= @hot_water_production.districtHeatMin %>
-</p>
+<tr>
+  <th>Brennwert:</th>
+  <td><%= @hot_water_production.fuelValue %> <%= @hot_water_production.fuelValueUnit %></td>
+  <th>Abgaswärmerückgewinnung:</th>
+  <td><%= @hot_water_production.exhaustHeatRecovery %></td>
+</tr>
 
-<p>
-  <b>Districtheatmax:</b>
-  <%= @hot_water_production.districtHeatMax %>
-</p>
+<!--TODO hier fehlen noch O2-Regelung und Kamin - Beides auch im Model anlegen-->
 
-<p>
-  <b>Fueltype:</b>
-  <%= @hot_water_production.fuelType %>
-</p>
+<tr><th colspan=3></th><th align="center"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), hot_water_productions_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_production_path(@hot_water_production)  %></th></tr>
+</table>
 
-<p>
-  <b>Fueldenseness:</b>
-  <%= @hot_water_production.fuelDenseness %>
-</p>
+<h3>Heißwasserproduktion - jährliche Erhebung</h3>
 
-<p>
-  <b>Fuelvalue:</b>
-  <%= @hot_water_production.fuelValue %>
-</p>
+<table class="zentriert">
+  <tr>
+    <th>Jahr</th>
+    <th>Kessel</th>
+    <th>Brennstoff- verbrauch</th>
+    <th>Jahres- verbrauch</th>
+    <th>Betriebs- stunden</th>
+    <!--<th>Druck Kesselaustritt</th>
+    <th>Kesselaustritt</th>
+    <th>Zusätzliches Wasser</th>
+    <th>Verbrennungsluft</th>
+    <th>Abgas vor WRG</th>
+    <th>Abgas nach WRG</th>-->
+    <th>O2-Regelung</th>
+    <th width=100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Exhaustheatrecovery:</b>
-  <%= @hot_water_production.exhaustHeatRecovery %>
-</p>
+<% @hot_water_production_years.each do |hot_water_production_year| %>
+  <tr>
+    <td><%= hot_water_production_year.year_id %></td>
+    <td><%= HotWaterProduction.find_by_id(hot_water_production_year.hotWaterProduction_id).kettleName %></td>
+    <td><%= hot_water_production_year.fuelConsumption %> <%= hot_water_production_year.fuelConsumptionUnit %></td>
+    <td><%= hot_water_production_year.kettleEnergyConsumption %> kWh/a</td>
+    <td><%= hot_water_production_year.operationHours %> h</td>
+    <!--<td><%= hot_water_production_year.kettleExitCompression %></td>
+    <td><%= hot_water_production_year.kettleExitTemperature %></td>
+    <td><%= hot_water_production_year.tempAdditionalWater %></td>
+    <td><%= hot_water_production_year.tempCombustionAir %></td>
+    <td><%= hot_water_production_year.tempExhaustBeforeWRG %></td>
+    <td><%= hot_water_production_year.tempExhaustAfterWRG %></td>-->
+    <td><%= hot_water_production_year.carbonDioxideExhaust %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), hot_water_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_hot_water_production_year_path(hot_water_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), hot_water_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+<tr><th>Summe:</th><th colspan=5></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_hot_water_production_year_path %></th></tr>
+</table>
 
+<br />
 
-<%= link_to 'Edit', edit_hot_water_production_path(@hot_water_production) %> |
-<%= link_to 'Back', hot_water_productions_path %>

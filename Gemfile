@@ -2,13 +2,15 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem "google_visualr", "~> 2.1.0" 
+gem "google_visualr", "~> 2.1.0"
+gem 'pdfkit'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 gem 'facebox-rails'
+gem 'prawn'
 gem 'paperclip'
 gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'

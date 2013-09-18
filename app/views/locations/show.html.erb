@@ -1,6 +1,6 @@
 <h2>Standortdetails: <%= @location.name %></h2>
 
-<p>Hier erhalten Sie Detailinformationen zum jeweiligen Raum. Weiter unten sind die sich dort befindenden Beräte aufgelistet.</p>
+<p>Hier erhalten Sie Detailinformationen zum jeweiligen Raum. Weiter unten sind die sich dort befindenden Geräte und die Lampen und Leuchten in diesem Raum aufgelistet.</p>
 
 <table class="left">
     <tr><th colspan=4 align="center"><%= image_tag @location.photo.url(:show), {:class => 'photo'} %></th></tr>
@@ -39,4 +39,14 @@
 	<tr><td width=100><%= link_to image_tag(machine.photo.url(:thumb), {:class => 'photo'}), machine %></td>
 		<td><%= MachineryType.find(machine.machineryTypeID).m_type%> <%= link_to machine.name, machine %></td></tr>
 <% end %>
+</table>
+
+<h3>Beleuchtungssituation</h3>
+
+<% @lighting = Lighting.find_all_by_location_id(@location) %>
+
+<table>
+	<% @lighting.each do |light| %>
+		<tr><td>Lampentyp: <%= link_to "#{light.bulbs}", light %></td><td>Anzahl der Leuchten: <%= light.numberOfBulbs %></td></tr>
+	<% end %>
 </table>

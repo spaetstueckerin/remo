@@ -4,6 +4,7 @@ class Location < ActiveRecord::Base
     :styles => {
       :thumb => "100x100",
       :small  => "250x250>",
-      :show => "700x"
-      }
+      :show => "700x"},
+      :default_url => "/images/default.jpg"
+      
 end

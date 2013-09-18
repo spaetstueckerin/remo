@@ -1,90 +1,239 @@
-<p id="notice"><%= notice %></p>
+<h2>Dampfproduktion <%= @steam_production.kettleName %></h2>
+<p>An dieser Stelle sind alle Details Ihrer Dampfproduktionsanlage aufgeführt. Weiter unten finden Sie zusätzlich die jährlichen Erhebungen für Ihre Anlage.</p>
+<table class="left">
+<tr><th colspan=4> </th></tr>
+<tr>
+  <th width=100>Hersteller:</th>
+  <td><%= @steam_production.kettleManufaturer %></td>
+  <th width=100>Baujahr:</th>
+  <td><%= @steam_production.kettleManuYear %></td>
+</tr>
 
-<p>
-  <b>Kettlename:</b>
-  <%= @steam_production.kettleName %>
-</p>
+<tr>
+  <th>Kesselleistung:</th>
+  <td><%= @steam_production.kettleCapacity %> kW</td>
+  <th>Sattdampfmenge:</th>
+  <td><%= @steam_production.kettleSaturatedSteam %> t/h</td>
+</tr>
 
-<p>
-  <b>Kettlemanufaturer:</b>
-  <%= @steam_production.kettleManufaturer %>
-</p>
+<tr>
+  <th>Brennertyp:</th>
+  <td><%= @steam_production.burnerType %></td>
+  <th>Hersteller:</th>
+  <td><%= @steam_production.burnerManufacturer %></td>
+</tr>
 
-<p>
-  <b>Kettlecapacity:</b>
-  <%= @steam_production.kettleCapacity %>
-</p>
+<tr>
+  <th>Baujahr:</th>
+  <td colspan=3><%= @steam_production.burnerManufacturingYear %></td>
+</tr>
 
-<p>
-  <b>Kettlesaturatedsteam:</b>
-  <%= @steam_production.kettleSaturatedSteam %>
-</p>
+<tr>
+  <th>Fernwärmeleistung (min):</th>
+  <td><%= @steam_production.districtHeatMin %> Min MW</td>
+  <th>Fernwärmeleistung (max):</th>
+  <td><%= @steam_production.districtHeatMax %> Max MW</td>
+</tr>
 
-<p>
-  <b>Burnertype:</b>
-  <%= @steam_production.burnerType %>
-</p>
+<tr>
+  <th>Abgaswärme- rückgewinnung:</th>
+  <td><%= @steam_production.exhaustHeatRecovery %></td>
+  <th>Brüdenkondensator:</th>
+  <td><%= @steam_production.ventCondenser %> kW</td>
+</tr>
 
-<p>
-  <b>Burnermanufacturer:</b>
-  <%= @steam_production.burnerManufacturer %>
-</p>
+<tr>
+  <th>O2-Regelung:</th>
+  <td><% if @steam_production.o2Control == true %>ja</td>
+  <% else %>
+  <td>nein</td>
+  <% end %>
+  <th>Kamin:</th>
+  <td><%= @steam_production.chimney %></td>
+</tr>
+	<tr><th colspan=3></th><th align="center"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), steam_productions_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_production_path(@steam_production) %></th></tr>
+</table>
 
-<p>
-  <b>Burnermanufacturingyear:</b>
-  <%= @steam_production.burnerManufacturingYear %>
-</p>
+<h3>Jährliche Erhebungen für diesen Kompressor</h3>
+<table class="zentriert">
+  <tr>
+    <th>Jahr</th>
+    <th>Brennstoff- verbrauch</th>
+    <th>Jahres- verbrauch</th>
+    <th>Betriebs- stunden</th>
+    <!--<th>Dampfparameter Kesselaustritt (bar)</th>
+    <th>Dampfparameter Kesselaustritt (°C)</th>-->
+    <th>Dampf- menge</th>
+    <!--<th>Temperatur Zusatzwasser</th>
+    <th>Temperatur Verbrennungsluft</th>
+    <th>Temperatur Abgas von WRG</th>
+    <th>Temperatur Abgas nach WRG</th>-->
+    <th>CO2-Gehalt Abgas</th>
+    <th width=100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Districtheatmin:</b>
-  <%= @steam_production.districtHeatMin %>
-</p>
+<% @steam_production_years.each do |steam_production_year| %>
+  <tr>
+    <td><%= steam_production_year.year_id %></td>
+    <td><%= steam_production_year.fuelConsumption %> KW</td>
+    <td><%= steam_production_year.kettleEnergyConsumption %> kWh</td>
+    <td><%= steam_production_year.operationHours %> h</td>
+    <!--<td><%= steam_production_year.kettleSteamParameterBar %></td>
+    <td><%= steam_production_year.kettleSteamParameterCel %></td>-->
+    <td><%= steam_production_year.steamAmount %> t/a</td>
+    <!--<td><%= steam_production_year.tempAdditionalWater %></td>
+    <td><%= steam_production_year.tempCombustionAir %></td>
+    <td><%= steam_production_year.tempExhaustBeforeWRG %></td>
+    <td><%= steam_production_year.tempExhaustAfterWRG %></td>-->
+    <td><%= steam_production_year.carbonDioxideExhaust %> Vol-%</td>
 
-<p>
-  <b>Districtheatmax:</b>
-  <%= @steam_production.districtHeatMax %>
-</p>
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_production_year_path(steam_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
+  </tr>
+<% end %>
+<tr><th>Summe:</th><th colspan=5></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_steam_production_year_path %></th></tr>
+</table>
 
-<p>
-  <b>Fueltype:</b>
-  <%= @steam_production.fuelType %>
-</p>
+<h3>Dampfverteilung</h3>
+<table class="zentriert">
+  <tr>
+    <th>Dampferzeuger</th>
+    <th>Durchmesser der Leitung</th>
+    <th>Isolierung der Leitung</th>
+    <th>Länge der Leitung</th>
+    <!--<th>Massflownenn</th>
+    <th>Massflowmin</th>
+    <th>Massflowmax</th>
+    <th>Kpaperture</th>
+    <th>Kpisolation</th>
+    <th>Kplength</th>
+    <th>Drain</th>-->
+    <th width=100>Aktion</th>
+  </tr>
+<% @steam_distributions.each do |steam_distribution| %>
+<tr>
+    <td><%= SteamProduction.find_by_id(steam_distribution.steamProduction_id).kettleName %></td>
+    <td><%= steam_distribution.dpAperture %> mm</td>
+    <td><%= steam_distribution.dpIsolation %> mm</td>
+    <td><%= steam_distribution.dpLength %> m</td>
+    <!--<td><%= steam_distribution.massFlowNenn %></td>
+    <td><%= steam_distribution.massFlowMin %></td>
+    <td><%= steam_distribution.massFlowMax %></td>
+    <td><%= steam_distribution.kpAperture %></td>
+    <td><%= steam_distribution.kpIsolation %></td>
+    <td><%= steam_distribution.kpLength %></td>
+    <td><%= steam_distribution.drain %></td>-->
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_distribution_path(steam_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+<tr><th colspan=4></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_steam_distribution_path %></th></tr>
+</table>
 
-<p>
-  <b>Fuelcapacity:</b>
-  <%= @steam_production.fuelCapacity %>
-</p>
+<h3>Dampfverteilung - jährliche Erhebung</h3>
+<h4>DP = Dampfparameter, KP = Kondensatparameter</h4>
+<table>
+  <tr>
+    <th>Dampferzeuger</th>
+    <th>Dampfverbraucher</th>
+    <th>DP Druck</th>
+    <th>DP Temperatur</th>
+    <th>KP Druck</th>
+    <th>KP Temperatur</th>
+    <!--<th>Kpreflux</th>-->
+    <th width=100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Fuelvalue:</b>
-  <%= @steam_production.fuelValue %>
-</p>
+<% @steam_distribution_years.each do |steam_distribution_year| %>
+  <tr>
+    <td><%= SteamProduction.find_by_id(steam_distribution_year.steamProduction_id).kettleName %></td>
+    <td><%= steam_distribution_year.steamConsumer_id %></td>
+    <td><%= steam_distribution_year.dpCompression %></td>
+    <td><%= steam_distribution_year.dpTemperature %></td>
+    <td><%= steam_distribution_year.kpCompression %></td>
+    <td><%= steam_distribution_year.kpTemperature %></td>
+    <!--<td><%= steam_distribution_year.kpReflux %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_distribution_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_distribution_year_path(steam_distribution_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_distribution_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+<tr><th colspan=6></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_steam_distribution_year_path %></th></tr>
+</table>
 
-<p>
-  <b>Fuelvalueunit:</b>
-  <%= @steam_production.fuelValueUnit %>
-</p>
+<h3>Dampfverbraucher</h3>
+<h4>DP = Dampfparameter</h4>
+<table class="zentriert">
+  <tr>
+    <th>Verbraucher</th>
+    <th>Dampferzeuger</th>
+    <th>System</th>
+    <th>Benötigter Druck DP</th>
+    <th>Benötigte Temperatur DP</th>
+    <!--<th>Massflownennneeded</th>
+    <th>Massflowminneeded</th>
+    <th>Massflowmaxneeded</th>
+    <th>Requirementtype</th>-->
+    <th width=100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Exhaustheatrecovery:</b>
-  <%= @steam_production.exhaustHeatRecovery %>
-</p>
+<% @steam_consumptions.each do |steam_consumption| %>
+  <tr>
+    <td><%= Machinery.find_by_id(steam_consumption.consumer_id).name %></td>
+    <td><%= SteamProduction.find_by_id(steam_consumption.steamProduction_id).kettleName %></td>
+    <td><%= steam_consumption.system %></td>
+    <td><%= steam_consumption.dpCompressionNeeded %> bar/Ü</td>
+    <td><%= steam_consumption.dpTemperatureNeeded %> °C</td>
+    <!--<td><%= steam_consumption.massFlowNennNeeded %></td>
+    <td><%= steam_consumption.massFlowMinNeeded %></td>
+    <td><%= steam_consumption.massFlowMaxNeeded %></td>
+    <td><%= steam_consumption.requirementType %></td>-->
+    
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_consumption %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_consumption_path(steam_consumption) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_consumption, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+<tr><th colspan=5></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_steam_consumption_path %></th></tr>
+</table>
 
-<p>
-  <b>Ventcondenser:</b>
-  <%= @steam_production.ventCondenser %>
-</p>
+<h3>Druckluftverbrauch - Bedarfszeiträume</h3>
 
-<p>
-  <b>O2control:</b>
-  <%= @steam_production.o2Control %>
-</p>
+<table class="zentriert">
+   <tr>	
+    <th>Verbraucher</th>
+    <th>Datum</th>
+    <th>Von</th>
+    <th>Bis</th>
+    <th width=100>Aktion</th>
+  </tr>
+  
+	<% @steam_consumptions.each do |data| %>
+	<% @steam_demands = SteamDemand.find_all_by_steamConsumption_id(data.id)%>
+	<% @steam_demands.each do |steam_demand| %>
+  <tr>
+    <td><%= steam_demand.steamConsumption_id %></td>
+    <td><%= steam_demand.demandDate.strftime('%d.%m.%Y') %></td>
+    <td><%= steam_demand.timeFrom.strftime('%H:%M') %></td>
+    <td><%= steam_demand.timeTo.strftime('%H:%M') %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_demand %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_demand_path(steam_demand) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), steam_demand, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    
+  </tr>
+<% end %>
+<% end %>
+<tr><th colspan=4></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_steam_demand_path %></th></tr>
+</table>
 
-<p>
-  <b>Chimney:</b>
-  <%= @steam_production.chimney %>
-</p>
 
 
-<%= link_to 'Edit', edit_steam_production_path(@steam_production) %> |
-<%= link_to 'Back', steam_productions_path %>
+
+
+

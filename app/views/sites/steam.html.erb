@@ -1,8 +1,7 @@
-<h1>Dampfverbräuche</h1>
-<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-<br><br>
+<h2>Dampferzeugungsanlagen</h2>
+<p>Ein Dampferzeuger ist ein Dampfkessel bzw. eine Anlage zur Erzeugung von Wasserdampf. In einer solchen Anlage wird Wasser erhitzt und in Dampf umgewandelt. Der Dampf wird dann für den Antrieb von Maschinen, für Heizkraftwerke oder in der Chemie-verarbeitenden Industrie verwendet.</p>
 
-<h2>Dampferzeuger</h2>
+<h3>Dampferzeuger</h3>
 <table class="zentriert">
   <tr>
     <th>Kesselname</th>
@@ -10,7 +9,7 @@
     <th>Baujahr</th>
     <th>Kesselleistung</th>
     <th>Brennertyp</th>
-    <th>Hersteller</th>
+    <!--<th>Hersteller</th>-->
     <th>Baujahr</th>
     <th width=100>Aktion</th>
   </tr>
@@ -22,7 +21,7 @@
     <td><%= steam_production.kettleManuYear%></td>
     <td><%= steam_production.kettleCapacity %> kWh</td>
     <td><%= steam_production.burnerType %></td>
-    <td><%= steam_production.burnerManufacturer %></td>
+    <!--<td><%= steam_production.burnerManufacturer %></td>-->
     <td><%= steam_production.burnerManufacturingYear %></td>
     <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), steam_production %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_steam_production_path(steam_production) %>
@@ -30,9 +29,9 @@
   </tr>
 <% end %>
 </table>
-<br><br>
+<br>
 
-<h2>Dampfverteilung</h2>
+<h3>Dampfverteilung</h3>
 <table class="zentriert">
   <tr>
     <th>Dampferzeuger</th>
@@ -55,9 +54,9 @@
   </tr>
 <% end %>
 </table>
-<br><br>
+<br>
 
-<h2>Dampfverbraucher</h2>
+<h3>Dampfverbraucher</h3>
 <table class="zentriert">
   <tr>
     <th>Verbraucher</th>

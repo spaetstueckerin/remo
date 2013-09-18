@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130804105348) do
+ActiveRecord::Schema.define(:version => 20130829090736) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -363,14 +363,14 @@ ActiveRecord::Schema.define(:version => 20130804105348) do
     t.string   "address"
     t.string   "number"
     t.integer  "zip"
-    t.integer  "city"
+    t.string   "city",       :limit => nil
     t.string   "phone"
     t.string   "fax"
     t.string   "website"
     t.string   "country"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "branch_id"
   end
 
@@ -710,6 +710,7 @@ ActiveRecord::Schema.define(:version => 20130804105348) do
     t.datetime "updated_at",              :null => false
     t.string   "fuelConsumptionUnit"
     t.integer  "year_id"
+    t.integer  "steamProductionId"
   end
 
   create_table "steam_productions", :force => true do |t|
@@ -736,6 +737,8 @@ ActiveRecord::Schema.define(:version => 20130804105348) do
     t.integer  "detachablePart"
     t.integer  "detachDuration"
     t.integer  "detachTerm"
+    t.integer  "yearOfManufaturing"
+    t.integer  "steamProductionId"
   end
 
   create_table "thermo_oil_consumption_years", :force => true do |t|

@@ -19,9 +19,9 @@
 
 <table>
 <tr>
-	<td><%= f.label :name, "Bezeichnung" %></td>
+	<td><%= f.label :name, "Bezeichnung:" %></td>
     <td><%= f.text_field :name %></td>
-    <td><%= f.label :location_id, "Messort" %></td>
+    <td><%= f.label :location_id, "Messort:" %></td>
 	<td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
 </tr>
 <tr>
@@ -33,15 +33,15 @@
     <td colspan=3><%= f.datetime_select :dateTo %></td>
 </tr>
 <tr>
-    <td><%= f.label :description, "Beschreibung" %></td>
+    <td><%= f.label :description, "Bemerkungen:" %></td>
     <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
 </tr>
 <tr>
 	<td><%= f.label :tsv_file, "Dateiupload" %></td>
 	<td colspan=3><%= f.file_field :tsv_file %></td>
 </tr>
-</table>
+<tr><td></td><td colspan=4>
   <div class="actions">
     <%= f.submit "Absenden"%>
-  </div>
+  </div></td></tr>
 <% end %>

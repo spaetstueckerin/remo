@@ -14,13 +14,9 @@
 <table>
   <tr>
     <td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
-    <td><%= f.number_field :coldProduction_id %></td>
-    <td><%= f.label :coldDistribution_id, "Kälteverteilung" %></td>
-    <td><%= f.number_field :coldDistribution_id %></td>
-  </tr>
-  <tr>
+    <td><%= f.select :coldProduction_id, ColdProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
     <td><%= f.label :coldConsumption_id, "Kälteverbrauch" %></td>
-    <td colspan="3"><%= f.number_field :coldConsumption_id %></td>
+    <td colspan="3"><%= f.select :coldConsumption_id, Machinery.all.map{|c| [c.name, c.id]} %></td>
   </tr>
   <tr>
     <td><%= f.label :compression, "Druck" %></td>

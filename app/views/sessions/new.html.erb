@@ -1,23 +1,26 @@
 <h2>Anmeldung</h2>
 
+<p>Bitte melden Sie sich an dieser Stelle mit Ihrem Benutzernamen und Passwort an. Wenn Sie Probleme mit dem Login haben, wenden Sie sich telefonisch an einen der Administratoren unter 030/2400 865 14 oder per Mail an admin@remo-green.de</p>
+
 <table>
   <tr>
-    <td>
+    <th width="100">
       <%= form_tag sessions_path do %>
-      <%= label_tag :username %>:
-    </td>
+      <%= label_tag :username, "Benutzername" %>:
+    </th>
     <td>
       <%= text_field_tag :username, params[:username] %>
     </td>
   </tr>
   <tr>
-    <td>
-      <%= label_tag :password %>
-    </td>
+    <th>
+      <%= label_tag :password, "Passwort:" %>
+    </th>
     <td>
       <%= password_field_tag :password %>
     </td>
   </tr>
 </table>
+<br>
 <%= submit_tag "Anmelden" %>
 <% end %>

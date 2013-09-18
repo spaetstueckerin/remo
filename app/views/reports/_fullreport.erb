@@ -1,0 +1,1486 @@
+<% image_count=1 %>
+<% table_count=1 %>
+<% epigraph_count=1 %>
+
+<!--Unternehmensdaten-->
+
+<h2>Unternehmen</h2>
+<p>Die Tabelle <%= table_count %> "Unternehmensdaten" zeigt die aktuell erfassen Stammdaten Ihres Unternehmens.</p>
+<% table_count = table_count + 1 %>
+
+<table id="data">
+	<!--<tr>
+	<th width="80px">Name:</th>
+	<td><%= @enterprise.name %></td>
+	</tr>-->
+	<tr>
+		<th width="80px">Adresse:</th>
+		<td><%= @enterprise.address %> <%= @enterprise.number %></td>
+		<th width="80px">Stadt:</th>
+		<td><%= @enterprise.zip %> <%= @enterprise.city %></td>
+	</tr>
+	<tr>
+		<th width="80px">Telefon:</th>
+		<td><%= @enterprise.phone %></td>
+		<th width="80px">Fax:</th>
+		<td><%= @enterprise.fax %></td>
+	</tr>
+	<tr>
+		<th width="80px">Website:</th>
+		<td><%= @enterprise.website %></td>
+
+		<!--<tr>
+		<th width="80px">Land:</th>
+		<td><%= @enterprise.country %></td>
+		</tr>-->
+
+		<th width="80px">Email:</th>
+		<td><%= @enterprise.email%></td>
+	</tr>
+</table><br />
+
+<p>Der volle Energiebericht enthält die folgenden Abschnitte. Sie können durch Klick auf die einzelnen Kapitel direkt zu den zugehörigen Inhalten springen.</p>
+
+<ol>
+	<li><b><a href="#Zusammenfassung">Zusammenfassung</a></b></li>
+	<li><b><a href="#Berichtobjekte">Berichtobjekte</a></b></li>
+	<li><b><a href="#Energieverbrauch">Energieverbrauch</a></b></li>
+	<li><b><a href="#Erfüllung">Erfüllung der Maßnahmen zur Energieeffizienz</a></b></li>
+</ol>
+
+<h2><a name="Zusammenfassung">1. Zusammenfassung</a></h2>
+<h3>1.1 Unternehmensstammdaten</h3>
+
+<p> In der Tabelle <%= table_count %> "Unternehmensstammdaten" finden sie alle jährlich zu aktualisierenden Angaben zum Umsätzen und Unternehmenskosten, welche darunter nocheinmal grafisch aufgearbeitet sind.</p>
+
+<% table_count = table_count + 1 %>
+
+<table class="zentriert" id="table_business_data">
+	<thead>
+		<tr>
+			<!--<th>Enterpriseid</th>-->
+			<th>Jahr</th>
+			<th>Jahresumsatz</th>
+			<th>Einkommen</th>
+			<th>Investment in Energieeffizienz</th>
+			<th>Produktionskosten</th>
+			<th>Maximale Kapazität</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<% @business_data.each do |business_datum| %>
+		<tr>
+			<td class="year"><%= business_datum.year %></td>
+			<td class="annualSales"><%= business_datum.annualSales%> €</td>
+			<td class="netIncome"><%= business_datum.netIncome %> €</td>
+			<td class="energyEfficiencyInvestment"><%= business_datum.energyEfficiencyInvestment %> €</td>
+			<td class="ProductCost"><%= business_datum.productCosts %> €</td>
+			<td class="MaxCapacity"><%= business_datum.maxCapacity %> kWh</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table><br />
+
+<div id='chart' align="center" style='width: 800px; height: 240px;'></div>
+<%= render_chart @chart, 'chart' %>
+
+<div class="spacer"></div>
+
+<!--TODO: Hier Anzahl der Räume, Größe der Gesamtfläche und Gesamtvolumen pro Standort noch ausgeben-->
+<h3>1.2 Standorte</h3>
+<p>In der Tabelle <%= table_count %> "Standorte" finden Sie eine Liste aller Standorte mit den Quadratmeterangaben. Weiter unten finden Sie ein Diagramm, welches den Anteil der jeweiligen Standorte an der Gesamtfläche des Unternehmens anzeigt.</h4>
+	<% table_count = table_count + 1 %>
+	<% site_count = 0 %>
+	<% location_count = 0 %>
+	<% location_sqm = 0 %>
+
+	<table class="zentriert">
+		<thead>
+			<tr>
+				<th>Standorte</th>
+				<th>Anzahl der Gebäude</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<% data_table7 = GoogleVisualr::DataTable.new %>
+			<% data_table7.new_column('string', 'Standort') %>
+			<% data_table7.new_column('number', 'Value') %>
+
+			<% @production_sites.each do |site| %>
+			<% site_count = site_count + 1 %>
+			<tr>
+				<td><%= site.name %></td>
+				<td><%= Building.find_all_by_site_id(site.id).count %> Gebäude und 
+					<% @buildings = Building.find_all_by_site_id(site.id) %>
+					<% @buildings.each do |build| %>
+					<% location_count = location_count + Location.find_all_by_building_id(build.id).count %>
+					<% @locations = Location.find_all_by_building_id(build.id) %>
+					<% @locations.each do |location| %>
+					<% location_sqm = location_sqm + location.squaremeter %>
+					<% end %>
+					<% end %>
+					<%= location_count %> Räume mit insgesamt
+					<%= location_sqm %> m&sup2;
+					<% data_table7.add_row([site.name, location_sqm])%>
+					<% location_count = 0 %>
+					<% location_sqm = 0 %>
+				</td></tr>
+				<% end %>
+
+			</tbody>
+	</table><br />
+
+		<% 	opts7 = { :width => 800, :height => 300, :title => 'Anteile Produktionsstandorte', :legend => 'bottom' } %>
+		<% @chart7 = GoogleVisualr::Interactive::PieChart.new(data_table7, opts7) %>
+
+		<div id='chart7' align="center" style='width: 800px; height: 240px;'></div>
+		<%= render_chart @chart7, 'chart7' %>
+
+		<div class="spacer"></div>
+
+		<h3>1.3 Messdaten</h3>
+
+		<p>An dieser Stelle finden Sie Angaben zu den durchgeführten Messungen. Hier werden je ein Durchschnittswert sowie der Wert der letzten Messung angezeigt.</p>
+
+		<div id='chart5' class="chart5"></div>
+		<%= render_chart @chart5, 'chart5' %>
+
+
+		<div class="spacer"></div>
+
+<!--Element's report-->
+<h2><a name="Berichtobjekte" >2. Berichtobjekte</a> </h2>
+
+<p>Die Tabelle <%= table_count %> zeigt die vorher ausgewählten Berichtobjekte anschließend mit je einer aussagekräftigen Grafik.</p>
+<% table_count = table_count + 1 %>
+
+<table class="data">
+	<tr><th colspan="2">Die Schwerpunkte des Energieberichts liegen auf:</th></tr>
+	<tr>
+		<td>
+			<% if @elements[:Kälteverbrauch]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> Kälteverbrauch
+			<% else %>
+			Kälteverbrauch
+			<% end %>
+		</td>
+		<td>
+			<% if @elements[:Druckluftverbrauch]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> Druckluftverbrauch
+			<% else %>
+			Druckluftverbrauch
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<% if @elements[:Heißwasserverbrauch]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> Heißwasserverbrauch
+			<% else %>
+			Heißwasserverbrauch
+			<% end %>
+		</td>
+		<td>
+			<% if @elements[:Beleuchtungsanlagen]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> Beleuchtungsanlagen
+			<% else %>
+			Beleuchtungsanlagen
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<% if @elements[:Dampfverbrauch]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> Dampfverbrauch
+			<% else %>
+			Dampfverbrauch
+			<% end %>
+		</td>
+		<td>
+			<% if @elements[:Thermoölverbrauch]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> Thermoölverbrauch
+			<% else %>
+			Thermoölverbrauch
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2">Checklisten</th>
+	</tr>
+	<% total_element = ChecklistDefinition.count %>
+	<%  item = ChecklistDefinition.all.to_a %>
+	<% 0.step(total_element-1, 2) do |i| %>
+	<tr>
+		<td>
+			<% if @chklist[i]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> <%=item[i].name%>
+			<% else %>
+			<%=item[i].name%>
+			<% end %>
+		</td>
+		<td>
+			<% if item[i+1] %>
+			<% if @chklist[i+1]=="true" %>
+			<%= image_tag('onebit_34.png', size: "15x15") %> <%=item[i+1].name%>
+			<% else %>
+			<%=item[i+1].name%>
+			<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<% end %>
+</table><br /><br />
+
+<!--report details-->
+<h2><a name="Energieverbrauch">3. Querschnittstechnologien</a> </h2>
+
+<!--Kälteverbrauch-->
+<% if @elements[:Kälteverbrauch]=="true" %>
+<h3>3.<%= epigraph_count %> Kälte</h3>
+<% epigraph_count = epigraph_count + 1 %>
+<h4>Kälteverbrauch</h4>
+<input type="checkbox" class='checkboxelement' id="cold_consumption" name="show_cold_consumption" value=true checked="true" onclick='show_table_data(this.id,"cold_consumption_table")' />Datentabelle anzeigen
+
+<div id="cold_consumption_table">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Kälteverbrauch - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table id="cold_consumption_year" width="750" class="zentriert">
+		<thead>
+			<tr>
+				<th>Kälteverbraucher</th>
+				<th>Volumenstrom</th>
+				<th>Vorlauf- temperatur</th>
+				<th>Rücklauf- temperatur</th>
+				<th>Prozess- temperatur</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cold_consumption_years.each do |cold_consumption_year| %>
+			<tr>
+				<td><%= Machinery.find(cold_consumption_year.coldConsumption_id).name %></td>
+				<td class="volumeStream"><%= cold_consumption_year.volumeStream %>m&sup3;/h</td>
+				<td class="flowTemperature"><%= cold_consumption_year.flowTemperature %> °C</td>
+				<td class="returnTemperature"><%= cold_consumption_year.returnTemperature %> °C</td>
+				<td class="processTemperature "><%= cold_consumption_year.processTemperature %> °C</td>
+				<td class="updated_at"><%= cold_consumption_year.updated_at.strftime("%d.%m.%Y")%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id='chart2' align="center" style='width: 800px; height: 240px;'></div>
+<%= render_chart @chart2, 'chart2' %>
+<br><br><br><br>
+
+<!--Cold_Production_Year-->
+<h3>Kälteproduktion</h3>
+<input type="checkbox" class='checkboxelement' id="cold_production" name="show_cold_production" value=true checked="true" onclick='show_table_data(this.id,"cold_production_table")' />Datentabelle anzeigen
+
+<div id="cold_production_table">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Kälteproduktion - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table class="zentriert">
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Betriebsstunden</th>
+				<th>Strombezug</th>
+				<th>Kältemenge</th>
+				<th>Massenstrom</th>
+				<th>Vorlauftemperatur</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @cold_production_years.each do |cold_production_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td class="operatingHours"><%= cold_production_year.operatingHours %> h</td>
+				<td class="energyConsumption"><%= cold_production_year.energyConsumption %> kWh</td>
+				<td class="coldAmount"><%= cold_production_year.coldAmount %> kWh/a</td>
+				<td class="massFlow"><%= cold_production_year.massFlow %> kg/s</td>
+				<td class="flowTemperature"><%= cold_production_year.flowTemperature %> °C</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+	<br />
+	<table class="zentriert">
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Rücklauftemperatur</th>
+				<th>Temperatur ein</th>
+				<th>Temperatur aus</th>
+				<th>Wasserbedarf</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @cold_production_years.each do |cold_production_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td class="returnTemperature"><%= cold_production_year.returnTemperature %> °C</td>
+				<td class="temperatureIn"><%= cold_production_year.temperatureIn %> °C</td>
+				<td class="temperatureOut"><%= cold_production_year.temperatureOut %> °C</td>
+				<td class="waterRequirement"><%= cold_production_year.waterRequirement %> m&sup3;/a</td>
+				<td class="updated_at"><%= cold_production_year.updated_at.strftime("%d.%m.%Y") %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div style="display: none">
+	<table id="cold_production_year">
+		<thead>
+			<tr>
+				<th>Betriebsstunden</th>
+				<th>Strombezug</th>
+				<th>Kältemenge</th>
+				<th>Massenstrom</th>
+				<th>Vorlauftemperatur</th>
+				<th>Rücklauftemperatur</th>
+				<th>Temperatur ein</th>
+				<th>Temperatur aus</th>
+				<th>Wasserbedarf</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cold_production_years.each do |cold_production_year| %>
+			<tr>
+				<td class="operatingHours"><%= cold_production_year.operatingHours %></td>
+				<td class="energyConsumption"><%= cold_production_year.energyConsumption %></td>
+				<td class="coldAmount"><%= cold_production_year.coldAmount %></td>
+				<td class="massFlow"><%= cold_production_year.massFlow %></td>
+				<td class="flowTemperature"><%= cold_production_year.flowTemperature %></td>
+				<td class="returnTemperature"><%= cold_production_year.returnTemperature %></td>
+				<td class="temperatureIn"><%= cold_production_year.temperatureIn %></td>
+				<td class="temperatureOut"><%= cold_production_year.temperatureOut %></td>
+				<td class="waterRequirement"><%= cold_production_year.waterRequirement %></td>
+				<td class="updated_at"><%= cold_production_year.updated_at.strftime("%d.%m.%Y") %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+<div id='chart3' align="center" style='width: 800px; height: 240px;'></div>
+<%= render_chart @chart3, 'chart3' %>
+
+<div class="spacer"></div>
+
+<!--cold distribution data-->
+<h3>Kälteverteilung</h3>
+<input type="checkbox" class='checkboxelement' id="chx_cold_distribution" name="show_cold_production" value="false" checked="true" onclick='show_table_data(this.id,"cold_distribution_table")' />Datentabelle anzeigen
+<div id="cold_distribution_table">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Kälteverteilung - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table id="cold_distribution_year" class="zentriert">
+		<thead>
+			<tr>
+				<th>Druck</th>
+				<th>Vorlauftemperatur</th>
+				<th>Rücklauftemperatur</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cold_distribution_years.each do |cold_distribution_year| %>
+			<tr>
+				<td class="compression"><%= cold_distribution_year.compression %> bar</td>
+				<td class="flowTemperature"><%= cold_distribution_year.flowTemperature %> °C</td>
+				<td class="returnTemperature"><%= cold_distribution_year.returnTemperature %> °C</td>
+				<td class="updated_at"><%= cold_distribution_year.updated_at.strftime("%d.%m.%Y") %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id='chart4' align="center" style='width: 800px; height: 240px;'></div>
+<%= render_chart @chart4, 'chart4' %>
+
+<% end %>
+
+<!--Druckluftverbrauch-->
+<% if @elements[:Druckluftverbrauch]=="true" %>
+<h2>3.<%= epigraph_count %> Druckluft</h2>
+<% epigraph_count = epigraph_count + 1 %>
+<h3>Druckluftverbrauch</h3>
+<input type="checkbox" class='checkboxelement' id="chx_compressed_air_consumption" name="show_compressed_air_consumption" value=false checked="true" onclick='show_table_data(this.id,"compressed_air_consumption_div")' />Datentabelle anzeigen
+<div id="compressed_air_consumption_div">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Druckluftverbrauch - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table id="compressed_air_consumption_table" class="zentriert">
+		<thead>
+			<tr>
+				<th>Jahr</th>
+				<th>Kompressor</th>
+				<th>Verbraucher</th>
+				<th>Verbrauch</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @compressed_air_consumption_years.each do |compressed_air_consumption_year| %>
+			<tr>
+				<td class="year"><%= compressed_air_consumption_year.year_id %></td>
+				<td class="compressor"><%= CompressedAirProduction.find_by_id(compressed_air_consumption_year.compressor_id).manufacturer %></td>
+				<td class="consumer"><%= Machinery.find_by_id(compressed_air_consumption_year.compressed_air_consumer_id).name%></td>
+				<td class="verbrauch"><%= compressed_air_consumption_year.verbrauch %> m&sup3;/a</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id='chart8' align="center" style='width: 800px; height: 240px;'></div>
+<%= render_chart @chart8, 'chart8' %>
+
+<h3>Drucklufterzeugungsdaten</h3>
+<input type="checkbox" class='checkboxelement' id="chx_compressed_air_production" name="show_compressed_air_production" value='true' checked="true" onclick='show_table_data(this.id,"compressed_air_production_table")' />Datentabelle anzeigen
+<div id="compressed_air_production_table">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Drucklufterzeugungsdaten  - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table class="zentriert">
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Jahr</th>
+				<th>Betriebsstunden</th>
+				<th>Laststunden</th>
+				<th>Auslastung</th>
+				<th>Stromverbrauch</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @compressed_air_production_years.each do |compressed_air_production_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td><%= compressed_air_production_year.year_id %>
+					<td><%= compressed_air_production_year.operatingHours %> h</td>
+					<td><%= compressed_air_production_year.loadHours %> h</td>
+					<td><%= compressed_air_production_year.capacity %> %</td>
+					<td><%= compressed_air_production_year.energyConsumption %> kWh</td>
+
+				</tr>
+				<% end %>
+			</tbody>
+		</table><br /><br />
+		<br />
+		<table class="zentriert">
+			<thead>
+				<tr>
+					<th>Nr.</th>
+					<th>Fördermenge</th>
+					<th>Schalthäufigkeit</th>
+					<th>Nachlaufzeit (Leerlauf)</th>
+					<th>Minimaldruck</th>
+					<th>Druckluftansaugung Min</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<% item=1 %>
+				<% @compressed_air_production_years.each do |compressed_air_production_year| %>
+				<tr>
+					<td><%= item %></td>
+					<% item=item+1 %>
+					<td><%= compressed_air_production_year.deliveryRate %> m&sup3;</td>
+					<td><%= compressed_air_production_year.operatingCycles %></td>
+					<td><%= compressed_air_production_year.overtravelTimeIdle %> min</td>
+					<td><%= compressed_air_production_year.pressureMin %> bar</td>
+					<td><%= compressed_air_production_year.pressureExhaustTempMin %> °C</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table><br /><br />
+		<br />
+		<table class="zentriert">
+			<thead>
+				<tr>
+					<th>Nr.</th>
+					<th>Druckluftansaugung Max</th>
+					<th>Kühlwasservorlauf</th>
+					<th>Kühlwasserrücklauf</th>
+					<th>Wassermenge</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% item=1 %>
+				<% @compressed_air_production_years.each do |compressed_air_production_year| %>
+				<tr>
+					<td><%= item %></td>
+					<% item=item+1 %>
+					<td><%= compressed_air_production_year.pressureExhaustTempMax %> °C</td>
+					<td><%= compressed_air_production_year.advanceTemp %> °C</td>
+					<td><%= compressed_air_production_year.returnTemp %> °C</td>
+					<td><%= compressed_air_production_year.amount_water %> l</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table><br /><br />
+	</div>
+	<div id="compressed_air_production" style="display: none">
+		<table id="compressed_air_production_years">
+			<thead>
+				<tr>
+					<th>Jahr</th>
+					<th>Betriebsstunden (h)</th>
+					<th>Laststunden (h)</th>
+					<th>Auslastung (%)</th>
+					<th>Stromverbrauch (kWh)</th>
+					<th>Fördermenge (l)</th>
+					<th>Schalthäufigkeit</th>
+					<th>Nachlaufzeit (Leerlauf)</th>
+					<th>Minimaldruck</th>
+					<th>Druckluftansaugung (min)</th>
+					<th>Druckluftansaugung (max)</th>
+					<th>Kühlwasservorlauf (°C)</th>
+					<th>Kühlwasserrücklauf (°C)</th>
+					<th>Wassermenge (l)</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% @compressed_air_production_years.each do |compressed_air_production_year| %>
+				<tr>
+					<td class="year"><%= compressed_air_production_year.year_id %>
+						<td class="operatingHours"><%= compressed_air_production_year.operatingHours %></td>
+						<td class="loadHours"><%= compressed_air_production_year.loadHours %></td>
+						<td class="capacity"><%= compressed_air_production_year.capacity %></td>
+						<td class="energyConsumption"><%= compressed_air_production_year.energyConsumption %></td>
+						<td class="deliveryRate"><%= compressed_air_production_year.deliveryRate %></td>
+						<td class="operatingCycles"><%= compressed_air_production_year.operatingCycles %></td>
+						<td class="overtravelTimeIdle"><%= compressed_air_production_year.overtravelTimeIdle %></td>
+						<td class="pressureMin"><%= compressed_air_production_year.pressureMin %></td>
+						<td class="pressureExhaustTempMin"><%= compressed_air_production_year.pressureExhaustTempMin %></td>
+						<td class="pressureExhaustTempMax"><%= compressed_air_production_year.pressureExhaustTempMax %></td>
+						<td class="advanceTemp"><%= compressed_air_production_year.advanceTemp %></td>
+						<td class="returnTemp"><%= compressed_air_production_year.returnTemp %></td>
+						<td class="amount_water"><%= compressed_air_production_year.amount_water %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table><br /><br />
+		</div>
+
+		<div id="holder">
+			<div class="item" id='chartCAD1' align="center" style='width: 350px; height: 240px;'></div>
+			<%= render_chart @chartCAD1, 'chartCAD1' %>
+			<div  class="item" id='chartCAD2' align="center" style='width: 350px; height: 240px;'></div>
+			<%= render_chart @chartCAD2, 'chartCAD2' %>
+			<div  class="item" id='chartCAD3' align="center" style='width: 350px; height: 240px;'></div>
+			<%= render_chart @chartCAD3, 'chartCAD3' %>
+			<div  class="item" id='chartCAD4' align="center" style='width: 350px; height: 240px;'></div>
+			<%= render_chart @chartCAD4, 'chartCAD4' %>
+			<div  class="item" id='chartCAD5' align="center" style='width: 350px; height: 240px;'></div>
+			<%= render_chart @chartCAD5, 'chartCAD5' %>
+			<div  class="item" id='chartCAD6' align="center" style='width: 350px; height: 240px;'></div>
+			<%= render_chart @chartCAD6, 'chartCAD6' %>
+		</div>
+
+		<div id="clearer"></div>
+
+		<!--compressed_air_distribution-->
+		<h3>Druckluftverteilung</h3>
+		<input type="checkbox" class='checkboxelement' id="chx_compressed_air_distribution" name="show_compressed_air_distribution" value='true' checked="true" onclick='show_table_data(this.id,"compressed_air_distribution_table")' />Datentabelle anzeigen
+		<div id="compressed_air_distribution_table">
+			<div class="title">
+				<h4>Tab. <%= table_count %>. Druckluftverteilung - jährliche Erhebung</h4>
+				<% table_count = table_count + 1 %>
+			</div>
+			<table id="compressed_air_distribution" class="zentriert">
+				<thead>
+					<tr>
+						<th>Jahr</th>
+						<th>Leckagen</th>
+						<th>Druckverlust</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @compressed_air_distribution_years.each do |compressed_air_distribution_year| %>
+					<tr>
+						<td class="year"><%= compressed_air_distribution_year.year_id %></td>
+						<td class="leak"><%= compressed_air_distribution_year.leak %> %</td>
+						<td class="pressureLoss"><%= compressed_air_distribution_year.pressureLoss %> bar</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table><br /><br />
+		</div>
+
+		<div class="chart5" id='chartCAD7'></div>
+		<%= render_chart @chartCAD7, 'chartCAD7' %>
+
+		<% end %>
+
+<!--Heißwasserverbrauch-->
+<% if @elements[:Heißwasserverbrauch]=="true" %>
+<!--Heißwasserverbrauch - jährliche Erhebung-->
+<h2>3.<%=epigraph_count%> Heißwasser</h2>
+<% epigraph_count = epigraph_count + 1 %>
+<h3>Heißwasserverbrauch</h3>
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_hot_water_consumption" name="show_hot_water_consumption" value='true' checked="true" onclick='show_table_data(this.id,"hot_water_consumption_div")' />Datentabelle anzeigen
+<div id="hot_water_consumption_div">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Heißwasserverbrauch - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table id="hot_water_consumption_table" class="zentriert">
+		<thead>
+			<tr>
+				<th>Volumenstrom</th>
+				<th>Vorlauftemperatur</th>
+				<th>Rücklauftemperatur</th>
+				<th>Prozesstemperatur</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @hot_water_consumption_years.each do |hot_water_consumption_year| %>
+			<tr>
+				<td class="volumeStream"><%= hot_water_consumption_year.volumeStream %> m&sup3;/h</td>
+				<td class="flowTemperature"><%= hot_water_consumption_year.flowTemperature %> °C</td>
+				<td class="returnTemperature"><%= hot_water_consumption_year.returnTemperature %> °C</td>
+				<td class="processTemperature"><%= hot_water_consumption_year.processTemperature %> °C</td>
+				<td class="updated_at"><%= hot_water_consumption_year.updated_at.strftime("%d.%m.%Y")  %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+<div id="holder">
+	<div class="item" id='chartHWC1' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWC1, 'chartHWC1' %>
+	<div class="item" id='chartHWC2' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWC2, 'chartHWC2' %>
+</div>
+<div id="clearer"></div>
+
+<!--Heißwasserproduktion - jährliche Erhebung-->
+<h3>Heißwasserproduktion</h3>
+
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_hot_water_production" name="show_hot_water_production" value='true' checked="true" onclick='show_table_data(this.id,"hot_water_production_div")' />Datentabelle anzeigen
+
+<div id="hot_water_production_div">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Heißwasserproduktion - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table class="zentriert">
+		<thead>
+			<tr>
+				<th>Jahr</th>
+				<th>Brennstoffverbrauch</th>
+				<th>Jahresverbrauch</th>
+				<th>Betriebsstunden</th>
+				<th>Druck Kesselaustritt</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @hot_water_production_years.each do |hot_water_production_year| %>
+			<tr>
+				<% item = item + 1 %>
+				<td class="year"><%= hot_water_production_year.year_id %></td>
+				<td class="fuelConsumption"><%= hot_water_production_year.fuelConsumption %> <%= hot_water_production_year.fuelConsumptionUnit %></td>
+				<td class="kettleEnergyConsumption"><%= hot_water_production_year.kettleEnergyConsumption %> kWh/a</td>
+				<td class="operationHours"><%= hot_water_production_year.operationHours %> h</td>
+				<td class="kettleExitCompression"><%= hot_water_production_year.kettleExitCompression %> bar Ü</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+	<br />
+	<table class="zentriert">
+		<thead>
+			<tr>
+				<th>Kesselaustritt</th>
+				<th>Zusätzliches Wasser</th>
+				<th>Verbrennungsluft</th>
+				<th>Abgas vor WRG</th>
+				<th>Abgas nach WRG</th>
+				<th>CO2-Gehalt Abgas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @hot_water_production_years.each do |hot_water_production_year| %>
+			<tr>
+				<td class="kettleExitTemperature"><%= hot_water_production_year.kettleExitTemperature %> °C</td>
+				<td class="tempAdditionalWater"><%= hot_water_production_year.tempAdditionalWater %> °C</td>
+				<td class="tempCombustionAir"><%= hot_water_production_year.tempCombustionAir %> °C</td>
+				<td class="tempExhaustBeforeWRG"><%= hot_water_production_year.tempExhaustBeforeWRG %> °C</td>
+				<td class="tempExhaustAfterWRG"><%= hot_water_production_year.tempExhaustAfterWRG %> °C</td>
+				<td class="carbonDioxideExhaust"><%= hot_water_production_year.carbonDioxideExhaust %> Vol-%</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id="holder">
+	<div class="item" id='chartHWD1' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWD1, 'chartHWD1' %>
+	<div class="item" id='chartHWD2' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWD2, 'chartHWD2' %>
+	<div class="item" id='chartHWD3' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWD3, 'chartHWD3' %>
+	<div class="item" id='chartHWD4' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWD4, 'chartHWD4' %>
+</div>
+<div id="clearer"></div>
+
+<!--Heißwasserverteilung - jährliche Erhebung-->
+<h3>Heißwasserverteilung</h3>
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_hot_water_distribution" name="show_hot_water_distribution" value='true' checked="true" onclick='show_table_data(this.id,"hot_water_distribution_div")' />Datentabelle anzeigen
+<div id="hot_water_distribution_div">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Heißwasserverteilung - jährliche Erhebung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table  id="hot_water_distribution_table" class="zentriert">
+		<thead>
+			<tr>
+				<th>Druck</th>
+				<th>Vorlauftemperatur</th>
+				<th>Rücklauftemperatur</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @hot_water_distribution_years.each do |hot_water_distribution_year| %>
+			<tr>
+				<td class="compression"><%= hot_water_distribution_year.compression %> bar Ü</td>
+				<td class="flowTemperature"><%= hot_water_distribution_year.flowTemperature %> °C</td>
+				<td class="returnTemperature"><%= hot_water_distribution_year.returnTemperature %> °C</td>
+				<td class="updated_at"><%= hot_water_distribution_year.updated_at.strftime("%d.%m.%Y") %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id="holder">
+	<div class="item" id='chartHWD5' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWD5, 'chartHWD5' %>
+	<div class="item" id='chartHWD6' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartHWD6, 'chartHWD6' %>
+</div>
+<div id="clearer"></div>
+
+<% end %>
+
+<!--Beleuchtungsanlagen-->
+<% if @elements[:Beleuchtungsanlagen]=="true" %>
+<h2>3.<%= epigraph_count%> Beleuchtungsanlagen</h2>
+<% epigraph_count = epigraph_count + 1 %>
+<div class="title">
+	<h4>Tab. <%= table_count %>. Beleuchtungsanlagen</h4>
+	<% table_count = table_count + 1 %>
+
+	<table id="lighting_data" class="zentriert">
+		<tr>
+			<th>Ort/Raum</th>
+			<th>Lampentyp</th>
+			<th>Baujahr</th>
+			<th>Anzahl der Leuchten</th>
+			<th>Anzahl der Lampen je Leuchte</th>
+			<th>Leistung</th>
+
+		</tr>
+		<% @lightings.each do |lighting| %>
+		<tr>
+			<td><%= Location.find_by_id(lighting.location_id).name %></td>
+			<td><%= lighting.bulbs %></td>
+			<td><%= lighting.yearOfManufacturing %></td>
+			<td><%= lighting.numberOfBulbs %></td>
+			<td><%= lighting.numberOfBulbsInLamp %></td>
+			<td><%= lighting.powerPerLamp %></td>
+		</tr>
+		<% end %>
+	</table><br /><br />
+	<br />
+	<table id="lighting_data1" class="zentriert">
+		<tr>
+			<th>Installierte Leistung</th>
+			<th>Steuerung</th>
+			<th>Konfiguration</th>
+			<th>Betriebsstunden</th>
+
+		</tr>
+		<% @lightings.each do |lighting| %>
+		<tr>
+			<td><%= lighting.installedPower %> kW</td>
+			<td><%= lighting.controlGear %></td>
+			<td><%= lighting.lampConfiguration %></td>
+			<td><%= lighting.hoursOfOperation %> h</td>
+		</tr>
+		<% end %>
+	</table><br /><br />
+	<br />
+	<table id="lighting_data2" class="zentriert">
+		<tr>
+			<th>Beleuchtungsart</th>
+			<th>Lichtregelanlage</th>
+			<th>in Gruppen schaltbar</th>
+			<th>Fensterbeschattung</th>
+
+		</tr>
+		<% @lightings.each do |lighting| %>
+		<tr>
+			<td><%= lighting.illuminationTechnique %></td>
+			<td><%= lighting.lightControl %></td>
+			<% if lighting.groupSwitchable == true %>
+			<td>ja</td>
+			<% else %>
+			<td>nein</td>
+			<% end %>
+			<% if lighting.windowShadowing == true %>
+			<td>ja</td>
+			<% else %>
+			<td>nein</td>
+			<% end %>
+		</tr>
+		<% end %>
+	</table><br /><br />
+</div>
+<% end %>
+
+<!--RAUS - Ersetzen gegen die Tabelle der Betriebszeiten-->
+<!--Dampfverbrauch steam_consumption
+<% if @elements[:Dampfverbrauch]=="true" %>
+<h2>3.<%= epigraph_count%> Dampf</h2>
+<% epigraph_count = epigraph_count + 1 %>
+<h3>Dampfverbrauch</h3>
+<div class="title" align="center" >
+	<h4>Tab. <%= table_count %>. Dampfverbrauch</h4>
+	<% table_count = table_count + 1 %>
+
+	<table id="steam_consumption_table1" class="zentriert">
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Verbraucher</th>
+				<th>Dampferzeuger</th>
+				<th>System</th>
+				<th>Benötigter Druck DP</th>
+				<th>Benötigte Temperatur DP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @steam_consumptions.each do |steam_consumption| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td><%= Machinery.find_by_id(steam_consumption.consumer_id).name %></td>
+				<td><%= SteamProduction.find_by_id(steam_consumption.steamProduction_id).kettleName %></td>
+				<td><%= steam_consumption.system %></td>
+				<td><%= steam_consumption.dpCompressionNeeded %> bar/Ü</td>
+				<td><%= steam_consumption.dpTemperatureNeeded %> °C</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+	<br />
+	<table id="steam_consumption_table2" class="zentriert">
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Requirementtype</th>
+				<th>Massflownennneeded</th>
+				<th>Massflowminneeded</th>
+				<th>Massflowmaxneeded</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @steam_consumptions.each do |steam_consumption| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td><%= steam_consumption.requirementType %></td>
+				<td><%= steam_consumption.massFlowNennNeeded %></td>
+				<td><%= steam_consumption.massFlowMinNeeded %></td>
+				<td><%= steam_consumption.massFlowMaxNeeded %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>-->
+
+<!--steam_production_year-->
+<h3>Dampferzeugung</h3>
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_steam_production" name="show_steam_production" value='true' checked="true" onclick='show_table_data(this.id,"steam_production_div")' />Datentabelle anzeigen
+<div id="steam_production_div">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Dampferzeugung</h4>
+		<% table_count = table_count + 1 %>
+
+		<table class="zentriert">
+			<thead>
+				<tr>
+					<th>Jahr</th>
+					<th>Brennstoffverbrauch</th>
+					<th>Energieverbrauch Kessel</th>
+					<th>Betriebsstunden</th>
+					<th>Dampfparameter Kesselaustritt (bar)</th>
+					<th>Dampfparameter Kesselaustritt (°C)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @steam_production_years.each do |steam_production_year| %>
+				<tr>
+					<td class="year"><%= steam_production_year.year_id %></td>
+					<td class="fuelConsumption"><%= steam_production_year.fuelConsumption %> m&sup3;/a</td>
+					<td class="kettleEnergyConsumption"><%= steam_production_year.kettleEnergyConsumption %> kWh</td>
+					<td class="operationHours"><%= steam_production_year.operationHours %> h</td>
+					<td class="kettleSteamParameterBar"><%= steam_production_year.kettleSteamParameterBar %> bar</td>
+					<td class="kettleSteamParameterCel"><%= steam_production_year.kettleSteamParameterCel %> °C</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table><br /><br />
+		<br />
+		<table class="zentriert">
+			<thead>
+				<tr>
+					<th>Dampfmenge</th>
+					<th>Temperatur Zusatzwasser</th>
+					<th>Temperatur Verbrennungsluft</th>
+					<th>Temperatur Abgas von WRG</th>
+					<th>Temperatur Abgas nach WRG</th>
+					<th>CO<sub>2</sub>-Gehalt Abgas</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<% @steam_production_years.each do |steam_production_year| %>
+				<tr>
+					<td class="steamAmount"><%= steam_production_year.steamAmount %> t/a</td>
+					<td class="tempAdditionalWater"><%= steam_production_year.tempAdditionalWater %> °C</td>
+					<td class="tempCombustionAir"><%= steam_production_year.tempCombustionAir %> °C</td>
+					<td class="tempExhaustBeforeWRG"><%= steam_production_year.tempExhaustBeforeWRG %> °C</td>
+					<td class="tempExhaustAfterWRG"><%= steam_production_year.tempExhaustAfterWRG %> °C</td>
+					<td class="carbonDioxideExhaust"><%= steam_production_year.carbonDioxideExhaust %> Vol.-%</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table><br /><br />
+	</div>
+</div>
+<div id="steam_production_divok" style="display: none">
+	<table id="steam_production_table" class="zentriert">
+		<thead>
+			<tr>
+				<th>Jahr</th>
+				<th>Brennstoffverbrauch</th>
+				<th>Energieverbrauch Kessel</th>
+				<th>Betriebsstunden</th>
+				<th>Dampfparameter Kesselaustritt (bar)</th>
+				<th>Dampfparameter Kesselaustritt (°C)</th>
+				<th>Dampfmenge</th>
+				<th>Temperatur Zusatzwasser</th>
+				<th>Temperatur Verbrennungsluft</th>
+				<th>Temperatur Abgas von WRG</th>
+				<th>Temperatur Abgas nach WRG</th>
+				<th>CO<sub>2</sub>-Gehalt Abgas</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% @steam_production_years.each do |steam_production_year| %>
+			<tr>
+				<td class="year"><%= steam_production_year.year_id %></td>
+				<td class="fuelConsumption"><%= steam_production_year.fuelConsumption %></td>
+				<td class="kettleEnergyConsumption"><%= steam_production_year.kettleEnergyConsumption %></td>
+				<td class="operationHours"><%= steam_production_year.operationHours %> h</td>
+				<td class="kettleSteamParameterBar"><%= steam_production_year.kettleSteamParameterBar %> bar</td>
+				<td class="kettleSteamParameterCel"><%= steam_production_year.kettleSteamParameterCel %></td>
+				<td class="steamAmount"><%= steam_production_year.steamAmount %></td>
+				<td class="tempAdditionalWater"><%= steam_production_year.tempAdditionalWater %> °C</td>
+				<td class="tempCombustionAir"><%= steam_production_year.tempCombustionAir %> °C</td>
+				<td class="tempExhaustBeforeWRG"><%= steam_production_year.tempExhaustBeforeWRG %> °C</td>
+				<td class="tempExhaustAfterWRG"><%= steam_production_year.tempExhaustAfterWRG %> °C</td>
+				<td class="carbonDioxideExhaust"><%= steam_production_year.carbonDioxideExhaust %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id="holder">
+	<div class="item" id='chartSP1' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartSP1, 'chartSP1' %>
+	<div class="item" id='chartSP2' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartSP2, 'chartSP2' %>
+	<div class="item" id='chartSP3' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartSP3, 'chartSP3' %>
+	<div class="item" id='chartSP4' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartSP4, 'chartSP4' %>
+	<div class="item" id='chartSP5' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartSP5, 'chartSP5' %>
+	<div class="item" id='chartSP6' align="center" style='width: 350px; height: 240px;'></div>
+	<%= render_chart @chartSP6, 'chartSP6' %>
+</div>
+<div id="clearer"></div>
+
+<!--<div align="center" class ="canvas">
+	<canvas id="steam_production_chart" width="750px" height="500" >[No canvas support]</canvas>
+
+	<h4>Abb.<%= image_count %>. Dampferzeugung</h4>
+	<% image_count = image_count + 1 %>
+</div>-->
+
+<!--steam_distribution_table-->
+<h3>Dampfverteilung</h3>
+
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_steam_distribution" name="show_steam_distribution" value='true' checked="true" onclick='show_table_data(this.id,"steam_distribution_div")' />Datentabelle anzeigen
+<div id="steam_distribution_div" align="center">
+	<div class="title" align="center">
+		<h4>Tab .<%= table_count %>. Dampfverteilung</h4>
+		<% table_count = table_count + 1 %>
+
+		<table id="steam_distribution_table">
+			<thead>
+				<tr>
+					<th>Dampferzeuger</th>
+					<th>Dampfverbraucher</th>
+					<th>DP Druck</th>
+					<th>DP Temperatur</th>
+					<th>KP Druck</th>
+					<th>KP Temperatur</th>
+					<th>Kpreflux</th>
+					<th>Datum</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<% @steam_distribution_years.each do |steam_distribution_year| %>
+				<tr>
+					<td><%= SteamProduction.find_by_id(steam_distribution_year.steamProduction_id).kettleName %></td>
+					<td><%= steam_distribution_year.steamConsumer_id %></td>
+					<td class="dpCompression"><%= steam_distribution_year.dpCompression %></td>
+					<td class="dpTemperature"><%= steam_distribution_year.dpTemperature %></td>
+					<td class="kpCompression"><%= steam_distribution_year.kpCompression %></td>
+					<td class="kpTemperature"><%= steam_distribution_year.kpTemperature %></td>
+					<td class="kpReflux"><%= steam_distribution_year.kpReflux %></td>
+					<td class="updated_at"><%= steam_distribution_year.updated_at.strftime("%d.%m.%Y")  %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table><br /><br />
+	</div>
+</div>
+<div align="center" class ="canvas">
+	<canvas id="steam_distribution_chart" width="750px" height="300" >[No canvas support]</canvas>
+
+	<h4>Abb. <%= image_count %>. Dampfverteilung</h4>
+	<% image_count = image_count + 1 %>
+</div>
+<% end %>
+
+<!--thermo oil-->
+<% if @elements[:Thermoölverbrauch]=="true" %>
+<!--thermo oil consumption-->
+<h2>3.<%= epigraph_count %> Thermoöl</h2>
+<% epigraph_count = epigraph_count + 1 %>
+<h3>Thermoölverbrauch</h3>
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_thermo_oil_consumption" name="show_thermo_oil_consumption" value='true' checked="true" onclick='show_table_data(this.id,"thermo_oil_consumption_div")' />Datentabelle anzeigen
+<div id="thermo_oil_consumption_div" align="center">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Thermoölverbrauch</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Thermoölproduktion</th>
+				<th>Verbraucher</th>
+				<th>Thermoölverbrauch</th>
+				<th>Volumenstrom</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @thermo_oil_consumption_years.each do |thermo_oil_consumption_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td><%= thermo_oil_consumption_year.thermoOilProduction_id %></td>
+				<td><%= thermo_oil_consumption_year.machinery_id %></td>
+				<td><%= thermo_oil_consumption_year.thermoOilConsumption_id %></td>
+				<td class="volumeStream"><%= thermo_oil_consumption_year.volumeStream %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Flowtemperature</th>
+				<th>Returntemperature</th>
+				<th>Processtemperature</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @thermo_oil_consumption_years.each do |thermo_oil_consumption_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td class="flowTemperature"><%= thermo_oil_consumption_year.flowTemperature %></td>
+				<td class="returnTemperature"><%= thermo_oil_consumption_year.returnTemperature %></td>
+				<td class="processTemperature"><%= thermo_oil_consumption_year.processTemperature %></td>
+				<td class="updated_at"><%= thermo_oil_consumption_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id="thermo_oil_consumption_divok" style="display: none">
+	<table id="thermo_oil_consumption_table" >
+		<thead>
+			<tr>
+				<th>Thermoölproduktion</th>
+				<th>Verbraucher</th>
+				<th>Thermoölverbrauch</th>
+				<th>Volumenstrom</th>
+				<th>Flowtemperature</th>
+				<th>Returntemperature</th>
+				<th>Processtemperature</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<% @thermo_oil_consumption_years.each do |thermo_oil_consumption_year| %>
+			<tr>
+				<td><%= thermo_oil_consumption_year.thermoOilProduction_id %></td>
+				<td><%= thermo_oil_consumption_year.machinery_id %></td>
+				<td><%= thermo_oil_consumption_year.thermoOilConsumption_id %></td>
+				<td class="volumeStream"><%= thermo_oil_consumption_year.volumeStream %></td>
+				<td class="flowTemperature"><%= thermo_oil_consumption_year.flowTemperature %></td>
+				<td class="returnTemperature"><%= thermo_oil_consumption_year.returnTemperature %></td>
+				<td class="processTemperature"><%= thermo_oil_consumption_year.processTemperature %></td>
+				<td class="updated_at"><%= thermo_oil_consumption_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+<div align="center" class ="canvas">
+	<canvas id="thermo_oil_consumption_chart" width="750px" height="300" >[No canvas support]</canvas>
+	<h4>Abb. <%= image_count %>. Thermoölverbrauch</h4>
+	<% image_count = image_count + 1 %>
+</div>
+
+<!--thermo_oil_pruduction-->
+<h3>Thermoölproduktion</h3>
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_thermo_oil_pruduction" name="show_thermo_oil_pruduction" value='true' checked="true" onclick='show_table_data(this.id,"thermo_oil_pruduction_div")' />Datentabelle anzeigen
+<div id="thermo_oil_pruduction_div" align="center">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Thermoölproduktion</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Thermoölproduktion</th>
+				<th>Brennstoff- verbrauch</th>
+				<th>Jahresverbrauch</th>
+				<th>Betriebsstunden</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td><%= thermo_oil_production_year.thermoOilProduction_id %></td>
+				<td class="fuelConsumption"><%= thermo_oil_production_year.fuelConsumption %></td>
+				<td class="kettleEnergyConsumption"><%= thermo_oil_production_year.kettleEnergyConsumption %></td>
+				<td class="operatingHours"><%= thermo_oil_production_year.operatingHours %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Kettleexitcompression</th>
+				<th>Kettleexittemperature</th>
+				<th>Thermooilamount</th>
+				<!--<th>Tempadditionalwater</th>-->
+				<th>Tempcombustionair</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td class="kettleExitCompression"><%= thermo_oil_production_year.kettleExitCompression %></td>
+				<td class="kettleExitTemperature"><%= thermo_oil_production_year.kettleExitTemperature %></td>
+				<td class="thermoOilAmount"><%= thermo_oil_production_year.thermoOilAmount %></td>
+				<!--<td class="tempAdditionalWater"><%= thermo_oil_production_year.tempAdditionalWater %></td>-->
+				<td class="tempCombustionAir"><%= thermo_oil_production_year.tempCombustionAir %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Tempexhaustbeforewrg</th>
+				<th>Tempexhaustafterwrg</th>
+				<th>CO<sub>2</sub>-Gehalt Abgas</th>
+				<th>Datum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td class="tempExhaustBeforeWRG"><%= thermo_oil_production_year.tempExhaustBeforeWRG %></td>
+				<td class="tempExhaustAfterWRG"><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>
+				<td class="carbonDioxideExhaust"><%= thermo_oil_production_year.carbonDioxideExhaust %></td>
+				<td class="updated_at"><%= thermo_oil_production_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id="thermo_oil_pruduction_divok" style="display: none">
+	<table id="thermo_oil_pruduction_table">
+		<thead>
+			<tr>
+				<th>Thermoölproduktion</th>
+				<th>Brennstoff- verbrauch</th>
+				<th>Jahresverbrauch</th>
+				<th>Betriebsstunden</th>
+				<th>Kettleexitcompression</th>
+				<th>Kettleexittemperature</th>
+				<th>Thermooilamount</th>
+				<!--<th>Tempadditionalwater</th>-->
+				<th>Tempcombustionair</th>
+				<th>Tempexhaustbeforewrg</th>
+				<th>Tempexhaustafterwrg</th>
+				<th>CO<sub>2</sub>-Gehalt Abgas</th>
+				<th>Updated_at</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+			<tr>
+				<td><%= thermo_oil_production_year.thermoOilProduction_id %></td>
+				<td class="fuelConsumption"><%= thermo_oil_production_year.fuelConsumption %></td>
+				<td class="kettleEnergyConsumption"><%= thermo_oil_production_year.kettleEnergyConsumption %></td>
+				<td class="operatingHours"><%= thermo_oil_production_year.operatingHours %></td>
+				<td class="kettleExitCompression"><%= thermo_oil_production_year.kettleExitCompression %></td>
+				<td class="kettleExitTemperature"><%= thermo_oil_production_year.kettleExitTemperature %></td>
+				<td class="thermoOilAmount"><%= thermo_oil_production_year.thermoOilAmount %></td>
+				<!--<td class="tempAdditionalWater"><%= thermo_oil_production_year.tempAdditionalWater %></td>-->
+				<td class="tempCombustionAir"><%= thermo_oil_production_year.tempCombustionAir %></td>
+				<td class="tempExhaustBeforeWRG"><%= thermo_oil_production_year.tempExhaustBeforeWRG %></td>
+				<td class="tempExhaustAfterWRG"><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>
+				<td class="carbonDioxideExhaust"><%= thermo_oil_production_year.carbonDioxideExhaust %></td>
+				<td class="updated_at"><%= thermo_oil_production_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+<div align="center" class ="canvas">
+	<canvas id="thermo_oil_production_chart" width="750px" height="500" >[No canvas support]</canvas>
+
+	<h4>Abb. <%= image_count %>. Thermoölproduktion</h4>
+	<% image_count = image_count + 1 %>
+</div>
+
+<!--thermo_oil_distribution-->
+<h3>Thermoölverteilung</h3>
+<input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_thermo_oil_distribution" name="show_thermo_oil_distribution" value='true' checked="true" onclick='show_table_data(this.id,"thermo_oil_distribution_div")' />Datentabelle anzeigen
+<div id="thermo_oil_distribution_div" align="center">
+	<div class="title">
+		<h4>Tab. <%= table_count %>. Thermoölverteilung</h4>
+		<% table_count = table_count + 1 %>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Compression</th>
+				<th>Flowtemperature</th>
+				<th>Returntemperature</th>
+				<th>Thermooilproduction</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @thermo_oil_distribution_years.each do |thermo_oil_distribution_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td class="compression"><%= thermo_oil_distribution_year.compression %></td>
+				<td class="flowTemperature"><%= thermo_oil_distribution_year.flowTemperature %></td>
+				<td class="returnTemperature"><%= thermo_oil_distribution_year.returnTemperature %></td>
+				<td><%= thermo_oil_distribution_year.thermoOilProduction_id %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Thermooilconsumption</th>
+				<th>Thermooildistribution</th>
+				<th>Datum</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% item=1 %>
+			<% @thermo_oil_distribution_years.each do |thermo_oil_distribution_year| %>
+			<tr>
+				<td><%= item %></td>
+				<% item=item+1 %>
+				<td><%= thermo_oil_distribution_year.thermoOilConsumption_id %></td>
+				<td><%= thermo_oil_distribution_year.thermoOilDistribution_id %></td>
+				<td class="updated_at"><%= thermo_oil_distribution_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+
+<div id="thermo_oil_distribution_divok" style="display: none">
+	<table id="thermo_oil_distribution_table">
+		<thead>
+			<tr>
+				<th>Compression</th>
+				<th>Flowtemperature</th>
+				<th>Returntemperature</th>
+				<th>Thermooilproduction</th>
+				<th>Thermooilconsumption</th>
+				<th>Thermooildistribution</th>
+				<th>Datum</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% @thermo_oil_distribution_years.each do |thermo_oil_distribution_year| %>
+			<tr>
+				<td class="compression"><%= thermo_oil_distribution_year.compression %></td>
+				<td class="flowTemperature"><%= thermo_oil_distribution_year.flowTemperature %></td>
+				<td class="returnTemperature"><%= thermo_oil_distribution_year.returnTemperature %></td>
+				<td><%= thermo_oil_distribution_year.thermoOilProduction_id %></td>
+				<td><%= thermo_oil_distribution_year.thermoOilConsumption_id %></td>
+				<td><%= thermo_oil_distribution_year.thermoOilDistribution_id %></td>
+				<td class="updated_at"><%= thermo_oil_distribution_year.updated_at.strftime("%d.%m.%Y")  %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table><br /><br />
+</div>
+<div align="center" class ="canvas">
+	<canvas id="thermo_oil_distribution_chart" width="750px" height="300" >[No canvas support]</canvas>
+
+	<h4>Abb. <%= image_count %>. Thermoölverteilung</h4>
+	<% image_count = image_count + 1 %>
+</div>
+<% end %>
+
+<!-- Abschnitt 4 Checklisten-->
+<h2><a name="Erfüllung">4. Erfüllung der Maßnahmen zur Energieeffizienz</a></h2>
+
+<p>An dieser Stelle wird der Fortschritt Ihrer Energieeffizienzmaßnahmen angezeigt. Um Details der Maßnahmen anzusehen, wechseln Sie bitte in die Rubrik "Checklisten". </p>
+
+<% anteil = 0 %>
+<% summe = 0 %>
+<% runde = 0 %>
+<table>
+<% ChecklistProperty.all.each do |checklist_property| %>
+	<% checklistDefinition = ChecklistDefinition.find(checklist_property.checklist_definition_id) %>
+	<tr>
+		<th width=100 align="left"><%= checklistDefinition.name %>:</th>
+		<% if checklistDefinition.checktype == "Ja und Nein" %>
+		<% gesamt = Checklist.find_all_by_checklist_property_id(checklist_property.id) %>
+		<% alle = gesamt.count %>
+		<% gesamt.each do |gesamt| %>
+		<% if gesamt.boolean_value == true %>
+		<% gesamt.boolean_value %>
+		<% anteil = anteil+1 %>
+		<% else %>
+		<% end %>
+		<% end %><% anteil %>
+		<% prozent = (anteil.to_f/alle.to_f)*100 %>
+		<% final = number_with_precision(prozent.to_f, :precision => 0)%>
+		<% summe = summe + final.to_f %>
+		<% runde = runde + 1 %>
+		<td align="center" width = 120 ><%= anteil %> von <%= alle %> (<%= final %>%)</td>
+		<td><%= progress_bar(final, :color => 'info', :tiny=> true, :rounded => true) %></td>
+		<% anteil = 0 %>
+		<% else %>
+
+		<% end %>
+	</tr>
+	<% end %>
+	<tr>
+		<th align="left">Gesamt:</th>
+		<th><%= summe/runde.to_f %> %</th>
+		<th><%= progress_bar(summe/runde.to_i, :color => 'info', :tiny=> true, :rounded => true) %></th>
+	</tr>
+
+</table>

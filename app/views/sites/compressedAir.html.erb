@@ -1,7 +1,7 @@
 <h2>Druckluftanlagen</h2>
 
 <p>Druckluftanlagen stellen in vielen Bereichen innerhalb und außerhalb der Industrie pneumatische Hilfsenergie mittels expansionsfähiger komprimierter Luft zur Verfügung.
-In der Regel besteht eine Druckluftanlage aus dem Druckerzeuger, dem Druckspeicher und Verteileinrichtungen. Im einzelnen sind dies folgenden Komponenten:</p>
+In der Regel besteht eine Druckluftanlage aus dem Druckerzeuger, dem Druckspeicher und Verteileinrichtungen. Wenn Sie auf das Seitensymbol klicken, erhalten sie detailliert Auskunft über Ihre Druckluftanlage, einschließlich Verteilung und Verbrauch und den zusätzlichen jährlichen Erhebungen.</p>
 
 
 <h3>Drucklufterzeugung</h3>
@@ -29,9 +29,11 @@ In der Regel besteht eine Druckluftanlage aus dem Druckerzeuger, dem Druckspeich
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_production, method: :delete, data: { confirm: 'Are you sure?' }   %></td>
   </tr>
 <% end %>
-</table>
-<br>
+<tr><th colspan=6></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_production_path %></th></tr>
 
+</table>
+
+<!-- Ist jetzt innerhalb der einzelnen Kompressoren gelistet - Macht so viel mehr Sinn!
 <h3>Druckluftverteilung</h3>
 <table class="zentriert">
   <tr>
@@ -91,4 +93,4 @@ In der Regel besteht eine Druckluftanlage aus dem Druckerzeuger, dem Druckspeich
   </tr>
 <% end %>
 </table>
-
+-->

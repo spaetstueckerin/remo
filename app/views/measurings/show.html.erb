@@ -1,10 +1,13 @@
-<h3>Messung vom <%= @measuring.dateFrom.strftime('%d.%m.%Y') %></h3>
+<h2>Messung vom <%= @measuring.dateFrom.strftime('%d.%m.%Y') %></h2>
+
+<p>An dieser Stelle finden Sie die Ergebnisse der Messungen vom <%= @measuring.dateFrom.strftime('%d.%m.%Y') %> grafisch aufbereitet. Um diese Angaben zu bearbeiten, klicken Sie bitte auf das Stiftsymbol.</p>
 
 <div id='chart' style='width: 1050px; height: 450px;'>
 <%= render_chart @chart, 'chart' %>
 </div>
 
 <table>
+	<tr><th colspan =2></th></tr>
 	<tr>
 		<td width=100>Messzeitraum</td>
 		<td><%= @measuring.dateFrom.strftime('%d.%m.%Y') %> bis <%= @measuring.dateTo.strftime('%d.%m.%Y') %></td>

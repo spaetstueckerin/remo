@@ -14,6 +14,7 @@ class HotWaterProductionsController < ApplicationController
   # GET /hot_water_productions/1.json
   def show
     @hot_water_production = HotWaterProduction.find(params[:id])
+    @hot_water_production_years = HotWaterProductionYear.find_all_by_hotWaterProduction_id(params[:id], :order =>"year_id DESC")
 
     respond_to do |format|
       format.html # show.html.erb

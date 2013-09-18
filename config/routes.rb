@@ -16,6 +16,7 @@ Remo::Application.routes.draw do
   
   match '/benchmarking/index', :controller => 'benchmarking', :action => 'index'
   resources :benchmarking
+  
   resources :meters
   resources :meter_readings
   resources :meter_types
@@ -97,6 +98,15 @@ Remo::Application.routes.draw do
   get "sites/crossSection"
   get "sites/goals"
   get "sites/checklists_manager"
+    
+  get "reports/lastenmanagement"
+  get "reports/lastenmanagementpdf"
+  post 'reports/full_report', :controller => 'reports', :action => 'full_report'
+  get 'reports/report', :controller => 'reports', :action => 'report'
+  #get  'reports/pdf_report'
+  get  'reports/norm_report'
+  get  'reports/norm_reportpdf'
+  get 'reports/reportpdf'
     
   get "login" => "sessions#new", as: "login"
   post "sessions" => "sessions#create", as: "sessions"

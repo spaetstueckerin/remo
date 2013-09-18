@@ -1,85 +1,108 @@
-<p id="notice"><%= notice %></p>
+<h2>Thermoölproduktion <%=@thermo_oil_production.kettleName%></h2>
 
-<p>
-  <b>Kettlename:</b>
-  <%= @thermo_oil_production.kettleName %>
-</p>
+<p>An dieser Stelle sind alle Details Ihrer Druckluftproduktionsanlage aufgeführt. Weiter unten finden Sie zusätzlich die jährlichen Erhebungen für Ihre Anlage.</p>
 
-<p>
-  <b>Kettlemanufacturer:</b>
-  <%= @thermo_oil_production.kettleManufacturer %>
-</p>
+<table class="left">
+<tr><th colspan=4> </th></tr>
+<tr>
+  <th width=100>Bezeichnung:</th>
+  <td><%= @thermo_oil_production.kettleName %></td>
+  <th width=100>Hersteller:</th>
+  <td><%= @thermo_oil_production.kettleManufacturer %></td>
+</tr>
 
-<p>
-  <b>Kettlemanuyear:</b>
-  <%= @thermo_oil_production.kettleManuYear %>
-</p>
+<tr>
+  <th>Baujahr:</th>
+  <td><%= @thermo_oil_production.kettleManuYear %></td>
+  <th>Kesselleistung:</th>
+  <td><%= @thermo_oil_production.kettleCapacity %> kW</td>
+</tr>
 
-<p>
-  <b>Kettlecapacity:</b>
-  <%= @thermo_oil_production.kettleCapacity %>
-</p>
+<tr>
+  <th>Brennertyp:</th>
+  <td><%= @thermo_oil_production.burnerType %></td>
+  <th>Hersteller:</th>
+  <td><%= @thermo_oil_production.burnerManufacturer %></td>
+</tr>
 
-<p>
-  <b>Burnertype:</b>
-  <%= @thermo_oil_production.burnerType %>
-</p>
+<tr>
+  <th>Baujahr:</th>
+  <td colspan=3><%= @thermo_oil_production.burnerManuYear %></td>
+</tr>
 
-<p>
-  <b>Burnermanufacturer:</b>
-  <%= @thermo_oil_production.burnerManufacturer %>
-</p>
+<tr>
+  <th>Feuerungswärmeleistung (min):</th>
+  <td><%= @thermo_oil_production.districtHeatMin %> Min MW</td>
+  <th>Feuerungswärmeleistung (max):</th>
+  <td><%= @thermo_oil_production.districtHeatMax %> Max MW</td>
+</tr>
 
-<p>
-  <b>Burnermanuyear:</b>
-  <%= @thermo_oil_production.burnerManuYear %>
-</p>
+<tr>
+  <th>Brennstoff:</th>
+  <td><%= @thermo_oil_production.fuelType %></td>
+  <th>Dichte:</th>
+  <td><%= @thermo_oil_production.fuelDenseness %> kg/m&sup3;</td>
+</tr>
 
-<p>
-  <b>Districtheatmin:</b>
-  <%= @thermo_oil_production.districtHeatMin %>
-</p>
+<tr>
+  <th>Brennwert:</th>
+  <td><%= @thermo_oil_production.fuelValue %> <%= @thermo_oil_production.fuelValueUnit %></td>
+  <th>Thermoölbezeichnung:</th>
+  <td><%= @thermo_oil_production.thermoOilName %></td>
+</tr>
 
-<p>
-  <b>Districtheatmax:</b>
-  <%= @thermo_oil_production.districtHeatMax %>
-</p>
+<tr>
+  <th>Abgaswärme- rückgewinnung:</th>
+  <td><%= @thermo_oil_production.exhaustHeatRecovery %></td>
+  <th>O2-Regelung:</th>
+  <td><%= @thermo_oil_production.o2control %></td>
+</tr>
 
-<p>
-  <b>Fueltype:</b>
-  <%= @thermo_oil_production.fuelType %>
-</p>
+<tr>
+  <th>Kamin:</th>
+  <td colspan=3><%= @thermo_oil_production.chimney %></td>
+</tr>
+	<tr><th colspan=3></td><th align="center"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), thermo_oil_productions_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_production_path(@thermo_oil_production) %></th></tr>
+</table>
 
-<p>
-  <b>Fueldenseness:</b>
-  <%= @thermo_oil_production.fuelDenseness %>
-</p>
+<h3>Thermoölproduktion - jährliche Erhebung</h3>
 
-<p>
-  <b>Fuelvalue:</b>
-  <%= @thermo_oil_production.fuelValue %>
-</p>
+<table class="zentriert">
+  <tr>
+    <th>Thermoölproduktion</th>
+    <th>Brennstoff- verbrauch</th>
+    <th>Jahres- verbrauch</th>
+    <th>Betriebs- stunden</th>
+    <!--<th>Kettleexitcompression</th>
+    <th>Kettleexittemperature</th>
+    <th>Thermooilamount</th>
+    <th>Tempadditionalwater</th>
+    <th>Tempcombustionair</th>
+    <th>Tempexhaustbeforewrg</th>
+    <th>Tempexhaustafterwrg</th>-->
+    <th>Co2-Gehalt Abgas</th>
+    <th width=100>Aktion</th>
+  </tr>
 
-<p>
-  <b>Thermooilname:</b>
-  <%= @thermo_oil_production.thermoOilName %>
-</p>
-
-<p>
-  <b>Exhaustheatrecovery:</b>
-  <%= @thermo_oil_production.exhaustHeatRecovery %>
-</p>
-
-<p>
-  <b>O2control:</b>
-  <%= @thermo_oil_production.o2control %>
-</p>
-
-<p>
-  <b>Chimney:</b>
-  <%= @thermo_oil_production.chimney %>
-</p>
-
-
-<%= link_to 'Edit', edit_thermo_oil_production_path(@thermo_oil_production) %> |
-<%= link_to 'Back', thermo_oil_productions_path %>
+<% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+  <tr>
+    <td><%= thermo_oil_production_year.thermoOilProduction_id %></td>
+    <td><%= thermo_oil_production_year.fuelConsumption %></td>
+    <td><%= thermo_oil_production_year.kettleEnergyConsumption %></td>
+    <td><%= thermo_oil_production_year.operatingHours %></td>
+    <!--<td><%= thermo_oil_production_year.kettleExitCompression %></td>
+    <td><%= thermo_oil_production_year.kettleExitTemperature %></td>
+    <td><%= thermo_oil_production_year.thermoOilAmount %></td>
+    <td><%= thermo_oil_production_year.tempAdditionalWater %></td>
+    <td><%= thermo_oil_production_year.tempCombustionAir %></td>
+    <td><%= thermo_oil_production_year.tempExhaustBeforeWRG %></td>
+    <td><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>-->
+    <td><%= thermo_oil_production_year.carbonDioxideExhaust %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), thermo_oil_production_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_thermo_oil_production_year_path(thermo_oil_production_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), thermo_oil_production_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+<tr><th>Summe:</th><th colspan=4></th><th align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_thermo_oil_production_year_path %></th></tr>
+</table>

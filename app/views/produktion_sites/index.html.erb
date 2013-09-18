@@ -1,4 +1,5 @@
-<h1>Liste der Produktionsstandorte</h1>
+<h2>Liste der Produktionsstandorte</h2>
+<p>Hier finden Sie eine Liste aller von Ihnen angelegten Produktionsstandorte. Beim Anlegen eines neuen Gebäudes sind diese Standorte zuzuordnen.</p>
 
 <table class="zentriert">
   <tr>
@@ -21,8 +22,9 @@
 
   </tr>
 <% end %>
+	<tr><th colspan=3></th><th><%= link_to image_tag('new.png', size: "20x20", alt: "Anlegen"), new_produktion_site_path %></th></tr>
 </table>
 
 <br />
 
-<%= link_to 'Neuer Produktionsstandort', new_produktion_site_path %>
+

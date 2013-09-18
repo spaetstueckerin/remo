@@ -1,4 +1,4 @@
-<%= form_for(@machinery, :multipart => true) do |f| %>
+<%= form_for(@machinery) do |f| %>
   <% if @machinery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@machinery.errors.count, "error") %> prohibited this machinery from being saved:</h2>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-<table>
+<table width=750>
 	<tr><th colspan=4></th></th>
 <tr>
     <td><%= f.label :name, "Name" %></td>
@@ -21,7 +21,7 @@
 </tr>
 <tr>
     <td><%= f.label :description, "Beschreibung" %></td>
-    <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
+    <td colspan=3><%= f.text_area :description, size: "75x3" %></td>
 </tr>
 <tr>
     <td><%= f.label :yearOfConstruction, "Baujahr" %></td>

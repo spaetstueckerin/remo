@@ -1,50 +1,79 @@
-<p id="notice"><%= notice %></p>
+<h2>Kälteproduktion <%=@cold_production.manufacturer%></h2>
 
-<p>
-  <b>Manufacturer:</b>
-  <%= @cold_production.manufacturer %>
-</p>
+<p>An dieser Stelle sind alle Details Ihrer Kälteproduktionsanlage aufgeführt. Weiter unten finden Sie zusätzlich die jährlichen Erhebungen für Ihre Anlage.</p>
 
-<p>
-  <b>Buildtype:</b>
-  <%= @cold_production.buildType %>
-</p>
+<table class="left">
+<tr><th colspan=4> </th></tr>
+<tr>
+  <th width=100>Hersteller:</th>
+  <td><%= @cold_production.manufacturer %></td>
+  <th width=100>Bauart:</th>
+  <td><%= @cold_production.buildType %></td>
+</tr>
 
-<p>
-  <b>Yearofmanufacturing:</b>
-  <%= @cold_production.yearOfManufacturing %>
-</p>
+<tr>
+  <th>Baujahr:</th>
+  <td><%= @cold_production.yearOfManufacturing %></td>
+  <th>Leistung:</th>
+  <td><%= @cold_production.capacity %></td>
+</tr>
 
-<p>
-  <b>Capacity:</b>
-  <%= @cold_production.capacity %>
-</p>
+<tr>
+  <th>Kälteleistung:</th>
+  <td><%= @cold_production.coolingCapacity %></td>
+  <th>Kühlmedium:</th>
+  <td><%= @cold_production.coolingMedium %></td>
+</tr>
 
-<p>
-  <b>Coolingcapacity:</b>
-  <%= @cold_production.coolingCapacity %>
-</p>
+<tr>
+  <th>Art der Rückkühlung:</th>
+  <td><%= @cold_production.rkWayOfCooling %></td>
+  <th>Medium (Rückkühlung):</th>
+  <td><%= @cold_production.rkCoolingMedium %></td>
+</tr>
 
-<p>
-  <b>Coolingmedium:</b>
-  <%= @cold_production.coolingMedium %>
-</p>
+<tr>
+  <th>Leistung (Rückkühlung):</th>
+  <td colspan=3><%= @cold_production.rkCapacity %></td>
+</tr>
+	<tr><th colspan=4 align="right"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), cold_productions_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_production_path(@cold_production) %></th></tr>
+</table>
 
-<p>
-  <b>Rkwayofcooling:</b>
-  <%= @cold_production.rkWayOfCooling %>
-</p>
+<h3>Kälteproduktion jährliche Erhebung</h3>
 
-<p>
-  <b>Rkcoolingmedium:</b>
-  <%= @cold_production.rkCoolingMedium %>
-</p>
+<table class="zentriert">
+  <tr>
+    <th>Betriebsstunden</th>
+    <th>Strombezug</th>
+    <th>Kältemenge</th>
+    <th>Massenstrom</th>
+    <!--<th>Vorlauftemperatur</th>
+    <th>Rücklauftemperatur</th>
+    <th>Temperatur ein</th>
+    <th>Temperatur aus</th>
+    <th>Wasserbedarf</th>-->
+    <th>Aktion</th>
 
-<p>
-  <b>Rkcapacity:</b>
-  <%= @cold_production.rkCapacity %>
-</p>
+  </tr>
 
+<% @cold_production_years.each do |cold_production_year| %>
+  <tr>
+    <td><%= cold_production_year.operatingHours %> h</td>
+    <td><%= cold_production_year.energyConsumption %> kWh/a</td>
+    <td><%= cold_production_year.coldAmount %> kWh/a</td>
+    <td><%= cold_production_year.massFlow %> kg/s</td>
+    <!--<td><%= cold_production_year.flowTemperature %></td>
+    <td><%= cold_production_year.returnTemperature %></td>
+    <td><%= cold_production_year.temperatureIn %></td>
+    <td><%= cold_production_year.temperatureOut %></td>
+    <td><%= cold_production_year.waterRequirement %></td>-->
 
-<%= link_to 'Edit', edit_cold_production_path(@cold_production) %> |
-<%= link_to 'Back', cold_productions_path %>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), cold_production_year %>
+    	<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_cold_production_year_path(cold_production_year)  %>
+    	<%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), cold_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %>
+	</td>
+  </tr>
+<% end %>
+<tr><th>Summe:</th><th colspan=3></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_cold_production_year_path %></th></tr>
+</table>

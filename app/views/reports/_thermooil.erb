@@ -1,0 +1,339 @@
+<!--thermo oil-->
+<% if @elements[:Thermoölverbrauch]=="true" %>
+    <!--thermo oil consumption-->
+    <h2>3.<%= epigraph_count %> Thermoöl</h2>
+    <% epigraph_count = epigraph_count + 1 %>
+    <h3>Thermoölverbrauch</h3>
+    <input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_thermo_oil_consumption" name="show_thermo_oil_consumption" value='true' checked="true" onclick='show_table_data(this.id,"thermo_oil_consumption_div")' />Datentabelle anzeigen
+    <div id="thermo_oil_consumption_div" align="center">
+      <div class="title">
+        <h4>Tab. <%= table_count %>. Thermoölverbrauch</h4>
+        <% table_count = table_count + 1 %>
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Nr.</th>
+          <th>Thermoölproduktion</th>
+          <th>Verbraucher</th>
+          <th>Thermoölverbrauch</th>
+          <th>Volumenstrom</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% item=1 %>
+        <% @thermo_oil_consumption_years.each do |thermo_oil_consumption_year| %>
+            <tr>
+              <td><%= item %></td>
+              <% item=item+1 %>
+              <td><%= thermo_oil_consumption_year.thermoOilProduction_id %></td>
+              <td><%= thermo_oil_consumption_year.machinery_id %></td>
+              <td><%= thermo_oil_consumption_year.thermoOilConsumption_id %></td>
+              <td class="volumeStream"><%= thermo_oil_consumption_year.volumeStream %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+      <br />
+      <table>
+        <thead>
+        <tr>
+          <th>Nr.</th>
+          <th>Flowtemperature</th>
+          <th>Returntemperature</th>
+          <th>Processtemperature</th>
+          <th>Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% item=1 %>
+        <% @thermo_oil_consumption_years.each do |thermo_oil_consumption_year| %>
+            <tr>
+              <td><%= item %></td>
+              <% item=item+1 %>
+              <td class="flowTemperature"><%= thermo_oil_consumption_year.flowTemperature %></td>
+              <td class="returnTemperature"><%= thermo_oil_consumption_year.returnTemperature %></td>
+              <td class="processTemperature"><%= thermo_oil_consumption_year.processTemperature %></td>
+              <td class="updated_at"><%= thermo_oil_consumption_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+    </div>
+
+    <div id="thermo_oil_consumption_divok" style="display: none">
+      <table id="thermo_oil_consumption_table" >
+        <thead>
+        <tr>
+          <th>Thermoölproduktion</th>
+          <th>Verbraucher</th>
+          <th>Thermoölverbrauch</th>
+          <th>Volumenstrom</th>
+          <th>Flowtemperature</th>
+          <th>Returntemperature</th>
+          <th>Processtemperature</th>
+          <th>Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @thermo_oil_consumption_years.each do |thermo_oil_consumption_year| %>
+            <tr>
+              <td><%= thermo_oil_consumption_year.thermoOilProduction_id %></td>
+              <td><%= thermo_oil_consumption_year.machinery_id %></td>
+              <td><%= thermo_oil_consumption_year.thermoOilConsumption_id %></td>
+              <td class="volumeStream"><%= thermo_oil_consumption_year.volumeStream %></td>
+              <td class="flowTemperature"><%= thermo_oil_consumption_year.flowTemperature %></td>
+              <td class="returnTemperature"><%= thermo_oil_consumption_year.returnTemperature %></td>
+              <td class="processTemperature"><%= thermo_oil_consumption_year.processTemperature %></td>
+              <td class="updated_at"><%= thermo_oil_consumption_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+    </div>
+    <div align="center" class ="canvas">
+      <canvas id="thermo_oil_consumption_chart" width="750px" height="300" >[No canvas support]</canvas>
+      <h4>Abb. <%= image_count %>. Thermoölverbrauch</h4>
+      <% image_count = image_count + 1 %>
+    </div>
+
+    <!--thermo_oil_pruduction-->
+    <h3>Thermoölproduktion</h3>
+    <input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_thermo_oil_pruduction" name="show_thermo_oil_pruduction" value='true' checked="true" onclick='show_table_data(this.id,"thermo_oil_pruduction_div")' />Datentabelle anzeigen
+    <div id="thermo_oil_pruduction_div" align="center">
+      <div class="title">
+        <h4>Tab. <%= table_count %>. Thermoölproduktion</h4>
+        <% table_count = table_count + 1 %>
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Nr.</th>
+          <th>Thermoölproduktion</th>
+          <th>Brennstoff- verbrauch</th>
+          <th>Jahresverbrauch</th>
+          <th>Betriebsstunden</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% item=1 %>
+        <% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+            <tr>
+              <td><%= item %></td>
+              <% item=item+1 %>
+              <td><%= thermo_oil_production_year.thermoOilProduction_id %></td>
+              <td class="fuelConsumption"><%= thermo_oil_production_year.fuelConsumption %></td>
+              <td class="kettleEnergyConsumption"><%= thermo_oil_production_year.kettleEnergyConsumption %></td>
+              <td class="operatingHours"><%= thermo_oil_production_year.operatingHours %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+      <br />
+      <table>
+        <thead>
+        <tr>
+          <th>Nr.</th>
+          <th>Kettleexitcompression</th>
+          <th>Kettleexittemperature</th>
+          <th>Thermooilamount</th>
+          <!--<th>Tempadditionalwater</th>-->
+          <th>Tempcombustionair</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% item=1 %>
+        <% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+            <tr>
+              <td><%= item %></td>
+              <% item=item+1 %>
+              <td class="kettleExitCompression"><%= thermo_oil_production_year.kettleExitCompression %></td>
+              <td class="kettleExitTemperature"><%= thermo_oil_production_year.kettleExitTemperature %></td>
+              <td class="thermoOilAmount"><%= thermo_oil_production_year.thermoOilAmount %></td>
+              <!--<td class="tempAdditionalWater"><%= thermo_oil_production_year.tempAdditionalWater %></td>-->
+              <td class="tempCombustionAir"><%= thermo_oil_production_year.tempCombustionAir %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+      <br />
+      <table>
+        <thead>
+        <tr>
+          <th>Nr.</th>
+          <th>Tempexhaustbeforewrg</th>
+          <th>Tempexhaustafterwrg</th>
+          <th>CO<sub>2</sub>-Gehalt Abgas</th>
+          <th>Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% item=1 %>
+        <% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+            <tr>
+              <td><%= item %></td>
+              <% item=item+1 %>
+              <td class="tempExhaustBeforeWRG"><%= thermo_oil_production_year.tempExhaustBeforeWRG %></td>
+              <td class="tempExhaustAfterWRG"><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>
+              <td class="carbonDioxideExhaust"><%= thermo_oil_production_year.carbonDioxideExhaust %></td>
+              <td class="updated_at"><%= thermo_oil_production_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+    </div>
+
+    <div id="thermo_oil_pruduction_divok" style="display: none">
+      <table id="thermo_oil_pruduction_table">
+        <thead>
+        <tr>
+          <th>Thermoölproduktion</th>
+          <th>Brennstoff- verbrauch</th>
+          <th>Jahresverbrauch</th>
+          <th>Betriebsstunden</th>
+          <th>Kettleexitcompression</th>
+          <th>Kettleexittemperature</th>
+          <th>Thermooilamount</th>
+          <!--<th>Tempadditionalwater</th>-->
+          <th>Tempcombustionair</th>
+          <th>Tempexhaustbeforewrg</th>
+          <th>Tempexhaustafterwrg</th>
+          <th>CO<sub>2</sub>-Gehalt Abgas</th>
+          <th>Updated_at</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @thermo_oil_production_years.each do |thermo_oil_production_year| %>
+            <tr>
+              <td><%= thermo_oil_production_year.thermoOilProduction_id %></td>
+              <td class="fuelConsumption"><%= thermo_oil_production_year.fuelConsumption %></td>
+              <td class="kettleEnergyConsumption"><%= thermo_oil_production_year.kettleEnergyConsumption %></td>
+              <td class="operatingHours"><%= thermo_oil_production_year.operatingHours %></td>
+              <td class="kettleExitCompression"><%= thermo_oil_production_year.kettleExitCompression %></td>
+              <td class="kettleExitTemperature"><%= thermo_oil_production_year.kettleExitTemperature %></td>
+              <td class="thermoOilAmount"><%= thermo_oil_production_year.thermoOilAmount %></td>
+              <!--<td class="tempAdditionalWater"><%= thermo_oil_production_year.tempAdditionalWater %></td>-->
+              <td class="tempCombustionAir"><%= thermo_oil_production_year.tempCombustionAir %></td>
+              <td class="tempExhaustBeforeWRG"><%= thermo_oil_production_year.tempExhaustBeforeWRG %></td>
+              <td class="tempExhaustAfterWRG"><%= thermo_oil_production_year.tempExhaustAfterWRG %></td>
+              <td class="carbonDioxideExhaust"><%= thermo_oil_production_year.carbonDioxideExhaust %></td>
+              <td class="updated_at"><%= thermo_oil_production_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+    </div>
+    <div align="center" class ="canvas">
+      <canvas id="thermo_oil_production_chart" width="750px" height="500" >[No canvas support]</canvas>
+
+      <h4>Abb. <%= image_count %>. Thermoölproduktion</h4>
+      <% image_count = image_count + 1 %>
+    </div>
+
+    <!--thermo_oil_distribution-->
+    <h3>Thermoölverteilung</h3>
+    <input type="checkbox" class='checkboxelement' class='checkboxelement' id="chx_thermo_oil_distribution" name="show_thermo_oil_distribution" value='true' checked="true" onclick='show_table_data(this.id,"thermo_oil_distribution_div")' />Datentabelle anzeigen
+    <div id="thermo_oil_distribution_div" align="center">
+      <div class="title">
+        <h4>Tab. <%= table_count %>. Thermoölverteilung</h4>
+        <% table_count = table_count + 1 %>
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Nr.</th>
+          <th>Compression</th>
+          <th>Flowtemperature</th>
+          <th>Returntemperature</th>
+          <th>Thermooilproduction</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% item=1 %>
+        <% @thermo_oil_distribution_years.each do |thermo_oil_distribution_year| %>
+            <tr>
+              <td><%= item %></td>
+              <% item=item+1 %>
+              <td class="compression"><%= thermo_oil_distribution_year.compression %></td>
+              <td class="flowTemperature"><%= thermo_oil_distribution_year.flowTemperature %></td>
+              <td class="returnTemperature"><%= thermo_oil_distribution_year.returnTemperature %></td>
+              <td><%= thermo_oil_distribution_year.thermoOilProduction_id %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+      <br />
+      <table>
+        <thead>
+        <tr>
+          <th>Nr.</th>
+          <th>Thermooilconsumption</th>
+          <th>Thermooildistribution</th>
+          <th>Datum</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% item=1 %>
+        <% @thermo_oil_distribution_years.each do |thermo_oil_distribution_year| %>
+            <tr>
+              <td><%= item %></td>
+              <% item=item+1 %>
+              <td><%= thermo_oil_distribution_year.thermoOilConsumption_id %></td>
+              <td><%= thermo_oil_distribution_year.thermoOilDistribution_id %></td>
+              <td class="updated_at"><%= thermo_oil_distribution_year.updated_at.strftime("%d.%m.%Y")  %></td>
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+    </div>
+
+    <div id="thermo_oil_distribution_divok" style="display: none">
+      <table id="thermo_oil_distribution_table">
+        <thead>
+        <tr>
+          <th>Compression</th>
+          <th>Flowtemperature</th>
+          <th>Returntemperature</th>
+          <th>Thermooilproduction</th>
+          <th>Thermooilconsumption</th>
+          <th>Thermooildistribution</th>
+          <th>Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @thermo_oil_distribution_years.each do |thermo_oil_distribution_year| %>
+            <tr>
+              <td class="compression"><%= thermo_oil_distribution_year.compression %></td>
+              <td class="flowTemperature"><%= thermo_oil_distribution_year.flowTemperature %></td>
+              <td class="returnTemperature"><%= thermo_oil_distribution_year.returnTemperature %></td>
+              <td><%= thermo_oil_distribution_year.thermoOilProduction_id %></td>
+              <td><%= thermo_oil_distribution_year.thermoOilConsumption_id %></td>
+              <td><%= thermo_oil_distribution_year.thermoOilDistribution_id %></td>
+              <td class="updated_at"><%= thermo_oil_distribution_year.updated_at.strftime("%d.%m.%Y")  %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table><br /><br />
+    </div>
+    <div align="center" class ="canvas">
+      <canvas id="thermo_oil_distribution_chart" width="750px" height="300" >[No canvas support]</canvas>
+
+      <h4>Abb. <%= image_count %>. Thermoölverteilung</h4>
+      <% image_count = image_count + 1 %>
+    </div>
+<% end %>

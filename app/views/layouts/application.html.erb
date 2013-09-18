@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Remo</title>
+
+	
+  <title>Remo Green - Energieeffizienz für Berliner KMU</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", :charset =>"utf-8" %>
   <%= csrf_meta_tag %>
 
   <script src='http://www.google.com/jsapi'></script>
@@ -23,62 +25,6 @@ myLayer.style.display="none";
 </head>
 <body>
 
-
-<!--<div id="header">
-	<div id="title"><br>
-		<h1>ReMo Green - Energieeffizienz für KMU</h1>
-		<h3>Standardsoftwaretool für die Energieeffizienz in Berliner Betrieben</h3>
-	</div>
-	<div id="logo">
-		<%= link_to image_tag("remo.png", height: 120) %>
-	</div>
-</div>
-
-<div id="strich"></div>
-
-<div id="navi">
-	<div id="feld" class="zentriert"><%= link_to "Startseite", '/welcome/index' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Internes", '/sites/internal' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Energieziele", '/sites/goals' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Stammdaten", '/sites/general' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Abrechnungen", contracts_path %></div>
-	div id="feld" align="center"><%# link_to "Verbräuche", '/sites/general' %></div>
-	<div id="feld" align="center"><%= link_to "Messungen", measurings_path %></div>
-	
-	<div id="feld" class="zentriert"><a href="#" class="button" onclick="javascript:showElement('v-menu')"><span>Querschnitt</span></a></div>
-	<ul id="v-menu" class="v-menu" style="display:none;">
-		<li><%= link_to 'Beleuchtung', lightings_path %></li>
-		<li><%= link_to 'Druckluft', '/sites/compressedAir' %></li>
-		<li><%= link_to 'Dampf', '/sites/steam' %></li>
-		<li><%= link_to 'Heißwasser', '/sites/hotWater' %></li>
-		<li><%= link_to 'Thermoöl', '/sites/thermoOil' %></li>
-		<li><%= link_to 'Kälte', '/sites/cold' %></li>
-		<li>Klima</li>
-		<li>Elektrische Antriebe</li>
-	</ul>
-
-    <div id="feld" class="zentriert"><%= link_to "Checklisten", '/sites/checklists_manager' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Controlling", '/sites/controlling' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Reporting", '/sites/reporting' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Benchmarking", '/benchmarking/index' %></div>
-	<div id="feld" class="zentriert"><%= link_to "Simulation", '/sites/simulation' %></div>
-</div>
-
-<div id="inhalt">
-<%# yield %>
-<br><br><br>
-</div>
-<div style="clear:both;"></div>
-<div id="strich"></div>
-	<div id="footer" class="zentriert">
-	Das Projekt "ReMo Green - Energieeffizienz für Berliner KMU" ist eine Initiative der IMBC GmbH und wurde gefördert durch Mittel des Europäischen Fond für regionale Entwicklung, 						
-	<br>bereitgestellt durch die Senatsverwaltung für Forschung, Technik und Wirtschaft in Berlin.<br><br>
-	<%= link_to image_tag("imbc.png", height: "60") %><%= link_to image_tag("spacer.png", width: "30") %>
-	<%= link_to image_tag("efre2.png", height: "50") %><%= link_to image_tag("spacer.png", width: "30") %>
-	<%= link_to image_tag("berlin.png", height: "40") %>
-	</div>
-</div>-->
-
 <div id="wrap">
 	<div id="header">
 		<table class="header"><tr>
@@ -87,40 +33,40 @@ myLayer.style.display="none";
 			<td class="header2"><%= link_to image_tag("remo.png", height: 120) %></td>
 	</tr></table>
 	</div>
-	<div id="strich"></div>
+	<div class="strich"></div>
 	<div id="sidebar">
-		<div id="feld" class="zentriert"><%= link_to "Startseite", '/welcome/index' %></div>
-		<div id="feld" class="zentriert"><%= link_to "Admin", '/sites/internal' %></div>
-		<!--<div id="feld" class="zentriert"><%= link_to "Energieziele", '/sites/goals' %></div>-->
-		<div id="feld" class="zentriert"><%= link_to "Stammdaten", '/sites/general' %></div>
-		<div id="feld" class="zentriert"><%= link_to "Abrechnungen", contracts_path %></div>
-		<div id="feld" align="center"><%= link_to "Messungen", measurings_path %></div>
+		<div class="feld"><%= link_to "Startseite", '/welcome/index' %></div>
+		<div class="feld"><%= link_to "Admin", '/sites/internal' %></div>
+		<!--<div id="feld"><%= link_to "Energieziele", '/sites/goals' %></div>-->
+		<div class="feld"><%= link_to "Stammdaten", '/sites/general' %></div>
+		<div class="feld"><%= link_to "Abrechnungen", contracts_path %></div>
+		<div class="feld"><%= link_to "Messungen", measurings_path %></div>
 
-		<div id="feld" class="zentriert"><a href="#" class="button" onclick="javascript:showElement('v-menu')"><span>Querschnitt</span></a></div>
-		<ul id="v-menu" class="v-menu" style="display:none;">
-			<li><%= link_to 'Beleuchtung', lightings_path %></li>
-			<li><%= link_to 'Druckluft', '/sites/compressedAir' %></li>
-			<li><%= link_to 'Dampf', '/sites/steam' %></li>
-			<li><%= link_to 'Heißwasser', '/sites/hotWater' %></li>
-			<li><%= link_to 'Thermoöl', '/sites/thermoOil' %></li>
-			<li><%= link_to 'Kälte', '/sites/cold' %></li>
+		<div class="feld"><a href="#" class="button" onclick="javascript:showElement('v-menu')"><span>Querschnitt</span></a></div>
+		<div id="v-menu" class="v-menu" style="display:none;">
+			<div class="feld2"><%= link_to 'Beleuchtung', lightings_path %></div>
+			<div class="feld2"><%= link_to 'Druckluft', '/sites/compressedAir' %></div>
+			<div class="feld2"><%= link_to 'Dampf', '/sites/steam' %></div>
+			<div class="feld2"><%= link_to 'Heißwasser', '/sites/hotWater' %></div>
+			<div class="feld2"><%= link_to 'Thermoöl', '/sites/thermoOil' %></div>
+			<div class="feld2"><%= link_to 'Kälte', '/sites/cold' %></div>
 			<!--<li>Klima</li>
 			<li>Elektrische Antriebe</li>-->
-		</ul>
+		</div>
 
-	    <div id="feld" class="zentriert"><%= link_to "Checklisten", '/sites/checklists_manager' %></div>
-		<div id="feld" class="zentriert"><%= link_to "Controlling", '/sites/controlling' %></div>
-		<div id="feld" class="zentriert"><%= link_to "Reporting", '/sites/reporting' %></div>
-		<div id="feld" class="zentriert"><%= link_to "Benchmarking", '/benchmarking/index' %></div>
-		<div id="feld" class="zentriert"><%= link_to "Simulation", '/sites/simulation' %></div>		<br>
-		
+	    <div class="feld"><%= link_to "Checklisten", '/sites/checklists_manager' %></div>
+		<!--<div class="feld"><%= link_to "Controlling", '/sites/controlling' %></div>-->
+		<div class="feld"><%= link_to "Berichte", '/sites/reporting' %></div>
+		<!--<div id="feld"><%= link_to "Benchmarking", '/benchmarking/index' %></div>
+		<div class="feld"><%= link_to "Simulation", '/sites/simulation' %></div>-->		
+		<br><br><br><br>
 	</div>
 	<div id="main">
 		<%= yield %>
 		<br><br><br>
 	</div>
 	<div style="clear:both;"></div>
-<div id="strich"></div>
+<div class="strich"></div>
 	<div id="footer" class="zentriert">
 		Das Projekt "ReMo Green - Energieeffizienz für Berliner KMU" ist eine Initiative der IMBC GmbH und wurde gefördert durch Mittel des Europäischen Fond für regionale Entwicklung, 						
 		<br>bereitgestellt durch die Senatsverwaltung für Forschung, Technik und Wirtschaft in Berlin.<br><br>

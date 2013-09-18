@@ -14,6 +14,7 @@ class ThermoOilProductionsController < ApplicationController
   # GET /thermo_oil_productions/1.json
   def show
     @thermo_oil_production = ThermoOilProduction.find(params[:id])
+    @thermo_oil_production_years = ThermoOilProductionYear.find_all_by_thermoOilProduction_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -14,6 +14,7 @@ class ColdProductionsController < ApplicationController
   # GET /cold_productions/1.json
   def show
     @cold_production = ColdProduction.find(params[:id])
+    @cold_production_years = ColdProductionYear.find_all_by_coldProduction_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

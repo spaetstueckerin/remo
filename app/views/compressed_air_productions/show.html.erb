@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<h3>Druckluftproduktion <%=@compressed_air_production.manufacturer%> <%= @compressed_air_production.version %></h3>
-
+<h2>Druckluftproduktion <%=@compressed_air_production.manufacturer%></h2>
+<p>An dieser Stelle sind alle Details Ihrer Druckluftproduktionsanlage aufgeführt. Weiter unten finden Sie zusätzlich die jährlichen Erhebungen für Ihre Anlage.</p>
 <table class="left">
 	<tr><th colspan=4> </th></tr>
 	<tr>
   		<th width=100>Hersteller</th>
-  		<td><%= @compressed_air_production.manufacturer %></td>
+  		<td width=275><%= @compressed_air_production.manufacturer %></td>
   		<th width=100>Bauart</th>
-  		<td><%= @compressed_air_production.version %></td>
+  		<td width=275><%= @compressed_air_production.version %></td>
 	</tr>
 	<tr>
   		<th>Baujahr</th>
@@ -24,7 +22,9 @@
 	</tr>
 	<tr>
   		<th>Kompressor Druckniveau</th>
-  		<td colspan=3><%= @compressed_air_production.pressureSettling %> bar Ü</td>
+  		<td><%= @compressed_air_production.pressureSettling %> bar Ü</td>
+  		<th></th>
+  		<td></td>
 	</tr>
 	<tr>
   		<th>Einschaltdruck</th	>
@@ -52,7 +52,9 @@
 	</tr>
 	<tr>
   		<th>Kühlmedium:</th>
-  		<td colspan=3><%= @compressed_air_production.coolingMedium %></td>
+  		<td><%= @compressed_air_production.coolingMedium %></td>
+  		<th></th>
+  		<td></td>
 	</tr>
 	<tr>
   		<th>Zuluft (woher)</th>
@@ -68,13 +70,16 @@
 	</tr>
 	<tr>
   		<th>Wartung Kontaktdaten</th>
-  		<td colspan=3><%= @compressed_air_production.support %></td>
+  		<td><%= @compressed_air_production.support %></td>
+  		<th></th>
+  		<td></td>
 	</tr>
 	<tr><th colspan=4 align="right"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), compressed_air_production_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_production_path(@compressed_air_production) %></th></tr>
 </table>
 <br><br>
 
-<h3>Jährliche Erhebungen für diesen Kompressor</h3>
+<h3>Druckluftproduktion - jährliche Erhebungen</h3>
+<p>Hier finden Sie alle jährlichen Erhebungen des Kompressors. Klicken Sie auf das grüne Kreuz, um eine neue Erhebung hinzuzufügen.</p>
 <table class="zentriert">
   <tr>
     <th>Jahr</th>
@@ -128,10 +133,186 @@
 			Gesamte Auslastung der Anlage ergibt sich aus:<br>
 			Lasstunden / Betriebbstunden * 100
 		</div>
-	</th><th colspan=3></th></tr>
+	</th><th colspan=2></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_production_year_path %></th></tr>
 </table>
+<br><br>
 
-<br />
+<h3>Druckluftverteilung</h3>
+<p>In dieser Tabelle finden Sie alle Angaben zur Druckluftverteilung dieser Anlage. Klicken Sie auf den Stift, um diese Angaben zu ändern.</p>
+<table class="zentriert">
+  <tr>
+    <th>Kompressor</th>
+    <th>Hersteller</th>
+    <th>Baujahr</th>
+    <th>Leistung</th>
+    <th>Typ</th>
+    <!--<th>Zusatz</th>-->
+    <th>Volumen</th>
+    <th>Ort (DLS)</th>
+    <!--<th>Leak</th>
+    <th>Pressureloss</th>
+    <th>Mainline</th>
+    <th>Stubline</th>
+    <th>Branchline</th>
+    <th>Mainlinel</th>
+    <th>Stublinel</th>
+    <th>Branchlinel</th>
+    <th>Material</th>-->
+    <th width=100>Aktion</th>
 
-<%= link_to 'Jährliche Drucklufterzeugungsdaten anlegen', new_compressed_air_production_year_path %>
-<br><br><br><br><br><br><br><br><br>
+  </tr>
+
+<% @compressed_air_distributions.each do |compressed_air_distribution| %>
+  <tr>
+    <% compressor = CompressedAirProduction.find_by_id(compressed_air_distribution.compressor_id)%>
+    <td><%= compressor.manufacturer %></td>
+    <td><%= compressed_air_distribution.manufacturer %></td>
+    <td><%= compressed_air_distribution.yearOfManufacturing %></td>
+    <td><%= compressed_air_distribution.capacity %> kW</td>
+    <td><%= compressed_air_distribution.compressedAirDryerType %></td>
+    <!--<td><%= compressed_air_distribution.addons %></td>-->
+    <td><%= compressed_air_distribution.volume %> m&sup3;</td>
+    <% location = Location.find_by_id(compressed_air_distribution.location_id)%>
+    <td><%= location.name %></td>
+    <!--<td><%= compressed_air_distribution.leak %></td>
+    <td><%= compressed_air_distribution.pressureLoss %></td>
+    <td><%= compressed_air_distribution.mainline %></td>
+    <td><%= compressed_air_distribution.stubline %></td>
+    <td><%= compressed_air_distribution.branchline %></td>
+    <td><%= compressed_air_distribution.mainlineL %></td>
+    <td><%= compressed_air_distribution.stublineL %></td>
+    <td><%= compressed_air_distribution.branchlineL %></td>
+    <td><%= compressed_air_distribution.material %></td>-->
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_distribution %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_distribution_path(compressed_air_distribution) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_distribution, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+<tr><th colspan=7></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_distribution_path %></th></tr>
+</table>
+<br><br>
+
+<h3>Druckluftverteilung - jährliche Erhebungen</h3>
+<p>Hier finden Sie ine Tabelle der jährlichen Erhebungen für die Druckluftverteilung dieser Anlage. Um mehr Details zu sehen, klicken Sie bitte auf das Seitensymbol. Um eine neue Erhebung anzulegen, klicken Sie auf das grüne Kreuz.</p>
+<table class="zentriert">
+  <tr>
+    <th>Jahr</th>
+    <th>Leckagen</th>
+    <th>Druckverlust</th>
+    <th width=100>Aktion</th>
+  </tr>
+
+<% @compressed_air_distribution_years.each do |compressed_air_distribution_year| %>
+  <tr>
+    <td><%= compressed_air_distribution_year.year_id %></td>
+    <td><%= compressed_air_distribution_year.leak %> %</td>
+    <td><%= compressed_air_distribution_year.pressureLoss %> bar</td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_distribution_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_distribution_year_path(compressed_air_distribution_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_distribution_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  
+  </tr>
+<% end %>
+<tr><th colspan=3></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_distribution_year_path %></th></tr>
+</table>
+<br><br>
+
+<h3>Druckluftverbrauch</h3>
+<p>An dieser Stelle sind alle Druckluftverbraucher dieser Anlage gelistet. Um einen neuen Druckluftverbraucher hinzuzufügen, klicken Sie bitte auf das grüne Pluszeichen.</p>
+<table class="zentriert">
+  <tr>
+    <th>Maschine</th>
+    <th>Kompressor</th>
+    <th width="50">Benötigtes Druckniveau</th>
+    <th>Benötigte Qualität</th>
+    <th width="50">Volumenstrom Nennwert</th>
+    <!--<th>Volumenstrom Min</th>
+    <th>Volumenstrom Max</th>-->
+    <th>Bedarfsart</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @compressed_air_consumptions.each do |compressed_air_consumer| %>
+  <tr>
+    <td><%= Machinery.find_by_id(compressed_air_consumer.machinery_id).name %></td>
+    <td><%= CompressedAirProduction.find_by_id(compressed_air_consumer.compressor_id).manufacturer %></td>
+    <td><%= compressed_air_consumer.neededPressureSettling %> bar Ü</td>
+    <td><%= compressed_air_consumer.neededQuality %></td>
+    <td><%= compressed_air_consumer.volumeStreamNom %> m&sup3;/min</td>
+    <!--<td><%= compressed_air_consumer.volumeStreamMin %></td>
+    <td><%= compressed_air_consumer.volumeStreamMax %></td>-->
+    <td><%= compressed_air_consumer.requirementType %></td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_consumer %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_consumer_path(compressed_air_consumer) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_consumer, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+<tr><th colspan=6></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_consumer_path %></th></tr>
+</table>
+<br><br>
+
+<h3>Druckluftverbraucher - jährliche Erhebungen</h3>
+<p>Hier sind die jährlichen Erhebungen für den Druckluftverbrauch dieser Anlage aufgelistet. Um eine neue Erhebung aufzunehmen klicken Sie bitte das grüne Pluszeichen.</p>
+<table  class="zentriert">
+  <tr>
+	<th>Jahr</th>
+	<th>Kompressor</th>
+	<th>Verbraucher</th>
+    <th>Verbrauch</th>
+    <th>Aktion</th>
+  </tr>
+
+<% @compressed_air_consumption_years.each do |compressed_air_consumption_year| %>
+  <tr>
+	<td><%= compressed_air_consumption_year.year_id %></td>
+	<td><%= CompressedAirProduction.find_by_id(compressed_air_consumption_year.compressor_id).manufacturer %></td>
+	<td><%= Machinery.find_by_id(compressed_air_consumption_year.compressed_air_consumer_id).name%></td>
+    <td><%= compressed_air_consumption_year.verbrauch %> m&sup3;/a</td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_consumption_year %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_consumption_year_path(compressed_air_consumption_year) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_consumption_year, method: :delete, data: { confirm: 'Are you sure?' }  %>
+
+  </tr>
+<% end %>
+<tr><th colspan=4></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_consumption_year_path %></th></tr>
+</table>
+<br><br>
+
+<h3>Bedarfszeiträume für Druckluft</h3>
+<p>An dieser Stelle finden Sie die eingetragenen Bedarfszeiträume für Druckluft von dieser Anlage. Bitte klicken Sie auf das grüne Plus, um einen neuen Bedarfszeitraum anzulegen.</p>
+<table class="zentriert">
+  <tr>
+    <th>Verbraucher</th>
+    <th>Datum</th>
+    <th>Von</th>
+    <th>Bis</th>
+    <th>Aktion</th>
+  </tr>
+<% @compressed_air_consumptions.each do |data| %>
+<% @compressed_air_demands = CompressedAirDemand.find_all_by_compressed_air_consumer_id(data.id)%>
+<% @compressed_air_demands.each do |compressed_air_demand| %>
+<tr>
+    <td>
+		<% compressed_air_demand.compressed_air_consumer_id%>
+		<% machinery = CompressedAirConsumer.find_by_id(compressed_air_demand.compressed_air_consumer_id).machinery_id %>
+		<%= Machinery.find_by_id(machinery).name %>
+	</td>
+    <td><%= compressed_air_demand.demandDate.strftime('%d.%m.%Y') %></td>
+    <td><%= compressed_air_demand.timeFrom.strftime('%H:%M') %> Uhr</td>
+    <td><%= compressed_air_demand.timeTo.strftime('%H:%M') %> Uhr</td>
+    
+    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), compressed_air_demand %>
+    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_compressed_air_demand_path(compressed_air_demand) %>
+    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_demand, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  </tr>
+<% end %>
+<% end %>
+	<tr>
+		<th colspan=4></th>
+		<th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_compressed_air_demand_path %></th>
+	</tr>
+</table>

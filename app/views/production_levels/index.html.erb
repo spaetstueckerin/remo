@@ -1,10 +1,12 @@
-<h1>Produktionsstufen</h1>
+<h2>Produktionsstufen</h2>
+
+<p>An dieser Stelle sind alle Produktionslevel gelistet.</p>
 
 <table>
   <tr>
     <th>Name</th>
     <th>Beschreibung</th>
-    <th></th>
+    <th width=100>Aktion</th>
   </tr>
 
 <% @production_levels.each do |production_level| %>
@@ -12,14 +14,11 @@
     <td><%= production_level.name %></td>
     <td><%= production_level.description %></td>
 
-    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), production_level %>
+    <td align="center"><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), production_level %>
     <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_production_level_path(production_level) %>
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), production_level, method: :delete, data: { confirm: 'Are you sure?' }   %></td>
 
   </tr>
 <% end %>
+<tr><th colspan=2></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_production_level_path %></th><tr>
 </table>
-
-<br />
-
-<%= link_to 'Neue Produktionsstufe anlegen', new_production_level_path %>

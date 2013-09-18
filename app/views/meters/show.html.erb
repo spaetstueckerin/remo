@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-<h1>Zähler</h1>
+<h2>Zähler</h2>
+<p>An dieser Stelle finden Sie alle durch Sie eingetragenen Zähler. Die Grafik zeigt die Verbräuche innerhalb Ihrer Ablesungen an. Wenn Sie regelmäßig die Zählerdaten erfassen ergibt sich an dieser Stelle ein Verbrauchsschema.</p>
 
   <!--<b>Enterprise:</b>-->
   <%# @meter.enterprise_id %>
@@ -7,6 +7,7 @@
 <%= render_chart @chart, 'chart' %>
 </div>
 <table>
+	<tr><th colspan=2></th></tr>
 	<tr>
   		<td width=100>Standort:</td>
   		<td><%= Location.find_by_id(@meter.location_id).name %></td>
@@ -28,6 +29,6 @@
   		<td><%= @meter.description %></td>
 	</tr>
 	<tr>
-		<td colspan=2 align="right"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), meters_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_meter_path(@meter) %></td>
+		<th colspan=2 align="right"><%= link_to image_tag("zurueck.png", size: "20x20", alt: 'Zurück'), meters_path %>   <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_meter_path(@meter) %></th>
 	</tr>
 </table>

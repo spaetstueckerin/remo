@@ -1,205 +1,84 @@
-<h2>Energiebericht</h2>
+<%  # encoding: UTF-8 %>
+<h2>Berichte erstellen</h2>
+<p>An dieser Stelle können Sie benutzerdefinierte Berichte erstellen lassen. Wählen Sie dazu die Berichtelemente aus, die Sie anzeigen lassen wollen. Anschließend können Sie den Bericht auch als PDF exportieren.</p>
 
-<h3>Entwicklung der Energiekosten</h3>
-
-<p>In dieser Grafik sehen Sie Ihre Stromverbräuche und die Stromkosten in Verhältnis zueinander. Steigende Strompreise können dieses Verhältnis beeinflussen.</p>
-
-<% data_table = GoogleVisualr::DataTable.new %>
-<% data_table.new_column('string', 'Zeit') %>
-<% data_table.new_column('number', 'Energiekosten in EUR')%>
-<% data_table.new_column('number', 'Energieverbrauch in kWh')%>
-
-<% value =0; %>
-<% consumption =0; %>
-<% @energy = Bill.all.group_by { |b| b.date.year }%>
-<% @energy.sort.each do |year, bills| %>
-	<% for bill in bills %>
-	<% value = value + bill.value %>
-	<% consumption = consumption + bill.consumption %>
-	<% end %>
-	<% data_table.add_row(["#{year}",value, consumption])%>
-<% end %>
-
-<%  opts = { :width => 800, :height => 250, :title => 'Energieverbrauch und Energiekosten', :legend => 'bottom' }%>
-<% @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts) %>
-
-<div id='chart' align="center" style='width: 800px; height: 240px;'></div>
-<%= render_chart @chart, 'chart' %>
-<br><br>
-<h3>Energieeffizienzmaßnahmen</h3>
-
-<p>An dieser Stelle wird der Fortschritt Ihrer Energieeffizienzmaßnahmen angezeigt. Um Details der Maßnahmen anzusehen, wehcseln Sie bitte in der Rubrik "Checklisten". </p>
-
-<% anteil = 0 %>
-<% summe = 0 %>
-<% runde = 0 %>
-<table>
-<% ChecklistProperty.all.each do |checklist_property| %>
-<% checklistDefinition = ChecklistDefinition.find(checklist_property.checklist_definition_id) %>
-<tr>
-<th width=100 align="left"><%= checklistDefinition.name %>:</th>
-		<td><% if checklistDefinition.checktype == "Ja und Nein" %>
-			<% gesamt = Checklist.find_all_by_checklist_property_id(checklist_property.id) %>
-			<% alle = gesamt.count %>
-			<% gesamt.each do |gesamt| %>
-				<% if gesamt.boolean_value == true %>
-					<% gesamt.boolean_value %>
-					<% anteil = anteil+1 %>
-					<% else %>
-					<% end %>
-				<% end %><% anteil %>
-			<% prozent = (anteil.to_f/alle.to_f)*100 %>
-			<% final = number_with_precision(prozent.to_f, :precision => 0)%>
-			<% summe = summe + final.to_f %>
-			<% runde = runde + 1 %>
-			<%= progress_bar(final, :color => 'info', :tiny=> true, :rounded => true) %></td>
-			<% anteil = 0 %>
-		<% else %>
-
-		<% end %>
-</tr>
-	<% end %>
-	<tr><th align="left">Gesamt:</th><th><%= progress_bar(summe/runde.to_f, :color => 'info', :tiny=> true, :rounded => true) %></th></tr>
-	
+<table xmlns="http://www.w3.org/1999/html">
+  <tr>
+    <td><%= link_to "Lastenmanagement ", '/reports/lastenmanagement' %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "Energieumrechnungszahlen und CO2-Emissionsfaktoren", '/reports/norm_report' %></td>
+  </tr>
 </table>
 
-<!--<h1>Lastenmanagement</h1>
-
-<%## @machinery = Machinery.all %>
-<%## @lighting = Lighting.all %>
-<%## @compressedAirProduction = CompressedAirProduction.all %>
-<%## @steamProduction = SteamProduction.all %>
-<%## @hotWaterProduction = HotWaterProduction.all %>
-<%## @thermoOilProduction = ThermoOilProduction.all%>
-<%## @coldProduction = ColdProduction.all%>
-
-<table class="zentriert">
-	<th>Maschine</th>
-	<th width=100>Leistung</th>
-	<th>Abschaltbarer Anteil</th>
-	<th>Abschaltbare Leistung</th>
-	<th>Abschaltdauer</th>
-	<th>Anlaufzeit bei Abschaltung</th>
-
-	<%## sumCapacity = 0 %>
-	<%## sumDetach = 0 %>
-
-	<tr><td colspan=6>Maschinen</td></tr>
-
-	<%## @machinery.each do |machine| %>
-	<tr>		
-		<td><%## machine.name %></td>
-		<td><%## machine.capacity %> kW</td>
-		<td><%## machine.detachablePart %> %</td>
-		<td><%## sumDetach1 = machine.capacity * machine.detachablePart/100 %> kW</td>
-		<td><%## machine.detachDuration %> min</td>
-		<td><%## machine.detachTerm %> min</td>
-		<%## sumCapacity= sumCapacity + machine.capacity %>
-		<%## sumDetach = sumDetach + sumDetach1 %>
-	</tr>
-	<%## end %>
-	<tr><td colspan=6>Beleuchtung</td></tr>
-
-	<%## @lighting.each do |light|%>
-	<tr>
-		<td><%## Location.find_by_id(light.location_id).name %></td>
-		<td><%## light.installedPower %> kW</td>
-		<td><%## light.detachablePart %> %</td>
-		<td><%## sumDetach2 = light.installedPower * light.detachablePart/100 %> kW</td>
-		<td><%## light.detachDuration %> min</td>
-		<td><%## light.detachTerm %> min</td>
-		<%# sumCapacity = sumCapacity + light.installedPower %>
-		<%# sumDetach = sumDetach + sumDetach2 %>
-	</tr>
-
-	<%## end %>
-
-	<tr><td colspan=6>Druckluftkessel</td></tr>
-
-	<%## @compressedAirProduction.each do |com|%>
-	<tr>
-		<td><%## com.manufacturer %></td>
-		<td><%## com.capacity %> kW</td>
-		<td><%## com.detachablePart %> %</td>
-		<td><%## sumDetach2 = com.capacity * com.detachablePart/100 %> kW</td>
-		<td><%## com.detachDuration %> min</td>
-		<td><%## com.detachTerm %> min</td>
-		<%# sumCapacity = sumCapacity + com.capacity %>
-		<%# sumDetach = sumDetach + sumDetach2 %>
-	</tr>
-
-	<%## end %>
-
-	<tr><td colspan=6>Dampfkessel</td></tr>
-
-	<%## @steamProduction.each do |steam|%>
-	<tr>
-		<td><%## steam.kettleName %></td>
-		<td><%## steam.kettleCapacity %> kW</td>
-		<td><%## steam.detachablePart %> %</td>
-		<td><%## sumDetach2 = steam.kettleCapacity * steam.detachablePart/100 %> kW</td>
-		<td><%## steam.detachDuration %> min</td>
-		<td><%## steam.detachTerm %> min</td>
-		<%# sumCapacity = sumCapacity + steam.kettleCapacity %>
-		<%# sumDetach = sumDetach + sumDetach2 %>
-	</tr>
-
-	<%## end %>
-	<tr><td colspan=6>Heißwasserkessel</td></tr>
-
-	<%## @hotWaterProduction.each do |hot|%>
-	<tr>
-		<td><%## hot.kettleName %></td>
-		<td><%## hot.kettleCapacity %> kW</td>
-		<td><%## hot.detachablePart %> %</td>
-		<td><%## sumDetach2 = hot.kettleCapacity * hot.detachablePart/100 %> kW</td>
-		<td><%## hot.detachDuration %> min</td>
-		<td><%## hot.detachTerm %> min</td>
-		<%# sumCapacity = sumCapacity + hot.kettleCapacity %>
-		<%# sumDetach = sumDetach + sumDetach2 %>
-	</tr>
-
-	<%## end %>
-
-	<tr><td colspan=6>Termoöl</td></tr>
-
-	<%## @thermoOilProduction.each do |thermo|%>
-	<tr>
-		<td><%## thermo.kettleName %></td>
-		<td><%## thermo.kettleCapacity %> kW</td>
-		<td><%## thermo.detachablePart %> %</td>
-		<td><%## sumDetach2 = thermo.kettleCapacity * thermo.detachablePart/100 %> kW</td>
-		<td><%## thermo.detachDuration %> min</td>
-		<td><%## thermo.detachTerm %> min</td>
-		<%# sumCapacity = sumCapacity + thermo.kettleCapacity %>
-		<%# sumDetach = sumDetach + sumDetach2 %>
-	</tr>
-
-	<%## end %>
-	
-	<tr><td colspan=6>Kälteanlagen</td></tr>
-
-	<%## @coldProduction.each do |cold|%>
-	<tr>
-		<td><%## cold.manufacturer %></td>
-		<td><%## cold.capacity %> kW</td>
-		<td><%## cold.detachablePart %> %</td>
-		<td><%## sumDetach2 = cold.capacity * cold.detachablePart/100 %> kW</td>
-		<td><%## cold.detachDuration %> min</td>
-		<td><%## cold.detachTerm %> min</td>
-		<%# sumCapacity = sumCapacity + cold.capacity %>
-		<%# sumDetach = sumDetach + sumDetach2 %>
-	</tr>
-
-	<%## end %>
-
-	<tr>
-		<td><b>Summe:</b></td>
-		<td><b><%## sumCapacity %> kW </b></td>
-		<td></td>
-		<td><b><%## sumDetach %> kW </b></td>
-		<td></td>
-		<td></td>
-	</tr>
-</table>
-<br><br>-->
+<form id=full_report method="post" action="/reports/full_report">
+  <table id="data">
+    <tr>
+      <th colspan="2">Schwerpunkte des Energieberichts auswählen:</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" value=false id="Kälteverbrauch" name="Kälteverbrauch" />
+        <input type="checkbox" value=true id="Kälteverbrauch" name="Kälteverbrauch" checked="true" />
+        <label for="Kälteverbrauch">Kälteverbrauch</label>
+      </td>
+      <td>
+        <input type="hidden" value=false id="Druckluftverbrauch" name="Druckluftverbrauch" />
+        <input type="checkbox" value=true id="Druckluftverbrauch" name="Druckluftverbrauch" checked="true" />
+        <label for="Druckluftverbrauch">Druckluftverbrauch</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" value=false id="Heißwasserverbrauch" name="Heißwasserverbrauch" />
+        <input type="checkbox" value=true id="Heißwasserverbrauch" name="Heißwasserverbrauch" checked="true" />
+        <label for="Heißwasserverbrauch">Heißwasserverbrauch</label>
+      </td>
+      <td>
+        <input type="hidden" value=false id="Beleuchtungsanlagen" name="Beleuchtungsanlagen" />
+        <input type="checkbox" value=true id="Beleuchtungsanlagen" name="Beleuchtungsanlagen" checked="true"/>
+        <label for="Beleuchtungsanlagen">Beleuchtungsanlagen</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" value=false id="Dampfverbrauch" name="Dampfverbrauch" />
+        <input type="checkbox" value=true id="Dampfverbrauch" name="Dampfverbrauch"checked="true" />
+        <label for="Dampfverbrauch">Dampfverbrauch</label>
+      </td>
+      <td>
+        <input type="hidden" value=false id="Thermoölverbrauch" name="Thermoölverbrauch" />
+        <input type="checkbox" value=true id="Thermoölverbrauch" name="Thermoölverbrauch"checked="true"/>
+        <label for="Thermoölverbrauch">Thermoölverbrauch</label>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">Checklisten</th>
+    </tr>
+    <% total_element = ChecklistDefinition.count %>
+    <%  item = ChecklistDefinition.all.to_a %>
+    <% 0.step(total_element-1, 2) do |i| %>
+        <tr>
+          <td>
+            <input type="hidden" value=false id="<%=item[i].name%>" name="<%=item[i].name%>" />
+            <input type="checkbox" value=true id="<%=item[i].name%>" name="<%=item[i].name%>"checked="true"/>
+            <label for="<%=item[i].name%>"><%=item[i].name%></label>
+          </td>
+          <td>
+            <% if item[i+1] %>
+                <input type="hidden" value=false id="<%=item[i+1].name%>" name="<%=item[i+1].name%>" />
+                <input type="checkbox" value=true id="<%=item[i+1].name%>" name="<%=item[i+1].name%>"checked="true"/>
+                <label for="<%=item[i+1].name%>"><%=item[i+1].name%></label>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    <tr>
+      <th colspan="2">
+        <div align="center" margin="80px">
+          <input id="submitbutton" type="submit" value="Energiebericht erzeugen" name="submit"/>
+        </div>
+      </th>
+    </tr>
+  </table>
+</form>

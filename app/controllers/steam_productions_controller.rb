@@ -14,6 +14,10 @@ class SteamProductionsController < ApplicationController
   # GET /steam_productions/1.json
   def show
     @steam_production = SteamProduction.find(params[:id])
+    @steam_production_years = SteamProductionYear.find_all_by_steamProductionId(params[:id], :order =>"year_id DESC")
+    @steam_distributions = SteamDistribution.find_all_by_steamProduction_id(params[:id])
+    @steam_distribution_years = SteamDistributionYear.find_all_by_steamProduction_id(params[:id])
+    @steam_consumptions = SteamConsumption.find_all_by_steamProduction_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

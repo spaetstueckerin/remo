@@ -37,7 +37,7 @@ float:left;
 margin-left: 20px;
 margin-top: 20px;
 margin-bottom: 20px;
-width:500px;
+width: 800px;
 background-color: #ffffff;
 }
 #sidebar {
@@ -94,10 +94,24 @@ padding: 10px;
 	background-color: #ffffff;
 }
 
-#feld
+.feld
 {
   width: 100px;
+	text-align: center;
   background-color: #e1e2d4;
+	font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+	box-shadow: inset 0px 0px 3px #888;
+	-moz-border-radius: 15px;
+	border-radius: 3px;
+}
+
+.feld2
+{
+  width: 100px;
+	text-align: center;
+  background-color: #F1F2EB;
 	font-weight: bold;
   margin: 10px;
   padding: 10px;
@@ -110,7 +124,7 @@ padding: 10px;
 {
   width: 100px;
   background-color: #F1F2EB;
-font-size: 10px;
+	font-size: 10px;
   margin: 10px;
   padding: 10px;
 }
@@ -128,7 +142,7 @@ h1
   padding: 10px;
 }
 
-#strich
+.strich
 {
 	background-color: #C3C4BE;
 	height: 6px;
@@ -156,6 +170,36 @@ p
 	width: 750px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+/*Für die kleinen Diagramme im Bericht*/
+#holder
+{
+    width:710px;
+}
+
+.spacer
+{
+margin: 50px;
+}
+ 
+/* Style for each floated item */
+.item
+{
+    /* Give the distance for floated items */
+    margin:2px 2px 2px 2px;
+    float:left;
+    /* Width and height for each item */
+    width:100px;
+    height:100px;
+    /* Text align and background color */
+    text-align:center;
+}
+ 
+/* Clear the "float" style */
+#clearer
+{
+    clear:both;
 }
   
 .zentriert
@@ -247,4 +291,39 @@ p #warning
    padding:3px;
    border:1px solid #5e5e5e;
    background-color:#F1F2EB;
+}
+
+#data td{
+    text-align: left;
+}
+.data td{
+    text-align: left;
+}
+.canvas {
+
+    width: 750px;
+    align: center;
+}
+
+div.chart5 td
+{
+  background-color: #ffffff;
+	text-align: center;
+}
+
+div.chart5 div
+{
+	width: 100%;
+}
+
+ul.v-menu ul
+{
+	list-style-type: none;
+	list-style-position: 0px;
+}
+
+ul.v-menu li
+{
+	list-style-type: none;
+	list-style-position: 0px;
 }

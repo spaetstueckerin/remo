@@ -1,0 +1,174 @@
+<!-- Abschnitt 4 Checklisten-->
+<h2><a name="Erfüllung">4. Erfüllung der Maßnahmen zur Energieeffizienz</a></h2>
+<% i=0 %>
+<% @checklist_definition.each do |checklist_definition| %>
+    <% if @chklist[i]=="true" %>
+        <%  @checklist_property=ChecklistProperty.find_all_by_checklist_definition_id(checklist_definition).last %>
+        <% if @checklist_property %>
+            <%  @checklist=Checklist.find_all_by_checklist_property_id(@checklist_property.id) %>
+            <% total = @checklist.count %>
+            <%  if (checklist_definition.checktype=='Ja und Nein')%>
+                <% qtytrue=0 %>
+                <% @checklist.each do |chk| %>
+                    <% if (chk.boolean_value) %>
+                        <% qtytrue= qtytrue+1 %>
+                    <% end %>
+                <% end %>
+                <% qtyfalse = total - qtytrue  %>
+                <% ptrue = (Float(qtytrue)/Float(total))*100 %>
+                <% pfalse = (Float(qtyfalse)/Float(total))*100 %>
+                <div class="title" align="center">
+                  <h4>Tab. <%= table_count %>. Checkliste <%= checklist_definition.name %></h4>
+                  <% table_count = table_count + 1 %>
+
+                <table id="table-<%= checklist_definition.name %>">
+                  <tr>
+                    <th width="180px">Checkliste:</th>
+                    <td colspan="2"><%= checklist_definition.name %></td>
+                  </tr>
+                  <tr>
+                    <th width="180px">Datum:</th>
+                    <td colspan="2"> <%= @checklist_property.datum %> </td>
+                  </tr>
+                  <tr>
+                    <th width="180px"></th>
+                     <th>Anzahl</th>
+                     <th>Prozent</th>
+                  </tr>
+                  <tr>
+                    <th>Ja</th>
+                    <td><%= qtytrue %></td>
+                    <td><%= '%.2f' % ptrue  %></td>
+                  </tr>
+                  <tr>
+                    <th>Nein</th>
+                    <td><%= qtyfalse%></td>
+                    <td><%= '%.2f' % pfalse%></td>
+
+                  </tr>
+
+                </table><br /><br />
+                </div>
+                <br />
+            <% end %>
+            <!--Opt-->
+            <%  if (checklist_definition.checktype=='Opt')%>
+                <% qtytrue=0 %>
+                <% qtyopttrue=0 %>
+                <% @checklist.each do |chk| %>
+                    <% if (chk.boolean_value) %>
+                        <% qtytrue= qtytrue+1 %>
+                    <% end %>
+                    <% if (chk.string_value=="true") %>
+                        <% qtyopttrue = qtyopttrue+1 %>
+                    <% end %>
+                <% end %>
+                <% qtyfalse = total - qtytrue  %>
+                <% qtyoptfalse = total - qtyopttrue  %>
+                <% ptrue = (Float(qtytrue)/Float(total))*100 %>
+                <% pfalse = (Float(qtyfalse)/Float(total))*100 %>
+                <% popttrue = (Float(qtyopttrue)/Float(total))*100 %>
+                <% poptfalse = (Float(qtyoptfalse)/Float(total))*100 %>
+                <div class="title" align="center">
+                  <h4>Tab. <%= table_count %>. Checkliste <%= checklist_definition.name %></h4>
+                  <% table_count = table_count + 1 %>
+
+                <table id="table-<%= checklist_definition.name %>">
+                  <tr>
+                    <th width="240px">Checkliste:</th>
+                    <td colspan="2"><%= checklist_definition.name %></td>
+                  </tr>
+                  <tr>
+                    <th width="240px">Datum:</th>
+                    <td colspan="2"> <%= @checklist_property.datum %> </td>
+                  </tr>
+                  <tr>
+                    <th width="240px"></th>
+                    <th>Anzahl</th>
+                    <th>Prozent</th>
+
+                  </tr>
+                  <tr>
+                    <th width="240px">Ja</th>
+                    <td><%= qtytrue %></td>
+                    <td><%= '%.2f' % ptrue %></td>
+
+                  </tr>
+                  <tr>
+                    <th width="240px">Nein</th>
+                    <td><%= qtyfalse %></td>
+                    <td><%= '%.2f' % pfalse %></td>
+                  </tr>
+                  <tr>
+                    <th width="240px">Opt</th>
+                    <td><%= qtyopttrue %></td>
+                    <td><%= '%.2f' % popttrue %></td>
+                  </tr>
+
+                </table><br /><br />
+                </div>
+                <br />
+            <% end %>
+            <!--S M L-->
+            <%  if (checklist_definition.checktype=='S M L')%>
+                <% qtyS=0 %>
+                <% qtyM=0 %>
+                <% qtyL=0 %>
+                <% @checklist.each do |chk| %>
+                    <% case %>
+<% when chk.string_value=='S' then qtyS = qtyS+1 %>
+                    <% when chk.string_value=='M' then qtyM = qtyM+1 %>
+                    <% when chk.string_value=='L' then qtyL = qtyL+1 %>
+                    <% end %>
+                <% end %>
+                <% pS = (Float(qtyS)/Float(total))*100 %>
+                <% pM = (Float(qtyM)/Float(total))*100 %>
+                <% pL = (Float(qtyL)/Float(total))*100 %>
+
+                <div class="title" align="center">
+                  <h4>Tab. <%= table_count %>. Checkliste <%= checklist_definition.name %></h4>
+                  <% table_count = table_count + 1 %>
+
+                <table id="table-<%= checklist_definition.name %>">
+                  <tr>
+                    <th width="180px">Checklist:</th>
+                    <td colspan="2"><%= checklist_definition.name %></td>
+                  </tr>
+                  <tr>
+                    <th width="180px">Datum:</th>
+                    <td colspan="2"> <%= @checklist_property.datum %> </td>
+                  </tr>
+                  <tr>
+                    <th width="240px"></th>
+                    <th>Anzahl</th>
+                    <th>Prozent</th>
+                  </tr>
+                  <tr>
+                    <th width="180px">S</th>
+                    <td><%= qtyS %></td>
+                    <td><%= '%.2f' % pS %></td>
+                  </tr>
+                  <tr>
+                    <th width="180px">M</th>
+                    <td><%= qtyM %></td>
+                    <td><%= '%.2f' % pM %></td>
+                  </tr>
+                  <tr>
+                    <th width="180px">L</th>
+                    <td><%= qtyL %></td>
+                    <td><%= '%.2f' % pL %></td>
+                  </tr>
+
+                </table><br /><br />
+                </div>
+                <br />
+            <% end %>
+
+        <% end %>
+    <% end %>
+    <% i=i+1 %>
+<% end %>
+
+<div align="right" style="font-size: 6pt;">
+  <%= link_to "Alle Abbildungen wurden mithilfe von Rgraph erzeugt","http://www.rgraph.net" %>  <br />
+</div>

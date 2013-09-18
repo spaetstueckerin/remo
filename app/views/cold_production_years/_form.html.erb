@@ -14,7 +14,7 @@
 <table>
   <tr>
     <td><%= f.label :coldProduction_id, "Kälteproduktion" %></td>
-    <td colspan="3"><%= f.number_field :coldProduction_id %></td>
+    <td colspan=3><%= f.select :coldProduction_id, ColdProduction.all.map{|c| [c.manufacturer, c.id]}%></td>
   </tr>
   <tr>
     <td><%= f.label :operatingHours, "Betriebsstunden" %></td>
