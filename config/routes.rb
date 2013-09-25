@@ -1,4 +1,14 @@
 Remo::Application.routes.draw do
+
+  resources :produced_units
+
+
+  resources :productions
+
+
+  resources :product_ranges
+
+
   post 'checklists/saveform', :controller => 'checklists', :action => 'saveform'
 
   resources :checklists

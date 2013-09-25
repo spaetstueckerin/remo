@@ -14,7 +14,8 @@
 <table>
 <tr>
     <td><%= f.label "Energievertrag"%></td>
-    <td><%= f.select :contract_id, Contract.all.map{|c| [c.supplier + " " + " " + c.energy_type, c.id]}%></td>
+	<% contracts = Contract.find_all_by_enterprise_id(2)%>
+    <td><%= f.select :contract_id, contracts.collect{ |u| [u.supplier + " " + " " + u.energy_type, u.id] }%>
     <td><%= f.label "Zähler"%></td>
     <td><%= f.select :meterId, Meter.all.map{|m| [m.name, m.id]}%></td>
 </tr>

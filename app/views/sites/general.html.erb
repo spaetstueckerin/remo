@@ -21,10 +21,11 @@ function showonlyonev2(thechosenone) {
 
 <% element = 1; %>
 
-<h2>Unternehmensstammdaten</h2>
+<h2>Stammdaten</h2>
 <table>               
 	<tr>
-		<th align="left"><%= link_to 'Betriebswirtschaftliche Daten', business_data_path %></th>
+		<th align="center"><%= link_to 'Betriebswirtschaftliche Daten', business_data_path %></th>
+		<th align="center"><%= link_to 'Produktionsbezogene Daten', production_data_path %></th>
 	</tr>
 </table>
 
@@ -33,7 +34,6 @@ function showonlyonev2(thechosenone) {
 <p>An dieser Stelle sind alle Standorte Ihres Unternehmens zusammengefasst. Mit Klick auf den grünen Pfeil erhalten sie Detailinformationen zur Gebäudesituation. In diesem Menü können sie mit Klick auf das Datenblatt weitere Informationen zu dem Räumlichkeiten anzeigen lassen. Im unteren Teil der Tabelle gelangen Sie zu den einzelnen Einstellungen.</p>
 
 <!-- Zeige alle Standorte-->
-<% @production_sites = ProduktionSite.find(:all) %>
 <% @production_sites.each do |ps| %>
 
 <table>
@@ -97,7 +97,6 @@ function showonlyonev2(thechosenone) {
 
 <p>An dieser Stelle finden Sie alle Maschinen geordnet nach Arbeitsablauf. Mit Klick auf die Pfeile können Sie sich die zugeordneten Maschinen ansehen und gelangen darüber auch in den Bearbeitungsmodus.</p>
 
-<% @productionLevels = ProductionLevel.find(:all) %>
 <% @productionLevels.each do |pl| %>
 
 <table>
@@ -107,7 +106,7 @@ function showonlyonev2(thechosenone) {
 </table>
 
 <div class="newboxes-2" id="<%="newboxes"+ "#{element}"+"-2"%>" style="display: none;">
-<% @machinery = Machinery.find_all_by_productionLevel(pl.id)%>
+<% @machinery = Machinery.find_all_by_productionLevel_and_enterpriseID(pl.id, @enterprise)%>
 <% @machinery.each do |m| %>
 
 <table>

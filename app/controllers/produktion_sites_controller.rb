@@ -2,7 +2,12 @@ class ProduktionSitesController < ApplicationController
   # GET /produktion_sites
   # GET /produktion_sites.json
   def index
-    @produktion_sites = ProduktionSite.all
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    
+     @produktion_sites = ProduktionSite.find_all_by_enterpriseID(@enterprise.id)
+   
+    @produktion_site = ProduktionSite.new
 
     respond_to do |format|
       format.html # index.html.erb

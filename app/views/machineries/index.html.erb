@@ -1,3 +1,18 @@
+<script language="javascript"> 
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+		ele.style.display = "none";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+}
+</script>
+
 <h2>Produktionsmaschinen</h2>
 
 <p>Dies ist eine Liste aller Produktionsmaschinen in Ihrem Unternehmen. Mit Klick auf das Plus können Sie neue Maschinen hinzufügen. Zum Anzeigen der Maschinendaten klicken Sie bitte auf das Datenblatt-Symbol oder das angezeigte Bild. Zum Editieren der Daten nutzen Sie bitte den Stift und zum Löschen das rote Kreuz.</p>
@@ -28,5 +43,68 @@
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), machinery, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   </tr>
 <% end %>
-<tr><th colspan=6></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_machinery_path %></th></tr>
+<tr><th colspan=7><a id="displayText" href="javascript:toggle();"><%= image_tag "new.png", size: "20x20" %></a></th></tr>
 </table>
+
+<div id="toggleText" style="display: none">
+<%= form_for(@machinery) do |f| %>
+  <% if @machinery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@machinery.errors.count, "error") %> prohibited this machinery from being saved:</h2>
+
+      <ul>
+      <% @machinery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table width=750>
+<tr>
+	<% f.label :enterpriseID %>
+	<% enterprise = User.find(session[:user_id]).enterprise_id %>
+  	<%= f.hidden_field :enterpriseID, :value => enterprise %>
+    <td width=100><%= f.label :name, "Name" %></td>
+    <td><%= f.text_field :name %></td>
+    <td><%= f.label :machineryTypeID, "Maschinentyp" %></td>
+	<td><%= f.select :machineryTypeID, MachineryType.all.map{|m| [m.m_type, m.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :description, "Beschreibung" %></td>
+    <td colspan=3><%= f.text_area :description, size: "75x3" %></td>
+</tr>
+<tr>
+    <td><%= f.label :yearOfConstruction, "Baujahr" %></td>
+    <td><%= f.text_field :yearOfConstruction %></td>
+    <td><%= f.label :yearOfBuy, "Kaufjahr" %></td>
+    <td><%= f.text_field :yearOfBuy %></td>
+</tr>
+<tr>
+    <td><%= f.label :energyConsumption, "Energieverbrauch" %></td>
+    <td><%= f.text_field :energyConsumption %> kWh</td>
+    <td><%= f.label :capacity, "Leistung" %></td>
+    <td><%= f.text_field :capacity %> kW</td>
+</tr>
+<tr>
+    <td><%= f.label :detachablePart, "Abschaltbarer Anteil" %></td>
+    <td><%= f.text_field :detachablePart %> %</td>
+    <td><%= f.label :detachDuration, "Abschaltdauer" %></td>
+    <td><%= f.text_field :detachDuration %> min</td>
+</tr>
+<tr>
+    <td><%= f.label :detachTerm, "Laufzeit bis zur nächsten Abschaltung" %></td>
+    <td><%= f.text_field :detachTerm %> min</td>
+    <td><%= f.label :location_id, "Standort" %></td>
+	<td><%= f.select :location_id, Location.all.map{|l| [l.name, l.id]}%></td>
+</tr>
+<tr>
+    <td><%= f.label :productionLevel, "Produktionslevel" %></td>
+	<td><%= f.select :productionLevel, ProductionLevel.all.map{|p| [p.name, p.id]}%></td>
+	<td><%= f.label :photo, "Bild" %></td>
+	<td><%= f.file_field :photo %></td>
+</tr>
+	<tr><th colspan=4><%= f.submit "Formular absenden" %></th></tr>
+</table>
+<% end %>
+</div>

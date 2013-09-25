@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <% f.label :enterprise_id %>
+	<% enterprise = User.find(session[:user_id]).enterprise_id %>
+  <%= f.hidden_field :enterprise_id, :value => enterprise %>
+
 <table>
 	<tr>
     <td><%= f.label :name, "Name" %></td>

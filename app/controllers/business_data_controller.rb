@@ -2,7 +2,10 @@ class BusinessDataController < ApplicationController
   # GET /business_data
   # GET /business_data.json
   def index
-    @business_data = BusinessDatum.all
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @business_data = BusinessDatum.find_all_by_enterpriseId(@enterprise.id, :order => "year DESC")
+    @business_datum = BusinessDatum.new
 
     respond_to do |format|
       format.html # index.html.erb

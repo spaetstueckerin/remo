@@ -35,11 +35,19 @@ myLayer.style.display="none";
 	</div>
 	<div class="strich"></div>
 	<div id="sidebar">
+		<div class="feld">
+			<%= @firstname = User.find(session[:user_id]).firstname %>
+			<%= @name = User.find(session[:user_id]).name %>	
+			<% @id = User.find(session[:user_id]).enterprise_id %>
+	    	<%= @enterprise = Enterprise.find(@id).name %>
+		</div>
 		<div class="feld"><%= link_to "Startseite", '/welcome/index' %></div>
-		<div class="feld"><%= link_to "Admin", '/sites/internal' %></div>
+		<% if User.find(session[:user_id]).role_id == 1 %>
+			<div class="feld"><%= link_to "Admin", '/sites/internal' %></div>
+		<% end %>
 		<!--<div id="feld"><%= link_to "Energieziele", '/sites/goals' %></div>-->
 		<div class="feld"><%= link_to "Stammdaten", '/sites/general' %></div>
-		<div class="feld"><%= link_to "Abrechnungen", contracts_path %></div>
+		<div class="feld"><%= link_to "Versorger", contracts_path %></div>
 		<div class="feld"><%= link_to "Messungen", measurings_path %></div>
 
 		<div class="feld"><a href="#" class="button" onclick="javascript:showElement('v-menu')"><span>Querschnitt</span></a></div>
@@ -55,13 +63,15 @@ myLayer.style.display="none";
 		</div>
 
 	    <div class="feld"><%= link_to "Checklisten", '/sites/checklists_manager' %></div>
-		<!--<div class="feld"><%= link_to "Controlling", '/sites/controlling' %></div>-->
+		<div class="feld"><%= link_to "Controlling", '/sites/controlling' %></div>
 		<div class="feld"><%= link_to "Berichte", '/sites/reporting' %></div>
-		<!--<div id="feld"><%= link_to "Benchmarking", '/benchmarking/index' %></div>
-		<div class="feld"><%= link_to "Simulation", '/sites/simulation' %></div>-->		
+		<div class="feld"><%= link_to "Benchmarking", '/benchmarking/index' %></div>
+		<div class="feld"><%= link_to "Simulation", '/sites/simulation' %></div>
+		<div class="feld"><%= link_to "Logout", '/sites/simulation' %></div>
 		<br><br><br><br>
 	</div>
 	<div id="main">
+		
 		<%= yield %>
 		<br><br><br>
 	</div>

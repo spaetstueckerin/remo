@@ -1,29 +1,224 @@
-<h1>Listing production_data</h1>
+<script language="javascript"> 
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+		ele.style.display = "none";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+} 
 
-<table>
+function toggle2() {
+	var ele = document.getElementById("toggleText2");
+	var text = document.getElementById("displayText2");
+	if(ele.style.display == "block") {
+		ele.style.display = "none";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+}
+
+function toggle3() {
+	var ele = document.getElementById("toggleText3");
+	var text = document.getElementById("displayText3");
+	if(ele.style.display == "block") {
+		ele.style.display = "none";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+}
+
+</script>
+
+<h2>Produktionsbezogene Daten</h2>
+
+<p>Diese Daten sind die Grundlage des Energie-Effizienz-Benchmarkings. Bitte versuchen Sie diese Daten einmal jährlich zu aktualisieren. Mit Klick auf den Stift gelangen Sie in der Bearbeitungsmodus. Beim Betätigen des grünen Plus können Sie einen neuen Datensatz anlegen.</p>
+
+<table class="zentriert">
+	<tr>
+		<th>Jahr</th>
+		<th>Papierverbrauch</th>
+		<th>Farbverbrauch</th>
+		<th>Betriebsmittel</th>
+		<th>Aufträge</th>
+		<th>Kunden</th>
+		<th width=100>Aktion</th>
+	</tr>
+
+	<% @production_data.each do |production_datum| %>
+	<tr>
+		<td><%= production_datum.year %></td>
+		<td><%= production_datum.paperUsage %> t</td>
+		<td><%= production_datum.inkUsage %> l</td>
+		<td><%= production_datum.utilities %> €</td>
+		<td><%= production_datum.orders %></td>
+		<td><%= production_datum.clients %></td>
+		<td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), production_datum %>
+			<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_production_datum_path(production_datum)  %>
+			<%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), production_datum, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+		</tr>
+		<% end %>
+		<tr><th colspan="7"><a id="displayText" href="javascript:toggle();"><%= image_tag "new.png", size: "20x20" %></a><%# link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_production_datum_path %></th></tr>
+	</table>
+
+	<div id="toggleText" style="display: none">
+		<%= form_for(@production_datum) do |f| %>
+		<% if @production_datum.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@production_datum.errors.count, "error") %> prohibited this production_datum from being saved:</h2>
+
+			<ul>
+				<% @production_datum.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<table>
+			<tr>
+				<% f.label :enterprise_id %>
+				<% enterprise = User.find(session[:user_id]).enterprise_id %>
+			    <%= f.hidden_field :enterprise_id, :value => enterprise %>
+				<td><%= f.label :year, "Jahr" %></td>
+				<td colspan=3><%= f.number_field :year %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :paperUsage, "Papierverbrauch" %></td>
+				<td><%= f.number_field :paperUsage %> t</td>
+				<td><%= f.label :inkUsage, "Farbverbrauch" %></td>
+				<td><%= f.number_field :inkUsage %> l</td>
+			</tr>
+			<tr>
+				<td><%= f.label :utilities, "Kosten für Betriebsmittel" %></td>
+				<td colspan=3><%= f.number_field :utilities %> €</td>
+			</tr>
+			<tr>
+				<td><%= f.label :orders, "Anzahl der Aufträge" %></td>
+				<td><%= f.number_field :orders %></td>
+				<td><%= f.label :clients, "Anzahl Kunden" %></td>
+				<td><%= f.number_field :clients %></td>
+			</tr>
+			<tr><th colspan=4><%= f.submit "Formular absenden" %></th></tr>
+		</table>
+		<% end %>
+	</div>
+<br><br>
+
+<h2>Produzierte Einheiten</h2>
+<p>In dieser Tabelle werden alle produzierten Einheiten gesammelt. Diese Daten werden später für die Durchführung des Energieeffizienzbenchmarkings benötigt.</p>
+<table class="zentriert">
   <tr>
-    <th>Value</th>
-    <th>Year</th>
-    <th>Enterprise</th>
-    <th>pdt</th>
-    <th></th>
-    <th></th>
-    <th></th>
+	<th>Jahr</th>
+    <th>Produkt</th>
+    <th>Menge</th>
+    <th width=100>Aktion</th>
   </tr>
-
-<% @production_data.each do |production_datum| %>
+<% @produced_units.each do |produced_unit| %>
   <tr>
-    <td><%= production_datum.value %></td>
-    <td><%= production_datum.year %></td>
-    <td><%= production_datum.enterprise_id %></td>
-    <td><%= production_datum.pdt_id %></td>
-    <td><%= link_to 'Show', production_datum %></td>
-    <td><%= link_to 'Edit', edit_production_datum_path(production_datum) %></td>
-    <td><%= link_to 'Destroy', production_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= produced_unit.year %></td>
+    <td><%= ProductRange.find(produced_unit.productRange_id).name %></td>
+    <td><%= produced_unit.amount %></td>
+	<td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), produced_unit %>
+		<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_produced_unit_path(produced_unit)  %>
+		<%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), produced_unit, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   </tr>
 <% end %>
+	<tr><th colspan=4><a id="displayText3" href="javascript:toggle3();"><%= image_tag "new.png", size: "20x20" %></a></th></tr>
 </table>
 
-<br />
+<div id="toggleText3" style="display: none">
+<%= form_for(@produced_unit) do |f| %>
+  <% if @produced_unit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produced_unit.errors.count, "error") %> prohibited this produced_unit from being saved:</h2>
 
-<%= link_to 'New Production datum', new_production_datum_path %>
+      <ul>
+      <% @produced_unit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+	<tr>
+		<td><%= f.label :year, "Jahr" %></td>
+    	<td colspan=3><%= f.number_field :year %></td>
+	</tr>
+	<tr>
+    	<td><%= f.label :productRange_id, "Produkt" %></td>
+    	<td><%= f.select :productRange_id, ProductRange.all.map{|c| [c.name, c.id]}%></td>
+    	<td><%= f.label :amount, "Menge" %></td>
+    	<td><%= f.number_field :amount %></td>
+	</tr>
+	<tr>
+    	<th colspan=4><%= f.submit "Formular absenden" %></th>
+	</tr>
+</table>
+
+<% end %>
+</div>
+<br><br>
+<h2>Produktpalette</h2>
+<p>An dieser Stelle sind alle durch Sie eingetragenen Produkte gelistet. Diese Angaben werden benötigt, um das Energieeffizienzbenchmarking durchzuführen.</p>
+
+<table class="zentriert">
+	<tr>
+		<th>Name</th>
+		<th>Beschreibung</th>
+		<th width=100>Aktion</th>
+	</tr>
+	<% @product_ranges.each do |product_range| %>
+	<tr>
+		<td><%= product_range.name %></td>
+		<td><%= product_range.description %></td>
+
+		<td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), product_range %>
+			<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_product_range_path(product_range)  %>
+			<%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), product_range, method: :delete, data: { confirm: 'Are you sure?' }  %>
+		</td>
+	</tr>
+		<% end %>
+	<tr>
+		<th colspan="3"><a id="displayText2" href="javascript:toggle2();"><%= image_tag "new.png", size: "20x20" %></a></th>
+	</tr>
+</table>
+<div id="toggleText2" style="display: none">
+<%= form_for(@product_range) do |f| %>
+  <% if @product_range.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_range.errors.count, "error") %> prohibited this product_range from being saved:</h2>
+
+      <ul>
+      <% @product_range.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+	<tr>
+    	<td><%= f.label :name, "Produktbezeichnung:" %></td>
+    	<td><%= f.text_field :name %></td>
+	</tr>
+	<tr>
+    	<td><%= f.label :description, "Beschreibung:" %></td>
+    	<td><%= f.text_area :description, size: "75x3" %></td>
+	</tr>
+	<tr>
+    	<th colspan=2><%= f.submit "Formular absenden" %></th>
+	</tr>
+</table>
+<% end %>
+</div>

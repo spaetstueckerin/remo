@@ -1,0 +1,27 @@
+<h1>Listing productions</h1>
+
+<table>
+  <tr>
+    <th>Productrange</th>
+    <th>Productedunits</th>
+    <th>Year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @productions.each do |production| %>
+  <tr>
+    <td><%= production.productRange_id %></td>
+    <td><%= production.productedUnits %></td>
+    <td><%= production.year %></td>
+    <td><%= link_to 'Show', production %></td>
+    <td><%= link_to 'Edit', edit_production_path(production) %></td>
+    <td><%= link_to 'Destroy', production, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Production', new_production_path %>

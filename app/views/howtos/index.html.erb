@@ -14,9 +14,15 @@
     <td><%= howto.name %></td>
     <td><%= howto.description %></td>
 
-    <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), howto %>
-    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_howto_path(howto)  %>
-    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), howto, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    <td>
+		<%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), howto %>
+		<%# if can? :update, @howtos %>
+    		<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_howto_path(howto)  %>
+		<%# end %>
+		<%# if can? :delete, @howtos %>
+    		<%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), howto, method: :delete, data: { confirm: 'Are you sure?' }  %>
+		<%# end %>
+	</td>
 
   </tr>
 <% end %>

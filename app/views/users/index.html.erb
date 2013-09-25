@@ -1,4 +1,5 @@
 <h1>Benutzerliste</h1>
+<p>Hier finden Sie eine Liste aller Benutzer dieser Plattform. Mit Klick auf das grüne Pluszeichen können Sie einen neuen Benutzer anlegen.</p>
 
 <table  class="zentriert">
   <tr>
@@ -28,6 +29,7 @@
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+<tr><th colspan=6></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_user_path %></th></tr>
 </table>
 
-<%= link_to 'Neuer Benutzer', new_user_path %>
+

@@ -2,6 +2,7 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   
+  load_and_authorize_resource
   
   def index
     @bills = Bill.find(:all, :order => "date")
@@ -18,8 +19,7 @@ class BillsController < ApplicationController
 
      opts = { :width => 800, :height => 250, :title => 'Energiekosten laut Abrechnung', :legend => 'bottom' }
     @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
-    
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bills }
@@ -36,15 +36,15 @@ class BillsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @bill }
     end
-    
-
-  
   end
 
   # GET /bills/new
   # GET /bills/new.json
   def new
     @bill = Bill.new
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @contracts = Contract.find_by_enterprise_id(@enterprise.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,12 +55,18 @@ class BillsController < ApplicationController
   # GET /bills/1/edit
   def edit
     @bill = Bill.find(params[:id])
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @contracts = Contract.find_by_enterprise_id(@enterprise.id)
   end
 
   # POST /bills
   # POST /bills.json
   def create
     @bill = Bill.new(params[:bill])
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @contracts = Contract.find_by_enterprise_id(@enterprise.id)
 
     respond_to do |format|
       if @bill.save

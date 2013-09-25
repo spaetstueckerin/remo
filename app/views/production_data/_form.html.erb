@@ -11,23 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :value %><br />
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :year %><br />
-    <%= f.number_field :year %>
-  </div>
-    <% user = User.find_by_id(session[:user_id]) %>
-    <% enterprise = Enterprise.find_by_id(user.enterprise_id) %>
-    <%= f.hidden_field :enterprise_id, :value => enterprise.id %>
-  
-  <div class="field">
-    <%= f.label "Datenart" %>
-    <%= f.select :pdt_id, ProductionDataType.all.map{|p| [p.pd_type, p.id]}%>
-  </div>
+  <% user = User.find_by_id(session[:user_id]) %>
+  <% enterprise = Enterprise.find_by_id(user.enterprise_id) %>
+  <%= f.hidden_field :enterprise_id, :value => enterprise.id %>
+
+<table>
+	<tr>
+  		<td><%= f.label :year, "Jahr" %></td>
+  		<td colspan=3><%= f.number_field :year %></td>
+	</tr>
+	<tr>
+  		<td><%= f.label :paperUsage, "Papierverbrauch" %></td>
+  		<td><%= f.number_field :paperUsage %> t</td>
+  		<td><%= f.label :inkUsage, "Farbverbrauch" %></td>
+  		<td><%= f.number_field :inkUsage %> l</td>
+	</tr>
+	<tr>
+  		<td><%= f.label :utilities, "Kosten Betriebsmittel" %></td>
+  		<td colspan=3><%= f.number_field :utilities %> €</td>
+	</tr>
+	<tr>
+  		<td><%= f.label :orders, "Anzahl Aufträge" %></td>
+  		<td><%= f.number_field :orders %></td>
+  		<td><%= f.label :clients, "Anzahl Kunden" %></td>
+  		<td><%= f.number_field :clients %></td>
+	</tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

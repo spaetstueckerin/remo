@@ -12,9 +12,9 @@
   <% end %>
 <table>
 <tr>
-	<%# f.label :enterprise_id %><br />
-	<%# @enterprise = User.find(session[:user_id]).enterprise_id %>
-    <%# f.hidden_field :enterprise_id, :value => @enterprise %>
+	<% f.label :enterprise_id %>
+	<% @enterprise = User.find(session[:user_id]).enterprise_id %>
+    <%= f.hidden_field :enterprise_id, :value => @enterprise %>
 
     <td><%= f.label :energy_type, "Energieart" %></td>
     <td><%= f.select :energy_type, ["Strom", "Gas", "Wasser", "Öl", "Heizung"]%></td>

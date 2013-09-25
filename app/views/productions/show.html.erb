@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Productrange:</b>
+  <%= @production.productRange_id %>
+</p>
+
+<p>
+  <b>Productedunits:</b>
+  <%= @production.productedUnits %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @production.year %>
+</p>
+
+
+<%= link_to 'Edit', edit_production_path(@production) %> |
+<%= link_to 'Back', productions_path %>

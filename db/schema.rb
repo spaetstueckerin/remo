@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829090736) do
+ActiveRecord::Schema.define(:version => 20130925135631) do
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130829090736) do
     t.integer  "contract_id"
     t.integer  "enterpriseId"
     t.integer  "meterId"
+    t.integer  "year"
   end
 
   create_table "branches", :force => true do |t|
@@ -513,6 +514,7 @@ ActiveRecord::Schema.define(:version => 20130829090736) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.integer  "enterprise_id"
   end
 
   create_table "machineries", :force => true do |t|
@@ -591,13 +593,31 @@ ActiveRecord::Schema.define(:version => 20130829090736) do
     t.integer  "meterNo"
   end
 
+  create_table "produced_units", :force => true do |t|
+    t.integer  "productRange_id"
+    t.integer  "year"
+    t.integer  "amount"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "product_ranges", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "production_data", :force => true do |t|
-    t.decimal  "value"
     t.integer  "year"
     t.integer  "enterprise_id"
-    t.integer  "pdt_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "paperUsage"
+    t.integer  "inkUsage"
+    t.integer  "orders"
+    t.float    "utilities"
+    t.integer  "clients"
   end
 
   create_table "production_levels", :force => true do |t|
@@ -607,15 +627,24 @@ ActiveRecord::Schema.define(:version => 20130829090736) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "productions", :force => true do |t|
+    t.integer  "productRange_id"
+    t.integer  "productedUnits"
+    t.integer  "year"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "produktion_sites", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "address"
     t.integer  "number"
     t.integer  "zip"
     t.string   "city"
+    t.integer  "enterprise_id"
   end
 
   create_table "roles", :force => true do |t|
@@ -853,13 +882,22 @@ ActiveRecord::Schema.define(:version => 20130829090736) do
     t.string   "firstname"
     t.string   "username"
     t.string   "password_digest"
-    t.string   "email"
     t.string   "position"
     t.text     "annotation"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "role_id"
     t.integer  "enterprise_id"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   create_table "years", :force => true do |t|

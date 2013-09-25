@@ -11,43 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </div>
-  <div class="field">
-    <%= f.label :annotation %><br />
-    <%= f.text_area :annotation %>
-  </div>
-  <div class="field">
-    <%= f.label "Rolle" %>
-    <%= f.select :role_id, Role.all.map{|r| [r.role_name, r.id]}%>
-  </div>
-  <div class="field">
-    <%=f.label "Unternehmen" %>
-    <%= f.select :enterprise_id, Enterprise.all.map{|e| [e.name, e.id]}%>
-  </div>
+<table>
+	<tr>
+	<td><%= f.label :firstname, "Vorname" %></td>
+	<td><%= f.text_field :firstname %></td>
+    <td><%= f.label :name, "Nachname" %></td>
+    <td><%= f.text_field :name %></td>
+
+</tr>
+<tr>
+    <td><%= f.label :username, "Benutzername" %></td>
+    <td><%= f.text_field :username %></td>
+    <td><%= f.label :password, "Passwort" %></td>
+    <td><%= f.text_field :password %></td>
+</tr>
+<tr>
+    <td><%= f.label :email, "Email" %></td>
+    <td><%= f.text_field :email %></td>
+    <td><%= f.label :position, "Position" %></td>
+    <td><%= f.text_field :position %></td>
+</tr>
+<tr>
+    <td><%= f.label :annotation, "Bemerkung" %></td>
+    <td colspan=3><%= f.text_area :annotation, size: "75x3" %></td>
+</tr>
+<tr>
+    <td><%= f.label "Rolle" %></td>
+    <td><%= f.select :role_id, Role.all.map{|r| [r.role_name, r.id]}%></td>
+    <td><%=f.label "Unternehmen" %></td>
+    <td><%= f.select :enterprise_id, Enterprise.all.map{|e| [e.name, e.id]}%></td>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Absenden" %>
   </div>
 <% end %>

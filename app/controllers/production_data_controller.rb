@@ -2,7 +2,15 @@ class ProductionDataController < ApplicationController
   # GET /production_data
   # GET /production_data.json
   def index
-    @production_data = ProductionDatum.all
+    
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @production_data = ProductionDatum.find_all_by_enterprise_id(@enterprise.id, :order => "year DESC")
+    @product_ranges = ProductRange.all
+    @production_datum = ProductionDatum.new
+    @product_range = ProductRange.new
+    @produced_units = ProducedUnit.find(:all, :order => "year")
+    @produced_unit = ProducedUnit.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +52,7 @@ class ProductionDataController < ApplicationController
 
     respond_to do |format|
       if @production_datum.save
-        format.html { redirect_to @production_datum, notice: 'Production datum was successfully created.' }
+        format.html { redirect_to '/production_data', notice: 'Production datum was successfully created.' }
         format.json { render json: @production_datum, status: :created, location: @production_datum }
       else
         format.html { render action: "new" }

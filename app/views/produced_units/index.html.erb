@@ -1,0 +1,27 @@
+<h1>Listing produced_units</h1>
+
+<table>
+  <tr>
+    <th>Productrange</th>
+    <th>Year</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @produced_units.each do |produced_unit| %>
+  <tr>
+    <td><%= produced_unit.productRange_id %></td>
+    <td><%= produced_unit.year %></td>
+    <td><%= produced_unit.amount %></td>
+    <td><%= link_to 'Show', produced_unit %></td>
+    <td><%= link_to 'Edit', edit_produced_unit_path(produced_unit) %></td>
+    <td><%= link_to 'Destroy', produced_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Produced unit', new_produced_unit_path %>

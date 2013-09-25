@@ -2,7 +2,11 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @contracts = Contract.find_all_by_enterprise_id(@enterprise.id)
+    
+    @contract = Contract.new
     @bills = Bill.all
     
     respond_to do |format|
@@ -16,6 +20,7 @@ class ContractsController < ApplicationController
   def show
     @contract = Contract.find(params[:id])
     @bills = Bill.find_all_by_contract_id(params[:id], :order => "date")
+    @bill = Bill.new
     
     data_table = GoogleVisualr::DataTable.new
     data_table.new_column('string', 'Zeit')

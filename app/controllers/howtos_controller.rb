@@ -1,9 +1,11 @@
 class HowtosController < ApplicationController
   # GET /howtos
   # GET /howtos.json
+  
+  load_and_authorize_resource
+  
   def index
     @howtos = Howto.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @howtos }
@@ -14,7 +16,6 @@ class HowtosController < ApplicationController
   # GET /howtos/1.json
   def show
     @howto = Howto.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @howto }

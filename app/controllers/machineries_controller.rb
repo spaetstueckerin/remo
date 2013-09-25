@@ -2,7 +2,11 @@ class MachineriesController < ApplicationController
   # GET /machineries
   # GET /machineries.json
   def index
-    @machineries = Machinery.all
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    
+    @machineries = Machinery.find_all_by_enterpriseID(@enterprise.id)
+    @machinery = Machinery.new
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,4 +1,19 @@
-<h1>Jährliche Geschäftsdatensätze</h1>
+<script language="javascript"> 
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+		ele.style.display = "none";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+}
+</script>
+
+<h2>Jährliche Geschäftsdatensätze</h2>
 
 <p>Diese Daten sind die Grundlage des Energie-Effizienz-Benchmarkings. Bitte versuchen Sie diese Daten einmal jährlich zu aktualisieren. Mit Klick auf den Stift gelangen Sie in der Bearbeitungsmodus. Beim Betätigen des grünen Plus können Sie einen neuen Datensatz anlegen.</p>
 
@@ -27,5 +42,49 @@
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), business_datum, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   </tr>
 <% end %>
-  <tr><th colspan="5"></th><th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_business_datum_path %></th></tr>
+  <tr><th colspan="6"><a id="displayText" href="javascript:toggle();"><%= image_tag "new.png", size: "20x20" %></a></th></tr>
 </table>
+	
+<div id="toggleText" style="display: none">
+<%= form_for(@business_datum) do |f| %>
+  <% if @business_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business_datum.errors.count, "error") %> prohibited this business_datum from being saved:</h2>
+
+      <ul>
+      <% @business_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--Hidden Field für die enterprise ID-->
+    <% f.label :enterpriseId %>
+	<% enterprise = User.find(session[:user_id]).enterprise_id %>
+    <%= f.hidden_field :enterpriseId, :value => enterprise %>
+
+<table>
+<tr>
+    <td><%= f.label :year, "Jahr" %></td>
+    <td colspan = 3><%= f.text_field :year %></td>
+</tr>
+<tr>
+    <td><%= f.label :annualSales, "Jahresumsatz" %></td>
+    <td><%= f.text_field :annualSales %> €</td>
+    <td><%= f.label :netIncome, "Einnahmen" %></td>
+    <td><%= f.text_field :netIncome %> €</td>
+</tr>
+<tr>
+    <td width = 100><%= f.label :energyEfficiencyInvestment, "Investitionen in Energieeffizienz" %></td>
+    <td><%= f.text_field :energyEfficiencyInvestment %> €</td>
+    <td><%= f.label :employees, "Anzahl Mitarbeiter" %></td>
+    <td><%= f.text_field :employees %></td>
+</tr>
+<tr><th colspan=4><%= f.submit "Absenden" %></th></tr>
+</table>
+
+    
+
+<% end %>
+</div>

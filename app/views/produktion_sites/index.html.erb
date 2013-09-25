@@ -1,3 +1,18 @@
+<script language="javascript"> 
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+		ele.style.display = "none";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "<img src='/assets/new.png', height=20>";
+	}
+}
+</script>
+
 <h2>Liste der Produktionsstandorte</h2>
 <p>Hier finden Sie eine Liste aller von Ihnen angelegten Produktionsstandorte. Beim Anlegen eines neuen Gebäudes sind diese Standorte zuzuordnen.</p>
 
@@ -22,9 +37,46 @@
 
   </tr>
 <% end %>
-	<tr><th colspan=3></th><th><%= link_to image_tag('new.png', size: "20x20", alt: "Anlegen"), new_produktion_site_path %></th></tr>
+	<tr><th colspan=4><a id="displayText" href="javascript:toggle();"><%= image_tag "new.png", size: "20x20" %></a></th></tr>
 </table>
 
-<br />
+<div id="toggleText" style="display: none">
+<%= form_for(@produktion_site) do |f| %>
+  <% if @produktion_site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produktion_site.errors.count, "error") %> prohibited this produktion_site from being saved:</h2>
 
+      <ul>
+      <% @produktion_site.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <% f.label :enterprise_id %>
+	<% enterprise = User.find(session[:user_id]).enterprise_id %>
+  <%= f.hidden_field :enterprise_id, :value => enterprise %>
+
+<table>
+	<tr>
+    <td><%= f.label :name, "Name:" %></td>
+    <td colspan=3><%= f.text_field :name %></td>
+</tr>
+<tr>
+    <td><%= f.label :address, "Straße und Nummer:" %></td>
+    <td colspan=3><%= f.text_field :address %> <%= f.text_field :number, size: "5" %> </td>
+</tr>
+<tr>
+    <td><%= f.label :zip, "PLZ und Stadt:" %></td>
+    <td> <%= f.text_field :zip, size: "5" %><%= f.text_field :city %></td>
+</tr>
+<tr>
+    <td><%= f.label :description, "Beschreibung:" %></td>
+    <td><%= f.text_area :description, size: "75x3" %></td>
+</tr>
+<tr><th colspan=4><%= f.submit "Formular absenden" %></th></tr>
+</table>
+
+<% end %>
+</div>

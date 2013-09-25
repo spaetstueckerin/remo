@@ -1,45 +1,479 @@
-<h3>Auswertung des Energieeffizienz-Benchmarking</h3>
+<h2>Auswertung des Energieeffizienz-Benchmarking</h2>
 
-<p>Kurze Erklärung zum Benchmarking</p>
+<p>Das Energieeffizienzbenchmarking ermittelt, wie hoch der die Energieeffizienz von betrieblichen energiebezogenen Kennzahlen im Vergleich mit anderen Unternehmen ist. Dabei werden einzelne Kennzahlen mit einander verglichen und der Benchmark (Bester) ermittelt. Dabei erfolgt auch die Berechnung des eigenen Abstands zum Benchmark. Mit Hilfe dieser Methode können Potenziale zur Steigerung der Energieeffizienz aufgezeigt werden.</p>
 
-<p>Folgende Angaben werden für das Energieeffizienz-Benchmarking berücksichtigt:</p>
+<p>Das Benchmarking ist gegliedert in ein internes Benchmarking für den Vergleich mit Vorjahreszeiträumen (markiert mit Fähnchen) und andererseits in den Vergleich mit anderen netzwerkunternehmen der selben Branche. Folgende Angaben werden für das Energieeffizienz-Benchmarking berücksichtigt:</p>
+
+<% employeeFinalSumC = 0 %>
+<% employeeFinalSumAgoC = 0 %>
+<% employeeFinalSumV = 0 %>
+<% employeeFinalSumAgoV = 0 %>
+
+<% locationFinalSumC = 0 %>
+<% locationFinalSumAgoV = 0 %>
+<% locationFinalSumV = 0 %>
+<% locationFinalSumAgoV = 0 %>
+
+<% annualFinalSumC = 0 %>
+<% annualFinalSumAgoC = 0 %>
+<% annualFinalSumV = 0 %>
+<% annualFinalSumAgoV = 0 %>
+
+<% incomeFinalSumC = 0 %>
+<% incomeFinalSumV = 0 %>
+<% incomeFinalSumAgoC = 0 %>
+<% incomeFinalSumAgoV = 0 %>
+
+<% volumeSumV = 0 %>
+<% volumeFinalSumV = 0 %>
+<% volumeSumAgoV = 0 %>
+<% volumeFinalSumAgoV = 0 %>
+
+<% volumeSumC = 0 %>
+<% volumeFinalSumC = 0 %>
+<% volumeSumAgoC = 0 %>
+<% volumeFinalSumAgoC = 0 %>
+
+<h3>Unternehmensbezogene Kennzahlen</h3>
 
 <table>
-	<tr><th>Unternehmensangaben</th><th>Dimension</th><th>Zahlenwerte</th></tr>
+	<tr><th width=250>Kennzahlen</th><th>Eigner Wert</th><th width=200>Entwicklung zum Vorjahr</th><th>Platz</th></tr>
+	<!-- Kennzahlen Stromverbrauch Mitarbeiter -->
 	<tr>
-		<td width="150">Branche</td><td></td><td><%= @branch.name %></td>
+		<td>Stromverbrauch / Mitarbeiter</td>
+		<td align="right">
+			<% employeeFinalSumC = @sumBillsEnergyConsumption / @employees %>
+			<%= number_to_currency(employeeFinalSumC, :unit =>"", :precision => 2) %> kWh/MA
+		</td>
+		<td align="left">
+			<% employeeFinalSumAgoC = @sumBillsEnergyConsumptionAgo / @employeesAgo %>
+			<% employeeFinalSumAgoC = employeeFinalSumAgoC - employeeFinalSumC %>
+			<% if employeeFinalSumAgoC > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(employeeFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/MA)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(employeeFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/MA)
+			<% end %>
+		</td>	
+		<td></td>
 	</tr>
+	<!-- Kennzahlen Stromkosten Mitarbeiter -->
 	<tr>
-		<td>Beschäftigte</td><td>Anzahl</td><td><%= @businessDatum.employees %></td>
+		<td>Stromkosten / Mitarbeiter</td>
+		<td align="right">
+			<% employeeFinalSumV = @sumBillsEnergyValue / @employees %>
+			<%= number_to_currency(employeeFinalSumV, :unit =>"", :precision => 2) %> €/MA
+		</td>
+		<td align="left">
+			<% employeeFinalSumAgoV = @sumBillsEnergyValueAgo / @employeesAgo %>	
+			<% employeeFinalSumAgoV = employeeFinalSumAgoV  - employeeFinalSumV %>
+			<% if employeeFinalSumAgoV > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(employeeFinalSumAgoV, :unit =>"", :precision => 2) %> kWh/qm)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(employeeFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> kWh/qm)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
+	<!-- Kennzahlen Stromverbrauch Fläche -->
 	<tr>
-		<td>Gesamtumsatz</td><td>1000€</td><td><%= @businessDatum.annualSales %></td>
+		<td>Stromverbrauch / Fläche</td>
+		<td align="right">
+			<% locationFinalSumC = @sumBillsEnergyConsumption / @sumLocations %>
+			<%= number_to_currency(locationFinalSumC, :unit =>"", :precision => 2) %> kWh/qm
+		</td>
+		<td align="left">
+			<% locationFinalSumAgoC = @sumBillsEnergyConsumptionAgo / @sumLocations %>
+			<% locationFinalSumAgoC = locationFinalSumAgoC  - locationFinalSumC %>
+			<% if locationFinalSumAgoC > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(locationFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/qm)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(locationFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/qm)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
+	<!-- Kennzahlen Stromkosten Fläche -->
 	<tr>
-		<td>Bruttowertschöpfung</td><td>1000€</td><td><%= @businessDatum.netIncome %></td>
+		<td>Stromkosten / Fläche</td>
+		<td align="right">
+			<% locationFinalSumV = @sumBillsEnergyValue / @sumLocations %>
+			<%= number_to_currency(locationFinalSumV, :unit =>"", :precision => 2) %> €/qm
+		</td>
+		<td align="left">	
+			<% locationFinalSumAgoV = @sumBillsEnergyConsumptionAgo / @sumLocations %>
+			<% locationFinalSumAgoV = locationFinalSumAgoV - locationFinalSumV %>
+			<% if locationFinalSumAgoV > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(locationFinalSumAgoV, :unit =>"", :precision => 2) %> €/qm)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(locationFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/qm)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
+	<!--Kennzahlen Stromverbrauch Raumvolumen-->
 	<tr>
-		<td>Stromverbrauch</td><td>kWh</td><td><%= @sumEnergy %></td>
+		<td>Stromverbrauch / Raumvolumen</td>
+		<td align="right">
+			<% @locationsEnergy.each do |lo|%>
+				<% volumeC = lo.squaremeter * lo.height %>
+		      	<% volumeSumC = volumeSumC + volumeC %>
+		    <% end %>
+			<% volumeFinalSumC = @sumBillsEnergyConsumption / volumeSumC %>
+			<%= number_to_currency(volumeFinalSumC, :unit =>"", :precision => 2) %> kWh/qm&sup3;
+		</td>
+		<td align="left">
+			<% volumeFinalSumAgoC = @sumBillsEnergyConsumptionAgo / volumeSumC %>
+			<% volumeFinalSumAgoC = volumeFinalSumAgoC - volumeFinalSumC %>
+			<% if volumeFinalSumAgoC > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(volumeFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/qm&sup3;)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(volumeFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/qm&sup3;)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
+	<!--Kennzahlen Stromkosten Raumvolumen-->
 	<tr>
-		<td>Fernwärmeverbrauch</td><td>kWh</td><td><%= @sumHeat %></td>
+		<td>Stromkosten / Raumvolumen</td>
+		<td align="right">
+			<% @locationsEnergy.each do |lo|%>
+				<% volumeV = lo.squaremeter * lo.height %>
+		      	<% volumeSumV = volumeSumV + volumeV %>
+		    <% end %>
+			<% volumeFinalSumV = @sumBillsEnergyValue / volumeSumV %>
+			<%= number_to_currency(volumeFinalSumV, :unit =>"", :precision => 2) %> €/qm&sup3;
+		</td>
+		<td align="left">
+			<% volumeFinalSumAgoV = @sumBillsEnergyValueAgo / volumeSumV %>
+			<% volumeFinalSumAgoV = volumeFinalSumAgoV - volumeFinalSumV %>
+			<% if volumeFinalSumAgoV > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(volumeFinalSumAgoV, :unit =>"", :precision => 2) %> €/qm&sup3;)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(volumeFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/qm&sup3;)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
+	<!--Kennzahlen Stromverbrauch Umsatz-->
 	<tr>
-		<td>Erdgasverbrauch</td><td>kWh</td><td><%= @sumGas %></td>
+		<td>Stromverbrauch / 1.000€ Umsatz</td>
+		<td align="right">
+			<% annualFinalSumC = @sumBillsEnergyConsumption / @annualSale * 1000 %>
+			<%= number_to_currency(annualFinalSumC, :unit =>"", :precision => 2) %> kWh/T€
+		</td>
+		<td align="left">
+			<% annualFinalSumAgoC = @sumBillsEnergyConsumptionAgo / @annualSaleAgo * 1000 %>
+			<% annualFinalSumAgoC = annualFinalSumAgoC - annualFinalSumC %>
+			<% if annualFinalSumAgoC > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(annualFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/T€)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(annualFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/T€)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
-	<!--<tr>
-		<td>Heizölverbrauch</td><td>t</td><td></td>
-	</tr>
+	<!--Kennzahlen Stromkosten Umsatz-->
 	<tr>
-		<td>Steinkohleverbrauch</td><td>t</td><td></td>
+		<td>Stromkosten / 1.000€ Umsatz</td>
+		<td align="right">
+			<% annualFinalSumV = @sumBillsEnergyValue / @annualSale * 1000 %>
+			<%= number_to_currency(annualFinalSumV, :unit =>"", :precision => 2) %> kWh/T€
+		</td>
+		<td align="left">
+			<% annualFinalSumAgoV = @sumBillsEnergyValueAgo / @annualSaleAgo * 1000 %>
+			<% annualFinalSumAgoV = annualFinalSumAgoV - annualFinalSumV %>
+			<% if annualFinalSumAgoV > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(annualFinalSumAgoV, :unit =>"", :precision => 2) %> €/T€)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(annualFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/T€)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
+	<!--Kennzahlen Stromverbrauch Einnahmen-->
 	<tr>
-		<td>Braunkohleverbrauch</td><td>t</td><td></td>
+		<td>Stromverbrauch / 1.000€ Einnahmen</td>
+		<td align="right">
+			<% incomeFinalSumC = @sumBillsEnergyConsumption / @income * 1000 %>
+			<%= number_to_currency(incomeFinalSumC, :unit =>"", :precision => 2) %> kWh/T€
+		</td>
+		<td align="left">
+			<% incomeFinalSumAgoC = @sumBillsEnergyConsumptionAgo / @incomeAgo * 1000 %>
+			<% incomeFinalSumAgoC = incomeFinalSumAgoC - incomeFinalSumC %>
+			<% if incomeFinalSumAgoC > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(incomeFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/T€)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(incomeFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/T€)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
+	<!--Kennzahlen Stromkosten Einnahmen-->
 	<tr>
-		<td>Einsatz erneuerbarer Energien</td><td>kWh</td><td></td>
+		<td>Stromkosten / 1.000€ Einnahmen</td>
+		<td align="right">
+			<% incomeFinalSumV = @sumBillsEnergyValue / @income * 1000 %>
+			<%= number_to_currency(incomeFinalSumV, :unit =>"", :precision => 2) %> kWh/T€
+		</td>
+		<td align="left">
+			<% incomeFinalSumAgoV = @sumBillsEnergyValueAgo / @incomeAgo * 1000 %>
+			<% incomeFinalSumAgoV = incomeFinalSumAgoV - incomeFinalSumV %>
+			<% if incomeFinalSumAgoV > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(incomeFinalSumAgoV, :unit =>"", :precision => 2) %> €/T€)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(incomeFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/T€)
+			<% end %>
+		</td>
+		<td></td>
 	</tr>
-	<tr>
-		<td>Einsatz sonstiger Energieträger</td><td>kWh</td><td></td>
-	</tr>-->
+	<tr><th colspan=4></th></tr>
 </table>
+
+<h3>Produktionsbezogene Kennzahlen</h3>
+
+<table>
+	<tr><th width=250>Kennzahlen</th><th>Eigener Wert</th><th width=200>Entwicklung zum Vorjahr</th><th>Platz</th></tr>
+	
+	<tr>
+		<td>Stromverbrauch / Tonne Papierverbrauch</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyConsumption/@paper, :unit =>"", :precision => 2) %> kWh/t
+		</td>
+		<td>
+			<% paperFinalAgoC = @sumBillsEnergyConsumptionAgo / @paperAgo %>
+			<% paperFinalSumAgoC = paperFinalAgoC - @sumBillsEnergyConsumption/@paper %>
+			<% if paperFinalSumAgoC > 0 %>
+				<!--Daumen hoch -->
+				<%= image_tag("green.png", size: "20x20") %>&nbsp;
+				(- <%= number_to_currency(paperFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/t)
+			<% else %>
+				<!-- Daumen runter -->
+				<%= image_tag("red.png", size: "20x20") %>&nbsp;
+				(+ <%= number_to_currency(paperFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/t)
+			<% end %>
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Stromkosten / Tonne Papierverbrauch</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyValue/@paper, :unit =>"", :precision => 2) %> €/t
+		</td>
+		<td>
+		   <% paperFinalAgoV = @sumBillsEnergyValueAgo / @paperAgo %>
+		   <% paperFinalSumAgoV = paperFinalAgoV - @sumBillsEnergyValue/@paper %>
+		   <% if paperFinalSumAgoV > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(paperFinalSumAgoV, :unit =>"", :precision => 2) %> kWh/t)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(paperFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> kWh/t)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromverbrauch / Liter Farbverbrauch</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyConsumption/@ink, :unit =>"", :precision => 2) %> kWh/l
+		</td>
+		<td>
+		   <% inkFinalAgoC = @sumBillsEnergyConsumptionAgo / @inkAgo %>
+		   <% inkFinalSumAgoC = inkFinalAgoC - @sumBillsEnergyConsumption/@ink %>
+		   <% if inkFinalSumAgoC > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(inkFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(inkFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromkosten / Liter Farbverbrauch</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyValue/@ink, :unit =>"", :precision => 2) %> €/l
+		</td>
+		<td>
+		   <% inkFinalAgoV = @sumBillsEnergyValueAgo / @inkAgo %>
+		   <% inkFinalSumAgoV = inkFinalAgoV - @sumBillsEnergyValue/@ink %>
+		   <% if inkFinalSumAgoV > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(inkFinalSumAgoV, :unit =>"", :precision => 2) %> €/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(inkFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromverbrauch / 100 Euro Betriebsmittelkosten</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyConsumption/@utilities * 100, :unit =>"", :precision => 2) %> kWh/l
+		</td>
+		<td>
+		   <% utilitiesFinalAgoC = @sumBillsEnergyConsumptionAgo / @utilitiesAgo * 100 %>
+		   <% utilitiesFinalSumAgoC = utilitiesFinalAgoC - @sumBillsEnergyConsumption/@utilities * 100 %>
+		   <% if utilitiesFinalSumAgoC > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(utilitiesFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(utilitiesFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromkosten / 100 Euro Betriebsmittelkosten</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyValue/@utilities * 100, :unit =>"", :precision => 2) %> kWh/l
+		</td>
+		<td>
+		   <% utilitiesFinalAgoV = @sumBillsEnergyValueAgo / @utilitiesAgo * 100 %>
+		   <% utilitiesFinalSumAgoV = utilitiesFinalAgoV - @sumBillsEnergyValue/@utilities * 100 %>
+		   <% if utilitiesFinalSumAgoV > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(utilitiesFinalSumAgoV, :unit =>"", :precision => 2) %> kWh/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(utilitiesFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> kWh/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromverbrauch / Auftrag</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyConsumption/@orders, :unit =>"", :precision => 2) %> kWh/l
+		</td>
+		<td>
+		   <% ordersFinalAgoC = @sumBillsEnergyConsumptionAgo / @ordersAgo %>
+		   <% ordersFinalSumAgoC = utilitiesFinalAgoC - @sumBillsEnergyConsumption/@orders %>
+		   <% if ordersFinalSumAgoC > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(ordersFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(ordersFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromkosten / Auftrag</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyValue/@orders, :unit =>"", :precision => 2) %> kWh/l
+		</td>
+		<td>
+		   <% ordersFinalAgoV = @sumBillsEnergyValueAgo / @ordersAgo %>
+		   <% ordersFinalSumAgoV = ordersFinalAgoV - @sumBillsEnergyValue/@orders %>
+		   <% if ordersFinalSumAgoV > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(ordersFinalSumAgoV, :unit =>"", :precision => 2) %> kWh/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(ordersFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> kWh/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromverbrauch / Kunde</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyConsumption/@clients, :unit =>"", :precision => 2) %> kWh/l
+		</td>
+		<td>
+		   <% clientsFinalAgoC = @sumBillsEnergyConsumptionAgo / @clientsAgo %>
+		   <% clientsFinalSumAgoC = clientsFinalAgoC - @sumBillsEnergyConsumption/@clients %>
+		   <% if clientsFinalSumAgoC > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(clientsFinalSumAgoC, :unit =>"", :precision => 2) %> kWh/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(clientsFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	<tr>
+		<td>Stromkosten / Kunde</td>
+		<td align="right">
+			<%= number_to_currency(@sumBillsEnergyValue/@clients, :unit =>"", :precision => 2) %> kWh/l
+		</td>
+		<td>
+		   <% clientsFinalAgoV = @sumBillsEnergyValueAgo / @clientsAgo %>
+		   <% clientsFinalSumAgoV = clientsFinalAgoV - @sumBillsEnergyValue/@clients %>
+		   <% if clientsFinalSumAgoV > 0 %>
+		   	<!--Daumen hoch -->
+		   	<%= image_tag("green.png", size: "20x20") %>&nbsp;
+		   	(- <%= number_to_currency(clientsFinalSumAgoV, :unit =>"", :precision => 2) %> kWh/l)
+		   <% else %>
+		   	<!-- Daumen runter -->
+		   	<%= image_tag("red.png", size: "20x20") %>&nbsp;
+		   	(+ <%= number_to_currency(clientsFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> kWh/l)
+		   <% end %>
+		</td><td></td>
+	</tr>
+	
+	<tr><th colspan=4></th></tr>
+</table>
+
+
+
+
+
+
+
+
+

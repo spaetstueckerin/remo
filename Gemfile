@@ -4,6 +4,7 @@ gem 'rails', '3.2.12'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "google_visualr", "~> 2.1.0"
 gem 'pdfkit'
+gem 'cancan'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -11,14 +11,16 @@
     </div>
   <% end %>
 
-<!--Hidden Field -->
+<!--Hidden Field für die enterprise ID-->
     <% f.label :enterpriseId %><br />
-	<% @enterprise = User.find(session[:user_id]).enterprise_id %>
-    <%= f.hidden_field :enterpriseId, :value => @enterprise %>
+	<% enterprise = User.find(session[:user_id]).enterprise_id %>
+    <%= f.hidden_field :enterpriseId, :value => enterprise %>
+
 <table>
+<tr><th colspan=4></th></tr>
 <tr>
     <td><%= f.label :year, "Jahr" %></td>
-    <td colspan = 3><%= f.text_field :year%></td>
+    <td colspan = 3><%= f.text_field :year %></td>
 </tr>
 <tr>
     <td><%= f.label :annualSales, "Jahresumsatz" %></td>

@@ -1,0 +1,2 @@
+module ProductRangesHelper
+end

@@ -126,9 +126,9 @@
     <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), compressed_air_production_year, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   </tr>
 <% end %>
-	<tr><th>Summe:</th><th><%= operating %> h</th><th><%= load %> h</th><th><%= number_to_currency(load.to_f / operating*100, :unit=>"") %> % 
+	<tr><th>Summe:</th><th><%= operating %> h</th><th><%= load %> h</th><th>
 	<a onmouseover="document.getElementById('erklaerung').style.display='block';" onmouseout="document.getElementById('erklaerung').style.display='none';">
-		?</a>
+		<img src="/assets/bulb.png" width=20 height=20></a><%= number_to_currency(load.to_f / operating*100, :unit=>"") %>% 
 		<div id='erklaerung' style="display:none; position:absolute; width:350px; left:500px; background:white;border:solid 1px; padding:10px;">
 			Gesamte Auslastung der Anlage ergibt sich aus:<br>
 			Lasstunden / Betriebbstunden * 100
