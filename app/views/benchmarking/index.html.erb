@@ -36,8 +36,21 @@
 
 <h3>Unternehmensbezogene Kennzahlen</h3>
 
+<% if @contractEnergy== 0 %>
+
+<table><tr><th>Hinweis: Sie haben noch keinen Energieliefervertrag eingerichtet.<br><%= link_to "Hier", contracts_path %> können Sie das nachholen.</th></tr></table>
+
+<% elsif @sumBillsEnergyConsumption == 0 && @sumBillsEnergyValue == 0 %>
+
+<table><tr><th>Hinweis: Sie haben noch keine Energieabrechnungen für das Jahr <%= Time.now.year - 1 %>, welche für den Vergleich benötigt werden eingetragen. <%= link_to "Hier", contracts_path %> können Sie das nachholen.</th></tr></table>
+	
+<% elsif @sumBillsEnergyConsumptionAgo == 0 && @sumBillsEnergyValueAgo == 0 %>
+<table><tr><th>Hinweis: Sie haben noch keine Energieabrechnungen für das Jahr <%= Time.now.year - 2 %>, welche für den Vergleich benötigt werden, eingetragen. <%= link_to "Hier", contracts_path %> können Sie das nachholen.</th></tr></table>
+
+<% else %>
+
 <table>
-	<tr><th width=250>Kennzahlen</th><th>Eigner Wert</th><th width=200>Entwicklung zum Vorjahr</th><th>Platz</th></tr>
+	<tr><th width=250>Kennzahlen</th><th>Eigner Wert</th><th width=200>Entwicklung zum Vorjahr</th><th>Platz</th><th>*</th></tr>
 	<!-- Kennzahlen Stromverbrauch Mitarbeiter -->
 	<tr>
 		<td>Stromverbrauch / Mitarbeiter</td>
@@ -58,6 +71,16 @@
 				(+ <%= number_to_currency(employeeFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/MA)
 			<% end %>
 		</td>	
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupEC.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupEC.size %>
+		</td>
 		<td></td>
 	</tr>
 	<!-- Kennzahlen Stromkosten Mitarbeiter -->
@@ -80,10 +103,25 @@
 				(+ <%= number_to_currency(employeeFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> kWh/qm)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupEV.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupEV.size %>
+		</td>
 		<td></td>
 	</tr>
 	<!-- Kennzahlen Stromverbrauch Fläche -->
+
 	<tr>
+	<% if @sumLocations == 0 %>
+		<td>Stromverbrauch / Fläche</td>
+		<td colspan=3 align="center">Sie haben noch keine Standortdaten hinterlegt.<br>Sie können das <%= link_to "hier", locations_path %> nachholen.</td>
+		<% else %>
 		<td>Stromverbrauch / Fläche</td>
 		<td align="right">
 			<% locationFinalSumC = @sumBillsEnergyConsumption / @sumLocations %>
@@ -102,10 +140,27 @@
 				(+ <%= number_to_currency(locationFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/qm)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupQC.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupQC.size %>
+		</td>
 		<td></td>
+	<% end %>
 	</tr>
-	<!-- Kennzahlen Stromkosten Fläche -->
+
+	<!--Kennzahlen Stromkosten Fläche -->
+
 	<tr>
+	<% if @sumLocations == 0 %>
+		<td>Stromkosten / Fläche</td>
+		<td colspan=3 align="center">Sie haben noch keine Standortdaten hinterlegt.<br>Sie können das <%= link_to "hier", locations_path %> nachholen.</td>
+		<% else %>
 		<td>Stromkosten / Fläche</td>
 		<td align="right">
 			<% locationFinalSumV = @sumBillsEnergyValue / @sumLocations %>
@@ -124,10 +179,27 @@
 				(+ <%= number_to_currency(locationFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/qm)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupQV.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupQV.size %>
+		</td>
 		<td></td>
+	<% end %>
 	</tr>
+
 	<!--Kennzahlen Stromverbrauch Raumvolumen-->
+
 	<tr>
+	<% if @sumLocations == 0 %>
+		<td>Stromverbrauch / Fläche</td>
+		<td colspan=3 align="center">Sie haben noch keine Standortdaten hinterlegt.<br>Sie können das <%= link_to "hier", locations_path %> nachholen.</td>
+		<% else %>
 		<td>Stromverbrauch / Raumvolumen</td>
 		<td align="right">
 			<% @locationsEnergy.each do |lo|%>
@@ -150,10 +222,26 @@
 				(+ <%= number_to_currency(volumeFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/qm&sup3;)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupKC.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupKC.size %>
+		</td>
 		<td></td>
+	<% end %>
 	</tr>
+
 	<!--Kennzahlen Stromkosten Raumvolumen-->
 	<tr>
+		<% if @sumLocations == 0 %>
+		<td>Stromkosten / Fläche</td>
+		<td colspan=3 align="center">Sie haben noch keine Standortdaten hinterlegt.<br>Sie können das <%= link_to "hier", locations_path %> nachholen.</td>
+		<% else %>
 		<td>Stromkosten / Raumvolumen</td>
 		<td align="right">
 			<% @locationsEnergy.each do |lo|%>
@@ -176,10 +264,27 @@
 				(+ <%= number_to_currency(volumeFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/qm&sup3;)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupKV.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupKV.size %>
+		</td>
 		<td></td>
+	<% end %>
 	</tr>
+
 	<!--Kennzahlen Stromverbrauch Umsatz-->
+	
 	<tr>
+		<% if @annualSale == 0 %>
+		<td>Stromverbrauch / 1.000€ Umsatz</td>
+		<td colspan=3 align="center">Sie haben noch keine Angaben zum Umsatz hinterlegt.<br>Sie können das <%= link_to "hier", business_data_path %> nachholen.</td>
+		<% else %>
 		<td>Stromverbrauch / 1.000€ Umsatz</td>
 		<td align="right">
 			<% annualFinalSumC = @sumBillsEnergyConsumption / @annualSale * 1000 %>
@@ -198,10 +303,26 @@
 				(+ <%= number_to_currency(annualFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/T€)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupUC.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupUC.size %>
+		</td>
 		<td></td>
+		<% end %>
 	</tr>
+
 	<!--Kennzahlen Stromkosten Umsatz-->
 	<tr>
+		<% if @annualSale == 0 %>
+		<td>Stromkosten / 1.000€ Umsatz</td>
+		<td colspan=3 align="center">Sie haben noch keine Angaben zum Umsatz hinterlegt.<br>Sie können das <%= link_to "hier", business_data_path %> nachholen.</td>
+		<% else %>
 		<td>Stromkosten / 1.000€ Umsatz</td>
 		<td align="right">
 			<% annualFinalSumV = @sumBillsEnergyValue / @annualSale * 1000 %>
@@ -220,10 +341,25 @@
 				(+ <%= number_to_currency(annualFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/T€)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupUV.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupUV.size %>
+		</td>
 		<td></td>
+		<% end %>
 	</tr>
 	<!--Kennzahlen Stromverbrauch Einnahmen-->
 	<tr>
+		<% if @income == 0 %>
+		<td>Stromverbrauch / 1.000€ Einnahmen</td>
+		<td colspan=3 align="center">Sie haben noch keine Angaben zu den Einnahmen hinterlegt.<br>Sie können das <%= link_to "hier", business_data_path %> nachholen.</td>
+		<% else %>
 		<td>Stromverbrauch / 1.000€ Einnahmen</td>
 		<td align="right">
 			<% incomeFinalSumC = @sumBillsEnergyConsumption / @income * 1000 %>
@@ -242,10 +378,25 @@
 				(+ <%= number_to_currency(incomeFinalSumAgoC * (-1), :unit =>"", :precision => 2) %> kWh/T€)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupIC.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupIC.size %>
+		</td>
 		<td></td>
+		<% end %>
 	</tr>
 	<!--Kennzahlen Stromkosten Einnahmen-->
 	<tr>
+		<% if @income == 0 %>
+		<td>Stromkosten / 1.000€ Einnahmen</td>
+		<td colspan=3 align="center">Sie haben noch keine Angaben zu den Einnahmen hinterlegt.<br>Sie können das <%= link_to "hier", business_data_path %> nachholen.</td>
+		<% else %>
 		<td>Stromkosten / 1.000€ Einnahmen</td>
 		<td align="right">
 			<% incomeFinalSumV = @sumBillsEnergyValue / @income * 1000 %>
@@ -264,9 +415,20 @@
 				(+ <%= number_to_currency(incomeFinalSumAgoV * (-1), :unit =>"", :precision => 2) %> €/T€)
 			<% end %>
 		</td>
+		<td align="center">
+			<% foo = 1 %>
+			<% @groupIV.each do |array|%>
+				<% if array.enterprise_id == @user.enterprise_id %>
+					<%= foo %>
+				<% end %>
+				<% foo = foo + 1 %>
+			<% end %>
+			von <%= @groupIV.size %>
+		</td>
 		<td></td>
+		<% end %>
 	</tr>
-	<tr><th colspan=4></th></tr>
+	<tr><th colspan=5></th></tr>
 </table>
 
 <h3>Produktionsbezogene Kennzahlen</h3>
@@ -468,7 +630,7 @@
 	
 	<tr><th colspan=4></th></tr>
 </table>
-
+<% end %>
 
 
 

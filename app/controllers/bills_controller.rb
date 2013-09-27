@@ -1,9 +1,7 @@
 class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
-  
-  load_and_authorize_resource
-  
+    
   def index
     @bills = Bill.find(:all, :order => "date")
     
@@ -70,7 +68,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
-        format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
+        format.html { redirect_to @contracts, notice: 'Bill was successfully created.' }
         format.json { render json: @bill, status: :created, location: @bill }
       else
         format.html { render action: "new" }

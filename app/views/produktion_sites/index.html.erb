@@ -28,7 +28,7 @@ function toggle() {
 <% @produktion_sites.each do |produktion_site| %>
   <tr>
     <td><%= produktion_site.name %></td>
-    <td><%= excerpt(produktion_site.description, " ", 9) %></td>
+    <td><%= produktion_site.description %></td>
     <td><%= produktion_site.address %> <%=produktion_site.number%></td>
 
   <td><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), produktion_site %>
