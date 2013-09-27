@@ -1,0 +1,84 @@
+<%  # encoding: UTF-8 %>
+<h2>Berichte erstellen</h2>
+<p>An dieser Stelle können Sie benutzerdefinierte Berichte erstellen lassen. Wählen Sie dazu die Berichtelemente aus, die Sie anzeigen lassen wollen. Anschließend können Sie den Bericht auch als PDF exportieren.</p>
+
+<table xmlns="http://www.w3.org/1999/html">
+  <tr>
+    <td><%= link_to "Lastenmanagement ", '/reports/lastenmanagement' %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "Energieumrechnungszahlen und CO2-Emissionsfaktoren", '/reports/norm_report' %></td>
+  </tr>
+</table>
+
+<form id=full_report method="post" action="/reports/full_report">
+  <table id="data">
+    <tr>
+      <th colspan="2">Schwerpunkte des Energieberichts auswählen:</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" value=false id="Kälteverbrauch" name="Kälteverbrauch" />
+        <input type="checkbox" value=true id="Kälteverbrauch" name="Kälteverbrauch" checked="true" />
+        <label for="Kälteverbrauch">Kälteverbrauch</label>
+      </td>
+      <td>
+        <input type="hidden" value=false id="Druckluftverbrauch" name="Druckluftverbrauch" />
+        <input type="checkbox" value=true id="Druckluftverbrauch" name="Druckluftverbrauch" checked="true" />
+        <label for="Druckluftverbrauch">Druckluftverbrauch</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" value=false id="Heißwasserverbrauch" name="Heißwasserverbrauch" />
+        <input type="checkbox" value=true id="Heißwasserverbrauch" name="Heißwasserverbrauch" checked="true" />
+        <label for="Heißwasserverbrauch">Heißwasserverbrauch</label>
+      </td>
+      <td>
+        <input type="hidden" value=false id="Beleuchtungsanlagen" name="Beleuchtungsanlagen" />
+        <input type="checkbox" value=true id="Beleuchtungsanlagen" name="Beleuchtungsanlagen" checked="true"/>
+        <label for="Beleuchtungsanlagen">Beleuchtungsanlagen</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" value=false id="Dampfverbrauch" name="Dampfverbrauch" />
+        <input type="checkbox" value=true id="Dampfverbrauch" name="Dampfverbrauch"checked="true" />
+        <label for="Dampfverbrauch">Dampfverbrauch</label>
+      </td>
+      <td>
+        <input type="hidden" value=false id="Thermoölverbrauch" name="Thermoölverbrauch" />
+        <input type="checkbox" value=true id="Thermoölverbrauch" name="Thermoölverbrauch"checked="true"/>
+        <label for="Thermoölverbrauch">Thermoölverbrauch</label>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">Checklisten</th>
+    </tr>
+    <% total_element = ChecklistDefinition.count %>
+    <%  item = ChecklistDefinition.all.to_a %>
+    <% 0.step(total_element-1, 2) do |i| %>
+        <tr>
+          <td>
+            <input type="hidden" value=false id="<%=item[i].name%>" name="<%=item[i].name%>" />
+            <input type="checkbox" value=true id="<%=item[i].name%>" name="<%=item[i].name%>"checked="true"/>
+            <label for="<%=item[i].name%>"><%=item[i].name%></label>
+          </td>
+          <td>
+            <% if item[i+1] %>
+                <input type="hidden" value=false id="<%=item[i+1].name%>" name="<%=item[i+1].name%>" />
+                <input type="checkbox" value=true id="<%=item[i+1].name%>" name="<%=item[i+1].name%>"checked="true"/>
+                <label for="<%=item[i+1].name%>"><%=item[i+1].name%></label>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    <tr>
+      <th colspan="2">
+        <div align="center" margin="80px">
+          <input id="submitbutton" type="submit" value="Energiebericht erzeugen" name="submit"/>
+        </div>
+      </th>
+    </tr>
+  </table>
+</form>
