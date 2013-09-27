@@ -9,8 +9,8 @@ Tabelle <%= table_count %> zeigt die aktuell erfassten Stammdaten Ihres Unterneh
 
 <div align = "center">
   <h4>Tab. <%= table_count %>. Unternehmensdaten</h4>
+  <% table_count = table_count + 1 %>
 </div>
-<% table_count = table_count + 1 %>
 
 <table id="data">
 	<!--<tr>
@@ -59,8 +59,8 @@ Tabelle <%= table_count %> zeigt die aktuell erfassten Stammdaten Ihres Unterneh
 
 <div align = "center">
   <h4>Tab. <%= table_count %>. Unternehmensstammdaten</h4>
+  <% table_count = table_count + 1 %>
 </div>
-<% table_count = table_count + 1 %>
 
 <table class="zentriert" id="table_business_data">
 	<thead>
@@ -93,7 +93,7 @@ Tabelle <%= table_count %> zeigt die aktuell erfassten Stammdaten Ihres Unterneh
   <%= render_chart @chart, 'chart' %>
 </div>
 <div align = "center">
-  <h4>Abb. <%= image_count %>. Entwicklung Unternehmensdaten</h4>
+  <h4>Abb. <%= image_count %>. Entwicklung Unternehmensstammdaten</h4>
 </div>
 <% image_count = image_count + 1 %>
 <div class="spacer"></div>

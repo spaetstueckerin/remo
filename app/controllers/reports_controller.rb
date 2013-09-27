@@ -482,6 +482,7 @@ class ReportsController < ApplicationController
 
     end
   end
+
   def norm_reportpdf
     css_path = Rails.root.to_s+"/app/assets/stylesheets/"
     html = render_to_string(:layout => 'report',:action=>'norm_reportpdf')
@@ -504,7 +505,6 @@ class ReportsController < ApplicationController
       format.pdf {
         render :text => PDFKit.new(post_url(@post)).to_pdf
       }
-
     end
   end
 

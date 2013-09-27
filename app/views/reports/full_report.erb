@@ -2,12 +2,16 @@
 
 <h1>Energiebericht</h1>
 
-<p>An dieser Stelle wird ein umfassender Bericht der Energiesituation im Unternehmen dargestellt. Dieser Bericht kann auch als <%= link_to 'PDF-Dokument','/reports/reportpdf'%>  gespeichert werden <%= link_to image_tag("save-as-pdf.png", size: "30x30", alt: "PDF", valign: "middle"), '/reports/reportpdf' %></p>
+<p>
+  An dieser Stelle wird ein umfassender Bericht der Energiesituation im Unternehmen dargestellt.
+  Dieser Bericht kann auch als <%= link_to 'PDF-Dokument','/reports/full_reportpdf'%>  gespeichert werden
+  <%= link_to image_tag("save-as-pdf.png", size: "30x30", alt: "PDF", valign: "middle"), '/reports/full_reportpdf' %>
+</p>
 
 <%= render 'fullreport' %>
 
-    <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), '/sites/reporting' %>
-    <%= link_to image_tag("save-as-pdf.png", size: "20x20", alt: "PDF"), '/reports/reportpdf' %>
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), '/sites/full_report' %>
+<%= link_to image_tag("save-as-pdf.png", size: "20x20", alt: "PDF"), '/reports/full_reportpdf' %>
 
 <!--Load Rgraph Libraries-->
 <%= javascript_include_tag("Rgraph/RGraph.common.core.js") %>

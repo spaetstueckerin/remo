@@ -104,7 +104,8 @@ Remo::Application.routes.draw do
   get "sites/hotWater"
   get "sites/thermoOil"
   get "sites/cold"
-  get "sites/reporting"
+  get "sites/short_report"
+  get "sites/full_report"
   get "sites/crossSection"
   get "sites/goals"
   get "sites/checklists_manager"
@@ -112,7 +113,7 @@ Remo::Application.routes.draw do
   get "reports/lastenmanagement"
   get "reports/lastenmanagementpdf"
   post 'reports/full_report', :controller => 'reports', :action => 'full_report'
-  get 'reports/report', :controller => 'reports', :action => 'report'
+  #get 'reports/show_full_report', :controller => 'reports', :action => 'show_full_report'
   #get  'reports/pdf_report'
   get  'reports/norm_report'
   get  'reports/norm_reportpdf'

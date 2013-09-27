@@ -1,84 +1,204 @@
-<%  # encoding: UTF-8 %>
-<h2>Berichte erstellen</h2>
-<p>An dieser Stelle können Sie benutzerdefinierte Berichte erstellen lassen. Wählen Sie dazu die Berichtelemente aus, die Sie anzeigen lassen wollen. Anschließend können Sie den Bericht auch als PDF exportieren.</p>
+<% # encoding: UTF-8 %>
 
-<table xmlns="http://www.w3.org/1999/html">
-  <tr>
-    <td><%= link_to "Lastenmanagement ", '/reports/lastenmanagement' %></td>
-  </tr>
-  <tr>
-    <td><%= link_to "Energieumrechnungszahlen und CO2-Emissionsfaktoren", '/reports/norm_report' %></td>
-  </tr>
+<h1>Eilbericht</h1>
+
+<p>
+  An dieser Stelle wird ein Eilbericht mit den wesentlichen Energiedaten des Unternehmens aufgezeit.
+  Dieser Bericht kann auch als <%= link_to 'PDF-Dokument','/reports/short_reportpdf'%>  gespeichert werden
+  <%= link_to image_tag("save-as-pdf.png", size: "30x30", alt: "PDF", valign: "middle"), '/reports/short_reportpdf' %>
+</p>
+
+<h2>Unternehmensstammdaten</h2>
+
+<% @enterprise = Enterprise.first %>
+<% @business_data = BusinessDatum.find_all_by_enterpriseId(@enterprise.id) %>
+
+<table class="zentriert">
+  <thead>
+      <tr>
+        <!--<th>Enterpriseid</th>-->
+        <th>Jahr</th>
+        <th>Jahresumsatz</th>
+        <th>Einkommen</th>
+        <th>Investment in Energieeffizienz</th>
+        <th>Produktionskosten</th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @business_data.each do |business_datum| %>
+          <tr>
+            <td class="year"><%= business_datum.year %></td>
+            <td class="annualSales"><%= business_datum.annualSales%> €</td>
+            <td class="netIncome"><%= business_datum.netIncome %> €</td>
+            <td class="energyEfficiencyInvestment"><%= business_datum.energyEfficiencyInvestment %> €</td>
+            <td class="ProductCost"><%= business_datum.productCosts %> €</td>
+          </tr>
+      <% end %>
+  </tbody>
 </table>
 
-<form id=full_report method="post" action="/reports/full_report">
-  <table id="data">
+<%
+   data_table = GoogleVisualr::DataTable.new
+   data_table.new_column('string', 'Jahr')
+   data_table.new_column('number', 'Jahresumsatz')
+   data_table.new_column('number', 'Einkommen')
+   data_table.new_column('number', 'EE-Investment')
+   data_table.new_column('number', 'Produktionskosten')
+
+   @business_data.each do |data|
+     data_table.add_row(["#{data.year}", data.annualSales, data.netIncome, data.energyEfficiencyInvestment, data.productCosts])
+   end
+
+   opts = { :width => 800, :height => 250, :legend => 'bottom' }
+   @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
+%>
+
+<div id = 'chart' align = "center" style = 'width: 800px; height: 250px;'></div>
+<%= render_chart @chart, 'chart' %>
+<div align = "center">
+  <h4>Abb. 1. Entwicklung Unternehmensstammdaten</h4>
+</div>
+<div class="spacer"></div>
+
+<h2>Energieverbrauch</h2>
+
+<%
+   @bills = Bill.select('year, contract_id, sum(value) as value, sum(consumption) as consumption').group('year, contract_id').order('year ASC')
+   @table_rows = Hash.new
+   @bills.each do |bill|
+     if not @table_rows.has_key?(bill.year)
+       @table_rows[bill.year] = Hash.new
+     end
+     @table_rows[bill.year].store(Contract.find(bill.contract_id).energy_type, [bill.value.to_f, bill.consumption.to_f])
+   end
+%>
+
+<table class="zentriert">
+  <thead>
     <tr>
-      <th colspan="2">Schwerpunkte des Energieberichts auswählen:</th>
+      <th rowspan="2">Jahr</th>
+      <th colspan="2">Strom</th>
+      <th colspan="2">Gas</th>
+      <th colspan="2">Heizung</th>
+      <th colspan="2">Öl</th>
     </tr>
     <tr>
-      <td>
-        <input type="hidden" value=false id="Kälteverbrauch" name="Kälteverbrauch" />
-        <input type="checkbox" value=true id="Kälteverbrauch" name="Kälteverbrauch" checked="true" />
-        <label for="Kälteverbrauch">Kälteverbrauch</label>
-      </td>
-      <td>
-        <input type="hidden" value=false id="Druckluftverbrauch" name="Druckluftverbrauch" />
-        <input type="checkbox" value=true id="Druckluftverbrauch" name="Druckluftverbrauch" checked="true" />
-        <label for="Druckluftverbrauch">Druckluftverbrauch</label>
-      </td>
+      <th>Verbrauch (kW/h)</th>
+      <th>Kosten (€)</th>
+      <th>Verbrauch (m&sup3;/a)</th>
+      <th>Kosten (€)</th>
+      <th>Verbrauch (???)</th>
+      <th>Kosten (€)</th>
+      <th>Verbrauch (t)</th>
+      <th>Kosten (€)</th>
     </tr>
-    <tr>
-      <td>
-        <input type="hidden" value=false id="Heißwasserverbrauch" name="Heißwasserverbrauch" />
-        <input type="checkbox" value=true id="Heißwasserverbrauch" name="Heißwasserverbrauch" checked="true" />
-        <label for="Heißwasserverbrauch">Heißwasserverbrauch</label>
-      </td>
-      <td>
-        <input type="hidden" value=false id="Beleuchtungsanlagen" name="Beleuchtungsanlagen" />
-        <input type="checkbox" value=true id="Beleuchtungsanlagen" name="Beleuchtungsanlagen" checked="true"/>
-        <label for="Beleuchtungsanlagen">Beleuchtungsanlagen</label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type="hidden" value=false id="Dampfverbrauch" name="Dampfverbrauch" />
-        <input type="checkbox" value=true id="Dampfverbrauch" name="Dampfverbrauch"checked="true" />
-        <label for="Dampfverbrauch">Dampfverbrauch</label>
-      </td>
-      <td>
-        <input type="hidden" value=false id="Thermoölverbrauch" name="Thermoölverbrauch" />
-        <input type="checkbox" value=true id="Thermoölverbrauch" name="Thermoölverbrauch"checked="true"/>
-        <label for="Thermoölverbrauch">Thermoölverbrauch</label>
-      </td>
-    </tr>
-    <tr>
-      <th colspan="2">Checklisten</th>
-    </tr>
-    <% total_element = ChecklistDefinition.count %>
-    <%  item = ChecklistDefinition.all.to_a %>
-    <% 0.step(total_element-1, 2) do |i| %>
+  </thead>
+  <tbody>
+      <% @table_rows.each do |key, value| %>
         <tr>
-          <td>
-            <input type="hidden" value=false id="<%=item[i].name%>" name="<%=item[i].name%>" />
-            <input type="checkbox" value=true id="<%=item[i].name%>" name="<%=item[i].name%>"checked="true"/>
-            <label for="<%=item[i].name%>"><%=item[i].name%></label>
-          </td>
-          <td>
-            <% if item[i+1] %>
-                <input type="hidden" value=false id="<%=item[i+1].name%>" name="<%=item[i+1].name%>" />
-                <input type="checkbox" value=true id="<%=item[i+1].name%>" name="<%=item[i+1].name%>"checked="true"/>
-                <label for="<%=item[i+1].name%>"><%=item[i+1].name%></label>
-            <% end %>
-          </td>
+          <td><%= key %></td>
+          <td><%= value["Strom"] ? value["Strom"][0] : 0 %></td>
+          <td><%= value["Strom"] ? value["Strom"][1] : 0 %></td>
+          <td><%= value["Gas"] ? value["Gas"][0] : 0 %></td>
+          <td><%= value["Gas"] ? value["Gas"][1] : 0 %></td>
+          <td><%= value["Heizung"] ? value["Heizung"][0] : 0 %></td>
+          <td><%= value["Heizung"] ? value["Heizung"][1] : 0 %></td>
+          <td><%= value["Öl"] ? value["Öl"][0] : 0 %></td>
+          <td><%= value["Öl"] ? value["Öl"][1] : 0 %></td>
         </tr>
-    <% end %>
-    <tr>
-      <th colspan="2">
-        <div align="center" margin="80px">
-          <input id="submitbutton" type="submit" value="Energiebericht erzeugen" name="submit"/>
-        </div>
-      </th>
-    </tr>
-  </table>
-</form>
+      <% end %>
+  </tbody>
+</table>
+
+<%
+   data_table = GoogleVisualr::DataTable.new
+   data_table.new_column('string', 'Jahr')
+   data_table.new_column('number', 'Stromverbrauch')
+   data_table.new_column('number', 'Stromkosten')
+   data_table.new_column('number', 'Gasverbrauch')
+   data_table.new_column('number', 'Gaskosten')
+   data_table.new_column('number', 'Heizungsverbrauch')
+   data_table.new_column('number', 'Heizungskosten')
+   data_table.new_column('number', 'Ölverbrauch')
+   data_table.new_column('number', 'Ölkosten')
+
+   @table_rows.each do |key, value|
+     data_table.add_row([key.to_s,
+                         value["Strom"] ? value["Strom"][0] : 0,
+                         value["Strom"] ? value["Strom"][1] : 0,
+                         value["Gas"] ? value["Gas"][0] : 0,
+                         value["Gas"] ? value["Gas"][1] : 0,
+                         value["Heizung"] ? value["Heizung"][0] : 0,
+                         value["Heizung"] ? value["Heizung"][1] : 0,
+                         value["Öl"] ? value["Öl"][0] : 0,
+                         value["Öl"] ? value["Öl"][1] : 0
+                        ])
+   end
+
+   opts = { :width => 700, :height => 300, :title => 'Verbrauch + Kosten',
+            chartArea: { left: 50, top: 50, width: "70%", height: "75%" },
+            :colors => ['red','darkred', 'green', 'darkgreen', 'blue', 'darkblue', 'magenta', 'darkmagenta'] }
+   @chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, opts)
+%>
+
+<div id = 'chartVK' align = "center" style = 'width: 800px; height: 300px;'></div>
+<%= render_chart @chart, 'chartVK' %>
+
+<%
+   data_table = GoogleVisualr::DataTable.new
+   data_table.new_column('string', 'Jahr')
+   data_table.new_column('number', 'Strom')
+   data_table.new_column('number', 'Gas')
+   data_table.new_column('number', 'Heizung')
+   data_table.new_column('number', 'Öl')
+
+   @table_rows.each do |key, value|
+     data_table.add_row([key.to_s,
+                         value["Strom"] ? value["Strom"][0] : 0,
+                         value["Gas"] ? value["Gas"][0] : 0,
+                         value["Heizung"] ? value["Heizung"][0] : 0,
+                         value["Öl"] ? value["Öl"][0] : 0,
+                        ])
+   end
+
+   opts = { :width => 350, :height => 240, :title => 'Verbrauch',
+            chartArea: { left: 40, top: 50, width: "65%", height: "65%" },
+            :colors => ['red','green', 'blue', 'magenta'] }
+   @chartV = GoogleVisualr::Interactive::ColumnChart.new(data_table, opts)
+
+   data_table = GoogleVisualr::DataTable.new
+   data_table.new_column('string', 'Jahr')
+   data_table.new_column('number', 'Strom')
+   data_table.new_column('number', 'Gas')
+   data_table.new_column('number', 'Heizung')
+   data_table.new_column('number', 'Öl')
+
+   @table_rows.each do |key, value|
+     data_table.add_row([key.to_s,
+                         value["Strom"] ? value["Strom"][1] : 0,
+                         value["Gas"] ? value["Gas"][1] : 0,
+                         value["Heizung"] ? value["Heizung"][1] : 0,
+                         value["Öl"] ? value["Öl"][1] : 0
+                        ])
+   end
+
+   opts = { :width => 350, :height => 240, :title => 'Kosten',
+            chartArea: { left: 40, top: 50, width: "65%", height: "65%" },
+            :colors => ['darkred', 'darkgreen', 'darkblue', 'darkmagenta'] }
+   @chartK = GoogleVisualr::Interactive::ColumnChart.new(data_table, opts)
+%>
+
+<div id="holder">
+  <div class="item" id='chartV' align="center" style='width: 350px; height: 240px;'></div>
+  <%= render_chart @chartV, 'chartV' %>
+  <div class="item" id='chartK' align="center" style='width: 350px; height: 240px;'></div>
+  <%= render_chart @chartK, 'chartK' %>
+</div>
+<div id="clearer"></div>
+
+<div align = "center">
+  <h4>Abb. 2. Entwicklung des Energieverbrauchs</h4>
+</div>
+<div class="spacer"></div>
+
+<%= link_to image_tag("save-as-pdf.png", size: "20x20", alt: "PDF"), '/reports/short_reportpdf' %>
