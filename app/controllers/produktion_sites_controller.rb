@@ -4,8 +4,7 @@ class ProduktionSitesController < ApplicationController
   def index
     @user = User.find(session[:user_id])
     @enterprise = Enterprise.find(@user.enterprise_id)
-    
-     @produktion_sites = ProduktionSite.find_all_by_enterpriseID(@enterprise.id)
+    @produktion_sites = ProduktionSite.find_all_by_enterprise_id(@enterprise.id)
    
     @produktion_site = ProduktionSite.new
 

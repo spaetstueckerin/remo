@@ -2,7 +2,10 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.find(:all, :order =>"floor ASC")
+    #@locations = Location.find(:all, :order =>"floor ASC")
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @locations = Location.find_all_by_enterprise_id(@enterprise.id, :order =>"floor ASC")
 
     respond_to do |format|
       format.html # index.html.erb

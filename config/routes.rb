@@ -1,13 +1,9 @@
 Remo::Application.routes.draw do
-
+  
+  root :to => "sessions#new"
   resources :produced_units
-
-
   resources :productions
-
-
   resources :product_ranges
-
 
   post 'checklists/saveform', :controller => 'checklists', :action => 'saveform'
 
@@ -88,7 +84,7 @@ Remo::Application.routes.draw do
   resources :roles
   resources :energy_mixes
 
-  root :to => "sessions#new"
+  
 
   resources :users
   resources :todos
@@ -120,7 +116,7 @@ Remo::Application.routes.draw do
     
   get "login" => "sessions#new", as: "login"
   post "sessions" => "sessions#create", as: "sessions"
- # delete "logout" => "sessions#destroy", as: "logout"
+  delete "logout" => "sessions#destroy", as: "logout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

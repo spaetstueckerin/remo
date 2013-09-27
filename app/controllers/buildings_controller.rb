@@ -2,7 +2,11 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
   def index
-    @buildings = Building.find(:all, :order => "name ASC")
+    #@buildings = Building.find(:all)
+    @user = User.find(session[:user_id])
+    @enterprise = Enterprise.find(@user.enterprise_id)
+    @produktion_sites = ProduktionSite.find_by_enterprise_id(@enterprise.id)
+    @buildings = Building.find_all_by_site_id(@produktion_sites.id, :order => "name ASC")
 
     respond_to do |format|
       format.html # index.html.erb

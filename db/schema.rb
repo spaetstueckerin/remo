@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925135631) do
+ActiveRecord::Schema.define(:version => 20130927083705) do
+
+  create_table "benchmark_numbers", :force => true do |t|
+    t.float    "number"
+    t.integer  "enterprise_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "bills", :force => true do |t|
     t.decimal  "value"
@@ -882,22 +889,13 @@ ActiveRecord::Schema.define(:version => 20130925135631) do
     t.string   "firstname"
     t.string   "username"
     t.string   "password_digest"
+    t.string   "email"
     t.string   "position"
     t.text     "annotation"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "role_id"
     t.integer  "enterprise_id"
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
   end
 
   create_table "years", :force => true do |t|

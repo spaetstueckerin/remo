@@ -1,5 +1,10 @@
 <h2>Anmeldung</h2>
 
+
+<% if session[:user_id] %>
+
+<table><tr><th>Sie sind angemeldet.</th></tr></table>
+<% else %>
 <p>Bitte melden Sie sich an dieser Stelle mit Ihrem Benutzernamen und Passwort an. Wenn Sie Probleme mit dem Login haben, wenden Sie sich telefonisch an einen der Administratoren unter 030/2400 865 14 oder per Mail an admin@remo-green.de</p>
 
 <table>
@@ -23,4 +28,5 @@
 </table>
 <br>
 <%= submit_tag "Anmelden" %>
+<% end %>
 <% end %>

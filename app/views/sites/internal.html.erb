@@ -1,4 +1,4 @@
-<%# if User.find(session[:user_id]).role_id == 1 %>
+<% if User.find(session[:user_id]).role_id == 1 %>
 <h2>Projektdokumentation</h2>
 <table>
   <tr>
@@ -22,4 +22,4 @@
 	<tr><th><%= image_tag "alert.png" %></th></tr>
 	<tr><th>Hinweis: Sie haben keine Rechte auf diese Seite zuzugreifen!</th></tr>
 </table>
-<%# end %>
+<% end %>

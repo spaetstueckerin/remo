@@ -36,15 +36,17 @@ myLayer.style.display="none";
 	<div class="strich"></div>
 	<div id="sidebar">
 		<div class="feld">
-			<%= @firstname = User.find(session[:user_id]).firstname %>
-			<%= @name = User.find(session[:user_id]).name %>	
-			<% @id = User.find(session[:user_id]).enterprise_id %>
-	    	<%= @enterprise = Enterprise.find(@id).name %>
+			<% if session[:user_id] %>
+				<%= @firstname = User.find(session[:user_id]).firstname %>
+				<%= @name = User.find(session[:user_id]).name %>	
+				<% @id = User.find(session[:user_id]).enterprise_id %>
+	    		<%= @enterprise = Enterprise.find(@id).name %>
+			<% end %>
 		</div>
 		<div class="feld"><%= link_to "Startseite", '/welcome/index' %></div>
-		<% if User.find(session[:user_id]).role_id == 1 %>
+		<%# if User.find(session[:user_id]).role_id == 1 %>
 			<div class="feld"><%= link_to "Admin", '/sites/internal' %></div>
-		<% end %>
+		<%# end %>
 		<!--<div id="feld"><%= link_to "Energieziele", '/sites/goals' %></div>-->
 		<div class="feld"><%= link_to "Stammdaten", '/sites/general' %></div>
 		<div class="feld"><%= link_to "Versorger", contracts_path %></div>
@@ -67,7 +69,7 @@ myLayer.style.display="none";
 		<div class="feld"><%= link_to "Berichte", '/sites/reporting' %></div>
 		<div class="feld"><%= link_to "Benchmarking", '/benchmarking/index' %></div>
 		<div class="feld"><%= link_to "Simulation", '/sites/simulation' %></div>
-		<div class="feld"><%= link_to "Logout", '/sites/simulation' %></div>
+		<div class="feld"><%= link_to "Logout", logout_path, method: :delete %></div>
 		<br><br><br><br>
 	</div>
 	<div id="main">

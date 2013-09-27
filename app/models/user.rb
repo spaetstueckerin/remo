@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   attr_accessible :user_id
   attr_accessible :role_id
   attr_accessible :enterprise_id
+    
 end
