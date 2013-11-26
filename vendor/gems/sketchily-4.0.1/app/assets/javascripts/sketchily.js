@@ -1,0 +1,10 @@
+//= require svg-edit-2.6/jquery
+//= require svg-edit-2.6/js-hotkeys/jquery.hotkeys.min
+//= require svg-edit-2.6/jquerybbq/jquery.bbq.min
+//= require svg-edit-2.6/svgicons/jquery.svgicons
+//= require svg-edit-2.6/jgraduate/jquery.jgraduate.min
+//= require svg-edit-2.6/spinbtn/JQuerySpinBtn.min
+//= require svg-edit-2.6/touch
+//= require svg-edit-2.6/svgedit.compiled
+//= require svg-edit-2.6/jquery-ui/jquery-ui-1.8.17.custom.min
+//= require svg-edit-2.6/jgraduate/jpicker

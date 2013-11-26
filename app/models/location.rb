@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
-  attr_accessible :description, :name, :squaremeter, :height, :building_id, :floor, :photo, :enterprise_id
+  attr_accessible :description, :name, :squaremeter, :height, :level_id, :photo, :building_id
+  belongs_to :level
   has_attached_file :photo,
     :styles => {
       :thumb => "100x100",

@@ -1,0 +1,7 @@
+/*
+ *= require_self
+ *= require svg-edit-2.6/jgraduate/css/jPicker
+ *= require jgraduate/css/jgraduate
+ *= require svg-editor
+ *= require spinbtn/JQuerySpinBtn
+ */

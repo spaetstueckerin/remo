@@ -1,29 +1,51 @@
 <%= form_for(@building) do |f| %>
-  <% if @building.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@building.errors.count, "error") %> prohibited this building from being saved:</h2>
+    <% if @building.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@building.errors.count, "error") %> prohibited this building from being saved:</h2>
+            <ul>
+                <% @building.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
-      <ul>
-      <% @building.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <% @levels = Level.find_all_by_building_id(@building) %>
+    <% @levels_count = @levels.count %>
+    <% @rooms_count = Location.find_all_by_level_id(@levels).count %>
+
+    <table>
+        <tr>
+            <th><%= f.label :site_id, "Produktionsstandort" %></th>
+            <td colspan="3"><%= f.select :site_id, ProduktionSite.all.map{|p| [p.name, p.id]}%></td>
+        </tr>
+        <tr>
+            <th><%= f.label :name, "Gebäudename" %></th>
+            <td><%= f.text_field :name, :size => 50 %></td>
+            <td><%= @levels_count < 2 ? @levels_count.to_s + " Etage" : @levels_count.to_s + " Etagen" %></td>
+            <td><%= @rooms_count < 2 ? @rooms_count.to_s + " Raum" : @rooms_count.to_s + " Räume" %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :description, "Beschreibung" %></th>
+            <td colspan="3"><%= f.text_area :description, size: "70x6" %></td>
+        </tr>
+        <% @levels.each do |l| %>
+            <tr>
+              <th>Etage <%= l.level %></th>
+              <td colspan="2" align="center"><a href=<%= level_path(l) %>><%= sketchily_show l.floor_plan, :width => "100" %></a></td>
+              <td align="center">
+                <%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), l %> &nbsp;
+                <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_level_path(l) %>
+              </td>
+            </tr>
+        <% end %>
+        <tr>
+            <th colspan="3"></th>
+            <th><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_level_path %></th>
+        </tr>
+    </table>
+
+    <div class="actions">
+        <%= f.submit "Speichern"%>
     </div>
-  <% end %>
-
-<table>
-	<tr>
-    <td><%= f.label :site_id, "Produktionsstandort" %></td>
-    <td><%= f.select :site_id, ProduktionSite.all.map{|p| [p.name, p.id]}%></td>
-    <td><%= f.label :name, "Name" %></td>
-    <td><%= f.text_field :name %></td>
-</tr>
-<tr>
-    <td><%= f.label :description, "Beschreibung" %></td>
-    <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
-</tr>
-</table>
-  <div class="actions">
-    <%= f.submit "Absenden"%>
-  </div>
 <% end %>

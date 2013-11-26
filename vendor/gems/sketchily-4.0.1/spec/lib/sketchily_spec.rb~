@@ -1,0 +1,9 @@
+require 'test_helper'
+
+module Sketchily
+  describe Sketchily do
+    it 'must precompile assets' do
+      Rails.configuration.assets.precompile.must_include "sketchily.css"
+    end
+  end
+end

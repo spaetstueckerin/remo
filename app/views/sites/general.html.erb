@@ -35,48 +35,52 @@ function showonlyonev2(thechosenone) {
 
 <!-- Zeige alle Standorte-->
 <% @production_sites.each do |ps| %>
+    <table>
+	    <tr>
+		    <th id="field" align="left">
+			    <%= ps.name %>, <%= ps.address %>, <%= ps.zip %> <%= ps.city %>
+		    </th>
+		    <th id="field" width="100" align="center">
+			    <a id="<%="myHeader"+ "#{element}"+"-2"%>" href="javascript:showonlyonev2('<%="newboxes"+ "#{element}"+"-2"%>');" ><%= image_tag("runter.png", size: "20x20", alt: "Zeige Gebäude") %></a>
+		    </th>
+	    </tr>
+    </table>
 
-<table>
-	<tr>
-		<th id="field" align="left">
-			<%= ps.name %>, <%= ps.address %>, <%= ps.zip %> <%= ps.city %>
-		</th>
-		<th id="field" width="100" align="center">
-			<a id="<%="myHeader"+ "#{element}"+"-2"%>" href="javascript:showonlyonev2('<%="newboxes"+ "#{element}"+"-2"%>');" ><%= image_tag("runter.png", size: "20x20", alt: "Zeige Gebäude") %></a>
-		</th>
-	</tr>
-</table>
+    <!-- Zeige alle Gebäude des Standortes-->
+    <% @buildings = Building.find_all_by_site_id(ps.id)%>
+    <% @buildings.each do |building| %>
+        <div class="newboxes-2" id="<%="newboxes"+ "#{element}"+"-2"%>" style="display: none;">
+	        <table>
+		        <tr>
+			        <td><b><%= building.name %></b></td>
+			        <td width="100" class="zentriert">
+		                <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_building_path(building) %>
+		                <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), building, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </td>
+		        </tr>
+	        </table>
 
-<!-- Zeige alle Gebäude des Standortes-->
-<% @buildings = Building.find_all_by_site_id(ps.id)%>
-<% @buildings.each do |building| %>
-<div class="newboxes-2" id="<%="newboxes"+ "#{element}"+"-2"%>" style="display: none;">
-	<table>
-		<tr>
-			<td><b><%= building.name %></b></td>
-			<td width="100" class="zentriert">
-		    <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_building_path(building) %>
-		    <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), building, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-		</tr>
-	</table>
-
-<!-- Zeige alle Räume des Gebäudes -->
-<% @locations = Location.find_all_by_building_id(building.id, :order => "floor ASC") %>
-<% @locations.each do |location| %>
-
-<table>
-	<tr>
-		<td>&nbsp;&nbsp;&nbsp;<%= location.floor %>. Etage: <%= location.name %></td>
-		<td width ="100" class="zentriert"><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), location %>
-		<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_location_path(location) %>
-		<%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), location, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-	</tr>
-</table>
-<% end %> <%# Hier ist das Ende der Location Schleife %>
-</div>
-<% end %> <%# Hier ist das Ende der Building Schleife %>
-<% element = element+1 %>
+            <!-- Zeige alle Räume des Gebäudes -->
+            <% @levels = Level.find_all_by_building_id(building.id, :order => "level ASC") %>
+            <% @levels.each do |level| %>
+                <% @locations = Location.find_all_by_level_id(level.id) %>
+                <% @locations.each do |location| %>
+                    <table>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;<%= level.level %>. Etage: <%= location.name %></td>
+                            <td width ="100" class="zentriert"><%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), location %>
+                                <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_location_path(location) %>
+                                <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), location, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    </table>
+                <% end %> <%# Hier ist das Ende der Location Schleife %>
+            <% end %>
+        </div>
+    <% end %> <%# Hier ist das Ende der Building Schleife %>
+    <% element = element+1 %>
 <% end %> <%# Hier ist das Ende der ProduktionSite Schleife%>
+
 <table>  
 	<tr>
 		<td><%= link_to 'Standorte anzeigen', produktion_sites_path %></td>
@@ -86,7 +90,11 @@ function showonlyonev2(thechosenone) {
 		<td><%= link_to 'Gebäude anzeigen', buildings_path %></td>
 		<td align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_building_path %></td>
 	</tr>
-	<tr>                                     
+    <tr>
+        <td><%= link_to 'Etagen anzeigen', levels_path %></td>
+        <td align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_level_path %></td>
+    </tr>
+	<tr>
 		<td><%= link_to 'Raum/Halle anzeigen', locations_path %></td>
 		<td align="center"><%= link_to image_tag("new.png", size: "20x20", alt: "Anlegen"), new_location_path %></td>
 	</tr>

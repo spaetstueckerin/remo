@@ -62,7 +62,7 @@
       <th colspan="2">Checklisten</th>
     </tr>
     <% total_element = ChecklistDefinition.count %>
-    <%  item = ChecklistDefinition.all.to_a %>
+    <% item = ChecklistDefinition.all.to_a %>
     <% 0.step(total_element-1, 2) do |i| %>
         <tr>
           <td>

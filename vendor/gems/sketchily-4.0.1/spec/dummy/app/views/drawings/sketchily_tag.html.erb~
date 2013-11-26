@@ -1,0 +1,3 @@
+<%= form_tag drawing_path(@drawing), :method => :patch do %>
+  <%= sketchily_tag 'drawing' %>
+<% end %>

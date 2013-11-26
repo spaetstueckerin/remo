@@ -26,8 +26,14 @@ Remo::Application.routes.draw do
   resources :meters
   resources :meter_readings
   resources :meter_types
+
+  resources :branches
+  resources :enterprises
   resources :produktion_sites
   resources :buildings
+  resources :levels
+  resources :locations
+
   resources :machineries
   resources :production_levels
   resources :machinery_types
@@ -68,7 +74,6 @@ Remo::Application.routes.draw do
   resources :compressed_air_distributions
   resources :compressed_air_productions
   resources :lightings
-  resources :locations
   resources :enterprise_data_types
   resources :production_data_types
   resources :energy_data_types
@@ -79,12 +84,8 @@ Remo::Application.routes.draw do
   resources :business_data_types
   resources :bills
   resources :contracts
-  resources :branches
-  resources :enterprises
   resources :roles
   resources :energy_mixes
-
-  
 
   resources :users
   resources :todos
@@ -105,7 +106,9 @@ Remo::Application.routes.draw do
   get "sites/crossSection"
   get "sites/goals"
   get "sites/checklists_manager"
-    
+
+  get "simulations/index"
+
   get "reports/lastenmanagement"
   get "reports/lastenmanagementpdf"
   post 'reports/full_report', :controller => 'reports', :action => 'full_report'

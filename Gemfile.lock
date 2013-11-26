@@ -1,3 +1,8 @@
+PATH
+  remote: vendor/gems/sketchily-4.0.1
+  specs:
+    sketchily (4.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -162,5 +167,6 @@ DEPENDENCIES
   rails (= 3.2.12)
   rails-i18n (~> 3.0.0.pre)
   sass-rails (~> 3.2.3)
+  sketchily (= 4.0.1)!
   sqlite3
   uglifier (>= 1.0.3)

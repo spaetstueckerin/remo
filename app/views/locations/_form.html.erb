@@ -2,7 +2,6 @@
   <% if @location.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
-
       <ul>
       <% @location.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -14,9 +13,9 @@
 <table>
 <tr>
 	<td><%= f.label :building_id, "Gebäude" %></td>
-    <td><%= f.select :building_id, Building.all.map{|b| [b.name, b.id]}%></td>
-	<td><%= f.label :floor, "Etage" %></td>
-    <td><%= f.select :floor, ["-1", "0", "1", "2", "3", "4", "5"] %></td>
+    <td><%= f.select :building_id, Building.all.map{|b| [b.name, b.id]} %></td>
+	<td><%= f.label :level_id, "Etage" %></td>
+    <td><%= f.select :level_id, [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :selected => @location.level_id ? Level.find(@location.level_id).level : 0 %></td>
 </tr>
 <tr>
     <td><%= f.label :name, "Bezeichnung" %></td>
@@ -30,7 +29,7 @@
 </tr>
 <tr>
     <td><%= f.label :description, "Beschreibung" %></td>
-    <td colspan=3><%= f.text_area :description, size: "90x3" %></td>
+    <td colspan=3><%= f.text_area :description, size: "70x6" %></td>
 </tr>
 <tr>
 	<td><%= f.label :photo, "Bild" %></td>

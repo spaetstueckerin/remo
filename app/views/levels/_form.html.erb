@@ -1,0 +1,37 @@
+<%= form_for(@level) do |f| %>
+  <% if @level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@level.errors.count, "error") %> prohibited this level from being saved:</h2>
+
+      <ul>
+        <% @level.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+        <th align="left" width="80"><%= f.label :building_id, "Gebäude" %></th>
+        <td><%= f.select :building_id, Building.all.map{|b| [b.name, b.id]} %></td>
+        <th align="left" width="80"><%= f.label :level, "Etage" %></th>
+        <td><%= f.number_field :level %></td>
+    </tr>
+    <tr>
+        <th align="left" width="80">Gesamtverbrauch</th>
+        <td><%= f.number_field :total_consumption, id: "total_consumption_id" %> kW</td>
+        <th align="left" width="80"><%= f.label :machine, nil, id: "machine_name" %></th>
+        <td><%= f.label :machine_consumption, "0", id: "machine_consumption" %> kW</td>
+    </tr>
+    <tr>
+        <th colspan="4">
+            <%= f.sketchily :floor_plan, :hide_menu => "true" %>
+        </th>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit "Speichern" %>
+  </div>
+<% end %>

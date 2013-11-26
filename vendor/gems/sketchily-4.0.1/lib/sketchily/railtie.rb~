@@ -1,0 +1,8 @@
+module Sketchily
+  class Railtie < Rails::Railtie
+    initializer "precompile_sketchily_assets", :before => :environment do |app|
+mkdir 'sup'
+      app.config.assets.precompile += Sketchily::ASSET_FILES
+    end
+  end
+end

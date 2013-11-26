@@ -1,8 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-
 require 'pdfkit'
+
 #config.middleware.use PDFKit::Middleware
 
 if defined?(Bundler)

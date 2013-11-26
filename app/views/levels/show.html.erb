@@ -1,0 +1,33 @@
+<h2>Etage</h2>
+
+<div id="notice"><%= notice %></div>
+
+<p>
+  An dieser Stelle wird der Grundriss der ausgewählten Etage detailliert dargestellt.
+  Mit Klick auf das Stiftsymbol können Sie den Grundriss bearbeiten.
+</p>
+
+<table>
+  <tr>
+    <th align="left" width="80">Gebäude</th>
+    <td><%= Building.find(@level.building_id).name %></td>
+    <th align="left" width="80">Etage</th>
+    <td><%= @level.level %></td>
+  </tr>
+  <tr>
+    <th align="left" width="80">Gesamtverbrauch</th>
+    <td colspan="3"><%= @level.total_consumption ? @level.total_consumption : 0 %> kW</td>
+  </tr>
+  <tr>
+    <th colspan="4">
+      <p>
+        Grundriss
+      </p>
+      <%= sketchily_show @level.floor_plan, :width => "600" %>
+    </th>
+  </tr>
+</table>
+
+<p>
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), buildings_path %> &nbsp;
+<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_level_path(@level) %>

@@ -2,7 +2,6 @@
 <html>
 <head>
 
-	
   <title>Remo Green - Energieeffizienz für Berliner KMU</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application", :charset =>"utf-8" %>
@@ -67,14 +66,14 @@ myLayer.style.display="none";
 	    <div class="feld"><%= link_to "Checklisten", '/sites/checklists_manager' %></div>
 		<div class="feld"><%= link_to "Controlling", '/sites/controlling' %></div>
 
-        <div class="feld"><a href="#" class="button" onclick="javascript:showElement('report-menu')"><span>Beriche</span></a></div>
+        <div class="feld"><a href="#" class="button" onclick="javascript:showElement('report-menu')"><span>Berichte</span></a></div>
         <div id="report-menu" class="report-menu" style="display:none;">
             <div class="feld2"><%= link_to "Eilbericht", '/sites/short_report' %></div>
 		    <div class="feld2"><%= link_to "Ausführlicher Bericht", '/sites/full_report' %></div>
         </div>
 
 		<div class="feld"><%= link_to "Benchmarking", '/benchmarking/index' %></div>
-		<div class="feld"><%= link_to "Simulation", '/sites/simulation' %></div>
+        <!--<div class="feld"><%= link_to "Simulation", '/simulations/index' %></div>-->
 		<div class="feld"><%= link_to "Logout", logout_path, method: :delete %></div>
 		<br><br><br><br>
 	</div>

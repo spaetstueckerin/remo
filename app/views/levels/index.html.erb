@@ -1,0 +1,37 @@
+<h2>Etagen</h2>
+
+<p>
+  An dieser Stelle werden alle Etagen aller Gebäude des Unternehmens angezeigt.
+  Mit Klick auf die entsprechenden Symbole können Sie verschiedene Aktionen ausführen.
+</p>
+
+<table class="zentriert">
+  <tr>
+    <th>Gebäude</th>
+    <th>Etage</th>
+    <th>Energieverbrauch</th>
+    <th>Grundriss</th>
+    <th>Aktion</th>
+  </tr>
+
+  <% @levels.each do |level| %>
+    <tr>
+        <td><%= Building.find(level.building_id).name %></td>
+        <td><%= level.level %></td>
+        <td><%= level.total_consumption ? level.total_consumption : 0 %> kW</td>
+        <td><a href=<%= level_path(level) %>><%= sketchily_show level.floor_plan, :width => "100" %></a></td>
+        <td>
+          <%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), level %> &nbsp;
+          <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_level_path(level) %> &nbsp;
+          <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), level, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </tr>
+  <% end %>
+
+  <tr>
+    <th colspan="4"></th>
+    <th><%= link_to image_tag("new.png", size: "20x20", alt: "Neue Etage"), new_level_path %></th>
+  </tr>
+</table>
+
+<p>
+  <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), "sites/general" %>

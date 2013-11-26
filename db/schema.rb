@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927083705) do
+ActiveRecord::Schema.define(:version => 20131105100232) do
 
   create_table "benchmark_numbers", :force => true do |t|
     t.float    "number"
@@ -486,6 +486,15 @@ ActiveRecord::Schema.define(:version => 20130927083705) do
     t.integer  "user_id"
   end
 
+  create_table "levels", :force => true do |t|
+    t.integer  "building_id"
+    t.integer  "level"
+    t.text     "floor_plan"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.float    "total_consumption"
+  end
+
   create_table "lightings", :force => true do |t|
     t.integer  "location_id"
     t.string   "bulbs"
@@ -516,12 +525,12 @@ ActiveRecord::Schema.define(:version => 20130927083705) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.decimal  "height"
-    t.integer  "building_id"
-    t.string   "floor"
+    t.integer  "level_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.integer  "enterprise_id"
+    t.integer  "building_id"
   end
 
   create_table "machineries", :force => true do |t|

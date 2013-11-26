@@ -1,0 +1,8 @@
+Dummy::Application.routes.draw do
+  resources :drawings, :only => [:create, :show] do
+    member do
+      get 'sketchily'
+      get 'sketchily_tag'
+    end
+  end
+end

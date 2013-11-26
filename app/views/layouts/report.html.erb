@@ -1,48 +1,12 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
-	
-	<script src="RGraph.common.core.js"></script>
-	<script src="RGraph.common.dynamic.js"></script>   <!-- Just needed for dynamic features (eg tooltips) -->
-
-	<script src="RGraph.common.annotate.js"></script>  <!-- Just needed for annotating -->
-	<script src="RGraph.common.context.js"></script>   <!-- Just needed for context menus -->
-	<script src="RGraph.common.effects.js"></script>   <!-- Just needed for visual effects -->
-	<script src="RGraph.common.key.js"></script>       <!-- Just needed for keys -->
-	<script src="RGraph.common.resizing.js"></script>  <!-- Just needed for resizing -->
-	<script src="RGraph.common.tooltips.js"></script>  <!-- Just needed for tooltips -->
-	<script src="RGraph.common.zoom.js"></script>      <!-- Just needed for zoom -->
-
-	<script src="RGraph.bar.js"></script>              <!-- Just needed for Bar charts -->
-	<script src="RGraph.bipolar.js"></script>          <!-- Just needed for Bi-polar charts -->
-	<script src="RGraph.cornergauge.js"></script>      <!-- Just needed for CornerGauge charts -->
-	<script src="RGraph.fuel.js"></script>             <!-- Just needed for Fuel charts -->
-	<script src="RGraph.funnel.js"></script>           <!-- Just needed for Funnel charts -->
-	<script src="RGraph.gantt.js"></script>            <!-- Just needed for Gantt charts -->
-	<script src="RGraph.gauge.js"></script>            <!-- Just needed for Gauge charts -->
-	<script src="RGraph.hbar.js"></script>             <!-- Just needed for Horizontal Bar charts -->
-	<script src="RGraph.hprogress.js"></script>        <!-- Just needed for Horizontal Progress bars -->
-	<script src="RGraph.led.js" type="text/javascript" charset="utf-8"></script>              <!-- Just needed for LED charts -->
-	<script src="RGraph.line.js"></script>             <!-- Just needed for Line charts -->
-	<script src="RGraph.meter.js"></script>            <!-- Just needed for Meter charts -->
-	<script src="RGraph.odo.js"></script>              <!-- Just needed for Odometers -->
-	<script src="RGraph.pie.js"></script>              <!-- Just needed for Pie AND Donut charts -->
-	<script src="RGraph.radar.js"></script>            <!-- Just needed for Radar charts -->
-	<script src="RGraph.rose.js"></script>             <!-- Just needed for Rose charts -->
-	<script src="RGraph.rscatter.js"></script>         <!-- Just needed for Rscatter charts -->
-	<script src="RGraph.scatter.js"></script>          <!-- Just needed for Scatter charts -->
-	<script src="RGraph.thermometer.js"></script>      <!-- Just needed for Thermometer charts -->
-	<script src="RGraph.vprogress.js"></script>        <!-- Just needed for Vertical Progress bars -->
-	<script src="RGraph.waterfall.js"></script>        <!-- Just needed for Waterfall charts  -->
-	
   <title>Remo</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-<!--  <% css_path=Rails.root.to_s+"/app/assets/stylesheets/" %>
-  <link rel="stylesheet" href="<%= css_path + "report.css"%>">-->
-  <!--<script src="../../jquery-1.9.1.js"></script>-->
 
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= csrf_meta_tags %>
-
 
   <script src='http://www.google.com/jsapi'></script>
   <script>
@@ -58,6 +22,7 @@
       }
   </script>
 </head>
+
 <body>
 <div id="wrapper">
 
@@ -70,10 +35,9 @@
       <% image_path=Rails.root.to_s+"/app/assets/images/" %>
       <img src="<%= image_path + "remo.png" %>" height="120px">
 	</div>
-
 </div>
-<div id="strich"></div>
 
+<div id="strich"></div>
 
 <div id="inhalt">
 	<!--Doppelt gemoppelt--> 
@@ -85,16 +49,16 @@
 <%= yield %>
 </div>
 
-	<div id="footer" class="zentriert" align="center">
+<div id="footer" class="zentriert" align="center">
 	Das Projekt "ReMo Green - Energieeffizienz für Berliner KMU" ist eine Initiative der IMBC GmbH und wurde gefördert durch Mittel des Europäischen Fond für regionale Entwicklung, 						
 	<br>bereitgestellt durch die Senatsverwaltung für Forschung, Technik und Wirtschaft in Berlin.<br><br>
 
-      <img src="<%= image_path + "imbc.png" %>" height="60px"><img src="<%= image_path + "spacer.png" %>" height="30px">
-      <img src="<%= image_path + "efre2.png" %>" height="50px"><img src="<%= image_path + "spacer.png" %>" height="30px">
-      <img src="<%= image_path + "berlin.png" %>" height="40px">
-      <!--<img src="/assets/imbc.png" height="60px"><img src="/assets/spacer.png" height="30px">-->
-      <!--<img src="/assets/efre2.png" height="50px"><img src="/assets/spacer.png" height="30px">-->
-      <!--<img src="/assets/berlin.png" height="40px">-->
+    <img src="<%= image_path + "imbc.png" %>" height="60px"><img src="<%= image_path + "spacer.png" %>" height="30px">
+    <img src="<%= image_path + "efre2.png" %>" height="50px"><img src="<%= image_path + "spacer.png" %>" height="30px">
+    <img src="<%= image_path + "berlin.png" %>" height="40px">
+    <!--<img src="/assets/imbc.png" height="60px"><img src="/assets/spacer.png" height="30px">-->
+    <!--<img src="/assets/efre2.png" height="50px"><img src="/assets/spacer.png" height="30px">-->
+    <!--<img src="/assets/berlin.png" height="40px">-->
 	</div>
 </div>
 

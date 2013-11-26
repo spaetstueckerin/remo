@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <g id="level_consumption">
+    <svg width="102" height="102" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g transform="scale(.75) translate(6,10)">
+        <path fill-opacity="0" id="svg_1" d="m98.96558,90.41718c-97.31559,15.37942 -93.89267,-90.67738 3.0554,-70.66105" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="15" fill="#000000" stroke="#000000"/>
+        <line id="svg_2" y2="45.36182" x2="82.90781" y1="45.36182" x1="7.81707" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="10" fill="none" stroke="#000000"/>
+        <line id="svg_3" y2="63.02158" x2="83.19885" y1="63.02158" x1="8.10811" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="10" fill="none" stroke="#000000"/>
+      </g>
+    </svg>
+  </g>
+</svg>

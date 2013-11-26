@@ -13,24 +13,4 @@
 <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), '/sites/full_report' %>
 <%= link_to image_tag("save-as-pdf.png", size: "20x20", alt: "PDF"), '/reports/full_reportpdf' %>
 
-<!--Load Rgraph Libraries-->
-<%= javascript_include_tag("Rgraph/RGraph.common.core.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.common.dynamic.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.common.tooltips.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.common.effects.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.common.key.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.drawing.yaxis.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.line.js") %>
-<%= javascript_include_tag("Rgraph/jquery.min.js") %>
-<%= javascript_include_tag("Rgraph/excanvas.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.gauge.js") %>
-<%= javascript_include_tag("Rgraph/RGraph.bar.js") %>
-
-<!--Load custom graph-->
 <%= javascript_include_tag("Report/commonfunction.js") %>
-<%= javascript_include_tag("Report/summary.js") %>
-<%= javascript_include_tag("Report/cold_charts.js") %>
-<%= javascript_include_tag("Report/compressedAir.js") %>
-<%= javascript_include_tag("Report/hotWater.js") %>
-<%= javascript_include_tag("Report/steam.js") %>
-<%= javascript_include_tag("Report/thermo_oil.js") %>

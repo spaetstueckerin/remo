@@ -123,26 +123,30 @@ Tabelle <%= table_count %> zeigt die aktuell erfassten Stammdaten Ihres Unterneh
 			<% data_table7.new_column('number', 'Value') %>
 
 			<% @production_sites.each do |site| %>
-			<% site_count = site_count + 1 %>
-			<tr>
-				<td><%= site.name %></td>
-				<td><%= Building.find_all_by_site_id(site.id).count %> Gebäude und 
-					<% @buildings = Building.find_all_by_site_id(site.id) %>
-					<% @buildings.each do |build| %>
-                      <% location_count = location_count + Location.find_all_by_building_id(build.id).count %>
-                      <% @locations = Location.find_all_by_building_id(build.id) %>
-                      <% @locations.each do |location| %>
-                          <% location_sqm = location_sqm + location.squaremeter %>
-                      <% end %>
-					<% end %>
-					<%= location_count %> Räume mit insgesamt
-					<%= location_sqm %> m&sup2;
-					<% data_table7.add_row([site.name, location_sqm])%>
-					<% location_count = 0 %>
-					<% location_sqm = 0 %>
-				</td></tr>
-				<% end %>
-			</tbody>
+                <% site_count = site_count + 1 %>
+			    <tr>
+			        <td><%= site.name %></td>
+				    <td><%= Building.find_all_by_site_id(site.id).count %> Gebäude und
+					    <% @buildings = Building.find_all_by_site_id(site.id) %>
+					    <% @buildings.each do |build| %>
+                            <% @levels = Level.find_all_by_building_id(build.id) %>
+                            <% @levels.each do |level| %>
+                                <% location_count = location_count + Location.find_all_by_level_id(level.id).count %>
+                                <% @locations = Location.find_all_by_level_id(level.id) %>
+                                <% @locations.each do |location| %>
+                                    <% location_sqm = location_sqm + location.squaremeter %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+					    <%= location_count %> Räume mit insgesamt
+					    <%= location_sqm %> m&sup2;
+					    <% data_table7.add_row([site.name, location_sqm])%>
+					    <% location_count = 0 %>
+					    <% location_sqm = 0 %>
+				    </td>
+                </tr>
+			<% end %>
+		</tbody>
 	</table><br />
 
 <% opts7 = { :width => 800, :height => 300, :legend => 'bottom' } %>
@@ -1332,14 +1336,6 @@ Tabelle <%= table_count %> zeigt die aktuell erfassten Stammdaten Ihres Unterneh
         </table><br /><br />
     </div>
 
-<!-- Old RGraph Chart
-    <div align="center" class ="canvas">
-	    <canvas id="thermo_oil_consumption_chart" width="750px" height="300" >[No canvas support]</canvas>
-	    <h4>Abb. <%= image_count %>. Thermoölverbrauch</h4>
-	    <% image_count = image_count + 1 %>
-    </div>
--->
-
     <div id="holder">
       <div class="item" id='chartTOC1' align="center" style='width: 350px; height: 240px;'></div>
       <%= render_chart @chartTOC1, 'chartTOC1' %>
@@ -1484,14 +1480,6 @@ Tabelle <%= table_count %> zeigt die aktuell erfassten Stammdaten Ihres Unterneh
 		    </tbody>
 	    </table><br /><br />
     </div>
-
-<!-- Old RGraph Chart
-    <div align="center" class ="canvas">
-	    <canvas id="thermo_oil_production_chart" width="750px" height="500" >[No canvas support]</canvas>
-	    <h4>Abb. <%= image_count %>. Thermoölproduktion</h4>
-	    <% image_count = image_count + 1 %>
-    </div>
--->
 
     <div id="holder">
       <div class="item" id='chartTOP1' align="center" style='width: 350px; height: 240px;'></div>

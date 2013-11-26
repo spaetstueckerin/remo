@@ -1,6 +1,9 @@
 <h2>Standortdetails: <%= @location.name %></h2>
 
-<p>Hier erhalten Sie Detailinformationen zum jeweiligen Raum. Weiter unten sind die sich dort befindenden Geräte und die Lampen und Leuchten in diesem Raum aufgelistet.</p>
+<p>
+  Hier erhalten Sie Detailinformationen zum jeweiligen Raum.
+  Weiter unten sind die sich dort befindenden Geräte und die Lampen und Leuchten in diesem Raum aufgelistet.
+</p>
 
 <table class="left">
     <tr><th colspan=4 align="center"><%= image_tag @location.photo.url(:show), {:class => 'photo'} %></th></tr>

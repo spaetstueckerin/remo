@@ -1,21 +1,43 @@
-<h3>Gebäude</h3>
-<p id="notice"><%= notice %></p>
+<h2>Gebäude</h2>
+
+<div id="notice"><%= notice %></div>
 
 <p>
-  <b>Site:</b>
-  <%= @building.site_id %>
+  Hier erhalten Sie Detailinformationen zum ausgewählten Gebäude.
+  Mit Klick auf die entsprechenden Symbole könne Sie die Grundrisse des Gebäudes detailliert darstellen bzw. bearbeiten.
 </p>
+
+<% @levels = Level.find_all_by_building_id(@building) %>
+<% @levels_count = @levels.count %>
+<% @rooms_count = Location.find_all_by_level_id(@levels).count %>
+
+<table>
+  <tr>
+    <th>Produktionsstandort</th>
+    <td colspan="3"><%= ProduktionSite.find(@building).name %></td>
+  </tr>
+  <tr>
+    <th>Gebäude</th>
+    <td><%= @building.name %></td>
+    <td><%= @levels_count < 2 ? @levels_count.to_s + " Etage" : @levels_count.to_s + " Etagen" %></td>
+    <td><%= @rooms_count < 2 ? @rooms_count.to_s + " Raum" : @rooms_count.to_s + " Räume" %></td>
+  </tr>
+  <tr>
+    <th>Beschreibung</th>
+    <td colspan="3"><%= @building.description %></td>
+  </tr>
+  <% @levels.each do |l| %>
+      <tr>
+        <th>Etage <%= l.level %></th>
+        <td colspan="2" align="center"><a href=<%= level_path(l) %>><%= sketchily_show l.floor_plan, :width => "100" %></a></td>
+        <td align="center">
+          <%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), l %> &nbsp;
+          <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_level_path(l) %>
+        </td>
+      </tr>
+  <% end %>
+</table>
 
 <p>
-  <b>Name:</b>
-  <%= @building.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @building.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_building_path(@building) %> |
-<%= link_to 'Back', buildings_path %>
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), buildings_path %>
+<%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_building_path(@building) %>

@@ -1610,31 +1610,5 @@ steam_consumption
 <% end %>
 <br />
 <br />
-<div align="right" style="font-size: 6pt;">
-  <%= link_to "Alle Abbildungen wurden mithilfe von Rgraph erzeugt","http://www.rgraph.net" %>  <br />
-</div>
 
-<!--Load Rgraph Libraries-->
-<% js_path=Rails.root.to_s+"/app/assets/javascripts/" %>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.common.core.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.common.dynamic.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.common.tooltips.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.common.effects.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.common.key.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.drawing.yaxis.js" %>"></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.line.js" %>"></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/jquery.min.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/excanvas.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.gauge.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Rgraph/RGraph.bar.js"%>" ></script>
-
-
-<!--Load custom graph-->
 <script type="text/javascript" src="<%= js_path + "Report/commonfunction.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Report/summary.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Report/cold_charts.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Report/compressedAir.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Report/hotWater.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Report/steam.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Report/thermo_oil.js"%>" ></script>
-<script type="text/javascript" src="<%= js_path + "Report/formelement.js"%>" ></script>

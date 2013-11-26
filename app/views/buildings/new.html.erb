@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Zurück', buildings_path %>
+<p>
+<%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), buildings_path %>
+<%= link_to image_tag("show.png", size: "20x20", alt: "Anzeigen"), @building %>

@@ -1,0 +1,1733 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily" for 127.0.0.1 at 2013-03-04 18:41:30 -0600
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.js.erb (1.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (3.4ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (4.4ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 65ms (Views: 33.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-03-04 18:41:30 -0600
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.js.erb (0.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.4ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (2.0ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily" for 127.0.0.1 at 2013-03-04 18:42:40 -0600
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.js.erb (1.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (3.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (4.3ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 65ms (Views: 32.7ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-03-04 18:42:40 -0600
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.js.erb (0.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.4ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (2.0ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily" for 127.0.0.1 at 2013-03-04 18:43:02 -0600
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.js.erb (1.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (3.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (4.3ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 64ms (Views: 32.1ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-03-04 18:43:02 -0600
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.js.erb (0.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.4ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (2.0ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily" for 127.0.0.1 at 2013-03-13 20:37:04 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.9ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (3.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (25.3ms)
+Completed 200 OK in 84ms (Views: 51.4ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-03-13 20:37:04 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (1.8ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily" for 127.0.0.1 at 2013-03-13 20:42:16 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.8ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (3.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 79ms (Views: 46.9ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-03-13 20:42:16 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (1.9ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily" for 127.0.0.1 at 2013-03-13 21:03:37 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.9ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (3.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 79ms (Views: 46.7ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-03-13 21:03:37 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (1.8ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily" for 127.0.0.1 at 2013-04-04 11:45:59 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.9ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (3.7ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (25.5ms)
+Completed 200 OK in 84ms (Views: 35.8ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-04-04 11:46:00 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (1.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (1.8ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 6ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (18.4ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+------------------------------------------------------------------
+Sketchily Feature Test: test_0001_should render the sketchily html
+------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 15:54:05 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (2.5ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 10ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------------------------------
+Sketchily Tag Feature Test: test_0001_should render the sketchily_tag html
+--------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 15:54:05 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (8.7ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (9.5ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 24ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (14.0ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+------------------------------------------------------------------
+Sketchily Feature Test: test_0001_should render the sketchily html
+------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:04:11 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (2.5ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 12ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------------------------------
+Sketchily Tag Feature Test: test_0001_should render the sketchily_tag html
+--------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:04:11 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (6.5ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (7.2ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 41ms (Views: 40.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (12.8ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (13.8ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (17.5ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:20:10 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (2.6ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 12ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:20:10 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (8.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (9.0ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 46ms (Views: 45.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (14.3ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:21:19 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (2.5ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 12ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:21:19 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (4.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 27ms (Views: 26.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (13.7ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:22:09 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (2.5ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 12ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:22:09 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (4.8ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 27ms (Views: 26.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (13.8ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (4.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (4.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:28:53 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (2.5ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 12ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:28:53 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (4.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 27ms (Views: 26.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (15.3ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:29:30 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:29:30 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (13.7ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (4.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:31:44 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:31:44 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.9ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 19ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (14.3ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:31:56 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:31:56 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 19ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:32:24 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:32:24 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.9ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 19ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (12.8ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (4.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:34:04 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:34:05 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (13.0ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:34:35 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:34:35 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (14.4ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:35:45 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:35:45 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (13.6ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (4.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:36:41 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:36:41 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:38:55 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:38:55 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (12.5ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (5.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:39:41 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.1ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:39:41 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (12.9ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (4.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (3.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:40:16 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:40:16 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (13.1ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:45:14 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:45:14 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (20.5ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (25.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (3.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:50:57 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.0ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 32ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:50:57 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (13.6ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (13.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:51:56 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (7.7ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 40ms (Views: 39.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:51:56 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (14.3ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (4.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+Started GET "/sketchily" for 127.0.0.1 at 2013-10-08 16:54:22 -0500
+Processing by SketchilyController#sketchily as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.2ms)
+  Rendered sketchily/sketchily.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+Started GET "/sketchily_tag" for 127.0.0.1 at 2013-10-08 16:54:22 -0500
+Processing by SketchilyController#sketchily_tag as HTML
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered sketchily/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.5ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  [1m[36m (11.8ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (4.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (10.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (12.5ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (4.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (14.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.4ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (5.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (8.0ms)
+  [1m[36m (14.5ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (5.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.1ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.4ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (6.0ms)
+  [1m[36m (7.4ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/sketchily.3" for 127.0.0.1 at 2013-10-08 17:03:02 -0500
+Processing by DrawingsController#sketchily as 
+Completed 404 Not Found in 1ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/drawings/sketchily_tag.3" for 127.0.0.1 at 2013-10-08 17:03:02 -0500
+Processing by DrawingsController#sketchily_tag as 
+Completed 404 Not Found in 0ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.1ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (5.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (6.8ms)
+  [1m[36m (11.5ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.4ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (5.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (7.3ms)
+  [1m[36m (13.9ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3" for 127.0.0.1 at 2013-10-08 17:04:05 -0500
+Processing by DrawingsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3" for 127.0.0.1 at 2013-10-08 17:04:05 -0500
+Processing by DrawingsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.5ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (5.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (7.8ms)
+  [1m[36m (14.2ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (13.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:04:30 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:04:30 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (5.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (6.3ms)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36m (15.9ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (6.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:04:58 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.8ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (7.4ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 35ms (Views: 33.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:04:58 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 5ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.9ms)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (13.9ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:07:03 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.2ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.3ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 36ms (Views: 33.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:07:03 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.9ms)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (13.3ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:08:07 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.3ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:08:07 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (14.2ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:08:25 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.6ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.8ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:08:25 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.4ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.4ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (1.3ms)
+  [1m[36m (13.7ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (5.4ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.8ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (7.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.5ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:16:11 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.9ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:16:11 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.2ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.9ms)
+  [1m[36m (14.3ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.9ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.5ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.8ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.4ms)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:16:24 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.8ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:16:24 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.4ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (1.0ms)
+  [1m[36m (8.5ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.3ms)[0m  [1mcommit transaction[0m
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.1ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.4ms)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (5.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:18:43 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (1.0ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:18:43 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.4ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.9ms)
+  [1m[36m (12.9ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (6.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.5ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (6.0ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (10.6ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.4ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-08 17:52:37 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.9ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-08 17:52:37 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (15.4ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (3.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (3.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.7ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (7.4ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (9.7ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.6ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-10 17:55:47 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.9ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-10 17:55:47 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (7.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (3.5ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.9ms)
+  [1m[36m (15.3ms)[0m  [1mCREATE TABLE "drawings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "svg" text) [0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (12.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.8ms)[0m  commit transaction
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (4.5ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (6.6ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.2ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.4ms)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------------------------
+Sketchily Feature Test Feature Test: test_0001_should render the sketchily html
+-------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily" for 127.0.0.1 at 2013-10-10 18:01:58 -0500
+Processing by DrawingsController#sketchily as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily.html.erb (0.9ms)
+  Rendered drawings/sketchily.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------
+Sketchily Tag Feature Test Feature Test: test_0001_should render the sketchily_tag html
+---------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/drawings/3/sketchily_tag" for 127.0.0.1 at 2013-10-10 18:01:58 -0500
+Processing by DrawingsController#sketchily_tag as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDrawing Load (0.0ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.7ms)
+  Rendered drawings/sketchily_tag.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+SketchilyHelper: test_0001_must show svg image
+----------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "drawings" DEFAULT VALUES
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_embed.html.erb (0.3ms)
+  Rendered /home/dantemss/Desktop/sketchily/app/views/sketchily/_sketchily_tag.html.erb (0.8ms)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "drawings" DEFAULT VALUES[0m
+  [1m[35m (4.1ms)[0m  commit transaction

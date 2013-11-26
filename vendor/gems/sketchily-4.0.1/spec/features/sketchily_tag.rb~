@@ -1,0 +1,9 @@
+require 'spec_helper'
+
+describe "Sketchily tag integration" do
+  it "should render the sketchily_tag html" do
+    visit sketchily_tag_path
+    page.must_have_selector('#svgedit_drawing')
+  end
+end
+

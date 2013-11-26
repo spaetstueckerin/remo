@@ -1,0 +1,20 @@
+require 'test_helper'
+
+module Sketchily
+  describe SketchilyTag do
+    it 'must add methods to ActionView::Base' do
+      ActionView::Base.must_respond_to :sketchily_tag
+    end
+    
+    it 'must show sketchily tag' do
+      controller = DummyModelsController.new
+      # Workaround for https://github.com/rails/rails/issues/11662
+      controller.define_singleton_method(:params) do
+        {}
+      end
+      sketchily_tag = ActionView::Base.new.sketchily_tag
+      thread_link.wont_be_nil
+      thread_link.wont_be_empty
+    end
+  end
+end

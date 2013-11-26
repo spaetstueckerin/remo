@@ -5,7 +5,8 @@ class LocationsController < ApplicationController
     #@locations = Location.find(:all, :order =>"floor ASC")
     @user = User.find(session[:user_id])
     @enterprise = Enterprise.find(@user.enterprise_id)
-    @locations = Location.find_all_by_enterprise_id(@enterprise.id, :order =>"floor ASC")
+    @locations = Location.where(:enterprise_id => @enterprise.id).order(:building_id)
+    #@locations = Location.find_all_by_enterprise_id(@enterprise.id, :order => "building_id ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +44,10 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
+    # TODO: Check for a inconsistent combination (building_id, level_id), i.e., no such level in that building
+    params[:location][:level_id] = Level.find_by_building_id_and_level(params[:location][:building_id], params[:location][:level_id]).id
     @location = Location.new(params[:location])
+    @location.enterprise_id = User.find(session[:user_id]).enterprise_id
 
     respond_to do |format|
       if @location.save
@@ -59,6 +63,8 @@ class LocationsController < ApplicationController
   # PUT /locations/1
   # PUT /locations/1.json
   def update
+    # TODO: Check for a inconsistent combination (building_id, level_id), i.e., no such level in that building
+    params[:location][:level_id] = Level.find_by_building_id_and_level(params[:location][:building_id], params[:location][:level_id]).id
     @location = Location.find(params[:id])
 
     respond_to do |format|
