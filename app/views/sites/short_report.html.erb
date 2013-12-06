@@ -49,7 +49,7 @@
      data_table.add_row(["#{data.year}", data.annualSales, data.netIncome, data.energyEfficiencyInvestment, data.productCosts])
    end
 
-   opts = { :width => 800, :height => 250, :legend => 'bottom' }
+   opts = { :width => 800, :height => 250, :legend => 'bottom', :curveType => 'function'}
    @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
 %>
 
@@ -69,7 +69,7 @@
      if not @table_rows.has_key?(bill.year)
        @table_rows[bill.year] = Hash.new
      end
-     @table_rows[bill.year].store(Contract.find(bill.contract_id).energy_type, [bill.value.to_f, bill.consumption.to_f])
+     @table_rows[bill.year].store(Contract.find(bill.contract_id).energy_type_id, [bill.value.to_f, bill.consumption.to_f])
    end
 %>
 
@@ -77,34 +77,25 @@
   <thead>
     <tr>
       <th rowspan="2">Jahr</th>
-      <th colspan="2">Strom</th>
-      <th colspan="2">Gas</th>
-      <th colspan="2">Heizung</th>
-      <th colspan="2">Öl</th>
+      <% EnergyType.all.each do |e| %>
+        <th colspan="2"><%= e.energy_type %></th>
+      <% end %>
     </tr>
     <tr>
-      <th>Verbrauch (kW/h)</th>
-      <th>Kosten (€)</th>
-      <th>Verbrauch (m&sup3;/a)</th>
-      <th>Kosten (€)</th>
-      <th>Verbrauch (???)</th>
-      <th>Kosten (€)</th>
-      <th>Verbrauch (t)</th>
-      <th>Kosten (€)</th>
+      <% EnergyType.all.each do |e| %>
+          <th>Verbr. (<%= raw(e.energy_measure) %>)</th>
+          <th>Kosten (€)</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
       <% @table_rows.each do |key, value| %>
         <tr>
           <td><%= key %></td>
-          <td><%= value["Strom"] ? value["Strom"][0] : 0 %></td>
-          <td><%= value["Strom"] ? value["Strom"][1] : 0 %></td>
-          <td><%= value["Gas"] ? value["Gas"][0] : 0 %></td>
-          <td><%= value["Gas"] ? value["Gas"][1] : 0 %></td>
-          <td><%= value["Heizung"] ? value["Heizung"][0] : 0 %></td>
-          <td><%= value["Heizung"] ? value["Heizung"][1] : 0 %></td>
-          <td><%= value["Öl"] ? value["Öl"][0] : 0 %></td>
-          <td><%= value["Öl"] ? value["Öl"][1] : 0 %></td>
+          <% EnergyType.all.each do |e| %>
+            <td><%= value[e.id] ? value[e.id][0] : 0 %></td>
+            <td><%= value[e.id] ? value[e.id][1] : 0 %></td>
+          <% end %>
         </tr>
       <% end %>
   </tbody>
@@ -113,26 +104,21 @@
 <%
    data_table = GoogleVisualr::DataTable.new
    data_table.new_column('string', 'Jahr')
-   data_table.new_column('number', 'Stromverbrauch')
-   data_table.new_column('number', 'Stromkosten')
-   data_table.new_column('number', 'Gasverbrauch')
-   data_table.new_column('number', 'Gaskosten')
-   data_table.new_column('number', 'Heizungsverbrauch')
-   data_table.new_column('number', 'Heizungskosten')
-   data_table.new_column('number', 'Ölverbrauch')
-   data_table.new_column('number', 'Ölkosten')
+   EnergyType.all.each do |e|
+     data_table.new_column('number', e.energy_type + 'verbrauch')
+     data_table.new_column('number', e.energy_type + 'kosten')
+   end
 
    @table_rows.each do |key, value|
-     data_table.add_row([key.to_s,
-                         value["Strom"] ? value["Strom"][0] : 0,
-                         value["Strom"] ? value["Strom"][1] : 0,
-                         value["Gas"] ? value["Gas"][0] : 0,
-                         value["Gas"] ? value["Gas"][1] : 0,
-                         value["Heizung"] ? value["Heizung"][0] : 0,
-                         value["Heizung"] ? value["Heizung"][1] : 0,
-                         value["Öl"] ? value["Öl"][0] : 0,
-                         value["Öl"] ? value["Öl"][1] : 0
-                        ])
+     chart_row = [key.to_s]
+     EnergyType.all.each do |e|
+       if (value[e.id] != nil)
+         chart_row.push(value[e.id][0], value[e.id][1])
+       else
+         chart_row.push(0, 0)
+       end
+     end
+     data_table.add_row(chart_row)
    end
 
    opts = { :width => 700, :height => 300, :title => 'Verbrauch + Kosten',
@@ -147,18 +133,20 @@
 <%
    data_table = GoogleVisualr::DataTable.new
    data_table.new_column('string', 'Jahr')
-   data_table.new_column('number', 'Strom')
-   data_table.new_column('number', 'Gas')
-   data_table.new_column('number', 'Heizung')
-   data_table.new_column('number', 'Öl')
+   EnergyType.all.each do |e|
+     data_table.new_column('number', e.energy_type)
+   end
 
    @table_rows.each do |key, value|
-     data_table.add_row([key.to_s,
-                         value["Strom"] ? value["Strom"][0] : 0,
-                         value["Gas"] ? value["Gas"][0] : 0,
-                         value["Heizung"] ? value["Heizung"][0] : 0,
-                         value["Öl"] ? value["Öl"][0] : 0,
-                        ])
+     chart_row = [key.to_s]
+     EnergyType.all.each do |e|
+       if (value[e.id] != nil)
+         chart_row.push(value[e.id][0])
+       else
+         chart_row.push(0)
+       end
+     end
+     data_table.add_row(chart_row)
    end
 
    opts = { :width => 350, :height => 240, :title => 'Verbrauch',
@@ -168,18 +156,20 @@
 
    data_table = GoogleVisualr::DataTable.new
    data_table.new_column('string', 'Jahr')
-   data_table.new_column('number', 'Strom')
-   data_table.new_column('number', 'Gas')
-   data_table.new_column('number', 'Heizung')
-   data_table.new_column('number', 'Öl')
+   EnergyType.all.each do |e|
+     data_table.new_column('number', e.energy_type)
+   end
 
    @table_rows.each do |key, value|
-     data_table.add_row([key.to_s,
-                         value["Strom"] ? value["Strom"][1] : 0,
-                         value["Gas"] ? value["Gas"][1] : 0,
-                         value["Heizung"] ? value["Heizung"][1] : 0,
-                         value["Öl"] ? value["Öl"][1] : 0
-                        ])
+     chart_row = [key.to_s]
+     EnergyType.all.each do |e|
+       if (value[e.id] != nil)
+         chart_row.push(value[e.id][1])
+       else
+         chart_row.push(0)
+       end
+     end
+     data_table.add_row(chart_row)
    end
 
    opts = { :width => 350, :height => 240, :title => 'Kosten',

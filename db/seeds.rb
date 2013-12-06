@@ -7,8 +7,39 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#  Checklist default data
+# EnergyType default data
+EnergyType.delete_all
+EnergyType.create([{:energy_type => 'Strom'},
+                   {:energy_type => 'Gas'},
+                   {:energy_type => 'Diesel'},
+                   {:energy_type => 'Fernwärme'},
+                   {:energy_type => 'Öl'}
+                  ])
 
+# EnergyGoalConcept default data
+EnergyGoalConcept.delete_all
+EnergyGoalConcept.create([{:energy_goal_concept => 'verbrauch'},
+                          {:energy_goal_concept => 'kosten'}
+                         ])
+
+# EnergyGoalMeasure default data
+EnergyGoalMeasure.delete_all
+EnergyGoalMeasure.create([{:energy_goal_measure => '%'},
+                          {:energy_goal_measure => '&eur;'},
+                          {:energy_goal_measure => 'kW'},
+                          {:energy_goal_measure => 'MW'},
+                          {:energy_goal_measure => 'm&sup3;'},
+                          {:energy_goal_measure => 'kg'},
+                          {:energy_goal_measure => 'T'}
+                         ])
+
+# EnergyGoalType default data
+EnergyGoalType.delete_all
+EnergyGoalType.create([{:energy_goal_type => 'reduzieren'},
+                       {:energy_goal_type => 'erhöhen'}
+                      ])
+
+# Checklist default data
 # ChecklistDefinition data
 ChecklistDefinition.delete_all
 ChecklistDefinition.create([{:name =>'Beleuchtung', :checktype=>'Ja und Nein'},
@@ -19,6 +50,7 @@ ChecklistDefinition.create([{:name =>'Beleuchtung', :checktype=>'Ja und Nein'},
                             {:name =>'Klimatechnik', :checktype=>'Ja und Nein'},
                             {:name =>'Prozesswärme', :checktype=>'Opt'},
                             {:name =>'Warmwasseraufbereitung', :checktype=>'S M L'}])
+
 # ChecklistCategory data
 ChecklistCategory.delete_all
 ChecklistCategory.create([
@@ -429,6 +461,7 @@ ChecklistCategoryItem.create([
                                  {:name =>'Beim Betrieb eines Gasdurchlauferhitzer mit Zündflame, den Gashahn außerhalb der Arbeitszeiten schließen. Im Ersatzfall gegen einen Gasdurchlauferhitzer mit bedarfsangepasster elektronischer Zündung tauschen.', :checklist_category_id=>ChecklistCategory.find_by_name('Dezentrale Mögliche Energieeinsparmaßnahmen').id, :checklist_definition_id=>ChecklistDefinition.find_by_name('Warmwasseraufbereitung').id, :item_order=>4,:item_head=>''},
                                  {:name =>'Bei Ersatz den elektrischen Durchlauferhitzer gegen einen mit elektronischer Regelung austauschen. An diese Geräte kann die benötigte Wassertemperatur eingestellt werden und keine Energie durch Beimischung kalten Wasser muss verschwendet werden.', :checklist_category_id=>ChecklistCategory.find_by_name('Dezentrale Mögliche Energieeinsparmaßnahmen').id, :checklist_definition_id=>ChecklistDefinition.find_by_name('Warmwasseraufbereitung').id, :item_order=>5,:item_head=>''}
                              ])
+
 #Deleting Checklist properties and  checklist
 ChecklistProperty.delete_all
 Checklist.delete_all

@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag("jquery.dataTables.css") %>
+<%= javascript_include_tag("jquery.js") %>
+<%= javascript_include_tag("jquery.dataTables.min.js") %>
+<%= javascript_include_tag("jquery.dataTables.de.js") %>
+
+<h1>Energieeffizienzziele</h1>
+
+<p>
+<table class="display" id="bills">
+  <thead>
+  <tr>
+    <th>Ziel - Beschreibung</th>
+    <th>Fortschritt</th>
+    <th>Checkliste</th>
+    <th>Aktion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% EnergyGoal.all.each do |g|
+    @goal_text = g.name == nil ? "" : g.name + " - "
+    @goal_text += "von " + g.from_date.strftime("%d.%m.%Y") + " bis " + g.to_date.strftime("%d.%m.%Y")
+    @goal_text += (g.concept_id == 1) ? " den " : " die "
+    @goal_text += EnergyType.find(g.energy_type_id).energy_type + EnergyGoalConcept.find(g.concept_id).energy_goal_concept
+    @goal_text += " um " + g.value.to_s + EnergyGoalMeasure.find(g.measure_id).energy_goal_measure
+    @goal_text += " zu " + EnergyGoalType.find(g.goal_id).energy_goal_type %>
+      <tr>
+        <td><%= link_to raw(@goal_text), energy_goal_path(g) %></td>
+        <td>
+          <div id=<%= "energy_goal_chart_div" + g.id.to_s %> style="width: 100px; height: 50px;">
+          <% @data_table = getEnergyGoalDataTable(g) %>
+          <% @chart = GoogleVisualr::Interactive::ColumnChart.new(@data_table, getEnergyGoalSmallChartOpts(g)) %>
+          <%= link_to render_chart(@chart, "energy_goal_chart_div" + g.id.to_s), energy_goal_path(g) %>
+          </div>
+        </td>
+        <td align="center">
+          <% percent = getCheckListProgress(ChecklistProperty.find(g.checklist_id)) %>
+          <%= link_to progress_bar(percent, :color => 'info', :tiny=> true, :rounded => true), energy_goal_path(g) %>
+        </td>
+        <td align="center">
+          <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_energy_goal_path(g) %> &nbsp;
+          <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), g, method: :delete, data: { confirm: 'Soll dieses Energieeffizienzziel wirklich gelöscht werden?' } %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), welcome_index_url %> &nbsp;
+  <%= link_to image_tag("new.png", size: "20x20", alt: "Neues Energieeffizienzziel definieren"), new_energy_goal_path %>

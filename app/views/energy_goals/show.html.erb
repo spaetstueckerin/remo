@@ -1,0 +1,50 @@
+<p id="notice" xmlns="http://www.w3.org/1999/html">
+  <%= notice %>
+</p>
+
+<h1>Energieeffizienzziel</h1>
+
+<% @goal_name = @energy_goal.name == nil ? "" : @energy_goal.name + " - "
+   @goal_text = "von " + @energy_goal.from_date.strftime("%d.%m.%Y") + " bis " + @energy_goal.to_date.strftime("%d.%m.%Y")
+   @goal_text += (@energy_goal.concept_id == 1) ? " den " : " die "
+   @goal_text += EnergyType.find(@energy_goal.energy_type_id).energy_type + EnergyGoalConcept.find(@energy_goal.concept_id).energy_goal_concept
+   @goal_text += " um " + @energy_goal.value.to_s + EnergyGoalMeasure.find(@energy_goal.measure_id).energy_goal_measure
+   @goal_text += " zu " + EnergyGoalType.find(@energy_goal.goal_id).energy_goal_type %>
+
+<p>
+  <ul>
+    <li><b><%= @goal_name %></b><%= raw(@goal_text) %></li></br>
+  </ul>
+
+<% @data_table = getEnergyGoalDataTable(@energy_goal) %>
+<% @chart_opts = getEnergyGoalChartOpts(@energy_goal) %>
+<% @chart = GoogleVisualr::Interactive::ColumnChart.new(@data_table, @chart_opts) %>
+
+<div id='energy_trend_div' style='margin:auto; width: 600px; height: 300px;'>
+  <%= render_chart @chart, 'energy_trend_div' %>
+</div>
+
+<div align = "center">
+  <h4>Abb. 1. Verlauf des Energieeffizienzziels</h4>
+</div>
+
+<p>
+<ul>
+  <li><b>Checkliste zum Ziel: </b><%= link_to ChecklistDefinition.find(ChecklistProperty.find(@energy_goal.checklist_id).checklist_definition_id).name, checklist_definitions_url %></li>
+</ul>
+<table align="center" style="width:400px;">
+  <tr>
+    <td>
+      <% percent = getCheckListProgress(ChecklistProperty.find(@energy_goal.checklist_id)) %>
+      <%= progress_bar percent, :color => 'info', :tiny=> true, :rounded => true %>
+    </td>
+  </tr>
+</table>
+
+<div align = "center">
+  <h4>Abb. 2. Erfüllung der Checkliste zum Energieeffizienzziel</h4>
+</div>
+
+<p>
+  <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), welcome_index_url %> &nbsp;
+  <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_energy_goal_path(@energy_goal) %>

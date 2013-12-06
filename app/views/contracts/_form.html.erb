@@ -16,8 +16,8 @@
 	<% @enterprise = User.find(session[:user_id]).enterprise_id %>
     <%= f.hidden_field :enterprise_id, :value => @enterprise %>
 
-    <td><%= f.label :energy_type, "Energieart" %></td>
-    <td><%= f.select :energy_type, ["Strom", "Gas", "Wasser", "Öl", "Heizung"]%></td>
+    <td><%= f.label :energy_type_id, "Energieart" %></td>
+    <td><%= f.select :energy_type_id, EnergyType.all.map{|t| [t.energy_type, t.id]} %></td>
     <td><%= f.label :supplier, "Energielieferant" %></td>
     <td><%= f.text_field :supplier %></td>
 </tr>

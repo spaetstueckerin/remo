@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from: 2013-12-03
+  to: 2013-12-03
+  energy_type_id: 1
+  concept_id: 1
+  value: 1.5
+  measure_id: 1
+  goal_id: 1
+  checklist_id: 1
+
+two:
+  from: 2013-12-03
+  to: 2013-12-03
+  energy_type_id: 1
+  concept_id: 1
+  value: 1.5
+  measure_id: 1
+  goal_id: 1
+  checklist_id: 1

@@ -27,9 +27,8 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
-    
-    @bill = Bill.find(params[:id])    
-    
+    @bill = Bill.find(params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bill }
@@ -68,6 +67,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
+        updateEnergyGoals(@bill)
         format.html { redirect_to @contracts, notice: 'Bill was successfully created.' }
         format.json { render json: @bill, status: :created, location: @bill }
       else
@@ -84,6 +84,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.update_attributes(params[:bill])
+        updateEnergyGoals(@bill)
         format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
         format.json { head :no_content }
       else
@@ -97,6 +98,7 @@ class BillsController < ApplicationController
   # DELETE /bills/1.json
   def destroy
     @bill = Bill.find(params[:id])
+    # TODO: "un-updateEnergyGoals" related to this bill
     @bill.destroy
 
     respond_to do |format|

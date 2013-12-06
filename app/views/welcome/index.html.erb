@@ -1,19 +1,76 @@
-<!--WELCOME SHOW-->
-<h2>Herzlich Willkommen!</h2>
-<p>Mit dieser Software haben Sie Ihre Energieverbräuche und andere energierelevanten Daten im Griff. Bei Fragen wenden Sie sich bitte an den Administrator <%= mail_to "admin@remo-green.de" %>.</p>
-<p><b>Folgende Meldungen wurden durch das System generiert:</b></p>
+<%= stylesheet_link_tag("jquery.dataTables.css") %>
+<%= javascript_include_tag("jquery.js") %>
+<%= javascript_include_tag("jquery.dataTables.min.js") %>
+<%= javascript_include_tag("jquery.dataTables.de.js") %>
 
-<table>
+<!--WELCOME SHOW-->
+<h1>Herzlich Willkommen!</h1>
+
+<p>
+  Mit dieser Software haben Sie Ihre Energieverbräuche und andere energierelevanten Daten im Griff.
+  Bei Fragen wenden Sie sich bitte an den Administrator <%= mail_to "admin@remo-green.de" %>.
+</p>
+
+<h2>Folgende Meldungen wurden durch das System generiert:</h2>
+
 <% @measurings = Measuring.all%>
-<% if @measurings.last.dateTo < Date.today %>
-	<tr><td><b>Bitte Zähler ablesen!</b></td></tr>
-	<tr><td><b>Bitte Energieabrechnung nachtragen!</b></td></tr>
-<% else %>
-	<tr><td><p>Alle Zählerlesungen auf dem neusten Stand!</p></td></tr>
-<% end %>
+
+<ul>
+  <% if @measurings.last.dateTo < Date.today %>
+      <li>Bitte Zähler ablesen!</li></br>
+      <li>Bitte Energieabrechnung nachtragen!</li>
+  <% else %>
+      <li>Alle Zählerlesungen auf dem neusten Stand!</li>
+  <% end %>
+</ul>
+
+<p>Mit Klick auf die jeweilige Meldung gelangen Sie zur jeweiligen Eingabemaske.</p>
+
+<h2>
+  <%= link_to "Energieeffizienzziele", energy_goals_url %>
+  (<%= link_to image_tag("new.png", size: "12x12", alt: "Neues Energieeffizienzziel definieren"), new_energy_goal_path %>)
+</h2>
+
+<table class="display" id="bills">
+  <thead>
+    <tr>
+      <th>Ziel - Beschreibung</th>
+      <th>Fortschritt</th>
+      <th>Checkliste</th>
+      <th>Aktion</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% EnergyGoal.all.each do |g|
+        @goal_text = g.name == nil ? "" : g.name + " - "
+        @goal_text += "von " + g.from_date.strftime("%d.%m.%Y") + " bis " + g.to_date.strftime("%d.%m.%Y")
+        @goal_text += (g.concept_id == 1) ? " den " : " die "
+        @goal_text += EnergyType.find(g.energy_type_id).energy_type + EnergyGoalConcept.find(g.concept_id).energy_goal_concept
+        @goal_text += " um " + g.value.to_s + EnergyGoalMeasure.find(g.measure_id).energy_goal_measure
+        @goal_text += " zu " + EnergyGoalType.find(g.goal_id).energy_goal_type %>
+        <tr>
+            <td><%= link_to raw(@goal_text), energy_goal_path(g) %></td>
+            <td>
+              <div id=<%= "energy_goal_chart_div" + g.id.to_s %> style="width: 100px; height: 50px;">
+                <% @data_table = getEnergyGoalDataTable(g) %>
+                <% @chart = GoogleVisualr::Interactive::ColumnChart.new(@data_table, getEnergyGoalSmallChartOpts(g)) %>
+                <%= link_to render_chart(@chart, "energy_goal_chart_div" + g.id.to_s), energy_goal_path(g) %>
+              </div>
+            </td>
+            <td align="center">
+              <% percent = getCheckListProgress(ChecklistProperty.find(g.checklist_id)) %>
+              <%= link_to progress_bar(percent, :color => 'info', :tiny=> true, :rounded => true), energy_goal_path(g) %>
+            </td>
+            <td align="center">
+              <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_energy_goal_path(g) %> &nbsp;
+              <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), g, method: :delete, data: { confirm: 'Soll dieses Energieeffizienzziel wirklich gelöscht werden?' } %>
+            </td>
+        </tr>
+      <% end %>
+  </tbody>
 </table>
 
-<p>Mit Klick auf die jeweilige Meldung gelangen Sie zur jeweiligen Eingabemaske.</p><br>
+</br>
 
 <h2>Symbole</h2>
 

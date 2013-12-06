@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105100232) do
+ActiveRecord::Schema.define(:version => 20131205154531) do
 
   create_table "benchmark_numbers", :force => true do |t|
     t.float    "number"
@@ -316,13 +316,13 @@ ActiveRecord::Schema.define(:version => 20131105100232) do
   end
 
   create_table "contracts", :force => true do |t|
-    t.string   "energy_type"
+    t.integer  "energy_type_id", :limit => 255
     t.text     "description"
     t.string   "condition"
     t.date     "duration_from"
     t.date     "duration_to"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "enterprise_id"
     t.string   "supplier"
     t.integer  "contractNo"
@@ -335,6 +335,43 @@ ActiveRecord::Schema.define(:version => 20131105100232) do
     t.integer  "edt_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "energy_goal_concepts", :force => true do |t|
+    t.string   "energy_goal_concept"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "energy_goal_measures", :force => true do |t|
+    t.string   "energy_goal_measure"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "energy_goal_types", :force => true do |t|
+    t.string   "energy_goal_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "energy_goals", :force => true do |t|
+    t.string   "name"
+    t.date     "from_date"
+    t.date     "to_date"
+    t.float    "from_value",     :default => 0.0
+    t.float    "to_value",       :default => 0.0
+    t.float    "mean_value",     :default => 0.0
+    t.float    "last_value",     :default => 0.0
+    t.integer  "energy_type_id"
+    t.integer  "concept_id"
+    t.float    "value"
+    t.integer  "measure_id"
+    t.integer  "goal_id"
+    t.integer  "checklist_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "status",         :default => true
   end
 
   create_table "energy_mixes", :force => true do |t|
@@ -355,6 +392,13 @@ ActiveRecord::Schema.define(:version => 20131105100232) do
     t.decimal  "wind"
     t.decimal  "stoneCoal"
     t.decimal  "other"
+  end
+
+  create_table "energy_types", :force => true do |t|
+    t.string   "energy_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "energy_measure"
   end
 
   create_table "enterprise_data", :force => true do |t|
@@ -380,6 +424,14 @@ ActiveRecord::Schema.define(:version => 20131105100232) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "branch_id"
+  end
+
+  create_table "floor_plans", :force => true do |t|
+    t.integer  "building_id"
+    t.string   "description"
+    t.text     "sketch"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "hot_water_consumption_years", :force => true do |t|

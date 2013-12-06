@@ -7,7 +7,7 @@ class BenchmarkingController < ApplicationController
     @businessDatum = BusinessDatum.find_by_enterpriseId(@enterprise.id)
 
     #Finde den Stromvertrag des Unternehmens
-    @contractEnergy = Contract.find_by_enterprise_id_and_energy_type(@enterprise.id, "Strom")
+    @contractEnergy = Contract.find_by_enterprise_id_and_energy_type_id(@enterprise.id, EnergyType::ELECTRICITY)
     
     #Finde alle Abrechnungen zu diesem Vertrag und berechne Gesamtkosten und Gesamtverbrauch für dieses Jahr
     @billsEnergy = Bill.find_all_by_contract_id_and_year(@contractEnergy.id, Time.now.year-1)
@@ -54,7 +54,7 @@ class BenchmarkingController < ApplicationController
     @groupIC = Array.new
     
     # Finde alle Stromverträge
-    @allContracts = Contract.find_all_by_energy_type("Strom")
+    @allContracts = Contract.find_all_by_energy_type_id(EnergyType::ELECTRICITY)
     
     # Finde alle Rechnungen zu den Stromverträgen und berechne Topliste für alle Kennzahlen
     @allContracts.each do |allContracts|

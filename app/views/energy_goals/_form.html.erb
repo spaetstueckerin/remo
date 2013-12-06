@@ -1,0 +1,43 @@
+<% @date_de = [:day, :month, :year] %>
+<% @months_de = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'] %>
+
+<%= form_for(@energy_goal) do |f| %>
+  <% if @energy_goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@energy_goal.errors.count, "error") %> prohibited this energy_goal from being saved:</h2>
+      <ul>
+        <% @energy_goal.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <th align="left"><%= f.label :name, "Zielname: " %><%= f.text_field :name %></th>
+    </tr>
+    <tr>
+      <th align="left">
+        Von <%= f.date_select :from_date, :order => @date_de, :use_month_names => @months_de %>
+        Bis <%= f.date_select :to_date, :order => @date_de, :use_month_names => @months_de %>
+      </th>
+    </tr>
+    <tr>
+      <th align="left">
+        <%= f.select :energy_type_id, EnergyType.all.map{|t| [t.energy_type, t.id]} %><%= f.select :concept_id, EnergyGoalConcept.all.map{|t| [t.energy_goal_concept, t.id]} %>
+        um <%= f.text_field :value, :size => 5, :value => 10, :style => "text-align: right" %> <%= f.select :measure_id, EnergyGoalMeasure.all.map{|t| [raw(t.energy_goal_measure), t.id]} %>
+        zu <%= f.select :goal_id, EnergyGoalType.all.map{|t| [t.energy_goal_type, t.id]} %>
+      </th>
+    </tr>
+    <tr>
+      <th align="left">
+        Checkliste für dieses Ziel:
+        <%= f.select :checklist_id, ChecklistProperty.all.map{|t| [ChecklistDefinition.find(t.checklist_definition_id).name, t.id]} %>
+      </th>
+    </tr>
+  </table>
+
+    <p>
+    <%= f.submit "Speichern" %>
+<% end %>

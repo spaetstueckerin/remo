@@ -1,5 +1,7 @@
 Remo::Application.routes.draw do
   
+  resources :energy_goals
+
   root :to => "sessions#new"
   resources :produced_units
   resources :productions

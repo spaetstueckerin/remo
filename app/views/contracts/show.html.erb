@@ -23,7 +23,7 @@ function toggle() {
 <table>
 	<tr>
 		<th>Energieart:</th>
-		<td><%= @contract.energy_type %></td>
+		<td><%= EnergyType.find(@contract.energy_type_id).energy_type %></td>
 	</tr>
 	<tr>
 		<th>Energielieferant</th>
@@ -92,8 +92,8 @@ function toggle() {
 <table>
 <tr>
     <td><%= f.label "Energievertrag"%></td>
-	<% contracts = Contract.find_all_by_enterprise_id(2)%>
-    <td><%= f.select :contract_id, contracts.collect{ |u| [u.supplier + " " + " " + u.energy_type, u.id] }%>
+	<% contracts = Contract.find_all_by_enterprise_id(current_user.enterprise_id)%>
+    <td><%= f.select :contract_id, contracts.collect{ |u| [u.supplier + " - " + EnergyType.find(u.energy_type_id).energy_type, u.id] }%>
     <td><%= f.label "Zähler"%></td>
     <td><%= f.select :meterId, Meter.all.map{|m| [m.name, m.id]}%></td>
 </tr>
@@ -118,7 +118,7 @@ function toggle() {
 
 
 <!--Wennn es sich um einen Stromliefervertrag handelt, dann zeige auch den Energiemix an-->
-<% if @contract.energy_type == "Strom" %>
+<% if @contract.energy_type_id == EnergyType::ELECTRICITY %>
 <h3>Energie-Mix</h3>
 <p>Das folgende Chart stellt den Energiemix für diesen Vertrag dar. Je höher der Anteil der erneuerbaren Energien, umso geringer der Verbrauch von CO&sup2;. Mit Klick auf den Stift können Sie die Angaben für den Energiemix bearbeiten. Diese erhalten Sie normalerweise automatisch von Ihrem Energielieferanten.</p>
 
