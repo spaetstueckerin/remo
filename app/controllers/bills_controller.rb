@@ -67,6 +67,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
+        # Update all energy goals related to this bill
         updateEnergyGoals(@bill)
         format.html { redirect_to @contracts, notice: 'Bill was successfully created.' }
         format.json { render json: @bill, status: :created, location: @bill }
@@ -84,6 +85,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.update_attributes(params[:bill])
+        # Update all energy goals related to this bill
         updateEnergyGoals(@bill)
         format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
         format.json { head :no_content }

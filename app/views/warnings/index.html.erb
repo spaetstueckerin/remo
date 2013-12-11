@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag("jquery.dataTables.css") %>
+<%= javascript_include_tag("jquery.js") %>
+<%= javascript_include_tag("jquery.dataTables.min.js") %>
+<%= javascript_include_tag("jquery.dataTables.de.js") %>
+
+<h1>Meldungen</h1>
+
+<table class="display" id="warnings">
+  <thead>
+  <tr>
+    <th>Meldung</th>
+    <th>Beschreibung</th>
+    <th>Periodizität</th>
+    <th>Quelle</th>
+    <th>Aktion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @warnings.each do |w| %>
+      <tr>
+        <td><%= link_to w.name, warning_path(w) %></td>
+        <td><%= link_to w.description, warning_path(w) %></td>
+        <td><%= link_to w.periodicity.to_s + " Tage", warning_path(w) %></td>
+        <td><%= link_to WarningTable.find_by_system_table_name(w.event_source).view_table_name, warning_path(w) %></td>
+        <td align="center">
+          <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_warning_path(w) %> &nbsp;
+          <%= link_to image_tag("delete.png", size: "20x20", alt: "Löschen"), w, method: :delete, data: { confirm: 'Soll diese Meldung wirklich gelöscht werden?' } %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), welcome_index_url %> &nbsp;
+  <%= link_to image_tag("new.png", size: "20x20", alt: "Neue Systemmeldung definieren"), new_warning_path %>

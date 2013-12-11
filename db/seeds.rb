@@ -7,6 +7,27 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# WarningTable default data
+WarningTable.delete_all
+WarningTable.create([{:system_table_name => 'bills', :view_table_name => 'Energieabrechnung'},
+                     {:system_table_name => 'business_data', :view_table_name => 'Betriebswirtschaftliche Daten'},
+                     {:system_table_name => 'checklists', :view_table_name => 'Checklisten zur Energieeffizienz'},
+                     {:system_table_name => 'contracts', :view_table_name => 'Energielieferverträge'},
+                     {:system_table_name => 'energy_goals', :view_table_name => 'Energieeffizienzziele'},
+                     {:system_table_name => 'levels', :view_table_name => 'Etagen und Grundrisse'},
+                     {:system_table_name => 'lightings', :view_table_name => 'Beleuchtungsanlagen'},
+                     {:system_table_name => 'locations', :view_table_name => 'Räumlichkeiten'},
+                     {:system_table_name => 'machineries', :view_table_name => 'Maschinen und Geräte'},
+                     {:system_table_name => 'measuring_data', :view_table_name => 'Messungen'},
+                     {:system_table_name => 'measurings', :view_table_name => 'Messdaten'},
+                     {:system_table_name => 'meters', :view_table_name => 'Messgeräte und Zähler'},
+                     {:system_table_name => 'production_data', :view_table_name => 'Produktionsbezogene Daten'},
+                     {:system_table_name => 'produced_units', :view_table_name => 'Produzierte Einheiten'},
+                     {:system_table_name => 'product_ranges', :view_table_name => 'Produktpalette'},
+                     {:system_table_name => 'production_levels', :view_table_name => 'Produktionsstuffen'},
+                     {:system_table_name => 'productions', :view_table_name => 'Produktion'}
+                   ])
+
 # EnergyType default data
 EnergyType.delete_all
 EnergyType.create([{:energy_type => 'Strom'},

@@ -1,0 +1,61 @@
+<%= form_for(@warning) do |f| %>
+  <% if @warning.errors.any? %>
+        <div id="error_explanation" xmlns="http://www.w3.org/1999/html">
+      <h2><%= pluralize(@warning.errors.count, "error") %> prohibited this warning from being saved:</h2>
+
+      <ul>
+      <% @warning.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <th align="left">
+        <%= f.label :name, "Aufgabe: " %></br>
+        <%= f.text_field :name, :size => 50 %></th>
+      <th align="left" rowspan="4">
+        <%= f.label :description, "Beschreibung der Aufgabe:" %></br>
+        <%= f.text_area :description %></th>
+    </tr>
+    <tr>
+      <th align="left">
+        <%= f.label :periodicity, "Periodizität:"%></br>
+        1 x <%= f.number_field :periodicity %> Tage
+      </th>
+    </tr>
+    <tr>
+      <th align="left">
+        <%= f.label :event_source, "Quelle:" %></br>
+        <%= f.select :event_source , WarningTable.all.map {|t| [t.view_table_name, t.system_table_name]} %> Tabelle
+      </th>
+    </tr>
+    <tr>
+      <td align="left">
+        <b>Noten:</b>
+        <ol>
+          <li>
+            Mit Periodizität wird definiert, wie oft die Aufgabe durchgeführt werden soll.
+          </li>
+          <li>
+            Unter Quelle soll die Tabelle angegeben werden, die die Datensätze dieser Aufgabe speichert.
+          </li>
+        </ol>
+        <b>Beispiele von Aufgaben sind:</b>
+        <ul>
+          <li>
+            Eine Energieabrechnung eintragen
+          </li>
+          <li>
+            Die Stammdaten des Unternehmens oder die Checklisten zur Energieeffizienz pflegen
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <%= f.submit "Speichern" %>
+<% end %>

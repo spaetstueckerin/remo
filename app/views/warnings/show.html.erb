@@ -1,0 +1,29 @@
+<h1>Systemmeldung</h1>
+
+<p id="notice" xmlns="http://www.w3.org/1999/html">
+  <%= notice %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @warning.name %>
+</p>
+
+<p>
+  <b>Beschreibung:</b>
+  <%= @warning.description %>
+</p>
+
+<p>
+  <b>Periodizität:</b>
+  <%= @warning.periodicity %> Tage
+</p>
+
+<p>
+  <b>Quelle:</b>
+  <%= WarningTable.find_by_system_table_name(@warning.event_source).view_table_name %> Tabelle
+</p>
+
+<p>
+  <%= link_to image_tag("zurueck.png", size: "20x20", alt: "Zurück"), warnings_path %> &nbsp;
+  <%= link_to image_tag("edit.png", size: "20x20", alt: "Bearbeiten"), edit_warning_path(@warning) %>

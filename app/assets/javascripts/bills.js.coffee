@@ -8,4 +8,8 @@ jQuery ->
 	  oLanguage:
 	      "sLengthMenu": "Zeige _MENU_ Elemente pro Seite an"
 	      "sInfo": "_START_ bis _END_ von _TOTAL_ Elementen"
+	      "sInfoEmpty": "0 bis 0 von 0 Elemente"
+	      "sEmptyTable": "Nichts gefunden - sorry"
+	      "sZeroRecords": "Nichts gefunden - sorry"
+	      "sInfoFiltered": "(Filtern von _MAX_ Elemente)"
 	      "sSearch": "Suchen",

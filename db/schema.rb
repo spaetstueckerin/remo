@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205154531) do
+ActiveRecord::Schema.define(:version => 20131211074649) do
 
   create_table "benchmark_numbers", :force => true do |t|
     t.float    "number"
@@ -957,6 +957,22 @@ ActiveRecord::Schema.define(:version => 20131205154531) do
     t.datetime "updated_at",      :null => false
     t.integer  "role_id"
     t.integer  "enterprise_id"
+  end
+
+  create_table "warning_tables", :force => true do |t|
+    t.string   "system_table_name"
+    t.string   "view_table_name"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "warnings", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "periodicity"
+    t.string   "event_source"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "years", :force => true do |t|

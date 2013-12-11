@@ -81,6 +81,7 @@ class ApplicationController < ActionController::Base
   end
 
   def updateEnergyGoals(bill)
+    # Find all active energy goals related to this bill
     energy_goals = EnergyGoal.find_all_by_status_and_energy_type_id(true, Contract.find(bill.contract_id).energy_type_id)
     energy_goals.each do |e|
       if (bill.period_to >= e.from_date)

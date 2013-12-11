@@ -1,25 +1,32 @@
 <% if User.find(session[:user_id]).role_id == 1 %>
-<h2>Projektdokumentation</h2>
-<table>
-  <tr>
-    <td><%= link_to 'Howtos anzeigen', howtos_path %></td>
-    <td><%= link_to 'Todos anzeigen', todos_path %></td>
-  </tr>
-</table>
+    <h2>Projektdokumentation</h2>
+    <table>
+      <tr>
+        <td><%= link_to 'Howtos anzeigen', howtos_path %></td>
+        <td><%= link_to 'Todos anzeigen', todos_path %></td>
+      </tr>
+    </table>
 
-<h2>Benutzerverwaltung</h2>
-<table>
-  <tr>
-  <td><%= link_to 'Benutzer', users_path %></td>
-  <td><%= link_to 'Rollen', roles_path %></td>
-  <td><%= link_to 'Unternehmen', enterprises_path %></td>
-  <td><%= link_to 'Branchen', branches_path %></td>
-  </tr>
-</table>
+    <h2>Benutzerverwaltung</h2>
+    <table>
+      <tr>
+        <td><%= link_to 'Benutzer', users_path %></td>
+        <td><%= link_to 'Rollen', roles_path %></td>
+        <td><%= link_to 'Unternehmen', enterprises_path %></td>
+        <td><%= link_to 'Branchen', branches_path %></td>
+      </tr>
+    </table>
+
+    <h2>Systemmeldungen</h2>
+    <table>
+      <tr>
+        <td><%= link_to 'Meldungen anzeigen', warnings_path %></td>
+      </tr>
+    </table>
 <% else %>
-<br><br><br><br><br>
-<table>
-	<tr><th><%= image_tag "alert.png" %></th></tr>
-	<tr><th>Hinweis: Sie haben keine Rechte auf diese Seite zuzugreifen!</th></tr>
-</table>
+    <br><br><br><br><br>
+    <table>
+      <tr><th><%= image_tag "alert.png" %></th></tr>
+      <tr><th>Hinweis: Sie haben keine Rechte auf diese Seite zuzugreifen!</th></tr>
+    </table>
 <% end %>

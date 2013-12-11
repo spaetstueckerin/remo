@@ -11,27 +11,42 @@
   Bei Fragen wenden Sie sich bitte an den Administrator <%= mail_to "admin@remo-green.de" %>.
 </p>
 
-<h2>Folgende Meldungen wurden durch das System generiert:</h2>
+<h2>
+  <%= link_to image_tag("alert42x40.png", size: "15x15", alt: "Alarm"), warnings_path %>
+  Folgende <%= link_to "Meldungen", warnings_path %> wurden durch das System generiert:
+</h2>
 
-<% @measurings = Measuring.all%>
-
-<ul>
-  <% if @measurings.last.dateTo < Date.today %>
-      <li>Bitte Zähler ablesen!</li></br>
-      <li>Bitte Energieabrechnung nachtragen!</li>
-  <% else %>
-      <li>Alle Zählerlesungen auf dem neusten Stand!</li>
+<table class="display" id="warnings">
+  <thead>
+  <tr>
+    <th>Meldung</th>
+    <th>Beschreibung</th>
+    <th>Periodizität</th>
+    <th>Grund der Meldung</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Warning.all.each do |w| %>
+    <% if DateTime.now > (w.event_source.classify.constantize.last.updated_at + w.periodicity.days) %>
+      <tr>
+        <td><%= link_to w.name, warning_path(w) %></td>
+        <td><%= link_to w.description, warning_path(w) %></td>
+        <td><%= link_to w.periodicity.to_s + " Tage", warning_path(w) %></td>
+        <td><%= link_to "Diese Aufgabe wurde zum letzten Mal am " + w.event_source.classify.constantize.last.updated_at.strftime('%d.%m.%Y') + " durchgeführt.", warning_path(w) %></td>
+      </tr>
+    <% end %>
   <% end %>
-</ul>
+  </tbody>
+</table>
 
-<p>Mit Klick auf die jeweilige Meldung gelangen Sie zur jeweiligen Eingabemaske.</p>
+</br>
 
 <h2>
   <%= link_to "Energieeffizienzziele", energy_goals_url %>
   (<%= link_to image_tag("new.png", size: "12x12", alt: "Neues Energieeffizienzziel definieren"), new_energy_goal_path %>)
 </h2>
 
-<table class="display" id="bills">
+<table class="display" id="energy_goals">
   <thead>
     <tr>
       <th>Ziel - Beschreibung</th>

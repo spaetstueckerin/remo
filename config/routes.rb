@@ -1,5 +1,8 @@
 Remo::Application.routes.draw do
   
+  resources :warnings
+
+
   resources :energy_goals
 
   root :to => "sessions#new"
